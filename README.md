@@ -1,0 +1,1 @@
+# vs-catalog-bundle
