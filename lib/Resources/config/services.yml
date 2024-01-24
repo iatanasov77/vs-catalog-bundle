@@ -1,0 +1,17 @@
+imports:
+    - { resource: services/controller.yaml }
+    - { resource: services/form.yaml }
+    - { resource: services/menu.yaml }
+    - { resource: services/fixtures_factories.yaml }
+    - { resource: services/fixtures.yaml }
+
+parameters:
+    vs_catalog.product_category.taxonomy_code: 'product-categories'
+    vs_catalog.pricing_plan_category.taxonomy_code: 'pricing-plan-categories'
+
+services:
+    _defaults:
+        autowire: true
+        autoconfigure: true
+        public: true
+

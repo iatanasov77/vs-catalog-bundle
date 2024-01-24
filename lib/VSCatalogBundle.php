@@ -1,4 +1,4 @@
-<?php namespace Vankosoft\PaymentBundle;
+<?php namespace Vankosoft\CatalogBundle;
 
 use Sylius\Bundle\ResourceBundle\AbstractResourceBundle;
 use Sylius\Bundle\ResourceBundle\SyliusResourceBundle;
@@ -22,7 +22,7 @@ class VSCatalogBundle extends AbstractResourceBundle
         parent::build( $container );
         
         $mappings = [
-            realpath( __DIR__.'/Resources/config/doctrine-mapping' ) => 'Vankosoft\PaymentBundle\Model',
+            realpath( __DIR__.'/Resources/config/doctrine-mapping' ) => 'Vankosoft\CatalogBundle\Model',
         ];
         
         if ( class_exists( 'Doctrine\Bundle\DoctrineBundle\DependencyInjection\Compiler\DoctrineOrmMappingsPass' ) ) {
@@ -37,6 +37,6 @@ class VSCatalogBundle extends AbstractResourceBundle
      */
     public function getContainerExtension(): ?ExtensionInterface
     {
-        return new \Vankosoft\PaymentBundle\DependencyInjection\VSPaymentExtension();
+        return new \Vankosoft\CatalogBundle\DependencyInjection\VSCatalogExtension();
     }
 }

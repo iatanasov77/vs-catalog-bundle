@@ -1,0 +1,87 @@
+services:
+    _defaults:
+        autowire: true
+        autoconfigure: true
+        public: true
+
+    vs_catalog.fixture.currencies:
+        class: Vankosoft\CatalogBundle\DataFixtures\VankosoftExtendedDataFixtures\CurrenciesFixture
+        arguments:
+            - '@doctrine.orm.default_entity_manager'
+            - '@vs_catalog.fixture.example_factory.currencies'
+        tags:
+            - 'sylius_fixtures.fixture'
+            
+    vs_catalog.fixture.exchange_rates:
+        class: Vankosoft\CatalogBundle\DataFixtures\VankosoftExtendedDataFixtures\ExchangeRatesFixture
+        arguments:
+            - '@doctrine.orm.default_entity_manager'
+            - '@vs_catalog.fixture.example_factory.exchange_rates'
+        tags:
+            - 'sylius_fixtures.fixture'
+            
+    vs_catalog.fixture.gateway_configs:
+        class: Vankosoft\CatalogBundle\DataFixtures\VankosoftExtendedDataFixtures\GatewayConfigsFixture
+        arguments:
+            - '@doctrine.orm.default_entity_manager'
+            - '@vs_catalog.fixture.example_factory.gateway_configs'
+        tags:
+            - 'sylius_fixtures.fixture'
+            
+    vs_catalog.fixture.payment_methods:
+        class: Vankosoft\CatalogBundle\DataFixtures\VankosoftExtendedDataFixtures\PaymentMethodsFixture
+        arguments:
+            - '@doctrine.orm.default_entity_manager'
+            - '@vs_catalog.fixture.example_factory.payment_methods'
+        tags:
+            - 'sylius_fixtures.fixture'
+            
+    vs_catalog.fixture.product_categories:
+        class: Vankosoft\CatalogBundle\DataFixtures\VankosoftExtendedDataFixtures\ProductCategoriesFixture
+        arguments:
+            - '@doctrine.orm.default_entity_manager'
+            - '@vs_catalog.fixture.example_factory.product_categories'
+        tags:
+            - 'sylius_fixtures.fixture'
+            
+    vs_catalog.fixture.products:
+        class: Vankosoft\CatalogBundle\DataFixtures\VankosoftExtendedDataFixtures\ProductsFixture
+        arguments:
+            - '@doctrine.orm.default_entity_manager'
+            - '@vs_catalog.fixture.example_factory.products'
+        tags:
+            - 'sylius_fixtures.fixture'
+    
+    vs_catalog.fixture.paid_service_categories:
+        class: Vankosoft\CatalogBundle\DataFixtures\VankosoftExtendedDataFixtures\PaidServiceCategoriesFixture
+        arguments:
+            - '@doctrine.orm.default_entity_manager'
+            - '@vs_catalog.fixture.example_factory.paid_service_categories'
+        tags:
+            - 'sylius_fixtures.fixture'
+            
+    vs_catalog.fixture.paid_services:
+        class: Vankosoft\CatalogBundle\DataFixtures\VankosoftExtendedDataFixtures\PaidServicesFixture
+        arguments:
+            - '@doctrine.orm.default_entity_manager'
+            - '@vs_catalog.fixture.example_factory.paid_services'
+        tags:
+            - 'sylius_fixtures.fixture'
+            
+    vs_catalog.fixture.pricing_plan_categories:
+        class: Vankosoft\CatalogBundle\DataFixtures\VankosoftExtendedDataFixtures\PricingPlanCategoriesFixture
+        arguments:
+            - '@doctrine.orm.default_entity_manager'
+            - '@vs_catalog.fixture.example_factory.pricing_plan_categories'
+        tags:
+            - 'sylius_fixtures.fixture'
+            
+    vs_catalog.fixture.pricing_plans:
+        class: Vankosoft\CatalogBundle\DataFixtures\VankosoftExtendedDataFixtures\PricingPlansFixture
+        arguments:
+            - '@doctrine.orm.default_entity_manager'
+            - '@vs_catalog.fixture.example_factory.pricing_plans'
+        tags:
+            - 'sylius_fixtures.fixture'
+
+
