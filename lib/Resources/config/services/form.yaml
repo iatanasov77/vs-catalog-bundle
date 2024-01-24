@@ -1,68 +1,62 @@
-parameters:
-    vs_payment.form.type.currency.validation_groups:
-        - 'VSPaymentBundle'
-    vs_payment.form.type.exchange_rate.validation_groups:
-        - 'VSPaymentBundle'
-
 services:
     
-    vs_payment.resources.product_category.form:
-        class: Vankosoft\PaymentBundle\Form\ProductCategoryForm
+    vs_catalog.resources.product_category.form:
+        class: Vankosoft\CatalogBundle\Form\ProductCategoryForm
         tags:
             - { name: form.type }
         arguments:
-            - '%vs_payment.model.product_category.class%'
+            - '%vs_catalog.model.product_category.class%'
             - '@request_stack'
             - '@vs_application.repository.locale'
-            - '@vs_payment.repository.product_category'
+            - '@vs_catalog.repository.product_category'
             
-    vs_payment.resources.product.form:
-        class: Vankosoft\PaymentBundle\Form\ProductForm
+    vs_catalog.resources.product.form:
+        class: Vankosoft\CatalogBundle\Form\ProductForm
         tags:
             - { name: form.type }
         arguments:
-            - '%vs_payment.model.product.class%'
+            - '%vs_catalog.model.product.class%'
             - '@request_stack'
             - '@vs_application.repository.locale'
-            - '%vs_payment.model.product_category.class%'
+            - '%vs_catalog.model.product_category.class%'
             - '%vs_payment.model.currency.class%'
     
-    Vankosoft\PaymentBundle\Form\Type\ProductPictureType:
+    Vankosoft\CatalogBundle\Form\Type\ProductPictureType:
         tags:
             - { name: form.type }
         arguments:
-            - '%vs_payment.model.product_picture.class%'
+            - '%vs_catalog.model.product_picture.class%'
             
-    vs_payment.resources.pricing_plan_category.form:
-        class: Vankosoft\PaymentBundle\Form\PricingPlanCategoryForm
+    vs_catalog.resources.pricing_plan_category.form:
+        class: Vankosoft\CatalogBundle\Form\PricingPlanCategoryForm
         tags:
             - { name: form.type }
         arguments:
-            - '%vs_payment.model.pricing_plan_category.class%'
+            - '%vs_catalog.model.pricing_plan_category.class%'
             - '@request_stack'
             - '@vs_application.repository.locale'
-            - '@vs_payment.repository.pricing_plan_category'
+            - '@vs_catalog.repository.pricing_plan_category'
             
-    vs_payment.resources.pricing_plan.form:
-        class: Vankosoft\PaymentBundle\Form\PricingPlanForm
+    vs_catalog.resources.pricing_plan.form:
+        class: Vankosoft\CatalogBundle\Form\PricingPlanForm
         tags:
             - { name: form.type }
         arguments:
-            - '%vs_payment.model.pricing_plan.class%'
+            - '%vs_catalog.model.pricing_plan.class%'
             - '@request_stack'
             - '@vs_application.repository.locale'
-            - '%vs_payment.model.pricing_plan_category.class%'
+            - '%vs_catalog.model.pricing_plan_category.class%'
             - '%vs_users_subscriptions.model.payed_service_subscription_period.class%'
             
-    Vankosoft\PaymentBundle\Form\SelectPricingPlanForm:
+    Vankosoft\CatalogBundle\Form\SelectPricingPlanForm:
         tags:
             - { name: form.type }
         arguments:
-            - '%vs_payment.model.pricing_plan.class%'
+            - '%vs_catalog.model.pricing_plan.class%'
             - '%vs_payment.model.payment_method.class%'
-            - '@vs_payment.repository.pricing_plan'
+            - '@vs_catalog.repository.pricing_plan'
             
-    Vankosoft\PaymentBundle\Form\Type\PricingPlanPaidServiceType:
+    Vankosoft\CatalogBundle\Form\Type\PricingPlanPaidServiceType:
         tags:
             - { name: form.type }
         arguments:
