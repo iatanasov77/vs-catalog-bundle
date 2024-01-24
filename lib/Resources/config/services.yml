@@ -4,6 +4,7 @@ imports:
     - { resource: services/menu.yaml }
     - { resource: services/fixtures_factories.yaml }
     - { resource: services/fixtures.yaml }
+    - { resource: services/payment.yaml }
 
 parameters:
     vs_catalog.product_category.taxonomy_code: 'product-categories'

@@ -1,3 +1,11 @@
+0.1.2	|	Release date: **24.01.2024**
+============================================
+* New Features:
+  - Change Payment Bundle Version.
+* Bug-Fixes:
+  - Add Some Fixes.
+
+
 0.1.1	|	Release date: **24.01.2024**
 ============================================
 * New Features:
