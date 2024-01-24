@@ -2,6 +2,7 @@
 
 use Sylius\Component\Resource\Model\ResourceInterface;
 use Vankosoft\UsersSubscriptionsBundle\Model\Interfaces\SubscriptionInterface;
+use Vankosoft\PaymentBundle\Model\Interfaces\PayableObjectInterface;
 
 interface PricingPlanSubscriptionInterface extends ResourceInterface, SubscriptionInterface, PayableObjectInterface
 {

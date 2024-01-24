@@ -114,7 +114,7 @@ class PricingPlanSubscription implements PricingPlanSubscriptionInterface
      * For Backward compatibility
      * 
      * {@inheritDoc}
-     * @see \Vankosoft\CatalogBundle\Model\Interfaces\PayableObjectInterface::getOrderItems()
+     * @see \Vankosoft\PaymentBundle\Model\Interfaces\PayableObjectInterface::getOrderItems()
      */
     public function getOrderItems()
     {
