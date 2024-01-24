@@ -68,13 +68,13 @@ class PricingPlanCheckoutController extends AbstractController
         Factory $ordersFactory,
         RepositoryInterface $ordersRepository,
         Factory $orderItemsFactory,
-        RepositoryInterface $pricingPlanCategoryRepository,
-        RepositoryInterface $pricingPlansRepository,
         RepositoryInterface $paymentMethodsRepository,
-        RepositoryInterface $subscriptionsRepository,
         Payment $vsPayment,
         OrderFactory $orderFactory,
-        RepositoryInterface $gatewaysRepository
+        RepositoryInterface $gatewaysRepository,
+        RepositoryInterface $pricingPlanCategoryRepository,
+        RepositoryInterface $pricingPlansRepository,
+        RepositoryInterface $subscriptionsRepository
     ) {
         $this->doctrine                         = $doctrine;
         $this->eventDispatcher                  = $eventDispatcher;
