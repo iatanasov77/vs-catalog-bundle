@@ -10,7 +10,6 @@ use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 
 use Vankosoft\PaymentBundle\Model\Interfaces\CurrencyInterface;
-use Vankosoft\PaymentBundle\Model\Interfaces\OrderItemInterface;
 use Vankosoft\CatalogBundle\Model\Interfaces\PricingPlanSubscriptionInterface;
 use Vankosoft\CatalogBundle\Model\Interfaces\CouponInterface;
 use Vankosoft\UsersSubscriptionsBundle\Model\Interfaces\PayedServiceSubscriptionPeriodInterface;
