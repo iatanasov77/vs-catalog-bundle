@@ -1,0 +1,44 @@
+vs_catalog_product_category:
+    resource: |
+        alias: vs_catalog.product_category
+        path: /catalog/product-categories
+        templates: "@VSCatalog/Pages/Product_Categories"
+    type: sylius.resource
+    
+vs_catalog_product:
+    resource: |
+        alias: vs_catalog.product
+        path: /catalog/products
+        templates: "@VSCatalog/Pages/Products"
+    type: sylius.resource
+    
+vs_catalog_pricing_plan_category:
+    resource: |
+        alias: vs_catalog.pricing_plan_category
+        except: ['show']
+        path: /catalog/pricing-plan-categories
+        templates: "@VSCatalog/Pages/PricingPlanCategories"
+    type: sylius.resource
+    
+vs_catalog_pricing_plan:
+    resource: |
+        alias: vs_catalog.pricing_plan
+        except: ['show']
+        path: /catalog/pricing-plans
+        templates: "@VSCatalog/Pages/PricingPlans"
+        form:
+            options:
+                ckeditor_uiColor: '%vs_users_subscriptions.form.payed_service.ckeditor_uiColor%'
+                ckeditor_extraAllowedContent: '%vs_users_subscriptions.form.payed_service.ckeditor_extraAllowedContent%'
+                ckeditor_toolbar: '%vs_users_subscriptions.form.payed_service.ckeditor_toolbar%'
+                ckeditor_extraPlugins: '%vs_users_subscriptions.form.payed_service.ckeditor_extraPlugins%'
+                ckeditor_removeButtons: '%vs_users_subscriptions.form.payed_service.ckeditor_removeButtons%'
+    type: sylius.resource
+    
+vs_catalog_pricing_plan_paid_services:
+    path: /json/pricing-plans/{id}/easyui-combotree-with-leafs
+    controller: Vankosoft\PaymentBundle\Controller\PricingPlans\PricingPlanExtController::getPaidServicesJson
+    options:
+        expose: true
+
+

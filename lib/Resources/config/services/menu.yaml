@@ -1,0 +1,10 @@
+parameters:
+     vs_application.main_menus: ['profileMenu', 'mainSystemMenu', 'mainCmsMenu', 'mainPaymentMenu', 'mainCatalogMenu']
+services:
+    vs_catalog.main_menu_catalog:
+        autowire: false
+        class: Knp\Menu\MenuItem
+        factory: ["@vs_app.menu_builder", mainMenu]
+        arguments: ["@knp_menu.factory", 'mainCatalogMenu']
+        tags:
+            - { name: knp_menu.menu, alias: mainCatalog }

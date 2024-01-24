@@ -1,0 +1,13 @@
+services:
+    _defaults:
+        autowire: true
+        autoconfigure: true
+        public: true
+            
+    Vankosoft\PaymentBundle\Controller\PricingPlans\PricingPlanExtController:
+        tags: ['controller.service_arguments']
+        autowire: false
+        arguments:
+            - '@vs_payment.repository.pricing_plan'
+            - '@vs_users_subscriptions.repository.payed_service'
+
