@@ -1,3 +1,9 @@
+0.1.7	|	Release date: **24.01.2024**
+============================================
+* New Features:
+  - Add Subscriptions Event Subscriber from PaymentBundle.
+
+
 0.1.6	|	Release date: **24.01.2024**
 ============================================
 * Bug-Fixes:
