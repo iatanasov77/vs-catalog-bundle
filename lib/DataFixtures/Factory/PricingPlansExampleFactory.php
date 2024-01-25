@@ -6,7 +6,7 @@ use Sylius\Component\Resource\Repository\RepositoryInterface;
 use Vankosoft\ApplicationInstalatorBundle\DataFixtures\Factory\AbstractExampleFactory;
 use Vankosoft\ApplicationInstalatorBundle\DataFixtures\Factory\ExampleFactoryInterface;
 
-use Vankosoft\PaymentBundle\Model\Interfaces\PricingPlanInterface;
+use Vankosoft\CatalogBundle\Model\Interfaces\PricingPlanInterface;
 
 final class PricingPlansExampleFactory extends AbstractExampleFactory implements ExampleFactoryInterface
 {

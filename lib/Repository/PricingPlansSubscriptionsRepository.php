@@ -1,8 +1,8 @@
 <?php namespace Vankosoft\CatalogBundle\Repository;
 
 use Sylius\Bundle\ResourceBundle\Doctrine\ORM\EntityRepository;
-use Vankosoft\PaymentBundle\Model\Interfaces\UserPaymentAwareInterface;
-use Vankosoft\PaymentBundle\Model\Interfaces\PricingPlanInterface;
+use Vankosoft\CatalogBundle\Model\Interfaces\UserSubscriptionAwareInterface;
+use Vankosoft\CatalogBundle\Model\Interfaces\PricingPlanInterface;
 
 class PricingPlansSubscriptionsRepository extends EntityRepository
 {
@@ -10,7 +10,7 @@ class PricingPlansSubscriptionsRepository extends EntityRepository
      * MANUAL: https://www.boxuk.com/insight/filtering-associations-with-doctrine-2/
      *          THERE IS AN EXAMPLE HOW TO FILTER COLLECTION IN ENTITY CLASS
      */
-    public function getActiveSubscriptionsByUser( ?UserPaymentAwareInterface $user )
+    public function getActiveSubscriptionsByUser( ?UserSubscriptionAwareInterface $user )
     {
         if ( ! $user ) {
             return [];
@@ -25,7 +25,7 @@ class PricingPlansSubscriptionsRepository extends EntityRepository
         return $qb->getQuery()->getResult();
     }
     
-    public function getSubscriptionsByUser( ?UserPaymentAwareInterface $user )
+    public function getSubscriptionsByUser( ?UserSubscriptionAwareInterface $user )
     {
         $subscriptions  = [];
         if ( ! $user ) {
@@ -40,7 +40,7 @@ class PricingPlansSubscriptionsRepository extends EntityRepository
         return $subscriptions;
     }
     
-    public function getSubscribedServicesByUser( ?UserPaymentAwareInterface $user )
+    public function getSubscribedServicesByUser( ?UserSubscriptionAwareInterface $user )
     {
         $subscriptions  = [];
         if ( ! $user ) {
@@ -58,7 +58,7 @@ class PricingPlansSubscriptionsRepository extends EntityRepository
         return $subscriptions;
     }
     
-    public function getSubscriptionsByUserOnPricingPlan( ?UserPaymentAwareInterface $user, PricingPlanInterface $pricingPlan )
+    public function getSubscriptionsByUserOnPricingPlan( ?UserSubscriptionAwareInterface $user, PricingPlanInterface $pricingPlan )
     {
         if ( ! $user ) {
             return [];

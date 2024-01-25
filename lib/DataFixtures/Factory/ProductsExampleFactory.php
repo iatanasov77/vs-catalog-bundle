@@ -9,7 +9,7 @@ use Vankosoft\CmsBundle\Component\Uploader\FileUploaderInterface;
 use Symfony\Component\Config\FileLocatorInterface;
 use Symfony\Component\HttpFoundation\File\UploadedFile;
 
-use Vankosoft\PaymentBundle\Model\Interfaces\ProductInterface;
+use Vankosoft\CatalogBundle\Model\Interfaces\ProductInterface;
 
 final class ProductsExampleFactory extends AbstractExampleFactory implements ExampleFactoryInterface
 {

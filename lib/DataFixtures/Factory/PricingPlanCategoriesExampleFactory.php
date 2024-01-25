@@ -7,7 +7,7 @@ use Vankosoft\ApplicationInstalatorBundle\DataFixtures\Factory\AbstractExampleFa
 use Vankosoft\ApplicationInstalatorBundle\DataFixtures\Factory\ExampleFactoryInterface;
 use Vankosoft\ApplicationBundle\Component\SlugGenerator;
 
-use Vankosoft\PaymentBundle\Model\Interfaces\PricingPlanCategoryInterface;
+use Vankosoft\CatalogBundle\Model\Interfaces\PricingPlanCategoryInterface;
 
 final class PricingPlanCategoriesExampleFactory extends AbstractExampleFactory implements ExampleFactoryInterface
 {
