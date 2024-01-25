@@ -1,3 +1,11 @@
+0.1.9	|	Release date: **25.01.2024**
+============================================
+* New Features:
+  - Create Traits and Interfaces for Payment Bundle Relations.
+* Bug-Fixes:
+  - Fix Wrong Namespaces From Payment Bundle.
+
+
 0.1.8	|	Release date: **25.01.2024**
 ============================================
 * New Features:
