@@ -41,7 +41,7 @@
                 <cascade-merge/>
                 <cascade-detach/>
             </cascade>
-            <join-table name="VSPAY_Product_Categories">
+            <join-table name="VSCAT_Product_Categories">
                 <join-columns>
                     <join-column name="product_id" referenced-column-name="id" />
                 </join-columns>
