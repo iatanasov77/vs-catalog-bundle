@@ -8,7 +8,7 @@ trait PricingPlanAwareEntity
     /**
      * @var PricingPlanInterface | null
      * 
-     * @ORM\ManyToOne(targetEntity="Vankosoft\PaymentBundle\Model\Interfaces\PricingPlanInterface")
+     * @ORM\ManyToOne(targetEntity="Vankosoft\CatalogBundle\Model\Interfaces\PricingPlanInterface")
      * @ORM\JoinColumn(name="pricing_plan_id", referencedColumnName="id", nullable=true)
      */
     protected $pricingPlan;
