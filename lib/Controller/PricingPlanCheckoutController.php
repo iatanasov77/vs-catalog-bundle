@@ -15,10 +15,10 @@ use Vankosoft\PaymentBundle\Component\Payment\Payment;
 use Vankosoft\PaymentBundle\Component\Exception\ShoppingCartException;
 use Vankosoft\PaymentBundle\Component\Exception\CheckoutException;
 use Vankosoft\PaymentBundle\Model\Interfaces\PayableObjectInterface;
-use Vankosoft\PaymentBundle\Form\SelectPricingPlanForm;
-use Vankosoft\PaymentBundle\Form\SelectPaymentMethodForm;
-use Vankosoft\PaymentBundle\EventSubscriber\Event\CreateSubscriptionEvent;
-use Vankosoft\PaymentBundle\Model\Interfaces\PricingPlanSubscriptionInterface;
+use Vankosoft\CatalogBundle\Form\SelectPricingPlanForm;
+use Vankosoft\CatalogBundle\Form\SelectPaymentMethodForm;
+use Vankosoft\CatalogBundle\EventSubscriber\Event\CreateSubscriptionEvent;
+use Vankosoft\CatalogBundle\Model\Interfaces\PricingPlanSubscriptionInterface;
 
 class PricingPlanCheckoutController extends AbstractController
 {
