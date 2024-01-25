@@ -14,10 +14,10 @@ use Symfony\Component\Form\Extension\Core\Type\CollectionType;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use FOS\CKEditorBundle\Form\Type\CKEditorType;
 
-use Vankosoft\CatalogBundle\Form\Type\PricingPlanPaidServiceType;
 use Vankosoft\UsersSubscriptionsBundle\Model\PayedServiceSubscriptionPeriod;
 use Vankosoft\PaymentBundle\Form\Type\CurrencyChoiceType;
-use Vankosoft\PaymentBundle\Model\Interfaces\PricingPlanInterface;
+use Vankosoft\CatalogBundle\Form\Type\PricingPlanPaidServiceType;
+use Vankosoft\CatalogBundle\Model\Interfaces\PricingPlanInterface;
 
 class PricingPlanForm extends AbstractForm
 {
