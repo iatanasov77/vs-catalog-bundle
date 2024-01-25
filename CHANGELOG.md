@@ -1,3 +1,9 @@
+0.1.11	|	Release date: **25.01.2024**
+============================================
+* New Features and Improvements:
+  - Fix a Table Name in Many to Many ORM Mapping.
+
+
 0.1.10	|	Release date: **25.01.2024**
 ============================================
 * Bug-Fixes:
