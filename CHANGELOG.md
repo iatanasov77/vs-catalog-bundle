@@ -1,3 +1,9 @@
+0.1.12	|	Release date: **25.01.2024**
+============================================
+* New Features:
+  - Add First Doctrine Migration.
+
+
 0.1.11	|	Release date: **25.01.2024**
 ============================================
 * New Features and Improvements:
