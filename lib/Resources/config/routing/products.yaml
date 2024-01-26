@@ -40,5 +40,12 @@ vs_catalog_pricing_plan_paid_services:
     controller: Vankosoft\PaymentBundle\Controller\PricingPlans\PricingPlanExtController::getPaidServicesJson
     options:
         expose: true
+        
+vs_catalog_association_type:
+    resource: |
+        alias: vs_catalog.association_type
+        path: /catalog/association-types
+        templates: "@VSCatalog/Pages/AssociationTypes"
+    type: sylius.resource
 
 

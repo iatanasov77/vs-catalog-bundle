@@ -78,6 +78,6 @@ class PricingPlanCategoryForm extends AbstractForm
     
     public function getName()
     {
-        return 'vs_payment.pricing_plan_category';
+        return 'vs_catalog.pricing_plan_category';
     }
 }

@@ -127,7 +127,7 @@ class ProductForm extends AbstractForm
     
     public function getName()
     {
-        return 'vs_payment.product';
+        return 'vs_catalog.product';
     }
 }
 

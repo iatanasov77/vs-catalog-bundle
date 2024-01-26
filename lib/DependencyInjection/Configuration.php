@@ -31,6 +31,10 @@ use Vankosoft\CatalogBundle\Model\PricingPlanSubscription;
 use Vankosoft\CatalogBundle\Repository\PricingPlansSubscriptionsRepository;
 use Vankosoft\CatalogBundle\Controller\PricingPlanSubscriptionsController;
 
+use Vankosoft\CatalogBundle\Model\AssociationType;
+use Vankosoft\CatalogBundle\Controller\AssociationTypeController;
+use Vankosoft\CatalogBundle\Form\AssociationTypeForm;
+
 /**
  * This is the class that validates and merges configuration from your app/config files
  *
@@ -161,6 +165,23 @@ class Configuration implements ConfigurationInterface
                                         ->scalarNode( 'repository' )->defaultValue( PricingPlansSubscriptionsRepository::class )->cannotBeEmpty()->end()
                                         ->scalarNode( 'factory' )->defaultValue( Factory::class )->cannotBeEmpty()->end()
                                         ->scalarNode( 'controller' )->defaultValue( PricingPlanSubscriptionsController::class )->cannotBeEmpty()->end()
+                                    ->end()
+                                ->end()
+                            ->end()
+                        ->end()
+                        
+                        ->arrayNode( 'association_type' )
+                            ->addDefaultsIfNotSet()
+                            ->children()
+                                ->variableNode( 'options' )->end()
+                                ->arrayNode( 'classes' )
+                                    ->addDefaultsIfNotSet()
+                                    ->children()
+                                        ->scalarNode( 'model' )->defaultValue( AssociationType::class )->cannotBeEmpty()->end()
+                                        ->scalarNode( 'repository' )->defaultValue( EntityRepository::class )->cannotBeEmpty()->end()
+                                        ->scalarNode( 'factory' )->defaultValue( Factory::class )->cannotBeEmpty()->end()
+                                        ->scalarNode( 'controller' )->defaultValue( AssociationTypeController::class )->cannotBeEmpty()->end()
+                                        ->scalarNode( 'form' )->defaultValue( AssociationTypeForm::class )->cannotBeEmpty()->end()
                                     ->end()
                                 ->end()
                             ->end()

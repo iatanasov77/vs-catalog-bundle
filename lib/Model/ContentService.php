@@ -9,17 +9,20 @@ use Sylius\Component\Resource\Model\TranslatableTrait;
 use Sylius\Component\Resource\Model\TranslationInterface;
 use Vankosoft\CatalogBundle\Model\Traits\ReviewableTrait;
 use Vankosoft\CatalogBundle\Model\Traits\CommentableTrait;
+use Vankosoft\CatalogBundle\Model\Interfaces\AssociationAwareInterface;
+use Vankosoft\CatalogBundle\Model\Traits\AssociationAwareTrait;
 
 /**
  * Base Model for Catalog Services
  */
-class ContentService implements ContentServiceInterface
+class ContentService implements ContentServiceInterface, AssociationAwareInterface
 {
     use TimestampableTrait;
     use ToggleableTrait;    // About enabled field - $enabled (published)
     use TranslatableTrait;
     use ReviewableTrait;
     use CommentableTrait;
+    use AssociationAwareTrait;
     
     /** @var int */
     protected $id;
@@ -41,8 +44,11 @@ class ContentService implements ContentServiceInterface
     
     public function __construct()
     {
-        $this->reviews  = new ArrayCollection();
-        $this->comments = new ArrayCollection();
+        $this->reviews      = new ArrayCollection();
+        $this->comments     = new ArrayCollection();
+        
+        /** @var ArrayCollection<array-key, AssociationInterface> $this->associations */
+        $this->associations = new ArrayCollection();
     }
     
     public function getId()

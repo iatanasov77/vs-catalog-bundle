@@ -189,6 +189,6 @@ class PricingPlanForm extends AbstractForm
     
     public function getName()
     {
-        return 'vs_payment.pricing_plan';
+        return 'vs_catalog.pricing_plan';
     }
 }

@@ -79,6 +79,6 @@ class ProductCategoryForm extends AbstractForm
     
     public function getName()
     {
-        return 'vs_payment.product_category';
+        return 'vs_catalog.product_category';
     }
 }
