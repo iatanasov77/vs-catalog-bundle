@@ -2,6 +2,7 @@
 
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
+use Sylius\Component\Resource\Model\TimestampableTrait;
 use Sylius\Component\Resource\Model\TranslatableTrait;
 use Sylius\Component\Resource\Model\TranslationInterface;
 use Sylius\Component\Resource\Model\ToggleableTrait;
@@ -15,6 +16,7 @@ use Vankosoft\CatalogBundle\Model\Traits\AssociationAwareTrait;
 class Product implements ProductInterface, AssociationAwareInterface
 {
     use TaxonLeafTrait;
+    use TimestampableTrait;
     use TranslatableTrait;
     use ToggleableTrait;    // About enabled field - $enabled (published)
     use AssociationAwareTrait;
