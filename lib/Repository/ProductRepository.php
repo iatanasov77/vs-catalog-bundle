@@ -1,6 +1,8 @@
 <?php namespace Vankosoft\CatalogBundle\Repository;
 
 use Sylius\Bundle\ResourceBundle\Doctrine\ORM\EntityRepository;
+use Doctrine\ORM\EntityManagerInterface;
+use Doctrine\ORM\Mapping\ClassMetadata;
 
 class ProductRepository extends EntityRepository implements AssociationStrategyRepositoryInterface
 {

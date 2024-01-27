@@ -12,22 +12,21 @@
 {% block content %}
     <div class="row">
         <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
-            <div class="card">
-            	<h5 class="card-header">{{ 'vs_payment.template.product_details' | trans( {},'VSPaymentBundle' ) }}</h5>
-            	<div class="card-body">
-					{% if form_errors(form) is not empty %}
-		                <div class="alert alert-block alert-danger fade in">
-		                    <button type="button" class="close close-sm" data-bs-dismiss="alert">
-		                        <i class="icon-remove"></i>
-		                    </button>
-		                    <strong>{{ 'vs_application.form.errors_title' | trans( {},'VSApplicationBundle' ) }}</strong> {{ form_errors(form) }}
-		                </div>
-		            {% endif %}
-		            <div id="pageFormContainer" data-pageId="{{ item.id }}">
-                        {% include '@VSCatalog/Pages/Products/partial/product_form.html.twig' %}
-                    </div>
-        		</div>
-			</div>
+            <nav>
+                <div class="nav nav-tabs" id="nav-tab" role="tablist">
+                    <a class="nav-item nav-link active" id="nav-global-tab" data-bs-toggle="tab" data-bs-target="#nav-global" href="#nav-global" role="tab" aria-controls="nav-global" aria-selected="true">
+                        {{ 'vs_application.template.global_settings_title' | trans( {},'VSApplicationBundle' ) }}
+                    </a>
+                    <a class="nav-item nav-link" id="nav-applications-tab" data-bs-toggle="tab" data-bs-target="#nav-applications" href="#nav-applications" role="tab" aria-controls="nav-applications" aria-selected="false">
+                        {{ 'vs_application.template.applications_settings_title' | trans( {},'VSApplicationBundle' ) }}
+                    </a>
+                </div>
+            </nav>
+            <div class="tab-content" id="nav-tabContent">
+                <div class="tab-pane fade show active" id="nav-global" role="tabpanel" aria-labelledby="nav-global-tab">
+                    {% include '@VSCatalog/Pages/Products/partial/product_form.html.twig' %}
+		        </div>
+		    </div>
 		</div>
     </div>
 {% endblock content %}
