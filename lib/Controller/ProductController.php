@@ -15,7 +15,7 @@ class ProductController extends AbstractCrudController
         $translations   = $this->classInfo['action'] == 'indexAction' ? $this->getTranslations() : [];
         
         $taxonomy   = $this->get( 'vs_application.repository.taxonomy' )->findByCode(
-                                    $this->getParameter( 'vs_payment.product_category.taxonomy_code' )
+                                    $this->getParameter( 'vs_catalog.product_category.taxonomy_code' )
                                 );
         
         $selectedTaxonIds   = [];
@@ -26,7 +26,7 @@ class ProductController extends AbstractCrudController
         }
         
         return [
-            'categories'        => $this->get( 'vs_payment.repository.product_category' )->findAll(),
+            'categories'        => $this->get( 'vs_catalog.repository.product_category' )->findAll(),
             'taxonomyId'        => $taxonomy ? $taxonomy->getId() : 0,
             'translations'      => $translations,
             'selectedTaxonIds'  => $selectedTaxonIds,
@@ -36,7 +36,7 @@ class ProductController extends AbstractCrudController
     protected function prepareEntity( &$entity, &$form, Request $request )
     {
         $categories = new ArrayCollection();
-        $pcr        = $this->get( 'vs_payment.repository.product_category' );
+        $pcr        = $this->get( 'vs_catalog.repository.product_category' );
         
         $formLocale = $request->request->get( 'locale' );
         $formPost   = $request->request->all( 'product_form' );
@@ -94,7 +94,7 @@ class ProductController extends AbstractCrudController
     private function addProductPicture( &$entity, File $file ): void
     {
         $uploadedFile   = new UploadedFile( $file->getRealPath(), $file->getBasename() );
-        $productPicture = $this->get( 'vs_payment.factory.product_picture' )->createNew();
+        $productPicture = $this->get( 'vs_catalog.factory.product_picture' )->createNew();
         
         $productPicture->setOriginalName( $file->getClientOriginalName() );
         $productPicture->setFile( $uploadedFile );

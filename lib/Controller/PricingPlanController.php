@@ -15,7 +15,7 @@ class PricingPlanController extends AbstractCrudController
         $translations   = $this->classInfo['action'] == 'indexAction' ? $this->getTranslations() : [];
         
         $taxonomy   = $this->get( 'vs_application.repository.taxonomy' )->findByCode(
-                                    $this->getParameter( 'vs_payment.pricing_plan_category.taxonomy_code' )
+                                    $this->getParameter( 'vs_catalog.pricing_plan_category.taxonomy_code' )
                                 );
         
         $selectedTaxonIds   = [];
@@ -24,7 +24,7 @@ class PricingPlanController extends AbstractCrudController
         }
         
         return [
-            'categories'        => $this->get( 'vs_payment.repository.pricing_plan_category' )->findAll(),
+            'categories'        => $this->get( 'vs_catalog.repository.pricing_plan_category' )->findAll(),
             'taxonomyId'        => $taxonomy ? $taxonomy->getId() : 0,
             'translations'      => $translations,
             'selectedTaxonIds'  => $selectedTaxonIds,
@@ -34,7 +34,7 @@ class PricingPlanController extends AbstractCrudController
     protected function prepareEntity( &$entity, &$form, Request $request )
     {
         $categories = new ArrayCollection();
-        $pcr        = $this->get( 'vs_payment.repository.pricing_plan_category' );
+        $pcr        = $this->get( 'vs_catalog.repository.pricing_plan_category' );
         $pspr       = $this->get( 'vs_users_subscriptions.repository.payed_service_subscription_period' );
         
         $formLocale = $request->request->get( 'locale' );

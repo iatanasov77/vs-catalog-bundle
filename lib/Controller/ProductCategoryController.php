@@ -11,7 +11,7 @@ class ProductCategoryController extends AbstractCrudController
     protected function customData( Request $request, $entity = null ): array
     {
         $taxonomy       = $this->get( 'vs_application.repository.taxonomy' )->findByCode(
-            $this->getParameter( 'vs_payment.product_category.taxonomy_code' )
+            $this->getParameter( 'vs_catalog.product_category.taxonomy_code' )
         );
         
         $translations   = $this->classInfo['action'] == 'indexAction' ? $this->getTranslations() : [];
@@ -32,7 +32,7 @@ class ProductCategoryController extends AbstractCrudController
         
         $categoryName           = $form['name']->getData();
         $parentCategory         = isset( $_POST['product_category_form']['parent'] ) ?
-                                    $this->get( 'vs_payment.repository.product_category' )->findByTaxonId( $_POST['product_category_form']['parent'] ) :
+                                    $this->get( 'vs_catalog.repository.product_category' )->findByTaxonId( $_POST['product_category_form']['parent'] ) :
                                     null;
         
         if ( $entity->getTaxon() ) {
@@ -62,7 +62,7 @@ class ProductCategoryController extends AbstractCrudController
              * @WORKAROUND Create Taxon If not exists
              */
             $taxonomy   = $this->get( 'vs_application.repository.taxonomy' )->findByCode(
-                                        $this->getParameter( 'vs_payment.product_category.taxonomy_code' )
+                                        $this->getParameter( 'vs_catalog.product_category.taxonomy_code' )
                                     );
             $newTaxon   = $this->createTaxon(
                 $categoryName,
