@@ -35,6 +35,9 @@ use Vankosoft\CatalogBundle\Model\AssociationType;
 use Vankosoft\CatalogBundle\Controller\AssociationTypeController;
 use Vankosoft\CatalogBundle\Form\AssociationTypeForm;
 
+use Vankosoft\CatalogBundle\Model\ProductAssociation;
+use Vankosoft\CatalogBundle\Model\ServiceAssociation;
+
 /**
  * This is the class that validates and merges configuration from your app/config files
  *
@@ -182,6 +185,36 @@ class Configuration implements ConfigurationInterface
                                         ->scalarNode( 'factory' )->defaultValue( Factory::class )->cannotBeEmpty()->end()
                                         ->scalarNode( 'controller' )->defaultValue( AssociationTypeController::class )->cannotBeEmpty()->end()
                                         ->scalarNode( 'form' )->defaultValue( AssociationTypeForm::class )->cannotBeEmpty()->end()
+                                    ->end()
+                                ->end()
+                            ->end()
+                        ->end()
+                        
+                        ->arrayNode( 'product_association' )
+                            ->addDefaultsIfNotSet()
+                            ->children()
+                                ->variableNode( 'options' )->end()
+                                ->arrayNode( 'classes' )
+                                    ->addDefaultsIfNotSet()
+                                    ->children()
+                                        ->scalarNode( 'model' )->defaultValue( ProductAssociation::class )->cannotBeEmpty()->end()
+                                        ->scalarNode( 'repository' )->defaultValue( EntityRepository::class )->cannotBeEmpty()->end()
+                                        ->scalarNode( 'factory' )->defaultValue( Factory::class )->cannotBeEmpty()->end()
+                                    ->end()
+                                ->end()
+                            ->end()
+                        ->end()
+                        
+                        ->arrayNode( 'service_association' )
+                            ->addDefaultsIfNotSet()
+                            ->children()
+                                ->variableNode( 'options' )->end()
+                                ->arrayNode( 'classes' )
+                                    ->addDefaultsIfNotSet()
+                                    ->children()
+                                        ->scalarNode( 'model' )->defaultValue( ServiceAssociation::class )->cannotBeEmpty()->end()
+                                        ->scalarNode( 'repository' )->defaultValue( EntityRepository::class )->cannotBeEmpty()->end()
+                                        ->scalarNode( 'factory' )->defaultValue( Factory::class )->cannotBeEmpty()->end()
                                     ->end()
                                 ->end()
                             ->end()
