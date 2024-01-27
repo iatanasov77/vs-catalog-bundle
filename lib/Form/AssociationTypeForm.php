@@ -41,8 +41,8 @@ class AssociationTypeForm extends AbstractForm
             ])
             
             ->add( 'code', TextType::class, [
-                'label'                 => 'vs_payment.form.code',
-                'translation_domain'    => 'VSPaymentBundle',
+                'label'                 => 'vs_catalog.form.association_type_code',
+                'translation_domain'    => 'VSCatalogBundle',
             ])
             
             ->add( 'name', TextType::class, [
