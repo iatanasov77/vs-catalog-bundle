@@ -1,5 +1,8 @@
 {% extends "@VSApplication/layout.html.twig" %}
 
+{# Import Macros #}
+{% import "@VSApplication/Macros/alerts.html.twig" as alerts %}
+
 {% block title %}{{ parent() }} :: {{ 'vs_catalog.template.association_types_index_title' | trans( {},'VSCatalogBundle' ) }}{% endblock %}
 {% block pageTitle %}<i class="icon_genius"></i> {{ 'vs_catalog.template.association_types_index_title' | trans( {},'VSCatalogBundle' ) }}{% endblock %}
 
