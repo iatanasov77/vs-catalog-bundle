@@ -51,6 +51,15 @@
             </join-table>
         </many-to-many>
         
+        <one-to-many field="associations" target-entity="Vankosoft\CatalogBundle\Model\Interfaces\ProductAssociationInterface" mapped-by="owner" orphan-removal="true">
+            <cascade>
+                <cascade-all/>
+            </cascade>
+            <order-by>
+                <order-by-field name="id" />
+            </order-by>
+        </one-to-many>
+        
         <!--
             Used locale to override Translation listener`s locale
             this is not a mapped field of entity metadata, just a simple property

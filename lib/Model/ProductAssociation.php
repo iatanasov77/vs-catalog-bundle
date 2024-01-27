@@ -1,8 +1,11 @@
 <?php namespace Vankosoft\CatalogBundle\Model;
 
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
+use Vankosoft\CatalogBundle\Model\Interfaces\ProductAssociationInterface;
 use Vankosoft\CatalogBundle\Model\Interfaces\ProductInterface;
 
-class ProductAssociation extends Association
+class ProductAssociation extends Association implements ProductAssociationInterface
 {
     /** @var ProductInterface|null */
     protected $owner;

@@ -1,8 +1,11 @@
 <?php namespace Vankosoft\CatalogBundle\Model;
 
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
+use Vankosoft\CatalogBundle\Model\Interfaces\ServiceAssociationInterface;
 use Vankosoft\CatalogBundle\Model\Interfaces\ContentServiceInterface;
 
-class ServiceAssociation extends Association
+class ServiceAssociation extends Association implements ServiceAssociationInterface
 {
     /** @var ContentServiceInterface | null */
     protected $owner;
@@ -12,7 +15,7 @@ class ServiceAssociation extends Association
     
     public function __construct()
     {
-        /** @var ArrayCollection<array-key, ProductInterface> $this->associatedProducts */
+        /** @var ArrayCollection<array-key, ContentServiceInterface> $this->associatedProducts */
         $this->associatedProducts = new ArrayCollection();
     }
     
