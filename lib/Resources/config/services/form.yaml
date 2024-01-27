@@ -70,5 +70,6 @@ services:
             - '%vs_catalog.model.association_type.class%'
             - '@request_stack'
             - '@vs_application.repository.locale'
+            - '@vs_catalog.association_strategy'
 
 

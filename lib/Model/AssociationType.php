@@ -14,6 +14,9 @@ class AssociationType implements AssociationTypeInterface, \Stringable
     protected $id;
     
     /** @var string|null */
+    protected $associationStrategy;
+    
+    /** @var string|null */
     protected $code;
     
     /** @var string|null */
@@ -30,6 +33,18 @@ class AssociationType implements AssociationTypeInterface, \Stringable
     public function getId()
     {
         return $this->id;
+    }
+    
+    public function getAssociationStrategy(): ?string
+    {
+        return $this->associationStrategy;
+    }
+    
+    public function setAssociationStrategy(?string $associationStrategy): self
+    {
+        $this->associationStrategy = $associationStrategy;
+        
+        return $this;
     }
     
     public function getCode(): ?string

@@ -10,6 +10,7 @@ use Sylius\Bundle\ResourceBundle\Doctrine\ORM\EntityRepository;
 use Sylius\Component\Resource\Factory\Factory;
 
 use Vankosoft\CatalogBundle\Model\Product;
+use Vankosoft\CatalogBundle\Repository\ProductRepository;
 use Vankosoft\CatalogBundle\Form\ProductForm;
 use Vankosoft\CatalogBundle\Controller\ProductController;
 use Vankosoft\CatalogBundle\Model\ProductCategory;
@@ -83,7 +84,7 @@ class Configuration implements ConfigurationInterface
                                     ->children()
                                         ->scalarNode( 'model' )->defaultValue( Product::class )->cannotBeEmpty()->end()
                                         ->scalarNode( 'controller' )->defaultValue( ProductController::class )->cannotBeEmpty()->end()
-                                        ->scalarNode( 'repository' )->defaultValue( EntityRepository::class )->cannotBeEmpty()->end()
+                                        ->scalarNode( 'repository' )->defaultValue( ProductRepository::class )->cannotBeEmpty()->end()
                                         ->scalarNode( 'factory' )->defaultValue( Factory::class )->cannotBeEmpty()->end()
                                         ->scalarNode( 'form' )->defaultValue( ProductForm::class )->cannotBeEmpty()->end()
                                     ->end()

@@ -10,18 +10,24 @@ use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 
 use Vankosoft\CatalogBundle\Model\Interfaces\AssociationTypeInterface;
+use Vankosoft\CatalogBundle\Component\AssociationStrategy;
 
 class AssociationTypeForm extends AbstractForm
 {
+    /** @var AssociationStrategy */
+    private $associationStrategy;
+    
     public function __construct(
         string $dataClass,
         RequestStack $requestStack,
-        RepositoryInterface $localesRepository
+        RepositoryInterface $localesRepository,
+        AssociationStrategy $associationStrategy
     ) {
         parent::__construct( $dataClass );
         
         $this->requestStack         = $requestStack;
         $this->localesRepository    = $localesRepository;
+        $this->associationStrategy  = $associationStrategy;
     }
 
     public function buildForm( FormBuilderInterface $builder, array $options ): void
@@ -38,6 +44,12 @@ class AssociationTypeForm extends AbstractForm
                 'choices'               => \array_flip( $this->fillLocaleChoices() ),
                 'data'                  => $currentLocale,
                 'mapped'                => false,
+            ])
+            
+            ->add( 'associationStrategy', ChoiceType::class, [
+                'label'                 => 'vs_catalog.form.association_strategy',
+                'translation_domain'    => 'VSCatalogBundle',
+                'choices'               => \array_flip( $this->associationStrategy->getStrategies() ),
             ])
             
             ->add( 'code', TextType::class, [

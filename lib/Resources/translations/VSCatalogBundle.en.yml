@@ -7,5 +7,10 @@ vs_catalog:
         association_types_update_title: Edit Association Type
         association_types_create_title: Create New Association Type
         association_type_details: Association Type Details
+        
+    association_type:
+        associated: Associated Products Strategy
+        random: Random Products Strategy
+        similar: Similar Products Strategy
 
 

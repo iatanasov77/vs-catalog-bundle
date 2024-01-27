@@ -13,6 +13,15 @@
     </div>
     
     <div class="form-group">
+        {{ form_label(form.associationStrategy, null, {
+            'label_attr': {'class': 'col-form-label'}
+            }) 
+        }}
+        
+        {{ form_widget(form.associationStrategy, {'attr': {'class': 'form-control'}}) }}
+    </div>
+    
+    <div class="form-group">
         {{ form_label(form.code, null, {
             'label_attr': {'class': 'col-form-label'}
             }) 
