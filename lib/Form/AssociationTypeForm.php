@@ -48,6 +48,7 @@ class AssociationTypeForm extends AbstractForm
             
             ->add( 'associationStrategy', ChoiceType::class, [
                 'label'                 => 'vs_catalog.form.association_strategy',
+                'placeholder'           => 'vs_catalog.form.association_strategy_placeholder',
                 'translation_domain'    => 'VSCatalogBundle',
                 'choices'               => \array_flip( $this->associationStrategy->getStrategies() ),
             ])
