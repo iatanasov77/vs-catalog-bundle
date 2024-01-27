@@ -50,6 +50,12 @@
                             </div>
                         </td>
                     </tr>
+                {% else %}
+                    <tr>
+                        <td colspan="5">
+                            {{ alerts.info( 'vs_application.template.there_are_no_items_to_display' | trans( {},'VSApplicationBundle' ) ) }}
+                        </td>
+                    </tr>
                 {% endfor %}
                 </tbody>
             </table>
