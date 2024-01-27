@@ -12,12 +12,6 @@ use Vankosoft\CatalogBundle\Model\Interfaces\AssociationTypeInterface;
 
 class AssociationTypeForm extends AbstractForm
 {
-    /** @var string */
-    protected $categoryClass;
-    
-    /** @var string */
-    protected $currencyClass;
-    
     public function __construct(
         string $dataClass,
         RequestStack $requestStack,

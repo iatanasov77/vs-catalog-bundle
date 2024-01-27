@@ -61,5 +61,14 @@ services:
             - { name: form.type }
         arguments:
             - '%vs_users_subscriptions.model.payed_service_subscription_period.class%'
+            
+    vs_catalog.resources.association_type.form:
+        class: Vankosoft\CatalogBundle\Form\AssociationTypeForm
+        tags:
+            - { name: form.type }
+        arguments:
+            - '%vs_catalog.model.association_type.class%'
+            - '@request_stack'
+            - '@vs_application.repository.locale'
 
 
