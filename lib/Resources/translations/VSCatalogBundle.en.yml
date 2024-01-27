@@ -5,6 +5,8 @@ vs_catalog:
         association_type_code: Association Type Code
 
     template:
+        details: Details
+        associations: Associations
         association_types_index_title: Association Types
         association_types_update_title: Edit Association Type
         association_types_create_title: Create New Association Type
