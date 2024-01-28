@@ -40,7 +40,7 @@ final class ProductsToProductAssociationsTransformer implements DataTransformerI
     {
         $this->setProductAssociations( $value );
         
-        if (null === $value) {
+        if ( null === $value ) {
             return '';
         }
         
