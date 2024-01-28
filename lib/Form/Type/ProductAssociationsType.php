@@ -48,19 +48,24 @@ final class ProductAssociationsType extends AbstractType
     public function configureOptions( OptionsResolver $resolver ): void
     {
         $resolver->setDefaults([
-            'entries'       => $this->productAssociationTypeRepository->findAll(),
+            'entries'           => $this->productAssociationTypeRepository->findAll(),
             
             //'entry_type'    => TextType::class,
             //'entry_type'    => EntityType::class,
-            'entry_type'    => ChoiceType::class,
+            'entry_type'        => ChoiceType::class,
             
-            'entry_name'    => fn ( AssociationTypeInterface $productAssociationType ) => $productAssociationType->getCode(),
-            'entry_options' => fn ( AssociationTypeInterface $productAssociationType ) => [
-                'label'     => $productAssociationType->getName(),
+            'entry_name'        => fn ( AssociationTypeInterface $productAssociationType ) => $productAssociationType->getCode(),
+            'entry_options'     => fn ( AssociationTypeInterface $productAssociationType ) => [
+                'label'         => $productAssociationType->getName(),
                 
                 //'class'     => $this->productClass,
-                'multiple'  => true,
-                'choices'   => $this->getOptGropupForEntities(),
+                'multiple'      => true,
+                'choices'       => $this->getOptGropupForEntities(),
+                
+                'attr'          => ['class' => 'form-control'],
+                'label_attr'    => [
+                    'class' => 'form-label'
+                ],
             ],
         ]);
     }
