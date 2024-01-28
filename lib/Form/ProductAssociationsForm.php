@@ -24,6 +24,8 @@ class ProductAssociationsForm extends AbstractForm
     
     public function buildForm( FormBuilderInterface $builder, array $options ): void
     {
+        parent::buildForm( $builder, $options );
+        
         $builder
             ->add( 'associations', CollectionType::class, [
                 'entry_type'   => Type\ProductAssociationType::class,
