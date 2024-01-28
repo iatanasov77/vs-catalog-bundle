@@ -58,7 +58,15 @@ final class ProductAssociationsType extends AbstractType
                 
                 'class'     => $this->productClass,
                 'multiple'  => true,
-                'choices'   => $this->getOptGropupForEntities()
+                'choices'   => $this->getOptGropupForEntities(),
+                
+                
+                
+                
+                
+                
+                'expanded'  => false,
+                'mapped'    => false,
             ],
         ]);
     }
