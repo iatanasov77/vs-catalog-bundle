@@ -58,7 +58,7 @@ final class ProductAssociationsType extends AbstractType
             'entry_options' => fn ( AssociationTypeInterface $productAssociationType ) => [
                 'label'     => $productAssociationType->getName(),
                 
-                'class'     => $this->productClass,
+                //'class'     => $this->productClass,
                 'multiple'  => true,
                 'choices'   => $this->getOptGropupForEntities(),
             ],
