@@ -10,6 +10,17 @@ use Symfony\Component\Form\Extension\Core\Type\CollectionType;
 
 class ProductAssociationsForm extends AbstractForm
 {
+    /** @var string */
+    protected $categoryClass;
+    
+    public function __construct(
+        string $dataClass,
+        string $categoryClass
+    ) {
+        parent::__construct( $dataClass );
+        
+        $this->categoryClass        = $categoryClass;
+    }
     
     public function buildForm( FormBuilderInterface $builder, array $options ): void
     {
@@ -17,7 +28,8 @@ class ProductAssociationsForm extends AbstractForm
             ->add( 'associations', CollectionType::class, [
                 'entry_type'   => Type\ProductAssociationType::class,
                 'entry_options' => [
-                    'productClass' => '',
+                    //'productClass' => $options['productClass'],
+                    'productClass'  => $this->dataClass,
                 ],
                 
                 'allow_add'    => true,
@@ -26,5 +38,27 @@ class ProductAssociationsForm extends AbstractForm
                 'by_reference' => false
             ])
         ;
+    }
+    
+    public function configureOptions( OptionsResolver $resolver ): void
+    {
+        parent::configureOptions( $resolver );
+        
+        $resolver
+            ->setDefaults([
+                'csrf_protection'   => false,
+            ])
+            
+            ->setDefined([
+                'productClass',
+            ])
+            
+            ->setAllowedTypes( 'productClass', 'string' )
+        ;
+    }
+    
+    public function getName()
+    {
+        return 'vs_catalog.product_associations';
     }
 }

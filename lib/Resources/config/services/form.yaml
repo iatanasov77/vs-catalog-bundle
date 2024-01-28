@@ -71,5 +71,12 @@ services:
             - '@request_stack'
             - '@vs_application.repository.locale'
             - '@vs_catalog.association_strategy'
+            
+    Vankosoft\CatalogBundle\Form\ProductAssociationsForm:
+        tags:
+            - { name: form.type }
+        arguments:
+            - '%vs_catalog.model.product.class%'
+            - '%vs_catalog.model.product_category.class%'
 
 
