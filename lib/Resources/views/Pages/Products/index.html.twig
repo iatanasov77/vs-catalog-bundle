@@ -1,5 +1,8 @@
 {% extends "@VSApplication/layout.html.twig" %}
 
+{# Import Macros #}
+{% import "@VSApplication/Macros/alerts.html.twig" as alerts %}
+
 {% block title %}{{ parent() }} :: {{ 'vs_payment.template.products_index_title' | trans( {},'VSPaymentBundle' ) }}{% endblock %}
 {% block pageTitle %}<i class="icon_genius"></i> {{ 'vs_payment.template.products_index_title' | trans( {},'VSPaymentBundle' ) }}{% endblock %}
 
@@ -16,6 +19,12 @@
                     	{% set dataParent = '#accordion' %}
                         {% include '@VSCatalog/Pages/Products/partial/products_table.html.twig' %}
         			{% endif %}
+        		{% else %}
+                    <div class="row mb-2">
+                        <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
+                            {{ alerts.info( 'vs_application.template.there_are_no_items_to_display' | trans( {},'VSApplicationBundle' ) ) }}
+                        </div>
+                    </div>
        			{% endfor %}
        			
        			<!-- Uncategorized Products -->
