@@ -60,7 +60,7 @@ class ProductCategoryForm extends AbstractForm
                 'label'                 => 'vs_payment.form.parent_category',
                 'translation_domain'    => 'VSPaymentBundle',
                 'class'                 => $this->categoryClass,
-                'query_builder'         => function ( EntityRepository $er ) use ( $category )
+                'query_builder'         => function ( RepositoryInterface $er ) use ( $category )
                 {
                     $qb = $er->createQueryBuilder( 'pc' );
                     if  ( $category && $category->getId() ) {
