@@ -5,21 +5,22 @@ use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 
+use Vankosoft\CatalogBundle\Model\Product;
 
 class ProductAssociationType extends AbstractType
 {
     public function buildForm( FormBuilderInterface $builder, array $options )
     {
         $builder
-            ->add( 'paidService', EntityType::class, [
-                'class'                 => $this->paidServicePeriodClass,
+            ->add( 'associatedProducts', EntityType::class, [
+                'class'                 => Product::class,
                 'choice_label'          => 'title',
-                'group_by'              => function ( PayedServiceSubscriptionPeriod $paidServicePeriod ): string {
-                    return $paidServicePeriod ? $paidServicePeriod->getPayedService()->getTitle() : 'Undefined Group';
-                },
-                'label'                 => 'vs_payment.form.pricing_plan.paid_service',
-                'placeholder'           => 'vs_payment.form.pricing_plan.paid_service_placeholder',
-                'translation_domain'    => 'VSPaymentBundle',
+//                 'group_by'              => function ( Product $product ): string {
+//                     return $product ? $product->getCategories()->getName() : 'Undefined Group';
+//                 },
+                'label'                 => 'vs_catalog.form.product_associations.associated_products',
+                'placeholder'           => 'vs_catalog.form.product_associations.associated_products_placeholder',
+                'translation_domain'    => 'VSCatalogBundle',
                 'multiple'              => true,
                 'required'              => false,
             ])
@@ -35,16 +36,16 @@ class ProductAssociationType extends AbstractType
                 'csrf_protection'   => false,
             ])
             
-            ->setDefined([
-                'product',
-            ])
+//             ->setDefined([
+//                 'product',
+//             ])
             
-            ->setAllowedTypes( 'product', AssociationTypeInterface::class )
+//             ->setAllowedTypes( 'product', AssociationTypeInterface::class )
         ;
     }
     
     public function getName()
     {
-        return 'vs_catalog.association_type';
+        return 'vs_catalog.product_association_type';
     }
 }

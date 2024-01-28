@@ -3,6 +3,10 @@ vs_catalog:
         association_strategy: Association Strategy
         association_strategy_placeholder: '-- Choose an Association Strategy --'
         association_type_code: Association Type Code
+        
+        product_associations:
+            associated_products: Associated Products
+            associated_products_placeholder: '-- Select Associated Products --'
 
     template:
         details: Details
