@@ -40,7 +40,7 @@ class ProductAssociationType extends AbstractType
                 'productClass',
             ])
             
-            ->setAllowedTypes( 'productClass', string )
+            ->setAllowedTypes( 'productClass', "string" )
         ;
     }
     
