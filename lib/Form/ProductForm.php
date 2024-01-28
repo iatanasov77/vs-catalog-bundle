@@ -61,7 +61,7 @@ class ProductForm extends AbstractForm
                 'translation_domain'    => 'VSPaymentBundle',
             ])  
             
-            ->add( 'category', EntityType::class, [
+            ->add( 'categories', EntityType::class, [
                 'label'                 => 'vs_payment.form.categories',
                 'translation_domain'    => 'VSPaymentBundle',
                 'multiple'              => true,
