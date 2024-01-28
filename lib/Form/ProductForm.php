@@ -105,17 +105,17 @@ class ProductForm extends AbstractForm
                 'translation_domain'    => 'VSPaymentBundle',
             ])
             
-            ->add( 'associations', CollectionType::class, [
-                'entry_type'    => Type\ProductAssociationType::class,
-                'entry_options' => [
-                    'productClass'  => $this->dataClass,
-                ],
+//             ->add( 'associations', CollectionType::class, [
+//                 'entry_type'    => Type\ProductAssociationType::class,
+//                 'entry_options' => [
+//                     'productClass'  => $this->dataClass,
+//                 ],
                 
-                'allow_add'     => true,
-                'allow_delete'  => true,
-                'prototype'     => true,
-                'by_reference'  => false
-            ])
+//                 'allow_add'     => true,
+//                 'allow_delete'  => true,
+//                 'prototype'     => true,
+//                 'by_reference'  => false
+//             ])
         ;
     }
 
