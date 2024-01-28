@@ -106,11 +106,15 @@ class ProductForm extends AbstractForm
             ])
             
             ->add( 'associations', CollectionType::class, [
-                'entry_type'   => Type\ProductAssociationType::class,
-                'allow_add'    => true,
-                'allow_delete' => true,
-                'prototype'    => true,
-                'by_reference' => false
+                'entry_type'    => Type\ProductAssociationType::class,
+                'entry_options' => [
+                    'productClass'  => $this->dataClass,
+                ],
+                
+                'allow_add'     => true,
+                'allow_delete'  => true,
+                'prototype'     => true,
+                'by_reference'  => false
             ])
         ;
     }

@@ -13,7 +13,7 @@ class ProductAssociationType extends AbstractType
     {
         $builder
             ->add( 'associatedProducts', EntityType::class, [
-                'class'                 => Product::class,
+                'class'                 => $options['productClass'],
                 'choice_label'          => 'title',
 //                 'group_by'              => function ( Product $product ): string {
 //                     return $product ? $product->getCategories()->getName() : 'Undefined Group';
@@ -36,11 +36,11 @@ class ProductAssociationType extends AbstractType
                 'csrf_protection'   => false,
             ])
             
-//             ->setDefined([
-//                 'product',
-//             ])
+            ->setDefined([
+                'productClass',
+            ])
             
-//             ->setAllowedTypes( 'product', AssociationTypeInterface::class )
+            ->setAllowedTypes( 'productClass', string )
         ;
     }
     

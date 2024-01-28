@@ -16,6 +16,10 @@ class ProductAssociationsForm extends AbstractForm
         $builder
             ->add( 'associations', CollectionType::class, [
                 'entry_type'   => Type\ProductAssociationType::class,
+                'entry_options' => [
+                    'productClass' => '',
+                ],
+                
                 'allow_add'    => true,
                 'allow_delete' => true,
                 'prototype'    => true,
