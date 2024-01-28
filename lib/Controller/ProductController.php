@@ -27,12 +27,14 @@ class ProductController extends AbstractCrudController
             }
         }
         
+        $associationsForm   = $this->getProductAssociationsForm( $entity );
+        
         return [
             'categories'        => $this->get( 'vs_catalog.repository.product_category' )->findAll(),
             'taxonomyId'        => $taxonomy ? $taxonomy->getId() : 0,
             'translations'      => $translations,
             'selectedTaxonIds'  => $selectedTaxonIds,
-            'associationsForm'  => $this->getProductAssociationsForm( $entity ),
+            'associationsForm'  => $associationsForm->createView(),
         ];
     }
     
