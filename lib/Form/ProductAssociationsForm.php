@@ -27,17 +27,21 @@ class ProductAssociationsForm extends AbstractForm
         parent::buildForm( $builder, $options );
         
         $builder
-            ->add( 'associations', CollectionType::class, [
-                'entry_type'   => Type\ProductAssociationType::class,
-                'entry_options' => [
-                    //'productClass' => $options['productClass'],
-                    'productClass'  => $this->dataClass,
-                ],
+//             ->add( 'associations', CollectionType::class, [
+//                 'entry_type'   => Type\ProductAssociationType::class,
+//                 'entry_options' => [
+//                     //'productClass' => $options['productClass'],
+//                     'productClass'  => $this->dataClass,
+//                 ],
                 
-                'allow_add'    => true,
-                'allow_delete' => true,
-                'prototype'    => true,
-                'by_reference' => false
+//                 'allow_add'    => true,
+//                 'allow_delete' => true,
+//                 'prototype'    => true,
+//                 'by_reference' => false
+//             ])
+            
+            ->add('associations', Type\ProductAssociationsType::class, [
+                'label' => false,
             ])
         ;
     }
