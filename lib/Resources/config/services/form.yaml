@@ -93,5 +93,6 @@ services:
             - '@vs_catalog.repository.association_type'
             - '@vs_catalog.form.type.data_transformer.products_to_product_associations'
             - '@vs_catalog.repository.product_category'
+            - '%vs_catalog.model.product.class%'
 
 
