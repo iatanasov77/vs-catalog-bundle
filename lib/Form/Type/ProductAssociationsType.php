@@ -8,6 +8,7 @@ use Sylius\Bundle\ResourceBundle\Form\Type\FixedCollectionType;
 use Sylius\Component\Resource\Repository\RepositoryInterface;
 
 use Symfony\Component\Form\Extension\Core\Type\TextType;
+use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 
 use Vankosoft\CatalogBundle\Model\Interfaces\AssociationTypeInterface;
@@ -50,7 +51,8 @@ final class ProductAssociationsType extends AbstractType
             'entries'       => $this->productAssociationTypeRepository->findAll(),
             
             //'entry_type'    => TextType::class,
-            'entry_type'    => EntityType::class,
+            //'entry_type'    => EntityType::class,
+            'entry_type'    => ChoiceType::class,
             
             'entry_name'    => fn ( AssociationTypeInterface $productAssociationType ) => $productAssociationType->getCode(),
             'entry_options' => fn ( AssociationTypeInterface $productAssociationType ) => [
@@ -59,14 +61,6 @@ final class ProductAssociationsType extends AbstractType
                 'class'     => $this->productClass,
                 'multiple'  => true,
                 'choices'   => $this->getOptGropupForEntities(),
-                
-                
-                
-                
-                
-                
-                'expanded'  => false,
-                'mapped'    => false,
             ],
         ]);
     }
