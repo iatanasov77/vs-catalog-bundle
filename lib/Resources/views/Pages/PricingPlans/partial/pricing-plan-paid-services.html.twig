@@ -14,7 +14,7 @@
 #}
 
 
-{% set comboDataSourceUrl  = path( 'vs_payment_pricing_plan_paid_services', {'id': item.id}) %}
+{% set comboDataSourceUrl  = path( 'vs_catalog_pricing_plan_paid_services', {'id': item.id}) %}
 {% set comboTreePlaceholder = 'vs_payment.form.pricing_plan.paid_services_placeholder' | trans( {},'VSPaymentBundle' ) %}
 {% set comboDataOptions    = "
         url:'" ~ comboDataSourceUrl ~ "',

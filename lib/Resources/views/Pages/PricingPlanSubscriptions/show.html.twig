@@ -43,7 +43,7 @@
                                 <div class="btn-group">
                                     {% if orderItem.order.pending %}
                                         <a class="btn btn-primary btnSetPaid"
-                                            href="{{ path( 'vs_payment_set_order_status_paid', {'orderId': orderItem.order.id} ) }}"
+                                            href="{{ path( 'vs_catalog_set_order_status_paid', {'orderId': orderItem.order.id} ) }}"
                                             title="{{ 'vs_payment.template.action_set_order_status_paid' | trans( {},'VSPaymentBundle' ) }}"
                                             data-subscriptionId="{{ resource.id }}"
                                         >
