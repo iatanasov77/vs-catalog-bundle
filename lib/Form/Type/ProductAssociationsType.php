@@ -11,6 +11,7 @@ use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 
+use Vankosoft\CatalogBundle\Component\AssociationStrategy;
 use Vankosoft\CatalogBundle\Model\Interfaces\AssociationTypeInterface;
 use Vankosoft\CatalogBundle\Repository\ProductCategoryRepository;
 
@@ -48,7 +49,9 @@ final class ProductAssociationsType extends AbstractType
     public function configureOptions( OptionsResolver $resolver ): void
     {
         $resolver->setDefaults([
-            'entries'           => $this->productAssociationTypeRepository->findAll(),
+            'entries'           => $this->productAssociationTypeRepository->findBy([
+                'associationStrategy' => AssociationStrategy::STRATEGY_ASSOCIATED
+            ]),
             
             //'entry_type'    => TextType::class,
             //'entry_type'    => EntityType::class,
