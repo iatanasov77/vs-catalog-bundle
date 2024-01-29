@@ -57,6 +57,7 @@ final class ProductAssociationsType extends AbstractType
             'entry_name'        => fn ( AssociationTypeInterface $productAssociationType ) => $productAssociationType->getCode(),
             'entry_options'     => fn ( AssociationTypeInterface $productAssociationType ) => [
                 'label'         => $productAssociationType->getName(),
+                'required'      => false,
                 
                 //'class'     => $this->productClass,
                 'multiple'      => true,
