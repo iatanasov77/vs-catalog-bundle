@@ -9,26 +9,26 @@ use Sylius\Component\Resource\Repository\RepositoryInterface;
 class ProductExtController extends AbstractController
 {
     /** @var RepositoryInterface */
-    protected $productsRepository;
+    protected $productRepository;
     
     /** @var RepositoryInterface */
-    protected $productCategoriesRepository;
+    protected $productCategoryRepository;
     
     public function __construct(
-        RepositoryInterface $productsRepository,
-        RepositoryInterface $productCategoriesRepository
+        RepositoryInterface $productRepository,
+        RepositoryInterface $productCategoryRepository
     ) {
-        $this->productsRepository           = $productsRepository;
-        $this->productCategoriesRepository  = $productCategoriesRepository;
+        $this->productRepository            = $productRepository;
+        $this->productCategoryRepository    = $productCategoryRepository;
     }
     
     public function getCategories( $id, Request $request ): Response
     {
-        $selectedValues = $id ? $this->productsRepository->find( $id )->getCategories() : null;
+        $selectedValues = $id ? $this->productRepository->find( $id )->getCategories() : null;
         
         $data           = [];
         $this->buildEasyuiCombotreeData(
-            $this->productCategoriesRepository->findAll(),
+            $this->productCategoryRepository->findAll(),
             $data,
             $selectedValues ? $selectedValues->getKeys() : [],
             []
