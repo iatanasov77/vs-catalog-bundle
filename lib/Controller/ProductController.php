@@ -8,10 +8,10 @@ use Symfony\Component\HttpFoundation\File\File;
 use Symfony\Component\HttpFoundation\File\UploadedFile;
 use Symfony\Component\HttpFoundation\File\Exception\FileException;
 
-use Vankosoft\CatalogBundle\Form\ProductAssociationsForm;
-
 class ProductController extends AbstractCrudController
 {
+    use ProductAssociationsTrait;
+    
     protected function customData( Request $request, $entity = null ): array
     {
         $translations   = $this->classInfo['action'] == 'indexAction' ? $this->getTranslations() : [];
@@ -111,12 +111,5 @@ class ProductController extends AbstractCrudController
         $productPicture->setFile( null ); // reset File Because: Serialization of 'Symfony\Component\HttpFoundation\File\UploadedFile' is not allowed
         
         $entity->addPicture( $productPicture );
-    }
-    
-    private function getProductAssociationsForm( $product )
-    {
-        $form   = $this->createForm( ProductAssociationsForm::class, $product, ['method' => 'POST'] );
-        
-        return $form;
     }
 }

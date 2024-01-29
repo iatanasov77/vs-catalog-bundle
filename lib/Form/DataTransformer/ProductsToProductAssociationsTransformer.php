@@ -93,7 +93,7 @@ final class ProductsToProductAssociationsTransformer implements DataTransformerI
             $codes[] = $product->getCode();
         }
         
-        return implode(',', $codes);
+        return implode( ',', $codes );
     }
     
     private function getProductAssociationByTypeCode( string $productAssociationTypeCode ): ProductAssociationInterface

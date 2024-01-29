@@ -53,5 +53,9 @@ vs_catalog_association_type:
         path: /catalog/association-types
         templates: "@VSCatalog/Pages/AssociationTypes"
     type: sylius.resource
+    
+vs_catalog_handle_associations:
+    path: /catalog/handle-associations/{productId}
+    controller: Vankosoft\CatalogBundle\Controller\ProductExtController::handleAssociationsForm
 
 

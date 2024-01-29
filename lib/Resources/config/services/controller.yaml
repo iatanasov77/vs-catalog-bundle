@@ -15,6 +15,7 @@ services:
         tags: ['controller.service_arguments']
         autowire: false
         arguments:
+            = '@doctrine'
             - '@vs_catalog.repository.product'
             - '@vs_catalog.repository.product_category'
 

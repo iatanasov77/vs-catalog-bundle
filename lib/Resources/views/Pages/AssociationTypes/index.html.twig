@@ -24,8 +24,8 @@
                 {% for item in resources %}
                     <tr>
                         <td>{{ loop.index }}</td>
-                        <td>{{ item.code }}</td>
                         <td>{{ item.name }}</td>
+                        <td>{{ item.code }}</td>
                         
                         <td>
                             {% if translations[item.id] is defined %}

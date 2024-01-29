@@ -77,7 +77,6 @@ services:
             - { name: form.type }
         arguments:
             - '%vs_catalog.model.product.class%'
-            - '%vs_catalog.model.product_category.class%'
          
     vs_catalog.form.type.data_transformer.products_to_product_associations:   
         class: Vankosoft\CatalogBundle\Form\DataTransformer\ProductsToProductAssociationsTransformer
