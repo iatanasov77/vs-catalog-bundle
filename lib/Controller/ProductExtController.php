@@ -43,7 +43,7 @@ class ProductExtController extends AbstractController
         foreach( $tree as $node ) {
             $data[$key]   = [
                 'id'        => $node->getId(),
-                'text'      => $node->getTitle(),
+                'text'      => $node->getName(),
                 'children'  => []
             ];
             if ( \in_array( $node->getId(), $selectedValues ) ) {
