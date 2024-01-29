@@ -70,6 +70,7 @@ final class ProductAssociationsType extends AbstractType
                 'label_attr'    => [
                     'class' => 'form-label'
                 ],
+                'row_attr'      => ['class' => 'mb-2'],
             ],
         ]);
     }
