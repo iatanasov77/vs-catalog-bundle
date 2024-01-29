@@ -14,7 +14,7 @@ vs_catalog_product:
     
 vs_catalog_json_product_categories:
     path: /json/product-categories/{id}/easyui-combotree-with-leafs
-    controller: Vankosoft\CatalogBundle\Controller\PricingPlans\ProductExtController::getCategories
+    controller: Vankosoft\CatalogBundle\Controller\ProductExtController::getCategories
     options:
         expose: true
     
@@ -43,7 +43,7 @@ vs_catalog_pricing_plan:
     
 vs_catalog_pricing_plan_paid_services:
     path: /json/pricing-plans/{id}/easyui-combotree-with-leafs
-    controller: Vankosoft\CatalogBundle\Controller\PricingPlans\PricingPlanExtController::getPaidServicesJson
+    controller: Vankosoft\CatalogBundle\Controller\PricingPlanExtController::getPaidServicesJson
     options:
         expose: true
         
