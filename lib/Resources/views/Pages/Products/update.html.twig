@@ -14,17 +14,20 @@
         <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
             <nav>
                 <div class="nav nav-tabs" id="nav-tab" role="tablist">
-                    <a class="nav-item nav-link active" id="nav-global-tab" data-bs-toggle="tab" data-bs-target="#nav-global" href="#nav-global" role="tab" aria-controls="nav-global" aria-selected="true">
-                        {{ 'vs_application.template.global_settings_title' | trans( {},'VSApplicationBundle' ) }}
+                    <a class="nav-item nav-link active" id="nav-product-details-tab" data-bs-toggle="tab" data-bs-target="#nav-product-details" href="#nav-product-details" role="tab" aria-controls="nav-product-details" aria-selected="true">
+                        {{ 'vs_catalog.template.details' | trans( {},'VSCatalogBundle' ) }}
                     </a>
-                    <a class="nav-item nav-link" id="nav-applications-tab" data-bs-toggle="tab" data-bs-target="#nav-applications" href="#nav-applications" role="tab" aria-controls="nav-applications" aria-selected="false">
-                        {{ 'vs_application.template.applications_settings_title' | trans( {},'VSApplicationBundle' ) }}
+                    <a class="nav-item nav-link" id="nav-product-associations-tab" data-bs-toggle="tab" data-bs-target="#nav-product-associations" href="#nav-product-associations" role="tab" aria-controls="nav-product-associations" aria-selected="false">
+                        {{ 'vs_catalog.template.associations' | trans( {},'VSCatalogBundle' ) }}
                     </a>
                 </div>
             </nav>
             <div class="tab-content" id="nav-tabContent">
-                <div class="tab-pane fade show active" id="nav-global" role="tabpanel" aria-labelledby="nav-global-tab">
+                <div class="tab-pane fade show active" id="nav-product-details" role="tabpanel" aria-labelledby="nav-product-details-tab">
                     {% include '@VSCatalog/Pages/Products/partial/product_form.html.twig' %}
+		        </div>
+		        <div class="tab-pane fade" id="nav-product-associations" role="tabpanel" aria-labelledby="nav-product-associations-tab">
+                    {% include '@VSCatalog/Pages/Products/partial/product_associations_form.html.twig' %}
 		        </div>
 		    </div>
 		</div>

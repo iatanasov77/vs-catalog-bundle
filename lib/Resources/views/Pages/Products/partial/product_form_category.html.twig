@@ -1,0 +1,41 @@
+
+{% if item.id %}{% set itemId = item.id %}{% else %}{% set itemId = 0 %}{% endif %}
+
+<div class="form-group">
+    {{ form_label(form.categories, null, {
+        'label_attr': {'class': 'col-form-label'}
+        }) 
+    }}
+    
+    {{ form_widget(form.categories, {'attr': {
+        'class': 'form-control easyui-combobox',
+        'data-url': url( 'vs_catalog_json_product_categories', {'id': itemId} )
+    }}) }}
+</div>
+
+
+{# Documentation: https://www.jeasyui.com/documentation/combotree.php #}
+{#
+
+{% set comboDataSourceUrl  = url('vs_cms_pages_tree_combo_with_selected', {'pageId': itemId, 'taxonomyId': taxonomyId}) %}
+{% set comboTreePlaceholder = 'vs_cms.form.page.categories_placeholder' | trans( {},'VSCmsBundle' ) %}
+<div class="form-group">
+    {{ form_label(form.category_taxon, null, {
+        'label_attr': {'class': 'col-form-label required'}
+        })
+    }}
+    
+    <div class="d-none" id="categoryTaxonIds" data-values="{{ selectedTaxonIds | join(',') }}"></div>
+    {{ vs_tree.easyuiCombobox( form.category_taxon, comboDataSourceUrl, itemId,
+        {
+            'elementSelector': '#user_role_form_parent',
+            'required': 'true',
+            'multiple': 'true',
+            'checkbox': 'true',
+            'cascadeCheck': 'false',
+            'placeholder': comboTreePlaceholder
+        }
+    ) }}
+</div>
+#}
+
