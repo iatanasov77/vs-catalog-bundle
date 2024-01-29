@@ -6,6 +6,7 @@ use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 use Sylius\Component\Resource\Repository\RepositoryInterface;
 
+use Symfony\Component\Form\Extension\Core\Type\HiddenType;
 use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 use Symfony\Component\Form\Extension\Core\Type\CheckboxType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
@@ -54,6 +55,11 @@ class ProductForm extends AbstractForm
                 'choices'               => \array_flip( $this->fillLocaleChoices() ),
                 'data'                  => $currentLocale,
                 'mapped'                => false,
+            ])
+            
+            ->add( 'productCategories', HiddenType::class, [
+                'mapped'    => false,
+                'data'      => \json_encode( $entity->getCategories()->getKeys() )
             ])
             
             ->add( 'enabled', CheckboxType::class, [
