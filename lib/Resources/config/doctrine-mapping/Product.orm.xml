@@ -35,7 +35,7 @@
         
         <one-to-many field="orderItems" target-entity="Vankosoft\PaymentBundle\Model\Interfaces\OrderItemInterface" mapped-by="product" />
         
-        <many-to-many field="categories" target-entity="Vankosoft\CatalogBundle\Model\Interfaces\ProductCategoryInterface" inversed-by="products">
+        <many-to-many field="categories" target-entity="Vankosoft\CatalogBundle\Model\Interfaces\ProductCategoryInterface" inversed-by="products"  index-by="category_id">
             <cascade>
                 <cascade-persist/>
                 <cascade-merge/>
