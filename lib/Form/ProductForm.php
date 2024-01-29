@@ -120,18 +120,6 @@ class ProductForm extends AbstractForm
                 'placeholder'           => 'vs_payment.form.currency_placeholder',
                 'translation_domain'    => 'VSPaymentBundle',
             ])
-            
-//             ->add( 'associations', CollectionType::class, [
-//                 'entry_type'    => Type\ProductAssociationType::class,
-//                 'entry_options' => [
-//                     'productClass'  => $this->dataClass,
-//                 ],
-                
-//                 'allow_add'     => true,
-//                 'allow_delete'  => true,
-//                 'prototype'     => true,
-//                 'by_reference'  => false
-//             ])
         ;
     }
 
