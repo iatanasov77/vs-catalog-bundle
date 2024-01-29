@@ -62,7 +62,7 @@ final class ProductAssociationsType extends AbstractType
                 'multiple'      => true,
                 'choices'       => $this->getOptGropupForEntities(),
                 
-                'attr'          => ['class' => 'form-control'],
+                'attr'          => ['class' => 'form-control product-associations'],
                 'label_attr'    => [
                     'class' => 'form-label'
                 ],
