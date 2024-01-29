@@ -48,9 +48,8 @@ final class ProductsToProductAssociationsTransformer implements DataTransformerI
         
         /** @var ProductAssociationInterface $productAssociation */
         foreach ( $value as $productAssociation ) {
-            $productCodesAsString   = $this->getCodesAsStringFromProducts( $productAssociation->getAssociatedProducts() );
-            
-            $values[$productAssociation->getType()->getCode()]  = $productCodesAsString;
+            $productCodes   = $this->getCodesFromProducts( $productAssociation->getAssociatedProducts() );
+            $values[$productAssociation->getType()->getCode()]  = $productCodes;
         }
         
         return $values;
@@ -64,6 +63,7 @@ final class ProductsToProductAssociationsTransformer implements DataTransformerI
         
         /** @var Collection<array-key, ProductAssociationInterface> $productAssociations */
         $productAssociations = new ArrayCollection();
+        
         foreach ( $value as $productAssociationTypeCode => $productCodes ) {
             if ( null === $productCodes ) {
                 continue;
@@ -80,12 +80,8 @@ final class ProductsToProductAssociationsTransformer implements DataTransformerI
         return $productAssociations;
     }
     
-    private function getCodesAsStringFromProducts( Collection $products ): ?string
+    private function getCodesFromProducts( Collection $products ): array
     {
-        if ( $products->isEmpty() ) {
-            return null;
-        }
-        
         $codes = [];
         
         /** @var ProductInterface $product */
@@ -93,7 +89,7 @@ final class ProductsToProductAssociationsTransformer implements DataTransformerI
             $codes[] = $product->getCode();
         }
         
-        return implode( ',', $codes );
+        return $codes;
     }
     
     private function getProductAssociationByTypeCode( string $productAssociationTypeCode ): ProductAssociationInterface
@@ -118,9 +114,9 @@ final class ProductsToProductAssociationsTransformer implements DataTransformerI
     
     private function setAssociatedProductsByProductCodes(
         ProductAssociationInterface $productAssociation,
-        string $productCodes
+        array $productCodes
     ): void {
-        $products = $this->productRepository->findBy( ['code' => explode( ',', $productCodes )] );
+        $products = $this->productRepository->findBy( ['slug' => $productCodes] );
         
         $productAssociation->clearAssociatedProducts();
         foreach ( $products as $product ) {

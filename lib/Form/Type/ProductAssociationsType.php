@@ -89,8 +89,7 @@ final class ProductAssociationsType extends AbstractType
             $name   = $cat->getName();
             if( count( $cat->getProducts() ) > 0 ) {
                 foreach( $cat->getProducts() as $prod ) {
-                    //$list[$name][$prod->getId()] = $prod->getName();
-                    $list[$name][$prod->getName()] = $prod->getId();
+                    $list[$name][$prod->getName()] = $prod->getCode();
                 }
             }
         }

@@ -33,4 +33,9 @@ trait AssociationAwareTrait
     {
         return $this->associations->contains($association);
     }
+    
+    public function getCode(): string
+    {
+        return $this->slug;
+    }
 }

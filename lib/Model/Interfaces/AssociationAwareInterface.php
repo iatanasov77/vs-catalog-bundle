@@ -8,4 +8,5 @@ interface AssociationAwareInterface
     public function addAssociation(AssociationInterface $association): void;
     public function removeAssociation(AssociationInterface $association): void;
     public function hasAssociation(AssociationInterface $association): bool;
+    public function getCode(): string;
 }
