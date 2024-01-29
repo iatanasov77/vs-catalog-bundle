@@ -10,4 +10,11 @@ services:
         arguments:
             - '@vs_catalog.repository.pricing_plan'
             - '@vs_users_subscriptions.repository.payed_service'
+            
+    Vankosoft\CatalogBundle\Controller\ProductExtController:
+        tags: ['controller.service_arguments']
+        autowire: false
+        arguments:
+            - '@vs_catalog.repository.product'
+            - '@vs_catalog.repository.product_category'
 
