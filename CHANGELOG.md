@@ -1,3 +1,34 @@
+1.0.0	|	Release date: **30.01.2024**
+============================================
+* New Features, Fixes and Improvements:
+  - Create Payable Object Associations Types.
+  - Add a Doctrine Migration.
+  - Make Product Model Timestamppable.
+  - Add AssociationTypeForm Service.
+  - Add Some Translations
+  - Add Some Fixes.
+  - Create Association Strategy Component and Use It.
+  - Improve Index Twig Templates.
+  - Fix ProductRepository .
+  - Add Some Translations.
+  - Add Form Types for Product Associations.
+  - Improve Products Index View.
+  - Fix ProductCategoryForm .
+  - Fix Path Routes in Views.
+  - Fix and Improve Product Form.
+  - Fix and Improve ProductAssociations Form.
+  - Fix and Improve PricingPlanCategory Form.
+  - Create ProductExtController .
+  - Improve ProductForm.
+  - Create Handling Product Associations Form.
+  - Remove Uneeded Form Type.
+  - Remove Required Option From Product Associations.
+  - Update Products Views.
+  - Fix ProductsToProductAssociationsTransformer .
+  - Improve ProductAssociationsType
+  - Remove Product Associations Form From Create Neew Product Form.
+
+
 0.1.12	|	Release date: **25.01.2024**
 ============================================
 * New Features:
