@@ -1,0 +1,23 @@
+{% import "@VSApplication/Macros/form.html.twig" as vs_form %}
+
+<div class="card">
+    <h5 class="card-header">{{ 'vs_catalog.template.product_associations' | trans( {},'VSCatalogBundle' ) }}</h5>
+    <div class="card-body">
+        <div id="pageAssociationsFormContainer" data-pageId="{{ item.id }}">
+            {{ form_start(associationsForm, { 'attr': {'class': 'form-horizontal '} }) }}
+                
+                
+                <div class="form-group">
+                    {{ form_label(associationsForm.associations, null, {
+                        'label_attr': {'class': 'col-form-label'}
+                        }) 
+                    }}
+                    
+                    {{ form_widget(associationsForm.associations, {'attr': {'class': 'form-control'}}) }}
+                </div>
+                
+                {{ vs_form.buttons( associationsForm ) }}
+            {{ form_end(associationsForm, {'render_rest': false}) }}
+        </div>
+    </div>
+</div>

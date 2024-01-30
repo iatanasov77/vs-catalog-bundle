@@ -61,5 +61,37 @@ services:
             - { name: form.type }
         arguments:
             - '%vs_users_subscriptions.model.payed_service_subscription_period.class%'
+            
+    vs_catalog.resources.association_type.form:
+        class: Vankosoft\CatalogBundle\Form\AssociationTypeForm
+        tags:
+            - { name: form.type }
+        arguments:
+            - '%vs_catalog.model.association_type.class%'
+            - '@request_stack'
+            - '@vs_application.repository.locale'
+            - '@vs_catalog.association_strategy'
+            
+    Vankosoft\CatalogBundle\Form\ProductAssociationsForm:
+        tags:
+            - { name: form.type }
+        arguments:
+            - '%vs_catalog.model.product.class%'
+         
+    vs_catalog.form.type.data_transformer.products_to_product_associations:   
+        class: Vankosoft\CatalogBundle\Form\DataTransformer\ProductsToProductAssociationsTransformer
+        arguments:
+            - '@vs_catalog.factory.product_association'
+            - '@vs_catalog.repository.product'
+            - '@vs_catalog.repository.association_type'
+            
+    Vankosoft\CatalogBundle\Form\Type\ProductAssociationsType:
+        tags:
+            - { name: form.type }
+        arguments:
+            - '@vs_catalog.repository.association_type'
+            - '@vs_catalog.form.type.data_transformer.products_to_product_associations'
+            - '@vs_catalog.repository.product_category'
+            - '%vs_catalog.model.product.class%'
 
 

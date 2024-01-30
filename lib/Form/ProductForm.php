@@ -6,6 +6,7 @@ use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 use Sylius\Component\Resource\Repository\RepositoryInterface;
 
+use Symfony\Component\Form\Extension\Core\Type\HiddenType;
 use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 use Symfony\Component\Form\Extension\Core\Type\CheckboxType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
@@ -56,10 +57,25 @@ class ProductForm extends AbstractForm
                 'mapped'                => false,
             ])
             
+            ->add( 'productCategories', HiddenType::class, [
+                'mapped'    => false,
+                'data'      => \json_encode( $entity->getCategories()->getKeys() )
+            ])
+            
             ->add( 'enabled', CheckboxType::class, [
                 'label'                 => 'vs_payment.form.active',
                 'translation_domain'    => 'VSPaymentBundle',
             ])  
+            
+            ->add( 'categories', EntityType::class, [
+                'label'                 => 'vs_payment.form.categories',
+                'translation_domain'    => 'VSPaymentBundle',
+                'multiple'              => true,
+                'required'              => true,
+                'placeholder'           => 'vs_payment.form.categories_placeholder',
+                'class'                 => $this->categoryClass,
+                'choice_label'          => 'name',
+            ])
             
             ->add( 'category_taxon', ChoiceType::class, [
                 'label'                 => 'vs_payment.form.categories',
@@ -127,7 +143,7 @@ class ProductForm extends AbstractForm
     
     public function getName()
     {
-        return 'vs_payment.product';
+        return 'vs_catalog.product';
     }
 }
 

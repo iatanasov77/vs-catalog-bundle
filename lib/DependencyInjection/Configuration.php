@@ -10,6 +10,7 @@ use Sylius\Bundle\ResourceBundle\Doctrine\ORM\EntityRepository;
 use Sylius\Component\Resource\Factory\Factory;
 
 use Vankosoft\CatalogBundle\Model\Product;
+use Vankosoft\CatalogBundle\Repository\ProductRepository;
 use Vankosoft\CatalogBundle\Form\ProductForm;
 use Vankosoft\CatalogBundle\Controller\ProductController;
 use Vankosoft\CatalogBundle\Model\ProductCategory;
@@ -30,6 +31,13 @@ use Vankosoft\CatalogBundle\Repository\PricingPlansRepository;
 use Vankosoft\CatalogBundle\Model\PricingPlanSubscription;
 use Vankosoft\CatalogBundle\Repository\PricingPlansSubscriptionsRepository;
 use Vankosoft\CatalogBundle\Controller\PricingPlanSubscriptionsController;
+
+use Vankosoft\CatalogBundle\Model\AssociationType;
+use Vankosoft\CatalogBundle\Controller\AssociationTypeController;
+use Vankosoft\CatalogBundle\Form\AssociationTypeForm;
+
+use Vankosoft\CatalogBundle\Model\ProductAssociation;
+use Vankosoft\CatalogBundle\Model\ServiceAssociation;
 
 /**
  * This is the class that validates and merges configuration from your app/config files
@@ -76,7 +84,7 @@ class Configuration implements ConfigurationInterface
                                     ->children()
                                         ->scalarNode( 'model' )->defaultValue( Product::class )->cannotBeEmpty()->end()
                                         ->scalarNode( 'controller' )->defaultValue( ProductController::class )->cannotBeEmpty()->end()
-                                        ->scalarNode( 'repository' )->defaultValue( EntityRepository::class )->cannotBeEmpty()->end()
+                                        ->scalarNode( 'repository' )->defaultValue( ProductRepository::class )->cannotBeEmpty()->end()
                                         ->scalarNode( 'factory' )->defaultValue( Factory::class )->cannotBeEmpty()->end()
                                         ->scalarNode( 'form' )->defaultValue( ProductForm::class )->cannotBeEmpty()->end()
                                     ->end()
@@ -165,6 +173,53 @@ class Configuration implements ConfigurationInterface
                                 ->end()
                             ->end()
                         ->end()
+                        
+                        ->arrayNode( 'association_type' )
+                            ->addDefaultsIfNotSet()
+                            ->children()
+                                ->variableNode( 'options' )->end()
+                                ->arrayNode( 'classes' )
+                                    ->addDefaultsIfNotSet()
+                                    ->children()
+                                        ->scalarNode( 'model' )->defaultValue( AssociationType::class )->cannotBeEmpty()->end()
+                                        ->scalarNode( 'repository' )->defaultValue( EntityRepository::class )->cannotBeEmpty()->end()
+                                        ->scalarNode( 'factory' )->defaultValue( Factory::class )->cannotBeEmpty()->end()
+                                        ->scalarNode( 'controller' )->defaultValue( AssociationTypeController::class )->cannotBeEmpty()->end()
+                                        ->scalarNode( 'form' )->defaultValue( AssociationTypeForm::class )->cannotBeEmpty()->end()
+                                    ->end()
+                                ->end()
+                            ->end()
+                        ->end()
+                        
+                        ->arrayNode( 'product_association' )
+                            ->addDefaultsIfNotSet()
+                            ->children()
+                                ->variableNode( 'options' )->end()
+                                ->arrayNode( 'classes' )
+                                    ->addDefaultsIfNotSet()
+                                    ->children()
+                                        ->scalarNode( 'model' )->defaultValue( ProductAssociation::class )->cannotBeEmpty()->end()
+                                        ->scalarNode( 'repository' )->defaultValue( EntityRepository::class )->cannotBeEmpty()->end()
+                                        ->scalarNode( 'factory' )->defaultValue( Factory::class )->cannotBeEmpty()->end()
+                                    ->end()
+                                ->end()
+                            ->end()
+                        ->end()
+                        
+//                         ->arrayNode( 'service_association' )
+//                             ->addDefaultsIfNotSet()
+//                             ->children()
+//                                 ->variableNode( 'options' )->end()
+//                                 ->arrayNode( 'classes' )
+//                                     ->addDefaultsIfNotSet()
+//                                     ->children()
+//                                         ->scalarNode( 'model' )->defaultValue( ServiceAssociation::class )->cannotBeEmpty()->end()
+//                                         ->scalarNode( 'repository' )->defaultValue( EntityRepository::class )->cannotBeEmpty()->end()
+//                                         ->scalarNode( 'factory' )->defaultValue( Factory::class )->cannotBeEmpty()->end()
+//                                     ->end()
+//                                 ->end()
+//                             ->end()
+//                         ->end()
                         
                     ->end()
                 ->end()

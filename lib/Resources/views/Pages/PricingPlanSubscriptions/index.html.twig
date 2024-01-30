@@ -37,7 +37,7 @@
                             <td>
                                 <div class="btn-group">
                                     <a class="btn btn-outline-primary"
-                                       href="{{ path('vs_payment_pricing_plan_subscription_show', {'id': item.id}) }}"
+                                       href="{{ path('vs_catalog_pricing_plan_subscription_show', {'id': item.id}) }}"
                                        title="{{ 'vs_cms.template.button_preview' | trans( {},'VSCmsBundle' ) }}"   
                                     >
                                         <i class="fas fa-eye" style="color: #be4bdb;"></i>
@@ -45,7 +45,7 @@
                                 </div>
                                 <div class="btn-group">
                                     <a class="btn btn-danger btnDeleteResource"
-                                        href="{{ path('vs_payment_pricing_plan_subscription_delete', {'id': item.id}) }}" 
+                                        href="{{ path('vs_catalog_pricing_plan_subscription_delete', {'id': item.id}) }}" 
                                         data-csrfToken="{{ csrf_token( item.id ) }}" 
                                         title="{{ 'vs_application.template.items_index_row_action_delete' | trans( {},'VSApplicationBundle' ) }}"
                                     >

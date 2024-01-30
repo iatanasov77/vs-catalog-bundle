@@ -12,22 +12,28 @@
 {% block content %}
     <div class="row">
         <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
-            <div class="card">
-            	<h5 class="card-header">{{ 'vs_payment.template.product_details' | trans( {},'VSPaymentBundle' ) }}</h5>
-            	<div class="card-body">
-					{% if form_errors(form) is not empty %}
-		                <div class="alert alert-block alert-danger fade in">
-		                    <button type="button" class="close close-sm" data-bs-dismiss="alert">
-		                        <i class="icon-remove"></i>
-		                    </button>
-		                    <strong>{{ 'vs_application.form.errors_title' | trans( {},'VSApplicationBundle' ) }}</strong> {{ form_errors(form) }}
-		                </div>
-		            {% endif %}
-		            <div id="pageFormContainer" data-pageId="{{ item.id }}">
-                        {% include '@VSCatalog/Pages/Products/partial/product_form.html.twig' %}
-                    </div>
-        		</div>
-			</div>
+            <nav>
+                <div class="nav nav-tabs" id="nav-tab" role="tablist">
+                    <a class="nav-item nav-link active" id="nav-product-details-tab" data-bs-toggle="tab" data-bs-target="#nav-product-details" href="#nav-product-details" role="tab" aria-controls="nav-product-details" aria-selected="true">
+                        {{ 'vs_catalog.template.details' | trans( {},'VSCatalogBundle' ) }}
+                    </a>
+                {% if item.id %}
+                    <a class="nav-item nav-link" id="nav-product-associations-tab" data-bs-toggle="tab" data-bs-target="#nav-product-associations" href="#nav-product-associations" role="tab" aria-controls="nav-product-associations" aria-selected="false">
+                        {{ 'vs_catalog.template.associations' | trans( {},'VSCatalogBundle' ) }}
+                    </a>
+                {% endif %}
+                </div>
+            </nav>
+            <div class="tab-content" id="nav-tabContent">
+                <div class="tab-pane fade show active" id="nav-product-details" role="tabpanel" aria-labelledby="nav-product-details-tab">
+                    {% include '@VSCatalog/Pages/Products/partial/product_form.html.twig' %}
+		        </div>
+		    {% if item.id %}
+		        <div class="tab-pane fade" id="nav-product-associations" role="tabpanel" aria-labelledby="nav-product-associations-tab">
+                    {% include '@VSCatalog/Pages/Products/partial/product_associations_form.html.twig' %}
+		        </div>
+		    {% endif %}
+		    </div>
 		</div>
     </div>
 {% endblock content %}

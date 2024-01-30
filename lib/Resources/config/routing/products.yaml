@@ -12,6 +12,12 @@ vs_catalog_product:
         templates: "@VSCatalog/Pages/Products"
     type: sylius.resource
     
+vs_catalog_json_product_categories:
+    path: /json/product-categories/{id}/easyui-combotree-with-leafs
+    controller: Vankosoft\CatalogBundle\Controller\ProductExtController::getCategories
+    options:
+        expose: true
+    
 vs_catalog_pricing_plan_category:
     resource: |
         alias: vs_catalog.pricing_plan_category
@@ -37,8 +43,19 @@ vs_catalog_pricing_plan:
     
 vs_catalog_pricing_plan_paid_services:
     path: /json/pricing-plans/{id}/easyui-combotree-with-leafs
-    controller: Vankosoft\PaymentBundle\Controller\PricingPlans\PricingPlanExtController::getPaidServicesJson
+    controller: Vankosoft\CatalogBundle\Controller\PricingPlanExtController::getPaidServicesJson
     options:
         expose: true
+        
+vs_catalog_association_type:
+    resource: |
+        alias: vs_catalog.association_type
+        path: /catalog/association-types
+        templates: "@VSCatalog/Pages/AssociationTypes"
+    type: sylius.resource
+    
+vs_catalog_handle_associations:
+    path: /catalog/handle-associations/{productId}
+    controller: Vankosoft\CatalogBundle\Controller\ProductExtController::handleAssociationsForm
 
 

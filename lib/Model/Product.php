@@ -2,19 +2,24 @@
 
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
+use Sylius\Component\Resource\Model\TimestampableTrait;
 use Sylius\Component\Resource\Model\TranslatableTrait;
 use Sylius\Component\Resource\Model\TranslationInterface;
 use Sylius\Component\Resource\Model\ToggleableTrait;
 use Vankosoft\ApplicationBundle\Model\Traits\TaxonLeafTrait;
-use Vankosoft\CatalogBundle\Model\Interfaces\ProductInterface;
 use Vankosoft\PaymentBundle\Model\Interfaces\CurrencyInterface;
 use Vankosoft\PaymentBundle\Model\Interfaces\OrderItemInterface;
+use Vankosoft\CatalogBundle\Model\Interfaces\ProductInterface;
+use Vankosoft\CatalogBundle\Model\Interfaces\AssociationAwareInterface;
+use Vankosoft\CatalogBundle\Model\Traits\AssociationAwareTrait;
 
-class Product implements ProductInterface
+class Product implements ProductInterface, AssociationAwareInterface
 {
     use TaxonLeafTrait;
+    use TimestampableTrait;
     use TranslatableTrait;
     use ToggleableTrait;    // About enabled field - $enabled (published)
+    use AssociationAwareTrait;
     
     /** @var integer */
     protected $id;
@@ -51,6 +56,9 @@ class Product implements ProductInterface
         $this->orderItems   = new ArrayCollection();
         $this->categories   = new ArrayCollection();
         $this->pictures     = new ArrayCollection();
+        
+        /** @var ArrayCollection<array-key, AssociationInterface> $this->associations */
+        $this->associations = new ArrayCollection();
     }
     
     public function getId()
