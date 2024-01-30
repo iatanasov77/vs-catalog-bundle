@@ -21,14 +21,11 @@ class ProductController extends AbstractCrudController
                                 );
         
         $selectedTaxonIds   = [];
+        $associationsForm   = null;
         if ( $this->classInfo['action'] == 'updateAction' ) {
             foreach ( $entity->getCategories() as $cat ) {
                 $selectedTaxonIds[] = $cat->getTaxon()->getId();
             }
-        }
-        
-        $associationsForm   = null;
-        if ( $this->classInfo['action'] == 'createAction' || $this->classInfo['action'] == 'updateAction' ) {
             $associationsForm   = $this->getProductAssociationsForm( $entity );
         }
         
