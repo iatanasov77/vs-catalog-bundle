@@ -1,6 +1,6 @@
 sylius_fixtures:
     suites:
-        vankosoft_extended_sample_data_suite:
+        vankosoft_catalog_sample_data_suite:
             listeners:
                 #orm_purger: ~
                 logger: ~
@@ -13,6 +13,7 @@ sylius_fixtures:
                             - code: 'EUR'
                             - code: 'USD'
                             - code: 'BGN'
+                
                 exchange_rates:
                     name: exchange_rates
                     options:
@@ -23,12 +24,29 @@ sylius_fixtures:
                             - source_currency: 'USD'
                               target_currency: 'BGN'
                               ratio: 1.82
+                
                 gateway_configs:
                     name: gateway_configs
                     options:
                         custom:
-                            - title: 'Test Borica'
-                              description: 'Test Borica'
+                            - title: 'Offline Bank Transfer'
+                              description: 'Offline Bank Transfer'
+                              gateway_name: 'offline_bank_transfer'
+                              factory_name: 'offline_bank_transfer'
+                              use_sandbox: true
+                              config:
+                                  "iban": "TEST"
+                                  "bank_name": "path/to/private.key"
+                                  "reciever_name": "path/to/public.cer"
+                                  "reason": "9426871 - ХОСТИНГ УСЛУГИ"
+                              sandbox_config:
+                                  "iban": "TEST"
+                                  "bank_name": "path/to/private.key"
+                                  "reciever_name": "path/to/public.cer"
+                                  "reason": "9426871 - ХОСТИНГ УСЛУГИ"
+                              currency: 'BGN'
+                            - title: 'Borica'
+                              description: 'Borica'
                               gateway_name: 'borica'
                               factory_name: 'borica'
                               use_sandbox: true
@@ -41,8 +59,8 @@ sylius_fixtures:
                                   "private_key": "path/to/private.key"
                                   "public_cert": "path/to/public.cer"
                               currency: 'BGN'
-                            - title: 'Test Paysera Gateway'
-                              description: 'Test Paysera Gateway'
+                            - title: 'Paysera Gateway'
+                              description: 'Paysera Gateway'
                               gateway_name: 'paysera'
                               factory_name: 'paysera'
                               use_sandbox: true
@@ -55,8 +73,8 @@ sylius_fixtures:
                                   "projectid": "PROJECT_ID"
                                   "sign_password": "SIGN_PASSWORD"
                               currency: 'BGN'
-                            - title: 'Test Stripe Js'
-                              description: 'Test Stripe Js'
+                            - title: 'Stripe Js'
+                              description: 'Stripe Js'
                               gateway_name: 'stripe_js'
                               factory_name: 'stripe_js'
                               use_sandbox: true
@@ -67,8 +85,8 @@ sylius_fixtures:
                                   "publishable_key": '%env(STRIPEJS_PUBLISHABLE_KEY)%'
                                   "secret_key": '%env(STRIPEJS_SECRET_KEY)%'
                               currency: 'EUR'
-                            - title: 'Test Paypal Express Checkout'
-                              description: 'Test Paypal Express Checkout'
+                            - title: 'Paypal Express Checkout'
+                              description: 'Paypal Express Checkout'
                               gateway_name: 'paypal_express_checkout'
                               factory_name: 'paypal_express_checkout'
                               use_sandbox: true
@@ -81,8 +99,8 @@ sylius_fixtures:
                                   "password": '%env(PAYPAL_PASSWORD)%'
                                   "signature": '%env(PAYPAL_SIGNATURE)%'
                               currency: 'USD'
-                            - title: 'Test Paypal Pro Checkout'
-                              description: 'Test Paypal Pro Checkout'
+                            - title: 'Paypal Pro Checkout'
+                              description: 'Paypal Pro Checkout'
                               gateway_name: 'paypal_pro_checkout'
                               factory_name: 'paypal_pro_checkout'
                               use_sandbox: true
@@ -99,22 +117,8 @@ sylius_fixtures:
                                   "vendor": "PAYPAL_VENDOR"
                                   "tender": "PAYPAL_TENDER"
                               currency: 'USD'
-                            - title: 'Test Paypal Rest'
-                              description: 'Test Paypal Rest'
-                              gateway_name: 'paypal_pro_checkout'
-                              factory_name: 'paypal_pro_checkout'
-                              use_sandbox: true
-                              config:
-                                  "client_id": '%env(PAYPAL_CLIENT_ID)%'
-                                  "client_secret": '%env(PAYPAL_CLIENT_SECRET)%'
-                                  "config_path": "REPLACE/IT" # Point to the directory where your skd_config.ini is located.
-                              sandbox_config:
-                                  "client_id": '%env(PAYPAL_CLIENT_ID)%'
-                                  "client_secret": '%env(PAYPAL_CLIENT_SECRET)%'
-                                  "config_path": "REPLACE/IT" # Point to the directory where your skd_config.ini is located.
-                              currency: 'USD'
-                            - title: 'Test Authorize.NET'
-                              description: 'Test Authorize.NET'
+                            - title: 'Authorize.NET'
+                              description: 'Authorize.NET'
                               gateway_name: 'authorize_net_aim'
                               factory_name: 'authorize_net_aim'
                               use_sandbox: true
@@ -125,10 +129,30 @@ sylius_fixtures:
                                   "login_id": '%env(AUTHORIZE_NET_LOGIN_ID)%'
                                   "transaction_key": '%env(AUTHORIZE_NET_TRANSACTION_KEY)%'
                               currency: 'EUR'
+                            - title: 'Telephone Call'
+                              description: 'Use Telephone Call Payment'
+                              gateway_name: 'telephone_call'
+                              factory_name: 'telephone_call'
+                              use_sandbox: true
+                              config:
+                                  "api_login_endpoint": 'https://example.com/api/login_check'
+                                  "api_verify_coupon_endpoint": 'https://example.com/api/pricing-plan-coupon-check-valid'
+                                  "username": 'admin'
+                                  "password": 'admin'
+                              sandbox_config:
+                                  "api_login_endpoint": 'https://example.com/api/login_check'
+                                  "api_verify_coupon_endpoint": 'https://example.com/api/pricing-plan-coupon-check-valid'
+                                  "username": 'admin'
+                                  "password": 'admin'
+                              currency: 'EUR'
+                
                 payment_methods:
                     name: payment_methods
                     options:
                         custom:
+                            - name: 'Pay with Bank transfer'
+                              gateway: 'offline_bank_transfer'
+                              enabled: true
                             - name: 'Pay with Credit Card By Paysera'
                               gateway: 'paysera'
                               enabled: true
@@ -138,22 +162,19 @@ sylius_fixtures:
                             - name: 'Pay with Credit Card By StripeJs'
                               gateway: 'stripe_js'
                               enabled: true
-                taxonomies:
-                    name: taxonomy
-                    options:
-                        custom:
-                            - code: 'product-categories'
-                              title: 'Product Categories'
-                              description: 'Product Categories'
-                              locale:  '%locale%'
-                            - code: 'paid-service-categories'
-                              title: 'Paid Service Categories'
-                              description: 'Paid Service Categories'
-                              locale:  '%locale%'
-                            - code: 'pricing-plan-categories'
-                              title: 'Pricing Plan Categories'
-                              description: 'Pricing Plan Categories'
-                              locale:  '%locale%'
+                            - name: 'Pay with Paypal Express Checkout'
+                              gateway: 'paypal_express_checkout'
+                              enabled: true
+                            - name: 'Pay with Paypal Pro Checkout'
+                              gateway: 'paypal_pro_checkout'
+                              enabled: true
+                            - name: 'Pay with Authorize.Net'
+                              gateway: 'authorize_net_aim'
+                              enabled: true
+                            - name: '24 hours with Phone Call'
+                              gateway: 'telephone_call'
+                              enabled: true
+                
                 product_categories:
                     name: product_categories
                     options:
@@ -163,6 +184,7 @@ sylius_fixtures:
                               parent: null
                               taxonomy_code: 'product-categories'
                               locale:  '%locale%'
+                
                 products:
                     name: products
                     options:
@@ -221,7 +243,6 @@ sylius_fixtures:
                               currency: 'EUR'
                               pictures:
                                   - file: '8.jpg'
-                
                 
                 paid_service_categories:
                     name: paid_service_categories
@@ -337,5 +358,26 @@ sylius_fixtures:
                               currencyCode: 'EUR'
                               subscription_priority: 1
                               paidServicePeriodCode: 'recurring-plans-halfyear'
+                              
+                association_types:
+                    name: association_types
+                    options:
+                        custom:
+                            - name: 'Associated Products'
+                              code: 'associated_products'
+                              associationStrategy: 'strategy_associated'
+                              locale: '%locale%'
+                            - name: 'Associated Products 2'
+                              code: 'associated_products_2'
+                              associationStrategy: 'strategy_associated'
+                              locale: '%locale%'
+                            - name: 'Similar Products'
+                              code: 'similar_products'
+                              associationStrategy: 'strategy_similar'
+                              locale: '%locale%'
+                            - name: 'Random Products'
+                              code: 'random_products'
+                              associationStrategy: 'strategy_random'
+                              locale: '%locale%'
                               
                             
