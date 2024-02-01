@@ -1,4 +1,4 @@
-<?php namespace Vankosoft\CatalogBundle\DataFixtures\VankosoftExtendedDataFixtures;
+<?php namespace Vankosoft\CatalogBundle\DataFixtures\Fixture;
 
 use Symfony\Component\Config\Definition\Builder\ArrayNodeDefinition;
 use Vankosoft\ApplicationInstalatorBundle\DataFixtures\AbstractResourceFixture;
@@ -22,7 +22,6 @@ final class PricingPlansFixture extends AbstractResourceFixture
                 ->booleanNode( 'premium' )->defaultFalse()->end()
                 ->scalarNode( 'price' )->end()
                 ->scalarNode( 'currencyCode' )->end()
-                ->scalarNode( 'subscription_priority' )->end()
                 ->scalarNode( 'paidServicePeriodCode' )->end()
         ;
     }

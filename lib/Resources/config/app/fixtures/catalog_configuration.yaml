@@ -1,0 +1,24 @@
+sylius_fixtures:
+    suites:
+        vankosoft_catalog_configuration_suite:
+            listeners:
+                #orm_purger: ~
+                logger: ~
+            
+            fixtures:
+                taxonomies:
+                    name: taxonomy
+                    options:
+                        custom:
+                            - code: 'product-categories'
+                              title: 'Product Categories'
+                              description: 'Product Categories'
+                              locale:  '%locale%'
+                            - code: 'paid-service-categories'
+                              title: 'Paid Service Categories'
+                              description: 'Paid Service Categories'
+                              locale:  '%locale%'
+                            - code: 'pricing-plan-categories'
+                              title: 'Pricing Plan Categories'
+                              description: 'Pricing Plan Categories'
+                              locale:  '%locale%'

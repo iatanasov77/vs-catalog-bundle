@@ -69,3 +69,12 @@
     {% include '@VSApplication/Partial/resource-delete.html.twig' %}
 {% endblock content %}
 
+{% block head_styles %}
+    {{ parent() }}
+    {{ encore_entry_link_tags( 'js/association-types-index' ) }}
+{% endblock %}
+
+{% block body_scripts %}
+    {{ parent() }}
+    {{ encore_entry_script_tags( 'js/association-types-index' ) }}
+{% endblock %}

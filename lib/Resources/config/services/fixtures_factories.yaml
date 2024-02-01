@@ -75,5 +75,10 @@ services:
             - '@vs_catalog.repository.pricing_plan_category'
             - '@vs_payment.repository.currency'
             - '@vs_users_subscriptions.repository.payed_service_subscription_period'
+            
+    vs_catalog.fixture.example_factory.association_types:
+        class: Vankosoft\CatalogBundle\DataFixtures\Factory\AssociationTypesExampleFactory
+        arguments:
+            - '@vs_catalog.factory.association_type'
 
 

@@ -1,4 +1,4 @@
-<?php namespace Vankosoft\CatalogBundle\DataFixtures\VankosoftExtendedDataFixtures;
+<?php namespace Vankosoft\CatalogBundle\DataFixtures\Fixture;
 
 use Symfony\Component\Config\Definition\Builder\ArrayNodeDefinition;
 use Vankosoft\ApplicationInstalatorBundle\DataFixtures\AbstractResourceFixture;

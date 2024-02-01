@@ -114,7 +114,7 @@ final class ProductsExampleFactory extends AbstractExampleFactory implements Exa
         }
         
         foreach( $pictures as $op ) {
-            $imagePath      = $this->fileLocator->locate( '@VSPaymentBundle/Resources/fixtures/productPictures/' . $op['file'] );
+            $imagePath      = $this->fileLocator->locate( '@VSCatalogBundle/Resources/fixtures/productPictures/' . $op['file'] );
             $uploadedImage  = new UploadedFile( $imagePath, basename( $imagePath ) );
             
             $picture        = $this->productPicturesFactory->createNew();

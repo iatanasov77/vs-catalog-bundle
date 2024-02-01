@@ -1,20 +1,22 @@
-<?php namespace Vankosoft\CatalogBundle\DataFixtures\VankosoftExtendedDataFixtures;
+<?php namespace Vankosoft\CatalogBundle\DataFixtures\Fixture;
 
 use Symfony\Component\Config\Definition\Builder\ArrayNodeDefinition;
 use Vankosoft\ApplicationInstalatorBundle\DataFixtures\AbstractResourceFixture;
 
-final class CurrenciesFixture extends AbstractResourceFixture
+final class ExchangeRatesFixture extends AbstractResourceFixture
 {
     public function getName(): string
     {
-        return 'currencies';
+        return 'exchange_rates';
     }
     
     protected function configureResourceNode( ArrayNodeDefinition $resourceNode ): void
     {
         $resourceNode
             ->children()
-                ->scalarNode( 'code' )->end()
+                ->scalarNode( 'source_currency' )->end()
+                ->scalarNode( 'target_currency' )->end()
+                ->scalarNode( 'ratio' )->end()
         ;
     }
 }

@@ -1,3 +1,16 @@
+1.0.1	|	Release date: **01.02.2024**
+============================================
+* New Features:
+  - Load Assets in Association Types Index Page.
+  - Move AdminPanel Default Theme User Catalog Pages Assets From Application Bundle.
+  - Update Payment Bundle Version Constraint.
+  - Add New Fixtures and Fixtures Refactoring.
+* Bug-Fixes:
+  - Some Fix.
+  - Fix ProductsExampleFactory .
+  - Fix Pricing Plans Fixture Classes and Definitions.
+
+
 1.0.0	|	Release date: **30.01.2024**
 ============================================
 * New Features, Fixes and Improvements:
