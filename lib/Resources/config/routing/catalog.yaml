@@ -1,0 +1,9 @@
+vs_catalog_latest_products:
+    path: /catalog/products/latest
+    controller: Vankosoft\CatalogBundle\Controller\CatalogController::latestProductsAction
+    
+vs_catalog_category_products:
+    path: /catalog/products/{categorySlug}
+    controller: Vankosoft\CatalogBundle\Controller\CatalogController::categoryProductsAction
+
+

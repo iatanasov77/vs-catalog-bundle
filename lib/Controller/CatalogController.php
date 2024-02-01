@@ -1,0 +1,42 @@
+<?php namespace Vankosoft\CatalogBundle\Controller;
+
+use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\HttpFoundation\Response;
+use Sylius\Component\Resource\Repository\RepositoryInterface;
+
+class CatalogController extends AbstractController
+{
+    /** @var RepositoryInterface */
+    protected $productCategoryRepository;
+    
+    /** @var RepositoryInterface */
+    protected $productRepository;
+    
+    public function __construct(
+        RepositoryInterface $productCategoryRepository,
+        RepositoryInterface $productRepository
+    ) {
+        $this->productCategoryRepository    = $productCategoryRepository;
+        $this->productRepository            = $productRepository;
+    }
+    
+    public function latestProductsAction( Request $request ): Response
+    {
+        $products   = $this->productRepository->findBy( [], ['updatedAt' => 'DESC'] );
+        
+        return $this->render( '@VSCatalog/Pages/Catalog/latest_products.html.twig', [
+            'products'  => $products,
+        ]);
+    }
+    
+    public function categoryProductsAction( $categorySlug, Request $request ): Response
+    {
+        $category   = $this->productCategoryRepository->findByTaxonCode( $categorySlug );
+        $products   = $category->getProducts();
+        
+        return $this->render( '@VSCatalog/Pages/Catalog/category_products.html.twig', [
+            'products'  => $products,
+        ]);
+    }
+}

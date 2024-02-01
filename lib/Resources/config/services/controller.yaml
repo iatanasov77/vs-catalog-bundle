@@ -18,4 +18,12 @@ services:
             - '@doctrine'
             - '@vs_catalog.repository.product'
             - '@vs_catalog.repository.product_category'
+            
+    Vankosoft\CatalogBundle\Controller\CatalogController:
+        tags: ['controller.service_arguments']
+        autowire: false
+        arguments:
+            - '@vs_catalog.repository.product_category'
+            - '@vs_catalog.repository.product'
+            
 

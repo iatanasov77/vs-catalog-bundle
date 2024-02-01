@@ -1,14 +1,14 @@
 vs_catalog_product_category:
     resource: |
         alias: vs_catalog.product_category
-        path: /catalog/product-categories
+        path: /product-categories
         templates: "@VSCatalog/Pages/Product_Categories"
     type: sylius.resource
     
 vs_catalog_product:
     resource: |
         alias: vs_catalog.product
-        path: /catalog/products
+        path: /products
         templates: "@VSCatalog/Pages/Products"
     type: sylius.resource
     
@@ -22,7 +22,7 @@ vs_catalog_pricing_plan_category:
     resource: |
         alias: vs_catalog.pricing_plan_category
         except: ['show']
-        path: /catalog/pricing-plan-categories
+        path: /pricing-plan-categories
         templates: "@VSCatalog/Pages/PricingPlanCategories"
     type: sylius.resource
     
@@ -30,7 +30,7 @@ vs_catalog_pricing_plan:
     resource: |
         alias: vs_catalog.pricing_plan
         except: ['show']
-        path: /catalog/pricing-plans
+        path: /pricing-plans
         templates: "@VSCatalog/Pages/PricingPlans"
         form:
             options:
@@ -50,12 +50,12 @@ vs_catalog_pricing_plan_paid_services:
 vs_catalog_association_type:
     resource: |
         alias: vs_catalog.association_type
-        path: /catalog/association-types
+        path: /association-types
         templates: "@VSCatalog/Pages/AssociationTypes"
     type: sylius.resource
     
 vs_catalog_handle_associations:
-    path: /catalog/handle-associations/{productId}
+    path: /handle-associations/{productId}
     controller: Vankosoft\CatalogBundle\Controller\ProductExtController::handleAssociationsForm
 
 
