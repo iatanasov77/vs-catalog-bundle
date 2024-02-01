@@ -1,12 +1,12 @@
-vs_catalog_latest_products:
+vs_catalog_catalog_latest_products:
     path: /catalog/products/latest
     controller: Vankosoft\CatalogBundle\Controller\CatalogController::latestProductsAction
     
-vs_catalog_category_products:
+vs_catalog_catalog_category_products:
     path: /catalog/products/{categorySlug}
     controller: Vankosoft\CatalogBundle\Controller\CatalogController::categoryProductsAction
     
-vs_catalog_product_show:
+vs_catalog_catalog_product_show:
     path: /catalog/products/{categorySlug}/{productSlug}
     controller: Vankosoft\CatalogBundle\Controller\CatalogController::showProductAction
 
