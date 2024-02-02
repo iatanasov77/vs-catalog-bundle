@@ -22,6 +22,39 @@ sylius_fixtures:
                               parent: 'electronics'
                               taxonomy_code: 'product-categories'
                               locale:  '%locale%'
+                            - title: 'Computers, Tablets & laptop'
+                              description: "Nowadays the lingerie industry is one of the most successful business spheres.\
+                                            We always stay in touch with the latest fashion tendencies - that is why \
+                                            our goods are so popular and we have a great number of faithful customers all over the country."
+                              parent: 'electronics'
+                              taxonomy_code: 'product-categories'
+                              locale:  '%locale%'
+                            - title: 'Mobile Phone'
+                              description: "Nowadays the lingerie industry is one of the most successful business spheres.\
+                                            We always stay in touch with the latest fashion tendencies - that is why \
+                                            our goods are so popular and we have a great number of faithful customers all over the country."
+                              parent: 'electronics'
+                              taxonomy_code: 'product-categories'
+                              locale:  '%locale%'
+                            - title: 'Books & Entertainments'
+                              description: null
+                              parent: null
+                              taxonomy_code: 'product-categories'
+                              locale:  '%locale%'
+                            - title: 'Books'
+                              description: "Nowadays the lingerie industry is one of the most successful business spheres.\
+                                            We always stay in touch with the latest fashion tendencies - that is why \
+                                            our goods are so popular and we have a great number of faithful customers all over the country."
+                              parent: 'electronics'
+                              taxonomy_code: 'product-categories'
+                              locale:  '%locale%'
+                            - title: 'Magazines'
+                              description: "Nowadays the lingerie industry is one of the most successful business spheres.\
+                                            We always stay in touch with the latest fashion tendencies - that is why \
+                                            our goods are so popular and we have a great number of faithful customers all over the country."
+                              parent: 'electronics'
+                              taxonomy_code: 'product-categories'
+                              locale:  '%locale%'
                 
                 products:
                     name: products
@@ -29,7 +62,7 @@ sylius_fixtures:
                         custom:
                             - name: 'Test Product 1'
                               description: 'Test Product 1'
-                              category_code: 'test-category'
+                              category_code: 'cameras'
                               locale:  '%locale%'
                               published: true
                               price: 230.99
@@ -38,7 +71,7 @@ sylius_fixtures:
                                   - file: '2.jpg'
                             - name: 'Test Product 2'
                               description: 'Test Product 2'
-                              category_code: 'test-category'
+                              category_code: 'cameras'
                               locale:  '%locale%'
                               published: true
                               price: 280.99
@@ -47,7 +80,7 @@ sylius_fixtures:
                                   - file: '11.jpg'
                             - name: 'Test Product 3'
                               description: 'Test Product 3'
-                              category_code: 'test-category'
+                              category_code: 'cameras'
                               locale:  '%locale%'
                               published: true
                               price: 140.99
@@ -56,7 +89,7 @@ sylius_fixtures:
                                   - file: '9.jpg'
                             - name: 'Test Product 4'
                               description: 'Test Product 4'
-                              category_code: 'test-category'
+                              category_code: 'cameras'
                               locale:  '%locale%'
                               published: true
                               price: 192.99
@@ -65,7 +98,7 @@ sylius_fixtures:
                                   - file: 'kindle.png'
                             - name: 'Test Product 5'
                               description: 'Test Product 5'
-                              category_code: 'test-category'
+                              category_code: 'cameras'
                               locale:  '%locale%'
                               published: true
                               price: 10.99
@@ -74,7 +107,7 @@ sylius_fixtures:
                                   - file: '7.jpg'
                             - name: 'Test Product 6'
                               description: 'Test Product 6'
-                              category_code: 'test-category'
+                              category_code: 'cameras'
                               locale:  '%locale%'
                               published: true
                               price: 8.99

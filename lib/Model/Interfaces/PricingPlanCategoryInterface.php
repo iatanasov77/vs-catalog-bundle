@@ -8,7 +8,7 @@ interface PricingPlanCategoryInterface extends ResourceInterface
 {
     /** @TODO Remove Theese When Extend VankosoftCategoryInterface */
     public function getName(): string;
-    public function getTaxon():? TaxonInterface;
+    public function getTaxon(): ?TaxonInterface;
     public function getParent();
     public function getChildren(): Collection;
     
