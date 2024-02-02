@@ -1,0 +1,56 @@
+sylius_fixtures:
+    suites:
+        vankosoft_catalog_sample_data_suite:
+            listeners:
+                #orm_purger: ~
+                logger: ~
+            
+            fixtures:
+                paid_service_categories:
+                    name: paid_service_categories
+                    options:
+                        custom:
+                            - title: 'Subscription Plans'
+                              description: 'Subscription Plans'
+                              parent: null
+                              taxonomy_code: 'paid-service-categories'
+                              taxon_code: 'subscription-plans'
+                              locale:  '%locale%'
+                
+                paid_services:
+                    name: paid_services
+                    options:
+                        custom:
+                            - title: 'Test Recurring Payments'
+                              description: 'Test Recurring Payments'
+                              category_code: 'subscription-plans'
+                              locale:  '%locale%'
+                              active: true
+                              subscription_code: recurring-plan
+                              subscription_priority: 1
+                              periods:
+                                  - subscriptionPeriod: 'Day'
+                                    title: '1 Day'
+                                    paidServicePeriodCode: 'recurring-plans-day'
+                            - title: 'Test Paid Services'
+                              description: 'Test Paid Services'
+                              category_code: 'subscription-plans'
+                              locale:  '%locale%'
+                              active: true
+                              subscription_code: paid-service-plan
+                              subscription_priority: 1
+                              periods:
+                                  - subscriptionPeriod: 'Month'
+                                    title: '1 Month'
+                                    paidServicePeriodCode: 'paid-services-month'
+                                  - subscriptionPeriod: 'QuarterYear'
+                                    title: '3 Months'
+                                    paidServicePeriodCode: 'paid-services-quarteryear'
+                                  - subscriptionPeriod: 'HalfYear'
+                                    title: '6 Months'
+                                    paidServicePeriodCode: 'paid-services-halfyear'
+                                  - subscriptionPeriod: 'Year'
+                                    title: '1 Year'
+                                    paidServicePeriodCode: 'paid-services-year'
+                              
+                            
