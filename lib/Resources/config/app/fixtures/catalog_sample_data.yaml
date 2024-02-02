@@ -69,6 +69,9 @@ sylius_fixtures:
                               currency: 'EUR'
                               pictures:
                                   - file: '2.jpg'
+                                  - file: 'f1.jpg'
+                                  - file: 'f2.jpg'
+                                  - file: 'f3.jpg'
                             - name: 'Test Product 2'
                               description: 'Test Product 2'
                               category_code: 'cameras'
@@ -78,6 +81,9 @@ sylius_fixtures:
                               currency: 'EUR'
                               pictures:
                                   - file: '11.jpg'
+                                  - file: 'f1.jpg'
+                                  - file: 'f2.jpg'
+                                  - file: 'f3.jpg'
                             - name: 'Test Product 3'
                               description: 'Test Product 3'
                               category_code: 'cameras'
@@ -87,6 +93,9 @@ sylius_fixtures:
                               currency: 'EUR'
                               pictures:
                                   - file: '9.jpg'
+                                  - file: 'f1.jpg'
+                                  - file: 'f2.jpg'
+                                  - file: 'f3.jpg'
                             - name: 'Test Product 4'
                               description: 'Test Product 4'
                               category_code: 'cameras'
@@ -96,6 +105,9 @@ sylius_fixtures:
                               currency: 'EUR'
                               pictures:
                                   - file: 'kindle.png'
+                                  - file: 'f1.jpg'
+                                  - file: 'f2.jpg'
+                                  - file: 'f3.jpg'
                             - name: 'Test Product 5'
                               description: 'Test Product 5'
                               category_code: 'cameras'
@@ -105,6 +117,9 @@ sylius_fixtures:
                               currency: 'EUR'
                               pictures:
                                   - file: '7.jpg'
+                                  - file: 'f1.jpg'
+                                  - file: 'f2.jpg'
+                                  - file: 'f3.jpg'
                             - name: 'Test Product 6'
                               description: 'Test Product 6'
                               category_code: 'cameras'
@@ -114,6 +129,74 @@ sylius_fixtures:
                               currency: 'EUR'
                               pictures:
                                   - file: '8.jpg'
+                                  - file: 'f1.jpg'
+                                  - file: 'f2.jpg'
+                                  - file: 'f3.jpg'
+                            - name: 'National Geographic - November 2023'
+                              description: 'National Geographic Bulgaria'
+                              category_code: 'magazines'
+                              locale:  '%locale%'
+                              published: true
+                              price: 1.99
+                              currency: 'EUR'
+                              pictures:
+                                  - file: 'ngm-1123-no-barcode-37292-400x0.jpeg'
+                            - name: 'National Geographic - December 2023'
+                              description: 'National Geographic Bulgaria'
+                              category_code: 'magazines'
+                              locale:  '%locale%'
+                              published: true
+                              price: 1.99
+                              currency: 'EUR'
+                              pictures:
+                                  - file: 'ngm-1223-no-barcode-37587-400x0.jpeg'
+                            - name: 'National Geographic - January 2024'
+                              description: 'National Geographic Bulgaria'
+                              category_code: 'magazines'
+                              locale:  '%locale%'
+                              published: true
+                              price: 1.99
+                              currency: 'EUR'
+                              pictures:
+                                  - file: 'ngm-0124-no-barcode-37838-400x0.jpeg'
+                            - name: 'National Geographic - February 2024'
+                              description: 'National Geographic Bulgaria'
+                              category_code: 'magazines'
+                              locale:  '%locale%'
+                              published: true
+                              price: 1.99
+                              currency: 'EUR'
+                              pictures:
+                                  - file: 'ngm-0224-no-barcode-38093-400x0.jpeg'
+                            - name: 'Необятният Космос'
+                              description: 'National Geographic = Необятният Космос'
+                              category_code: 'books'
+                              locale:  '%locale%'
+                              published: true
+                              price: 21.45
+                              currency: 'BGN'
+                              pictures:
+                                  - file: 'product_3100.jpg'
+                            - name: 'Shogun'
+                              description: 'Shogun'
+                              category_code: 'books'
+                              locale:  '%locale%'
+                              published: true
+                              price: 5.00
+                              currency: 'BGN'
+                              # content: 'Shogun.pdf'
+                              pictures:
+                                  - file: 'shogun.jpg'
+                            - name: 'Captain Cook Journal During the FirstVoyage Round the World'
+                              description: 'Captain Cook Journal During the FirstVoyage Round the World'
+                              category_code: 'books'
+                              locale:  '%locale%'
+                              published: true
+                              price: 5.00
+                              currency: 'BGN'
+                              # content: 'Captain Cook's Journal During the FirstVoyage Round the World.pdf'
+                              pictures:
+                                  - file: '9781490960388-us.jpg'
                 
                 pricing_plan_categories:
                     name: pricing_plan_categories
