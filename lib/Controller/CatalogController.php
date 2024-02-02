@@ -42,7 +42,7 @@ class CatalogController extends AbstractController
     
     public function showProductAction( $categorySlug, $productSlug, Request $request ): Response
     {
-        $product   = $this->productRepository->findBy( ['slug' => $productSlug] );
+        $product   = $this->productRepository->findOneBy( ['slug' => $productSlug] );
         
         return $this->render( '@VSCatalog/Pages/Catalog/show_product.html.twig', [
             'product'  => $product,

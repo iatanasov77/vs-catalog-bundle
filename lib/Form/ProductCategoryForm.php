@@ -59,6 +59,7 @@ class ProductCategoryForm extends AbstractForm
             
             ->add( 'parent', EntityType::class, [
                 'label'                 => 'vs_payment.form.parent_category',
+                'placeholder'           => 'vs_payment.form.parent_category_placeholder',
                 'translation_domain'    => 'VSPaymentBundle',
                 'class'                 => $this->categoryClass,
                 'query_builder'         => function ( RepositoryInterface $er ) use ( $category )
@@ -71,9 +72,8 @@ class ProductCategoryForm extends AbstractForm
                     return $qb; 
                 },
                 'choice_label'  => 'name',
-                
                 'required'      => false,
-                'placeholder'   => 'vs_payment.form.parent_category_placeholder',
+                'mapped'        => false,
             ])
         ;
     }
