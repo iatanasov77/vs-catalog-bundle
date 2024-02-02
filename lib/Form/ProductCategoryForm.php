@@ -85,6 +85,7 @@ class ProductCategoryForm extends AbstractForm
         $resolver
             ->setDefaults([
                 'csrf_protection'   => false,
+                'validation_groups' => false,
             ])
         ;
     }
