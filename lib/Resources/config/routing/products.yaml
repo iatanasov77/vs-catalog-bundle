@@ -3,6 +3,13 @@ vs_catalog_product_category:
         alias: vs_catalog.product_category
         path: /product-categories
         templates: "@VSCatalog/Pages/Product_Categories"
+        form:
+            options:
+                ckeditor_uiColor: '%vs_users_subscriptions.form.payed_service.ckeditor_uiColor%'
+                ckeditor_extraAllowedContent: '%vs_users_subscriptions.form.payed_service.ckeditor_extraAllowedContent%'
+                ckeditor_toolbar: '%vs_users_subscriptions.form.payed_service.ckeditor_toolbar%'
+                ckeditor_extraPlugins: '%vs_users_subscriptions.form.payed_service.ckeditor_extraPlugins%'
+                ckeditor_removeButtons: '%vs_users_subscriptions.form.payed_service.ckeditor_removeButtons%'
     type: sylius.resource
     
 vs_catalog_product:
@@ -24,6 +31,13 @@ vs_catalog_pricing_plan_category:
         except: ['show']
         path: /pricing-plan-categories
         templates: "@VSCatalog/Pages/PricingPlanCategories"
+        form:
+            options:
+                ckeditor_uiColor: '%vs_users_subscriptions.form.payed_service.ckeditor_uiColor%'
+                ckeditor_extraAllowedContent: '%vs_users_subscriptions.form.payed_service.ckeditor_extraAllowedContent%'
+                ckeditor_toolbar: '%vs_users_subscriptions.form.payed_service.ckeditor_toolbar%'
+                ckeditor_extraPlugins: '%vs_users_subscriptions.form.payed_service.ckeditor_extraPlugins%'
+                ckeditor_removeButtons: '%vs_users_subscriptions.form.payed_service.ckeditor_removeButtons%'
     type: sylius.resource
     
 vs_catalog_pricing_plan:

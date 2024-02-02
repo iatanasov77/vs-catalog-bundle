@@ -31,6 +31,7 @@ class ProductCategoryController extends AbstractCrudController
         $this->get( 'vs_application.slug_generator' )->setLocaleCode( $translatableLocale );
         
         $categoryName           = $form['name']->getData();
+        $categoryDescription    = $form['description']->getData();
         $parentCategory         = isset( $_POST['product_category_form']['parent'] ) ?
                                     $this->get( 'vs_catalog.repository.product_category' )->findByTaxonId( $_POST['product_category_form']['parent'] ) :
                                     null;
@@ -42,13 +43,14 @@ class ProductCategoryController extends AbstractCrudController
             $entityTaxon->setCurrentLocale( $translatableLocale );
             $request->setLocale( $translatableLocale );
             if ( ! in_array( $translatableLocale, $entityTaxon->getExistingTranslations() ) ) {
-                $taxonTranslation   = $this->createTranslation( $entityTaxon, $translatableLocale, $categoryName );
+                $taxonTranslation   = $this->createTranslation( $entityTaxon, $translatableLocale, $categoryName, $categoryDescription );
                 
                 $entityTaxon->addTranslation( $taxonTranslation );
             } else {
                 $taxonTranslation   = $entityTaxon->getTranslation( $translatableLocale );
 
                 $taxonTranslation->setName( $categoryName );
+                $taxonTranslation->setDescription( $categoryDescription );
                 $taxonTranslation->setSlug( $this->get( 'vs_application.slug_generator' )->generate( $categoryName ) );
             }
             
@@ -70,6 +72,7 @@ class ProductCategoryController extends AbstractCrudController
                 $parentCategory ? $parentCategory->getTaxon() : null,
                 $taxonomy->getId()
             );
+            $newTaxon->setDescription( $categoryDescription );
             
             $entity->setTaxon( $newTaxon );
             $entity->setParent( $parentCategory );

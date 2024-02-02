@@ -31,6 +31,7 @@ services:
         class: Vankosoft\CatalogBundle\DataFixtures\Factory\ProductCategoriesExampleFactory
         arguments:
             - '@vs_catalog.factory.product_category'
+            - '@vs_catalog.repository.product_category'
             - '@vs_application.repository.taxonomy'
             - '@vs_application.factory.taxon'
             - '@vs_application.slug_generator'

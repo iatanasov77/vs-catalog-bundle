@@ -22,3 +22,24 @@ sylius_fixtures:
                               title: 'Pricing Plan Categories'
                               description: 'Pricing Plan Categories'
                               locale:  '%locale%'
+                              
+                currencies:
+                    name: currencies
+                    options:
+                        custom:
+                            - code: 'EUR'
+                            - code: 'USD'
+                            - code: 'BGN'
+                
+                exchange_rates:
+                    name: exchange_rates
+                    options:
+                        custom:
+                            - source_currency: 'EUR'
+                              target_currency: 'BGN'
+                              ratio: 1.95
+                            - source_currency: 'USD'
+                              target_currency: 'BGN'
+                              ratio: 1.82
+
+
