@@ -1,0 +1,33 @@
+sylius_fixtures:
+    suites:
+        vankosoft_application_configuration_suite:
+            listeners:
+                #orm_purger: ~
+                logger: ~
+
+            fixtures:
+                widgets_groups:
+                    name: widgets_groups
+                    options:
+                        custom:
+                            - title: 'Catalog Widgets'
+                              description: 'Catalog Widgets'
+                              taxonomy_code: 'widgets-groups'
+                              locale:  '%locale%'
+                              translations:
+                                  en_US:
+                                      title: 'Catalog Widgets'
+                                      description: 'Widgets for Catalog Application'
+                                  bg_BG:
+                                      title: 'Catalog Widgets'
+                                      description: 'Widgets for Catalog Application'
+                                      
+                widgets:
+                    name: widgets
+                    options:
+                        custom:
+                            - group_code: 'catalog-widgets'
+                              locale:  '%locale%'
+                              name: 'Sidebar Categories'
+                              description: 'Sidebar Categories in Catalog Application'
+                              active: true
