@@ -6,7 +6,7 @@ sylius_fixtures:
                 logger: ~
             
             fixtures:
-                product_categories:
+                product_categories__top_level:
                     name: product_categories
                     options:
                         custom:
@@ -15,6 +15,16 @@ sylius_fixtures:
                               parent: null
                               taxonomy_code: 'product-categories'
                               locale:  '%locale%'
+                            - title: 'Books & Entertainments'
+                              description: null
+                              parent: null
+                              taxonomy_code: 'product-categories'
+                              locale:  '%locale%'
+                
+                product_categories__second_level:
+                    name: product_categories
+                    options:
+                        custom:
                             - title: 'Cameras'
                               description: "Nowadays the lingerie industry is one of the most successful business spheres.\
                                             We always stay in touch with the latest fashion tendencies - that is why \
@@ -36,11 +46,7 @@ sylius_fixtures:
                               parent: 'electronics'
                               taxonomy_code: 'product-categories'
                               locale:  '%locale%'
-                            - title: 'Books & Entertainments'
-                              description: null
-                              parent: null
-                              taxonomy_code: 'product-categories'
-                              locale:  '%locale%'
+                            
                             - title: 'Books'
                               description: "Nowadays the lingerie industry is one of the most successful business spheres.\
                                             We always stay in touch with the latest fashion tendencies - that is why \
