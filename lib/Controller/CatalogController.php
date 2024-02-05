@@ -19,7 +19,7 @@ class CatalogController extends AbstractController
     public function __construct(
         RepositoryInterface $productCategoryRepository,
         RepositoryInterface $productRepository,
-        $latestProductsLimit
+        int $latestProductsLimit = 6
     ) {
         $this->productCategoryRepository    = $productCategoryRepository;
         $this->productRepository            = $productRepository;
