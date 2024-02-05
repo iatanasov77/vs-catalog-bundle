@@ -27,6 +27,8 @@ vs_catalog:
         latest_products: Latest Products
         show_product: Show Product
         products_are_available: products are available
+        featured_products: Featured Products
+        view: View
         
     association_type:
         associated: Associated Products Strategy
