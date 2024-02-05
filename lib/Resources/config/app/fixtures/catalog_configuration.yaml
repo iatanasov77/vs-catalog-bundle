@@ -23,6 +23,31 @@ sylius_fixtures:
                               description: 'Pricing Plan Categories'
                               locale:  '%locale%'
                               
+                tags_whitelist_contexts:
+                    name: tags_whitelist_contexts
+                    options:
+                        custom:
+                            - title: 'Catalog Products'
+                              description: 'Tags for Catalog Products'
+                              taxonomy_code: 'tags-whitelist-contexts'
+                              locale:  '%locale%'
+                              translations:
+                                  en_US:
+                                      title: 'Catalog Products'
+                                      description: 'Tags for Catalog Products'
+                                  bg_BG:
+                                      title: 'Каталог Продукти'
+                                      description: 'Тагове за Каталог Продукти'
+                              
+                tags_whitelist_tags:
+                    name: tags_whitelist_tags
+                    options:
+                        custom:
+                            - context_code: 'catalog-products'
+                              tag: 'New'
+                            - context_code: 'catalog-products'
+                              tag: 'Special'
+                              
                 currencies:
                     name: currencies
                     options:
