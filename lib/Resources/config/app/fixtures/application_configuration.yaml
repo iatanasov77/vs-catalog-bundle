@@ -61,8 +61,8 @@ sylius_fixtures:
                                       title: 'Catalog Widgets'
                                       description: 'Widgets for Catalog Application'
                                   bg_BG:
-                                      title: 'Catalog Widgets'
-                                      description: 'Widgets for Catalog Application'
+                                      title: 'Каталог Уиджети'
+                                      description: 'Уиджети за Каталог'
                               
                 widgets:
                     name: widgets
