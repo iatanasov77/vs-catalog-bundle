@@ -7,6 +7,12 @@ vs_catalog:
         product_associations:
             associated_products: Associated Products
             associated_products_placeholder: '-- Select Associated Products --'
+            
+        product_sort:
+            sort_by: Sort By
+            product_name: Product name
+            product_stoke: Product Stoke
+            price_Lowest_first: Price Lowest first
 
     template:
         details: Details
@@ -16,6 +22,10 @@ vs_catalog:
         association_types_create_title: Create New Association Type
         association_type_details: Association Type Details
         product_associations: Product Associations
+        
+        latest_products: Latest Products
+        show_product: Show Product
+        products_are_available: products are available
         
     association_type:
         associated: Associated Products Strategy

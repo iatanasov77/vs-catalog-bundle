@@ -25,5 +25,6 @@ services:
         arguments:
             - '@vs_catalog.repository.product_category'
             - '@vs_catalog.repository.product'
+            - '%vs_catalog.latest_products_limit%'
             
 

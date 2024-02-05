@@ -13,17 +13,22 @@ class CatalogController extends AbstractController
     /** @var RepositoryInterface */
     protected $productRepository;
     
+    /** @var int **/
+    protected $latestProductsLimit;
+    
     public function __construct(
         RepositoryInterface $productCategoryRepository,
-        RepositoryInterface $productRepository
+        RepositoryInterface $productRepository,
+        int $latestProductsLimit
     ) {
         $this->productCategoryRepository    = $productCategoryRepository;
         $this->productRepository            = $productRepository;
+        $this->latestProductsLimit          = $latestProductsLimit;
     }
     
     public function latestProductsAction( Request $request ): Response
     {
-        $products   = $this->productRepository->findBy( [], ['updatedAt' => 'DESC'] );
+        $products   = $this->productRepository->findBy( [], ['updatedAt' => 'DESC'], $this->latestProductsLimit );
         
         return $this->render( '@VSCatalog/Pages/Catalog/latest_products.html.twig', [
             'products'  => $products,
@@ -33,10 +38,9 @@ class CatalogController extends AbstractController
     public function categoryProductsAction( $categorySlug, Request $request ): Response
     {
         $category   = $this->productCategoryRepository->findByTaxonCode( $categorySlug );
-        $products   = $category->getProducts();
         
         return $this->render( '@VSCatalog/Pages/Catalog/category_products.html.twig', [
-            'products'  => $products,
+            'category'  => $category,
         ]);
     }
     
