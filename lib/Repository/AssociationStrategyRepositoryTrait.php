@@ -32,7 +32,7 @@ trait AssociationStrategyRepositoryTrait
         $conn   = $em->getConnection();
         
         // get random ID's using RAW SQL
-        $sql    = \sprintf( "SELECT id from %s ORDER BY RAND() LIMIT %s". $this->_class->table['name'], $randCount );
+        $sql    = \sprintf( "SELECT id from %s ORDER BY RAND() LIMIT %s", $this->_class->table['name'], $randCount );
         $stmt   = $conn->prepare( $sql );
         $result = $stmt->execute();
         
