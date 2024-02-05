@@ -96,6 +96,15 @@ class ProductForm extends AbstractForm
                 'translation_domain'    => 'VSPaymentBundle',
             ])
             
+            ->add( 'inStock', NumberType::class, [
+                'label'                 => 'vs_catalog.form.in_stock',
+                'translation_domain'    => 'VSCatalogBundle',
+                'html5'                 => true,
+                'attr'                  => [
+                    'min' => -1,
+                ],
+            ])
+            
             ->add( 'pictures', CollectionType::class, [
                 'entry_type'   => Type\ProductPictureType::class,
                 'allow_add'    => true,
@@ -119,6 +128,13 @@ class ProductForm extends AbstractForm
                 'choice_label'          => 'code',
                 'placeholder'           => 'vs_payment.form.currency_placeholder',
                 'translation_domain'    => 'VSPaymentBundle',
+            ])
+            
+            ->add( 'tagsInputWhitelist', HiddenType::class, ['mapped' => false, 'required' => false] )
+            ->add( 'tags', TextType::class, [
+                'label'                 => 'vs_application.form.tags',
+                'translation_domain'    => 'VSApplicationBundle',
+                'required'              => false,
             ])
         ;
     }

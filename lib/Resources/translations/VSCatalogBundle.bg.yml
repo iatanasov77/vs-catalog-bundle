@@ -1,5 +1,6 @@
 vs_catalog:
     form:
+        in_stock: In Stock
         association_strategy: Association Strategy
         association_strategy_placeholder: '-- Choose an Association Strategy --'
         association_type_code: Association Type Code

@@ -29,10 +29,13 @@ class ProductController extends AbstractCrudController
             $associationsForm   = $this->getProductAssociationsForm( $entity );
         }
         
+        $tagsContext    = $this->get( 'vs_application.repository.tags_whitelist_context' )->findByTaxonCode( 'catalog-products' );
+        
         return [
             'categories'        => $this->get( 'vs_catalog.repository.product_category' )->findAll(),
             'taxonomyId'        => $taxonomy ? $taxonomy->getId() : 0,
             'translations'      => $translations,
+            'productTags'       => $tagsContext->getTagsArray(),
             'selectedTaxonIds'  => $selectedTaxonIds,
             'associationsForm'  => $associationsForm ? $associationsForm->createView() : null,
         ];
