@@ -2,18 +2,17 @@
 
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
-use Vankosoft\ApplicationBundle\Model\Interfaces\TaxonInterface;
+use Vankosoft\ApplicationBundle\Model\Traits\TaxonDescendentTrait;
 
 use Vankosoft\CatalogBundle\Model\Interfaces\PricingPlanCategoryInterface;
 use Vankosoft\CatalogBundle\Model\Interfaces\PricingPlanInterface;
 
 class PricingPlanCategory implements PricingPlanCategoryInterface
 {
+    use TaxonDescendentTrait;
+    
     /** @var mixed */
     protected $id;
-    
-    /** @var TaxonInterface */
-    protected $taxon;
     
     /** @var PricingPlanCategoryInterface */
     protected $parent;
@@ -36,22 +35,6 @@ class PricingPlanCategory implements PricingPlanCategoryInterface
     public function getId()
     {
         return $this->id;
-    }
-    
-    /**
-     * {@inheritdoc}
-     */
-    public function getTaxon():? TaxonInterface
-    {
-        return $this->taxon;
-    }
-    
-    /**
-     * {@inheritdoc}
-     */
-    public function setTaxon(?TaxonInterface $taxon): void
-    {
-        $this->taxon = $taxon;
     }
     
     /**
@@ -101,22 +84,6 @@ class PricingPlanCategory implements PricingPlanCategoryInterface
             $this->plans->removeElement( $plan );
             $plan->removeCategory( $this );
         }
-        
-        return $this;
-    }
-    
-    public function getName(): string
-    {
-        return $this->taxon ? $this->taxon->getName() : '';
-    }
-    
-    public function setName( string $name ) : self
-    {
-        if ( ! $this->taxon ) {
-            // Create new taxon into the controller and set the properties passed from form
-            return $this;
-        }
-        $this->taxon->setName( $name );
         
         return $this;
     }

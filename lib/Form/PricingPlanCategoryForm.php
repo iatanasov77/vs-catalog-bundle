@@ -9,6 +9,9 @@ use Sylius\Component\Resource\Repository\RepositoryInterface;
 use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
+use FOS\CKEditorBundle\Form\Type\CKEditorType;
+
+use Vankosoft\CatalogBundle\Model\Interfaces\PricingPlanCategoryInterface;
 
 class PricingPlanCategoryForm extends AbstractForm
 {
@@ -54,7 +57,22 @@ class PricingPlanCategoryForm extends AbstractForm
                 'label'                 => 'vs_payment.form.name',
                 'translation_domain'    => 'VSPaymentBundle',
                 'mapped'                => false,
-            ] )
+            ])
+            
+            ->add( 'description', CKEditorType::class, [
+                'label'                 => 'vs_payment.form.description',
+                'translation_domain'    => 'VSPaymentBundle',
+                'required'              => false,
+                'mapped'                => false,
+                'config'                => [
+                    'uiColor'               => $options['ckeditor_uiColor'],
+                    'extraAllowedContent'   => $options['ckeditor_extraAllowedContent'],
+                    
+                    'toolbar'               => $options['ckeditor_toolbar'],
+                    'extraPlugins'          => array_map( 'trim', explode( ',', $options['ckeditor_extraPlugins'] ) ),
+                    'removeButtons'         => $options['ckeditor_removeButtons'],
+                ],
+            ])
             
             ->add( 'parent', EntityType::class, [
                 'label'                 => 'vs_payment.form.parent_category',
@@ -84,7 +102,35 @@ class PricingPlanCategoryForm extends AbstractForm
         $resolver
             ->setDefaults([
                 'csrf_protection'   => false,
+                
+                // CKEditor Options
+                'ckeditor_uiColor'              => '#ffffff',
+                'ckeditor_extraAllowedContent'  => '*[*]{*}(*)',
+                
+                'ckeditor_toolbar'              => 'full',
+                'ckeditor_extraPlugins'         => '',
+                'ckeditor_removeButtons'        => '',
             ])
+            
+            ->setDefined([
+                'pricing_plan_category',
+                
+                // CKEditor Options
+                'ckeditor_uiColor',
+                'ckeditor_extraAllowedContent',
+                'ckeditor_toolbar',
+                'ckeditor_extraPlugins',
+                'ckeditor_removeButtons',
+            ])
+            
+            ->setAllowedTypes( 'pricing_plan_category', PricingPlanCategoryInterface::class )
+            
+            // CKEditor Options
+            ->setAllowedTypes( 'ckeditor_uiColor', 'string' )
+            ->setAllowedTypes( 'ckeditor_extraAllowedContent', 'string' )
+            ->setAllowedTypes( 'ckeditor_toolbar', 'string' )
+            ->setAllowedTypes( 'ckeditor_extraPlugins', 'string' )
+            ->setAllowedTypes( 'ckeditor_removeButtons', 'string' )
         ;
     }
     

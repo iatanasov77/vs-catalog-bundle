@@ -59,6 +59,9 @@ class Configuration implements ConfigurationInterface
                 ->scalarNode( 'orm_driver' )
                     ->defaultValue( SyliusResourceBundle::DRIVER_DOCTRINE_ORM )->cannotBeEmpty()
                 ->end()
+                ->scalarNode( 'latest_products_limit' )
+                    ->defaultValue( 6 )->cannotBeEmpty()
+                ->end()
             ->end()
         ;
         

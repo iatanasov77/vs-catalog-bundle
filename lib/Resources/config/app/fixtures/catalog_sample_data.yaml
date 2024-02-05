@@ -6,182 +6,59 @@ sylius_fixtures:
                 logger: ~
             
             fixtures:
-                currencies:
-                    name: currencies
-                    options:
-                        custom:
-                            - code: 'EUR'
-                            - code: 'USD'
-                            - code: 'BGN'
-                
-                exchange_rates:
-                    name: exchange_rates
-                    options:
-                        custom:
-                            - source_currency: 'EUR'
-                              target_currency: 'BGN'
-                              ratio: 1.95
-                            - source_currency: 'USD'
-                              target_currency: 'BGN'
-                              ratio: 1.82
-                
-                gateway_configs:
-                    name: gateway_configs
-                    options:
-                        custom:
-                            - title: 'Offline Bank Transfer'
-                              description: 'Offline Bank Transfer'
-                              gateway_name: 'offline_bank_transfer'
-                              factory_name: 'offline_bank_transfer'
-                              use_sandbox: true
-                              config:
-                                  "iban": "TEST"
-                                  "bank_name": "path/to/private.key"
-                                  "reciever_name": "path/to/public.cer"
-                                  "reason": "9426871 - ХОСТИНГ УСЛУГИ"
-                              sandbox_config:
-                                  "iban": "TEST"
-                                  "bank_name": "path/to/private.key"
-                                  "reciever_name": "path/to/public.cer"
-                                  "reason": "9426871 - ХОСТИНГ УСЛУГИ"
-                              currency: 'BGN'
-                            - title: 'Borica'
-                              description: 'Borica'
-                              gateway_name: 'borica'
-                              factory_name: 'borica'
-                              use_sandbox: true
-                              config:
-                                  "terminal_id": "TEST"
-                                  "private_key": "path/to/private.key"
-                                  "public_cert": "path/to/public.cer"
-                              sandbox_config:
-                                  "terminal_id": "TEST"
-                                  "private_key": "path/to/private.key"
-                                  "public_cert": "path/to/public.cer"
-                              currency: 'BGN'
-                            - title: 'Paysera Gateway'
-                              description: 'Paysera Gateway'
-                              gateway_name: 'paysera'
-                              factory_name: 'paysera'
-                              use_sandbox: true
-                              config:
-                                  "test": "false"
-                                  "projectid": "PROJECT_ID"
-                                  "sign_password": "SIGN_PASSWORD"
-                              sandbox_config:
-                                  "test": "true"
-                                  "projectid": "PROJECT_ID"
-                                  "sign_password": "SIGN_PASSWORD"
-                              currency: 'BGN'
-                            - title: 'Stripe Js'
-                              description: 'Stripe Js'
-                              gateway_name: 'stripe_js'
-                              factory_name: 'stripe_js'
-                              use_sandbox: true
-                              config:
-                                  "publishable_key": '%env(STRIPEJS_PUBLISHABLE_KEY)%'
-                                  "secret_key": '%env(STRIPEJS_SECRET_KEY)%'
-                              sandbox_config:
-                                  "publishable_key": '%env(STRIPEJS_PUBLISHABLE_KEY)%'
-                                  "secret_key": '%env(STRIPEJS_SECRET_KEY)%'
-                              currency: 'EUR'
-                            - title: 'Paypal Express Checkout'
-                              description: 'Paypal Express Checkout'
-                              gateway_name: 'paypal_express_checkout'
-                              factory_name: 'paypal_express_checkout'
-                              use_sandbox: true
-                              config:
-                                  "username": '%env(PAYPAL_USERNAME)%'
-                                  "password": '%env(PAYPAL_PASSWORD)%'
-                                  "signature": '%env(PAYPAL_SIGNATURE)%'
-                              sandbox_config:
-                                  "username": '%env(PAYPAL_USERNAME)%'
-                                  "password": '%env(PAYPAL_PASSWORD)%'
-                                  "signature": '%env(PAYPAL_SIGNATURE)%'
-                              currency: 'USD'
-                            - title: 'Paypal Pro Checkout'
-                              description: 'Paypal Pro Checkout'
-                              gateway_name: 'paypal_pro_checkout'
-                              factory_name: 'paypal_pro_checkout'
-                              use_sandbox: true
-                              config:
-                                  "username": '%env(PAYPAL_USERNAME)%'
-                                  "password": '%env(PAYPAL_PASSWORD)%'
-                                  "partner": "PAYPAL_PARTNER"
-                                  "vendor": "PAYPAL_VENDOR"
-                                  "tender": "PAYPAL_TENDER"
-                              sandbox_config:
-                                  "username": '%env(PAYPAL_USERNAME)%'
-                                  "password": '%env(PAYPAL_PASSWORD)%'
-                                  "partner": "PAYPAL_PARTNER"
-                                  "vendor": "PAYPAL_VENDOR"
-                                  "tender": "PAYPAL_TENDER"
-                              currency: 'USD'
-                            - title: 'Authorize.NET'
-                              description: 'Authorize.NET'
-                              gateway_name: 'authorize_net_aim'
-                              factory_name: 'authorize_net_aim'
-                              use_sandbox: true
-                              config:
-                                  "login_id": '%env(AUTHORIZE_NET_LOGIN_ID)%'
-                                  "transaction_key": '%env(AUTHORIZE_NET_TRANSACTION_KEY)%'
-                              sandbox_config:
-                                  "login_id": '%env(AUTHORIZE_NET_LOGIN_ID)%'
-                                  "transaction_key": '%env(AUTHORIZE_NET_TRANSACTION_KEY)%'
-                              currency: 'EUR'
-                            - title: 'Telephone Call'
-                              description: 'Use Telephone Call Payment'
-                              gateway_name: 'telephone_call'
-                              factory_name: 'telephone_call'
-                              use_sandbox: true
-                              config:
-                                  "api_login_endpoint": 'https://example.com/api/login_check'
-                                  "api_verify_coupon_endpoint": 'https://example.com/api/pricing-plan-coupon-check-valid'
-                                  "username": 'admin'
-                                  "password": 'admin'
-                              sandbox_config:
-                                  "api_login_endpoint": 'https://example.com/api/login_check'
-                                  "api_verify_coupon_endpoint": 'https://example.com/api/pricing-plan-coupon-check-valid'
-                                  "username": 'admin'
-                                  "password": 'admin'
-                              currency: 'EUR'
-                
-                payment_methods:
-                    name: payment_methods
-                    options:
-                        custom:
-                            - name: 'Pay with Bank transfer'
-                              gateway: 'offline_bank_transfer'
-                              enabled: true
-                            - name: 'Pay with Credit Card By Paysera'
-                              gateway: 'paysera'
-                              enabled: true
-                            - name: 'Pay with Credit Card By Borica'
-                              gateway: 'borica'
-                              enabled: true
-                            - name: 'Pay with Credit Card By StripeJs'
-                              gateway: 'stripe_js'
-                              enabled: true
-                            - name: 'Pay with Paypal Express Checkout'
-                              gateway: 'paypal_express_checkout'
-                              enabled: true
-                            - name: 'Pay with Paypal Pro Checkout'
-                              gateway: 'paypal_pro_checkout'
-                              enabled: true
-                            - name: 'Pay with Authorize.Net'
-                              gateway: 'authorize_net_aim'
-                              enabled: true
-                            - name: '24 hours with Phone Call'
-                              gateway: 'telephone_call'
-                              enabled: true
-                
-                product_categories:
+                product_categories__top_level:
                     name: product_categories
                     options:
                         custom:
-                            - title: 'Test Category'
-                              description: 'Test Category'
+                            - title: 'Electronics'
+                              description: null
                               parent: null
+                              taxonomy_code: 'product-categories'
+                              locale:  '%locale%'
+                            - title: 'Books & Entertainments'
+                              description: null
+                              parent: null
+                              taxonomy_code: 'product-categories'
+                              locale:  '%locale%'
+                
+                product_categories__second_level:
+                    name: product_categories
+                    options:
+                        custom:
+                            - title: 'Cameras'
+                              description: "Nowadays the lingerie industry is one of the most successful business spheres.\
+                                            We always stay in touch with the latest fashion tendencies - that is why \
+                                            our goods are so popular and we have a great number of faithful customers all over the country."
+                              parent: 'electronics'
+                              taxonomy_code: 'product-categories'
+                              locale:  '%locale%'
+                            - title: 'Computers, Tablets & laptop'
+                              description: "Nowadays the lingerie industry is one of the most successful business spheres.\
+                                            We always stay in touch with the latest fashion tendencies - that is why \
+                                            our goods are so popular and we have a great number of faithful customers all over the country."
+                              parent: 'electronics'
+                              taxonomy_code: 'product-categories'
+                              locale:  '%locale%'
+                            - title: 'Mobile Phone'
+                              description: "Nowadays the lingerie industry is one of the most successful business spheres.\
+                                            We always stay in touch with the latest fashion tendencies - that is why \
+                                            our goods are so popular and we have a great number of faithful customers all over the country."
+                              parent: 'electronics'
+                              taxonomy_code: 'product-categories'
+                              locale:  '%locale%'
+                            
+                            - title: 'Books'
+                              description: "Nowadays the lingerie industry is one of the most successful business spheres.\
+                                            We always stay in touch with the latest fashion tendencies - that is why \
+                                            our goods are so popular and we have a great number of faithful customers all over the country."
+                              parent: 'books-entertainments'
+                              taxonomy_code: 'product-categories'
+                              locale:  '%locale%'
+                            - title: 'Magazines'
+                              description: "Nowadays the lingerie industry is one of the most successful business spheres.\
+                                            We always stay in touch with the latest fashion tendencies - that is why \
+                                            our goods are so popular and we have a great number of faithful customers all over the country."
+                              parent: 'books-entertainments'
                               taxonomy_code: 'product-categories'
                               locale:  '%locale%'
                 
@@ -191,105 +68,141 @@ sylius_fixtures:
                         custom:
                             - name: 'Test Product 1'
                               description: 'Test Product 1'
-                              category_code: 'test-category'
+                              category_code: 'cameras'
                               locale:  '%locale%'
                               published: true
                               price: 230.99
                               currency: 'EUR'
                               pictures:
                                   - file: '2.jpg'
+                                  - file: 'f1.jpg'
+                                  - file: 'f2.jpg'
+                                  - file: 'f3.jpg'
                             - name: 'Test Product 2'
                               description: 'Test Product 2'
-                              category_code: 'test-category'
+                              category_code: 'cameras'
                               locale:  '%locale%'
                               published: true
                               price: 280.99
                               currency: 'EUR'
                               pictures:
                                   - file: '11.jpg'
+                                  - file: 'f1.jpg'
+                                  - file: 'f2.jpg'
+                                  - file: 'f3.jpg'
                             - name: 'Test Product 3'
                               description: 'Test Product 3'
-                              category_code: 'test-category'
+                              category_code: 'cameras'
                               locale:  '%locale%'
                               published: true
                               price: 140.99
                               currency: 'EUR'
                               pictures:
                                   - file: '9.jpg'
+                                  - file: 'f1.jpg'
+                                  - file: 'f2.jpg'
+                                  - file: 'f3.jpg'
                             - name: 'Test Product 4'
                               description: 'Test Product 4'
-                              category_code: 'test-category'
+                              category_code: 'cameras'
                               locale:  '%locale%'
                               published: true
                               price: 192.99
                               currency: 'EUR'
                               pictures:
                                   - file: 'kindle.png'
+                                  - file: 'f1.jpg'
+                                  - file: 'f2.jpg'
+                                  - file: 'f3.jpg'
                             - name: 'Test Product 5'
                               description: 'Test Product 5'
-                              category_code: 'test-category'
+                              category_code: 'cameras'
                               locale:  '%locale%'
                               published: true
                               price: 10.99
                               currency: 'EUR'
                               pictures:
                                   - file: '7.jpg'
+                                  - file: 'f1.jpg'
+                                  - file: 'f2.jpg'
+                                  - file: 'f3.jpg'
                             - name: 'Test Product 6'
                               description: 'Test Product 6'
-                              category_code: 'test-category'
+                              category_code: 'cameras'
                               locale:  '%locale%'
                               published: true
                               price: 8.99
                               currency: 'EUR'
                               pictures:
                                   - file: '8.jpg'
-                
-                paid_service_categories:
-                    name: paid_service_categories
-                    options:
-                        custom:
-                            - title: 'Subscription Plans'
-                              description: 'Subscription Plans'
-                              parent: null
-                              taxonomy_code: 'paid-service-categories'
-                              taxon_code: 'subscription-plans'
+                                  - file: 'f1.jpg'
+                                  - file: 'f2.jpg'
+                                  - file: 'f3.jpg'
+                            - name: 'National Geographic - November 2023'
+                              description: 'National Geographic Bulgaria'
+                              category_code: 'magazines'
                               locale:  '%locale%'
-                
-                paid_services:
-                    name: paid_services
-                    options:
-                        custom:
-                            - title: 'Test Recurring Payments'
-                              description: 'Test Recurring Payments'
-                              category_code: 'subscription-plans'
+                              published: true
+                              price: 1.99
+                              currency: 'EUR'
+                              pictures:
+                                  - file: 'ngm-1123-no-barcode-37292-400x0.jpeg'
+                            - name: 'National Geographic - December 2023'
+                              description: 'National Geographic Bulgaria'
+                              category_code: 'magazines'
                               locale:  '%locale%'
-                              active: true
-                              subscription_code: recurring-plan
-                              subscription_priority: 1
-                              periods:
-                                  - subscriptionPeriod: 'Day'
-                                    title: '1 Day'
-                                    paidServicePeriodCode: 'recurring-plans-day'
-                            - title: 'Test Paid Services'
-                              description: 'Test Paid Services'
-                              category_code: 'subscription-plans'
+                              published: true
+                              price: 1.99
+                              currency: 'EUR'
+                              pictures:
+                                  - file: 'ngm-1223-no-barcode-37587-400x0.jpeg'
+                            - name: 'National Geographic - January 2024'
+                              description: 'National Geographic Bulgaria'
+                              category_code: 'magazines'
                               locale:  '%locale%'
-                              active: true
-                              subscription_code: paid-service-plan
-                              subscription_priority: 1
-                              periods:
-                                  - subscriptionPeriod: 'Month'
-                                    title: '1 Month'
-                                    paidServicePeriodCode: 'paid-services-month'
-                                  - subscriptionPeriod: 'QuarterYear'
-                                    title: '3 Months'
-                                    paidServicePeriodCode: 'paid-services-quarteryear'
-                                  - subscriptionPeriod: 'HalfYear'
-                                    title: '6 Months'
-                                    paidServicePeriodCode: 'paid-services-halfyear'
-                                  - subscriptionPeriod: 'Year'
-                                    title: '1 Year'
-                                    paidServicePeriodCode: 'paid-services-year'
+                              published: true
+                              price: 1.99
+                              currency: 'EUR'
+                              pictures:
+                                  - file: 'ngm-0124-no-barcode-37838-400x0.jpeg'
+                            - name: 'National Geographic - February 2024'
+                              description: 'National Geographic Bulgaria'
+                              category_code: 'magazines'
+                              locale:  '%locale%'
+                              published: true
+                              price: 1.99
+                              currency: 'EUR'
+                              pictures:
+                                  - file: 'ngm-0224-no-barcode-38093-400x0.jpeg'
+                            - name: 'Необятният Космос'
+                              description: 'National Geographic = Необятният Космос'
+                              category_code: 'books'
+                              locale:  '%locale%'
+                              published: true
+                              price: 21.45
+                              currency: 'BGN'
+                              pictures:
+                                  - file: 'product_3100.jpg'
+                            - name: 'Shogun'
+                              description: 'Shogun'
+                              category_code: 'books'
+                              locale:  '%locale%'
+                              published: true
+                              price: 5.00
+                              currency: 'BGN'
+                              # content: 'Shogun.pdf'
+                              pictures:
+                                  - file: 'shogun.jpg'
+                            - name: 'Captain Cook Journal During the FirstVoyage Round the World'
+                              description: 'Captain Cook Journal During the FirstVoyage Round the World'
+                              category_code: 'books'
+                              locale:  '%locale%'
+                              published: true
+                              price: 5.00
+                              currency: 'BGN'
+                              # content: 'Captain Cook's Journal During the FirstVoyage Round the World.pdf'
+                              pictures:
+                                  - file: '9781490960388-us.jpg'
                 
                 pricing_plan_categories:
                     name: pricing_plan_categories

@@ -14,6 +14,9 @@ final class ProductCategoriesExampleFactory extends AbstractExampleFactory imple
     /** @var FactoryInterface */
     private $productCategoriesFactory;
     
+    /** @var RepositoryInterface */
+    private $productCategoriesRepository;
+    
     /** @var OptionsResolver */
     private $optionsResolver;
     
@@ -28,26 +31,35 @@ final class ProductCategoriesExampleFactory extends AbstractExampleFactory imple
     
     public function __construct(
         FactoryInterface $productCategoriesFactory,
+        RepositoryInterface $productCategoriesRepository,
         
         RepositoryInterface $taxonomyRepository,
         FactoryInterface $taxonFactory,
         SlugGenerator $slugGenerator
     ) {
-        $this->productCategoriesFactory = $productCategoriesFactory;
+        $this->productCategoriesFactory     = $productCategoriesFactory;
+        $this->productCategoriesRepository  = $productCategoriesRepository;
         
-        $this->optionsResolver          = new OptionsResolver();
+        $this->taxonomyRepository           = $taxonomyRepository;
+        $this->taxonFactory                 = $taxonFactory;
+        $this->slugGenerator                = $slugGenerator;
+        
+        $this->optionsResolver              = new OptionsResolver();
         $this->configureOptions( $this->optionsResolver );
-        
-        $this->taxonomyRepository       = $taxonomyRepository;
-        $this->taxonFactory             = $taxonFactory;
-        $this->slugGenerator            = $slugGenerator;
     }
     
     public function create( array $options = [] ): ProductCategoryInterface
     {
         $options                    = $this->optionsResolver->resolve( $options );
         
-        $taxonomyRootTaxonEntity    = $this->taxonomyRepository->findByCode( $options['taxonomy_code'] )->getRootTaxon();
+        if ( $options['parent'] ) {
+            $parentCategory = $this->productCategoriesRepository->findByTaxonCode( $options['parent'] );
+            $parentTaxon    = $parentCategory->getTaxon();
+        } else {
+            $parentCategory = null;
+            $parentTaxon    = $this->taxonomyRepository->findByCode( $options['taxonomy_code'] )->getRootTaxon();
+        }
+        
         $entity                     = $this->productCategoriesFactory->createNew();
         
         $taxonEntity                = $this->taxonFactory->createNew();
@@ -60,7 +72,9 @@ final class ProductCategoriesExampleFactory extends AbstractExampleFactory imple
         $taxonEntity->getTranslation()->setSlug( $slug );
         $taxonEntity->getTranslation()->setTranslatable( $taxonEntity );
         
-        $taxonEntity->setParent( $taxonomyRootTaxonEntity );
+        $taxonEntity->setParent( $parentTaxon );
+        
+        $entity->setParent( $parentCategory );
         $entity->setTaxon( $taxonEntity );
         
         return $entity;
@@ -76,7 +90,7 @@ final class ProductCategoriesExampleFactory extends AbstractExampleFactory imple
             ->setAllowedTypes( 'title', ['string'] )
             
             ->setDefault( 'description', null )
-            ->setAllowedTypes( 'description', ['string'] )
+            ->setAllowedTypes( 'description', ['string', 'null'] )
             
             ->setDefault( 'locale', 'en_US' )
             ->setAllowedTypes( 'locale', ['string'] )

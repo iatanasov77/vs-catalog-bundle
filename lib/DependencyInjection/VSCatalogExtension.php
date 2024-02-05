@@ -28,6 +28,9 @@ class VSCatalogExtension extends AbstractResourceExtension implements PrependExt
         // Register resources
         $this->registerResources( 'vs_catalog', $config['orm_driver'], $config['resources'], $container );
         
+        // Set Parameters
+        $container->setParameter( 'vs_catalog.latest_products_limit', $config['latest_products_limit'] );
+        
         $this->prepend( $container );
     }
     

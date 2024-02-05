@@ -24,6 +24,12 @@
             <gedmo:translatable />
         </field>
         
+        <field name="inStock" column="in_stock" type="integer" nullable="false">
+            <options>
+                <option name="default">0</option>
+            </options>
+        </field>
+        
         <one-to-many field="pictures" target-entity="Vankosoft\CatalogBundle\Model\Interfaces\ProductPictureInterface" mapped-by="owner">
             <cascade>
                 <cascade-all/>
@@ -32,6 +38,12 @@
         
         <field name="price" column="price" type="decimal" scale="2" precision="8" />
         <many-to-one field="currency" target-entity="Vankosoft\PaymentBundle\Model\Interfaces\CurrencyInterface" />
+        
+        <field name="tags" column="tags" type="string" length="255" nullable="true">
+            <options>
+                <option name="default"></option>
+            </options>
+        </field>
         
         <one-to-many field="orderItems" target-entity="Vankosoft\PaymentBundle\Model\Interfaces\OrderItemInterface" mapped-by="product" />
         

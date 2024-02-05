@@ -1,3 +1,27 @@
+1.0.2	|	Release date: **05.02.2024**
+============================================
+* New Features, Fixes and Improvements:
+  - Create a CatalogController to Use in Front Applications.
+  - Update Catalog Controller
+  - Update Catalog Routes.
+  - Add a Catalog Fix.
+  - Add Descriptions into Product and PricingPlan Categories.
+  - Improve Sample Data Fixtures.
+  - Improve TaxonDescendentTrait .
+  - Update Sample Data Fixtures.
+  - Add Fixtures for Application Configuration.
+  - Fix Product Categories Fixtures Definitions.
+  - Add a Config Parameter For Latest Products Limit.
+  - Improve Data Fixtures.
+  - More Improvements on Catalog Pages.
+  - Add More Fields into Product Model.
+  - Add a Doctrine Migration.
+  - Create New Product Form Fields.
+  - Use tagify in ProductForm
+  - Display Featured Products in Home Page.
+  - Fix AssociationStrategyRepositoryTrait .
+
+
 1.0.1	|	Release date: **01.02.2024**
 ============================================
 * New Features:

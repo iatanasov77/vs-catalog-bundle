@@ -10,6 +10,7 @@ use Vankosoft\ApplicationBundle\Model\Traits\TaxonLeafTrait;
 use Vankosoft\PaymentBundle\Model\Interfaces\CurrencyInterface;
 use Vankosoft\PaymentBundle\Model\Interfaces\OrderItemInterface;
 use Vankosoft\CatalogBundle\Model\Interfaces\ProductInterface;
+use Vankosoft\CatalogBundle\Model\Interfaces\ProductPictureInterface;
 use Vankosoft\CatalogBundle\Model\Interfaces\AssociationAwareInterface;
 use Vankosoft\CatalogBundle\Model\Traits\AssociationAwareTrait;
 
@@ -20,6 +21,9 @@ class Product implements ProductInterface, AssociationAwareInterface
     use TranslatableTrait;
     use ToggleableTrait;    // About enabled field - $enabled (published)
     use AssociationAwareTrait;
+    
+    const UNLIMITED     = -1;
+    const NOT_INSTOCK   = 0;
     
     /** @var integer */
     protected $id;
@@ -36,14 +40,20 @@ class Product implements ProductInterface, AssociationAwareInterface
     /** @var string */
     protected $description;
     
-    /** @var string */
-    protected $pictures;
+    /** @var integer */
+    protected $inStock  = self::NOT_INSTOCK;
     
     /** @var integer */
     protected $price;
     
     /** @var CurrencyInterface */
     protected $currency;
+    
+    /** @var string */
+    protected $tags   = '';
+    
+    /** @var Collection|ProductPictureInterface */
+    protected $pictures;
     
     /** @var Collection|OrderItemInterface[] */
     protected $orderItems;
@@ -69,7 +79,7 @@ class Product implements ProductInterface, AssociationAwareInterface
     /**
      * @return Collection|ProductCategory[]
      */
-    public function getCategories()
+    public function getCategories(): Collection
     {
         return $this->categories;
     }
@@ -127,10 +137,22 @@ class Product implements ProductInterface, AssociationAwareInterface
         return $this;
     }
     
+    public function getInStock(): int
+    {
+        return $this->inStock;
+    }
+    
+    public function setInStock( int $inStock ): self
+    {
+        $this->inStock = $inStock;
+        
+        return $this;
+    }
+    
     /**
      * @return Collection|ProductPicture[]
      */
-    public function getPictures()
+    public function getPictures(): Collection
     {
         return $this->pictures;
     }
@@ -187,6 +209,18 @@ class Product implements ProductInterface, AssociationAwareInterface
         return null;
     }
     
+    public function getTags()
+    {
+        return $this->tags;
+    }
+    
+    public function setTags($tags)
+    {
+        $this->tags = $tags;
+        
+        return $this;
+    }
+    
     public function getOrderItems()
     {
         return $this->orderItems;
@@ -230,7 +264,7 @@ class Product implements ProductInterface, AssociationAwareInterface
         return $this;
     }
     
-    public function isPublished()
+    public function isPublished(): bool
     {
         return $this->isEnabled();
     }

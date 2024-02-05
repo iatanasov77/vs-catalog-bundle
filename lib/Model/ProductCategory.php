@@ -2,11 +2,13 @@
 
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
-use Vankosoft\ApplicationBundle\Model\Interfaces\TaxonInterface;
+use Vankosoft\ApplicationBundle\Model\Traits\TaxonDescendentTrait;
 use Vankosoft\CatalogBundle\Model\Interfaces\ProductCategoryInterface;
 
 class ProductCategory implements ProductCategoryInterface
 {
+    use TaxonDescendentTrait;
+    
     /** @var mixed */
     protected $id;
     
@@ -18,9 +20,6 @@ class ProductCategory implements ProductCategoryInterface
     
     /** @var Collection|Product[] */
     protected $products;
-    
-    /** @var TaxonInterface */
-    protected $taxon;
     
     public function __construct()
     {
@@ -82,42 +81,5 @@ class ProductCategory implements ProductCategoryInterface
         }
         
         return $this;
-    }
-    
-    /**
-     * {@inheritdoc}
-     */
-    public function getTaxon(): ?TaxonInterface
-    {
-        return $this->taxon;
-    }
-    
-    /**
-     * {@inheritdoc}
-     */
-    public function setTaxon(?TaxonInterface $taxon): void
-    {
-        $this->taxon = $taxon;
-    }
-    
-    public function getName()
-    {
-        return $this->taxon ? $this->taxon->getName() : '';
-    }
-    
-    public function setName( string $name ) : self
-    {
-        if ( ! $this->taxon ) {
-            // Create new taxon into the controller and set the properties passed from form
-            return $this;
-        }
-        $this->taxon->setName( $name );
-        
-        return $this;
-    }
-    
-    public function __toString()
-    {
-        return $this->taxon ? $this->taxon->getName() : '';
     }
 }

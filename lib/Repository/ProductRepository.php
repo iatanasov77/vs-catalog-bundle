@@ -12,4 +12,29 @@ class ProductRepository extends EntityRepository implements AssociationStrategyR
     {
         parent::__construct( $em, $class );
     }
+    
+    /**
+     * @TODO Should Made to Fech All Products With Tag 'Special'
+     */
+    public function getFeaturedProducts()
+    {
+        $em     = $this->getEntityManager();
+        $conn   = $em->getConnection();
+        
+        // get random ID's using RAW SQL
+        $sql    = \sprintf( "SELECT id from %s ORDER BY RAND() LIMIT %s", $this->_class->table['name'], 10 );
+        $stmt   = $conn->prepare( $sql );
+        $result = $stmt->execute();
+        
+        $randomIds = array();
+        while ( $val = $result->fetch() ) {
+            $randomIds[]    = $val['id'];
+        }
+        
+        // native SQL in doctrine to load associated objects
+        $sql    = \sprintf( "SELECT tt FROM %s tt WHERE tt.id in (:ids)", $this->_class->name );
+        $query = $em->createQuery( $sql )->setParameter( 'ids', $randomIds );
+        
+        return $query->getResult();
+    }
 }

@@ -22,3 +22,80 @@ sylius_fixtures:
                               title: 'Pricing Plan Categories'
                               description: 'Pricing Plan Categories'
                               locale:  '%locale%'
+                              
+                tags_whitelist_contexts:
+                    name: tags_whitelist_contexts
+                    options:
+                        custom:
+                            - title: 'Catalog Products'
+                              description: 'Tags for Catalog Products'
+                              taxonomy_code: 'tags-whitelist-contexts'
+                              locale:  '%locale%'
+                              translations:
+                                  en_US:
+                                      title: 'Catalog Products'
+                                      description: 'Tags for Catalog Products'
+                                  bg_BG:
+                                      title: 'Каталог Продукти'
+                                      description: 'Тагове за Каталог Продукти'
+                              
+                tags_whitelist_tags:
+                    name: tags_whitelist_tags
+                    options:
+                        custom:
+                            - context_code: 'catalog-products'
+                              tag: 'New'
+                            - context_code: 'catalog-products'
+                              tag: 'Special'
+                              
+                currencies:
+                    name: currencies
+                    options:
+                        custom:
+                            - code: 'EUR'
+                            - code: 'USD'
+                            - code: 'BGN'
+                
+                exchange_rates:
+                    name: exchange_rates
+                    options:
+                        custom:
+                            - source_currency: 'EUR'
+                              target_currency: 'BGN'
+                              ratio: 1.95
+                            - source_currency: 'USD'
+                              target_currency: 'BGN'
+                              ratio: 1.82
+                              
+                widgets_groups:
+                    name: widgets_groups
+                    options:
+                        custom:
+                            - title: 'Catalog Widgets'
+                              description: 'Widgets for Catalog Application'
+                              taxonomy_code: 'widgets-groups'
+                              locale:  '%locale%'
+                              translations:
+                                  en_US:
+                                      title: 'Catalog Widgets'
+                                      description: 'Widgets for Catalog Application'
+                                  bg_BG:
+                                      title: 'Catalog Widgets'
+                                      description: 'Widgets for Catalog Application'
+                              
+                widgets:
+                    name: widgets
+                    options:
+                        custom:
+                            - group_code: 'catalog-widgets'
+                              locale:  '%locale%'
+                              name: 'Sidebar Categories'
+                              description: 'Sidebar Categories'
+                              active: true
+                              allowedRoles:
+                                - role: 'ROLE_ANONYMOUS_USER'
+                                - role: 'ROLE_SUPER_ADMIN'
+                                - role: 'ROLE_ADMIN'
+                                - role: 'ROLE_APPLICATION_ADMIN'
+
+
