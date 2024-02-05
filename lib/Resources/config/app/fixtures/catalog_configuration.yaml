@@ -41,5 +41,36 @@ sylius_fixtures:
                             - source_currency: 'USD'
                               target_currency: 'BGN'
                               ratio: 1.82
+                              
+                widgets_groups:
+                    name: widgets_groups
+                    options:
+                        custom:
+                            - title: 'Catalog Widgets'
+                              description: 'Widgets for Catalog Application'
+                              taxonomy_code: 'widgets-groups'
+                              locale:  '%locale%'
+                              translations:
+                                  en_US:
+                                      title: 'Catalog Widgets'
+                                      description: 'Widgets for Catalog Application'
+                                  bg_BG:
+                                      title: 'Catalog Widgets'
+                                      description: 'Widgets for Catalog Application'
+                              
+                widgets:
+                    name: widgets
+                    options:
+                        custom:
+                            - group_code: 'catalog-widgets'
+                              locale:  '%locale%'
+                              name: 'Sidebar Categories'
+                              description: 'Sidebar Categories'
+                              active: true
+                              allowedRoles:
+                                - role: 'ROLE_ANONYMOUS_USER'
+                                - role: 'ROLE_SUPER_ADMIN'
+                                - role: 'ROLE_ADMIN'
+                                - role: 'ROLE_APPLICATION_ADMIN'
 
 
