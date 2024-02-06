@@ -1,3 +1,9 @@
+1.0.3	|	Release date: **06.02.2024**
+============================================
+* Bug-Fixes:
+  - Fix Catalog Application Fixtures.
+
+
 1.0.2	|	Release date: **05.02.2024**
 ============================================
 * New Features, Fixes and Improvements:
