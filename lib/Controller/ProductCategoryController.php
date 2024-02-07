@@ -14,7 +14,7 @@ class ProductCategoryController extends AbstractCrudController
             $this->getParameter( 'vs_catalog.product_category.taxonomy_code' )
         );
         
-        $translations   = $this->classInfo['action'] == 'indexAction' ? $this->getTranslations() : [];
+        $translations   = $this->classInfo['action'] == 'indexAction' ? $this->getTranslations( false ) : [];
         if ( $entity && $entity->getTaxon() ) {
             $entity->getTaxon()->setCurrentLocale( $request->getLocale() );
         }
@@ -22,6 +22,7 @@ class ProductCategoryController extends AbstractCrudController
         return [
             'taxonomyId'    => $taxonomy ? $taxonomy->getId() : 0,
             'translations'  => $translations,
+            'items'         => $this->getRepository()->findAll(),
         ];
     }
     
