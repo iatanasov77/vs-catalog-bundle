@@ -1,3 +1,9 @@
+1.0.6	|	Release date: **07.02.2024**
+============================================
+* New Features and Improvements:
+  - Display Uncategorized Products.
+
+
 1.0.5	|	Release date: **07.02.2024**
 ============================================
 * Bug-Fixes:
