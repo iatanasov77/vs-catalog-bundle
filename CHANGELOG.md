@@ -1,3 +1,10 @@
+1.0.5	|	Release date: **07.02.2024**
+============================================
+* Bug-Fixes:
+  - Fix Products Index Page Template.
+  - Imptove Nested Accordion View in Products Listing Page.
+
+
 1.0.4	|	Release date: **07.02.2024**
 ============================================
 * Bug-Fixes:

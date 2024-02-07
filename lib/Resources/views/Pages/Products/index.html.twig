@@ -12,7 +12,7 @@
         <div class="accrodion-regular col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
             <div id="accordion">
                 {% for cat in categories %}
-                    {% if not cat.parent and cat.products | length %}
+                    {% if not cat.parent and ( cat.products | length or cat.children | length ) %}
                     	{% set dataParent = '#accordion' %}
                         {% include '@VSCatalog/Pages/Products/partial/products_table.html.twig' %}
         			{% endif %}
