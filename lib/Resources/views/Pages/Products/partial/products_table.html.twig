@@ -7,13 +7,11 @@
           </h5>
     </div>
     <div id="collapse{{ cat.id }}" class="collapse" aria-labelledby="heading{{ cat.id }}" data-bs-parent="{{ dataParent }}" style="">
-        <div class="accordion-body">
+        <div class="nested_accordion accordion-body">
             {% if cat.children | length %}
-    			<div id="nested_accordion">
-    				{% for catChild in cat.children %}
-    				    {% include '@VSCatalog/Pages/Products/partial/products_table.html.twig' with {'cat': catChild, 'dataParent': '#nested_accordion'} %}
-    			    {% endfor %}
-    			</div>
+				{% for catChild in cat.children %}
+				    {% include '@VSCatalog/Pages/Products/partial/products_table.html.twig' with {'cat': catChild, 'dataParent': '#nested_accordion'} %}
+			    {% endfor %}
     		{% endif %}
         
             <div class="card-body">
