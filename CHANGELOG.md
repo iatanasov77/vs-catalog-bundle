@@ -1,3 +1,9 @@
+1.0.4	|	Release date: **07.02.2024**
+============================================
+* Bug-Fixes:
+  - Add Templates Variable 'items' where is Needed and get Translations from Not Paginated resources where Is Neeed.
+
+
 1.0.3	|	Release date: **06.02.2024**
 ============================================
 * Bug-Fixes:

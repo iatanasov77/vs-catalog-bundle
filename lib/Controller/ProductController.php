@@ -14,7 +14,7 @@ class ProductController extends AbstractCrudController
     
     protected function customData( Request $request, $entity = null ): array
     {
-        $translations   = $this->classInfo['action'] == 'indexAction' ? $this->getTranslations() : [];
+        $translations   = $this->classInfo['action'] == 'indexAction' ? $this->getTranslations( false ) : [];
         
         $taxonomy   = $this->get( 'vs_application.repository.taxonomy' )->findByCode(
                                     $this->getParameter( 'vs_catalog.product_category.taxonomy_code' )
@@ -32,6 +32,7 @@ class ProductController extends AbstractCrudController
         $tagsContext    = $this->get( 'vs_application.repository.tags_whitelist_context' )->findByTaxonCode( 'catalog-products' );
         
         return [
+            'items'             => $this->getRepository()->findAll(),
             'categories'        => $this->get( 'vs_catalog.repository.product_category' )->findAll(),
             'taxonomyId'        => $taxonomy ? $taxonomy->getId() : 0,
             'translations'      => $translations,
