@@ -113,6 +113,14 @@ class ProductForm extends AbstractForm
                 'by_reference' => false
             ])
             
+            ->add( 'files', CollectionType::class, [
+                'entry_type'   => Type\ProductFileType::class,
+                'allow_add'    => true,
+                'allow_delete' => true,
+                'prototype'    => true,
+                'by_reference' => false
+            ])
+            
             ->add( 'price', NumberType::class, [
                 'label'                 => 'vs_payment.form.price',
                 'required'              => true,

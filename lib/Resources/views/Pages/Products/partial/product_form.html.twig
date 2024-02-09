@@ -73,12 +73,23 @@
                 </div>
                 
                 <fieldset class="fieldset-product-pictures">
-                    <legend class="w-auto">Pictures</legend>
+                    <legend class="w-auto">{{ 'vs_catalog.form.product.pictures' | trans( {},'VSCatalogBundle' ) }}</legend>
                     <div class="attributesContainer"
                         data-prototype="{% apply escape %}{% include '@VSCatalog/Pages/Products/partial/add-picture-prototype.html.twig' with {'form': form.pictures.vars.prototype} %}{% endapply %}"
                     > 
                         {% for pictureForm in form.pictures %}
                             {% include '@VSCatalog/Pages/Products/partial/add-picture-prototype.html.twig' with {'form': pictureForm} %}
+                        {% endfor %}
+                    </div>
+                </fieldset>
+                
+                <fieldset class="fieldset-product-files">
+                    <legend class="w-auto">{{ 'vs_catalog.form.product.files' | trans( {},'VSCatalogBundle' ) }}</legend>
+                    <div class="attributesContainer"
+                        data-prototype="{% apply escape %}{% include '@VSCatalog/Pages/Products/partial/add-file-prototype.html.twig' with {'form': form.files.vars.prototype} %}{% endapply %}"
+                    > 
+                        {% for fileForm in form.files %}
+                            {% include '@VSCatalog/Pages/Products/partial/add-file-prototype.html.twig' with {'form': fileForm} %}
                         {% endfor %}
                     </div>
                 </fieldset>

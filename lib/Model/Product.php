@@ -11,6 +11,7 @@ use Vankosoft\PaymentBundle\Model\Interfaces\CurrencyInterface;
 use Vankosoft\PaymentBundle\Model\Interfaces\OrderItemInterface;
 use Vankosoft\CatalogBundle\Model\Interfaces\ProductInterface;
 use Vankosoft\CatalogBundle\Model\Interfaces\ProductPictureInterface;
+use Vankosoft\CatalogBundle\Model\Interfaces\ProductFileInterface;
 use Vankosoft\CatalogBundle\Model\Interfaces\AssociationAwareInterface;
 use Vankosoft\CatalogBundle\Model\Traits\AssociationAwareTrait;
 
@@ -55,6 +56,9 @@ class Product implements ProductInterface, AssociationAwareInterface
     /** @var Collection|ProductPictureInterface */
     protected $pictures;
     
+    /** @var Collection|ProductFileInterface */
+    protected $files;
+    
     /** @var Collection|OrderItemInterface[] */
     protected $orderItems;
     
@@ -66,6 +70,7 @@ class Product implements ProductInterface, AssociationAwareInterface
         $this->orderItems   = new ArrayCollection();
         $this->categories   = new ArrayCollection();
         $this->pictures     = new ArrayCollection();
+        $this->files        = new ArrayCollection();
         
         /** @var ArrayCollection<array-key, AssociationInterface> $this->associations */
         $this->associations = new ArrayCollection();
@@ -171,6 +176,33 @@ class Product implements ProductInterface, AssociationAwareInterface
     {
         if ( $this->pictures->contains( $picture ) ) {
             $this->pictures->removeElement( $picture );
+        }
+        
+        return $this;
+    }
+    
+    /**
+     * @return Collection|ProductFile[]
+     */
+    public function getFiles(): Collection
+    {
+        return $this->files;
+    }
+    
+    public function addFile( ProductFile $file ): ProductInterface
+    {
+        if ( ! $this->files->contains( $file ) ) {
+            $file->setOwner( $this );
+            $this->files[] = $file;
+        }
+        
+        return $this;
+    }
+    
+    public function removeFile( ProductFile $file ): ProductInterface
+    {
+        if ( $this->files->contains( $file ) ) {
+            $this->files->removeElement( $file );
         }
         
         return $this;

@@ -30,7 +30,13 @@
             </options>
         </field>
         
-        <one-to-many field="pictures" target-entity="Vankosoft\CatalogBundle\Model\Interfaces\ProductPictureInterface" mapped-by="owner">
+        <one-to-many field="pictures" target-entity="Vankosoft\CatalogBundle\Model\Interfaces\ProductPictureInterface" mapped-by="owner" index-by="code">
+            <cascade>
+                <cascade-all/>
+            </cascade>
+        </one-to-many>
+        
+        <one-to-many field="files" target-entity="Vankosoft\CatalogBundle\Model\Interfaces\ProductFileInterface" mapped-by="owner" index-by="code">
             <cascade>
                 <cascade-all/>
             </cascade>

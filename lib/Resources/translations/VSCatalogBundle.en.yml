@@ -5,6 +5,14 @@ vs_catalog:
         association_strategy_placeholder: '-- Choose an Association Strategy --'
         association_type_code: Association Type Code
         
+        product:
+            pictures: Pictures
+            picture_code: Picture Code
+            picture_code_placeholder: '-- Choose a Picture Code --'
+            files: Files
+            file_code: File Code
+            file_code_placeholder: '-- Choose a File Code --'
+            
         product_associations:
             associated_products: Associated Products
             associated_products_placeholder: '-- Select Associated Products --'
