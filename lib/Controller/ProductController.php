@@ -8,6 +8,11 @@ use Symfony\Component\HttpFoundation\File\File;
 use Symfony\Component\HttpFoundation\File\UploadedFile;
 use Symfony\Component\HttpFoundation\File\Exception\FileException;
 
+use Vankosoft\CatalogBundle\Model\Interfaces\ProductInterface;
+use Vankosoft\CatalogBundle\Model\Interfaces\ProductPictureInterface;
+use Vankosoft\CatalogBundle\Model\Interfaces\ProductFileInterface;
+use Vankosoft\CatalogBundle\Component\Product;
+
 class ProductController extends AbstractCrudController
 {
     use ProductAssociationsTrait;
@@ -71,12 +76,27 @@ class ProductController extends AbstractCrudController
             }
         }
         
-        $pictures    = $request->files->get( 'product_form' );
-        foreach ( $pictures as $pic ) {
-            // echo "<pre>"; var_dump( \reset( $pic )['picture'] ); die;
-            $productPictureFile = \reset( $pic )['picture'];
-            if ( $productPictureFile ) {
-                $this->addProductPicture( $entity, $productPictureFile );
+        $formFiles  = $request->files->get( 'product_form' );
+        
+        $pictures   = $form['pictures']->getData();
+        if ( ! empty( $formFiles['pictures'] ) ) {
+            foreach ( $formFiles['pictures'] as $pictureId => $picture ) {
+                if ( ! $picture['picture'] ) {
+                    continue;
+                }
+                
+                $this->addProductPicture( $entity, $pictures[$pictureId], $picture['picture'], $formPost['pictures'][$pictureId]["code"] );
+            }
+        }
+        
+        $files      = $form['files']->getData();
+        if ( ! empty( $formFiles['files'] ) ) {
+            foreach ( $formFiles['files'] as $fileId => $file ) {
+                if ( ! $file['file'] ) {
+                    continue;
+                }
+                
+                $this->addProductFile( $entity, $files[$fileId], $file['file'], $formPost['files'][$fileId]["code"] );
             }
         }
         
@@ -88,7 +108,7 @@ class ProductController extends AbstractCrudController
         }
     }
     
-    private function getTranslations()
+    protected function getTranslations()
     {
         $translations   = [];
         $transRepo      = $this->get( 'vs_application.repository.translation' );
@@ -100,17 +120,43 @@ class ProductController extends AbstractCrudController
         return $translations;
     }
     
-    private function addProductPicture( &$entity, File $file ): void
+    protected function addProductPicture( ProductInterface &$entity, ProductPictureInterface &$productPicture, File $file, string $code ): void
     {
-        $uploadedFile   = new UploadedFile( $file->getRealPath(), $file->getBasename() );
-        $productPicture = $this->get( 'vs_catalog.factory.product_picture' )->createNew();
-        
         $productPicture->setOriginalName( $file->getClientOriginalName() );
+        
+        $uploadedFile   = new UploadedFile( $file->getRealPath(), $file->getBasename() );
         $productPicture->setFile( $uploadedFile );
         
         $this->get( 'vs_application.app_pictures_uploader' )->upload( $productPicture );
         $productPicture->setFile( null ); // reset File Because: Serialization of 'Symfony\Component\HttpFoundation\File\UploadedFile' is not allowed
         
+        if ( $code == Product::PRODUCT_PICTURE_TYPE_OTHER ) {
+            $productPicture->setCode( $code . '-' . \microtime() );
+        } else {
+            $productPicture->setCode( $code );
+        }
+        
+        
         $entity->addPicture( $productPicture );
+    }
+    
+    protected function addProductFile( ProductInterface &$entity, ProductFileInterface &$productFile, File $file, string $code ): void
+    {
+        $productFile->setOriginalName( $file->getClientOriginalName() );
+        
+        $uploadedFile   = new UploadedFile( $file->getRealPath(), $file->getBasename() );
+        $productFile->setFile( $uploadedFile );
+        
+        $this->get( 'vs_application.app_pictures_uploader' )->upload( $productFile );
+        $productFile->setFile( null ); // reset File Because: Serialization of 'Symfony\Component\HttpFoundation\File\UploadedFile' is not allowed
+        
+        if ( $code == Product::PRODUCT_FILE_TYPE_OTHER ) {
+            $productFile->setCode( $code . '-' . \microtime() );
+        } else {
+            $productFile->setCode( $code );
+        }
+        
+        
+        $entity->addFile( $productFile );
     }
 }

@@ -1,10 +1,10 @@
 <?php namespace Vankosoft\CatalogBundle\Model;
 
 use Vankosoft\CmsBundle\Model\File;
-use Vankosoft\CatalogBundle\Model\Interfaces\ProductPictureInterface;
+use Vankosoft\CatalogBundle\Model\Interfaces\ProductFileInterface;
 use Vankosoft\CatalogBundle\Model\Interfaces\ProductInterface;
 
-class ProductPicture extends File implements ProductPictureInterface
+class ProductFile extends File implements ProductFileInterface
 {
     /** @var ProductInterface | null */
     protected $owner;

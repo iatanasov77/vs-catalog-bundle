@@ -18,6 +18,7 @@ use Vankosoft\CatalogBundle\Repository\ProductCategoryRepository;
 use Vankosoft\CatalogBundle\Form\ProductCategoryForm;
 use Vankosoft\CatalogBundle\Controller\ProductCategoryController;
 use Vankosoft\CatalogBundle\Model\ProductPicture;
+use Vankosoft\CatalogBundle\Model\ProductFile;
 
 use Vankosoft\CatalogBundle\Model\PricingPlanCategory;
 use Vankosoft\CatalogBundle\Repository\PricingPlanCategoryRepository;
@@ -103,6 +104,21 @@ class Configuration implements ConfigurationInterface
                                     ->addDefaultsIfNotSet()
                                     ->children()
                                         ->scalarNode( 'model' )->defaultValue( ProductPicture::class )->cannotBeEmpty()->end()
+                                        ->scalarNode( 'repository' )->defaultValue( EntityRepository::class )->cannotBeEmpty()->end()
+                                        ->scalarNode( 'factory' )->defaultValue( Factory::class )->cannotBeEmpty()->end()
+                                    ->end()
+                                ->end()
+                            ->end()
+                        ->end()
+                        
+                        ->arrayNode( 'product_file' )
+                            ->addDefaultsIfNotSet()
+                            ->children()
+                                ->variableNode( 'options' )->end()
+                                ->arrayNode( 'classes' )
+                                    ->addDefaultsIfNotSet()
+                                    ->children()
+                                        ->scalarNode( 'model' )->defaultValue( ProductFile::class )->cannotBeEmpty()->end()
                                         ->scalarNode( 'repository' )->defaultValue( EntityRepository::class )->cannotBeEmpty()->end()
                                         ->scalarNode( 'factory' )->defaultValue( Factory::class )->cannotBeEmpty()->end()
                                     ->end()

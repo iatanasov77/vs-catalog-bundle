@@ -41,6 +41,7 @@ services:
         arguments:
             - '@vs_catalog.factory.product'
             - '@vs_catalog.factory.product_picture'
+            - '@vs_catalog.factory.product_file'
             - '@vs_payment.repository.currency'
             - '@vs_catalog.repository.product_category'
             - '@file_locator'

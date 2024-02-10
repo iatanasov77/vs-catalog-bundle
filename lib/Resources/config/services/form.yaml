@@ -27,6 +27,12 @@ services:
         arguments:
             - '%vs_catalog.model.product_picture.class%'
             
+    Vankosoft\CatalogBundle\Form\Type\ProductFileType:
+        tags:
+            - { name: form.type }
+        arguments:
+            - '%vs_catalog.model.product_file.class%'
+            
     vs_catalog.resources.pricing_plan_category.form:
         class: Vankosoft\CatalogBundle\Form\PricingPlanCategoryForm
         tags:

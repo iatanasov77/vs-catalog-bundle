@@ -2,7 +2,7 @@
 
 use Sylius\Component\Resource\Model\ResourceInterface;
 
-interface ProductPictureInterface extends ResourceInterface
+interface ProductFileInterface extends ResourceInterface
 {
     public function getProduct();
     public function getCode();

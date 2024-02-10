@@ -2,7 +2,7 @@
 
     {% if item.id and form.vars.value %}
         {% set photoId = form.vars.value.code %}
-        {% set originalName = item.pictures[photoId].originalName %}
+        {% set originalName = item.files[photoId].originalName %}
         {% set photoWidgetClass = 'form-control fieldPhoto persistedPhoto' %}
     {% else %}
         {% set photoId = '' %}
@@ -18,12 +18,12 @@
     </div>
     
     <div class="col-lg-7 form-field-file  mb-3">
-        {{ form_widget(form.picture, {'attr': {
+        {{ form_widget(form.file, {'attr': {
                 'class': photoWidgetClass,
                 'placeholder': originalName
             }
         }) }}
-        <label class="input-group-text" for="product_form_pictures_{{ photoId }}_picture">{{ originalName }}</label>
+        <label class="input-group-text" for="product_form_files_{{ photoId }}_file">{{ originalName }}</label>
     </div>
     
     <div class="col-lg-1">
