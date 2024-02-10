@@ -150,7 +150,7 @@ class ProductController extends AbstractCrudController
         $this->get( 'vs_application.app_pictures_uploader' )->upload( $productFile );
         $productFile->setFile( null ); // reset File Because: Serialization of 'Symfony\Component\HttpFoundation\File\UploadedFile' is not allowed
         
-        if ( $code == Product::PRODUCT_PICTURE_TYPE_OTHER ) {
+        if ( $code == Product::PRODUCT_FILE_TYPE_OTHER ) {
             $productFile->setCode( $code . '-' . \microtime() );
         } else {
             $productFile->setCode( $code );

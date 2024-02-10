@@ -8,7 +8,8 @@ class Product
     const PRODUCT_PICTURE_TYPE_OTHER        = 'product_other_pictures';
     
     /** Product File Types */
-    const PRODUCT_FILE_TYPE_OTHER        = 'product_other_files';
+    const PRODUCT_FILE_TYPE_CONTENT         = 'product_content';
+    const PRODUCT_FILE_TYPE_OTHER           = 'product_other_files';
     
     const PRODUCT_PICTURE_TYPES = [
         self::PRODUCT_PICTURE_TYPE_THUMBNAIL    => 'Product Thumbnail',
@@ -17,6 +18,7 @@ class Product
     ];
     
     const PRODUCT_FILE_TYPES = [
+        self::PRODUCT_FILE_TYPE_CONTENT => 'Product Content',
         self::PRODUCT_FILE_TYPE_OTHER   => 'Other Files',
     ];
 }

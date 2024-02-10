@@ -9,6 +9,7 @@ use Vankosoft\CmsBundle\Component\Uploader\FileUploaderInterface;
 use Symfony\Component\Config\FileLocatorInterface;
 use Symfony\Component\HttpFoundation\File\UploadedFile;
 
+use Vankosoft\CatalogBundle\Component\Product;
 use Vankosoft\CatalogBundle\Model\Interfaces\ProductInterface;
 
 final class ProductsExampleFactory extends AbstractExampleFactory implements ExampleFactoryInterface
@@ -21,6 +22,9 @@ final class ProductsExampleFactory extends AbstractExampleFactory implements Exa
     
     /** @var FactoryInterface */
     private $productPicturesFactory;
+    
+    /** @var FactoryInterface */
+    private $productFilesFactory;
     
     /** @var RepositoryInterface */
     private $currenciesRepository;
@@ -37,6 +41,7 @@ final class ProductsExampleFactory extends AbstractExampleFactory implements Exa
     public function __construct(
         FactoryInterface $productsFactory,
         FactoryInterface $productPicturesFactory,
+        FactoryInterface $productFilesFactory,
         RepositoryInterface $currenciesRepository,
         RepositoryInterface $categoriesRepository,
         ?FileLocatorInterface $fileLocator = null,
@@ -48,6 +53,8 @@ final class ProductsExampleFactory extends AbstractExampleFactory implements Exa
         $this->configureOptions( $this->optionsResolver );
         
         $this->productPicturesFactory   = $productPicturesFactory;
+        $this->productFilesFactory      = $productFilesFactory;
+        
         $this->currenciesRepository     = $currenciesRepository;
         $this->categoriesRepository     = $categoriesRepository;
         
@@ -74,6 +81,10 @@ final class ProductsExampleFactory extends AbstractExampleFactory implements Exa
         
         if ( isset( $options['pictures'] ) && null !== $options['pictures'] ) {
             $this->addProductPictures( $entity, $options['pictures'] );
+        }
+        
+        if ( isset( $options['files'] ) && null !== $options['files'] ) {
+            $this->addProductFiles( $entity, $options['files'] );
         }
         
         return $entity;
@@ -104,6 +115,7 @@ final class ProductsExampleFactory extends AbstractExampleFactory implements Exa
             ->setAllowedTypes( 'currency', ['string'] )
             
             ->setDefault( 'pictures', null )
+            ->setDefault( 'files', null )
         ;
     }
     
@@ -124,7 +136,40 @@ final class ProductsExampleFactory extends AbstractExampleFactory implements Exa
             $this->picturesUploader->upload( $picture );
             $picture->setFile( null );
             
+            if ( $op['code'] == Product::PRODUCT_PICTURE_TYPE_OTHER ) {
+                $picture->setCode( $op['code'] . '-' . \microtime() );
+            } else {
+                $picture->setCode( $op['code'] );
+            }
+            
             $entity->addPicture( $picture );
+        }
+    }
+    
+    private function addProductFiles( &$entity, array $files )
+    {
+        if ( $this->fileLocator === null || $this->picturesUploader === null ) {
+            throw new \RuntimeException( 'You must configure a $fileLocator or/and $picturesUploader' );
+        }
+        
+        foreach( $files as $op ) {
+            $imagePath      = $this->fileLocator->locate( '@VSCatalogBundle/Resources/fixtures/productContents/' . $op['file'] );
+            $uploadedImage  = new UploadedFile( $imagePath, basename( $imagePath ) );
+            
+            $file           = $this->productFilesFactory->createNew();
+            $file->setFile( $uploadedImage );
+            $file->setOriginalName( $op['file'] );
+            
+            $this->picturesUploader->upload( $file );
+            $file->setFile( null );
+            
+            if ( $op['code'] == Product::PRODUCT_FILE_TYPE_OTHER ) {
+                $file->setCode( $op['code'] . '-' . \microtime() );
+            } else {
+                $file->setCode( $op['code'] );
+            }
+            
+            $entity->addFile( $file );
         }
     }
 }
