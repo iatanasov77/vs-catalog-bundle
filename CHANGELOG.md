@@ -1,3 +1,12 @@
+1.0.7	|	Release date: **10.02.2024**
+============================================
+* New Features:
+  - Improve Product Pictures Model and Add Product Files Model.
+  - Add a Doctrine Migration
+  - Improve Product Edit View.
+  - Update Product Fixtures About New Features in Product Model.
+
+
 1.0.6	|	Release date: **07.02.2024**
 ============================================
 * New Features and Improvements:
