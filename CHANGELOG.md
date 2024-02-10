@@ -1,3 +1,9 @@
+1.1.0	|	Release date: **10.02.2024**
+============================================
+* New Features and Improvemets:
+  - Improve Product Edit File Inputs.
+
+
 1.0.7	|	Release date: **10.02.2024**
 ============================================
 * New Features:
