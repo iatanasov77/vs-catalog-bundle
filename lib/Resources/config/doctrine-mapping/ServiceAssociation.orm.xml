@@ -5,7 +5,7 @@
 
     <mapped-superclass name="Vankosoft\CatalogBundle\Model\ServiceAssociation">
         <unique-constraints>
-            <unique-constraint columns="product_id,association_type_id" name="service_association_idx" />
+            <unique-constraint columns="service_id,association_type_id" name="service_association_idx" />
         </unique-constraints>
 
         <id name="id" column="id" type="integer">
