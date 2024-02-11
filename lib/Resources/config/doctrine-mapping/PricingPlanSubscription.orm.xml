@@ -24,7 +24,8 @@
             </options>
         </field>
         
-        <one-to-one field="orderItem" target-entity="Vankosoft\PaymentBundle\Model\Interfaces\OrderItemInterface" mapped-by="subscription">
+        <!--  mapped-by="subscription" -->
+        <one-to-one field="orderItem" target-entity="Vankosoft\PaymentBundle\Model\Interfaces\OrderItemInterface">
             <cascade>
                 <cascade-all/>
             </cascade>
