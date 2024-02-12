@@ -9,10 +9,12 @@ use Vankosoft\PaymentBundle\Model\Interfaces\OrderItemInterface;
 use Vankosoft\CatalogBundle\Model\Interfaces\GatewayConfigInterface;
 use Vankosoft\UsersSubscriptionsBundle\Model\Interfaces\SubscribedUserInterface;
 use Vankosoft\UsersSubscriptionsBundle\Component\PayedService\SubscriptionPeriod;
+use Vankosoft\PaymentBundle\Model\Traits\PayableObjectTrait;
 
 class PricingPlanSubscription implements PricingPlanSubscriptionInterface
 {
     use TimestampableTrait;
+    use PayableObjectTrait;
     
     /** @var integer */
     protected $id;
@@ -110,20 +112,6 @@ class PricingPlanSubscription implements PricingPlanSubscriptionInterface
         return $this;
     }
     
-    /**
-     * For Backward compatibility
-     * 
-     * {@inheritDoc}
-     * @see \Vankosoft\PaymentBundle\Model\Interfaces\PayableObjectInterface::getOrderItems()
-     */
-    public function getOrderItems()
-    {
-        $collection = new ArrayCollection();
-        $collection->add( $this->orderItem );
-        
-        return new $collection;
-    }
-    
     public function getOrderItem(): OrderItemInterface
     {
         return $this->orderItem;
@@ -210,19 +198,9 @@ class PricingPlanSubscription implements PricingPlanSubscriptionInterface
         return $this->pricingPlan ? $this->pricingPlan->getSubscriptionPriority() : null;
     }
     
-    public function getPrice()
-    {
-        return $this->pricingPlan ? $this->pricingPlan->getPrice() : 0.00;
-    }
-    
     public function getTotalAmount()
     {
-        return $this->pricingPlan ? $this->pricingPlan->getPrice() : 0.00;
-    }
-    
-    public function getCurrencyCode()
-    {
-        return $this->pricingPlan ? $this->pricingPlan->getCurrencyCode() : 'EUR';
+        return $this->getPrice();
     }
     
     public function getGateway(): GatewayConfigInterface

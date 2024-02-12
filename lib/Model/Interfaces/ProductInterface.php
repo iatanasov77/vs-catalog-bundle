@@ -11,6 +11,8 @@ interface ProductInterface extends ResourceInterface, PayableObjectInterface, Ta
     public function getInStock(): int;
     public function getSlug(): ?string;
     public function getDescription(): ?string;
+    
     public function getCategories(): Collection;
     public function getPictures(): Collection;
+    public function getFiles(): Collection;
 }
