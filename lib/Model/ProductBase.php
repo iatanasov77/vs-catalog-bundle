@@ -140,22 +140,6 @@ class ProductBase
         return $this;
     }
     
-    public function getPublished(): ?bool
-    {
-        return $this->enabled;
-    }
-    
-    public function setPublished( ?bool $published ): ProductInterface
-    {
-        $this->enabled = (bool) $published;
-        return $this;
-    }
-    
-    public function isPublished(): bool
-    {
-        return $this->isEnabled();
-    }
-    
     /*
      * @NOTE: Decalared abstract in TranslatableTrait
      */
