@@ -1,3 +1,15 @@
+1.1.1	|	Release date: **12.02.2024**
+============================================
+* New Features , Fixes and Improvements:
+  - Add ServiceAssociation Resource and Remove it Later.
+  - Fix a Doctrine Mapping.
+  - Create a ProductBase Model to use For Other Custom Products.
+  - Fix Some Model Doctrine Mappings.
+  - Fix PricingPlanSubscription Model.
+  - Remove ContentService Model. Use ProductBase Model With Needed Traits.
+  - Add a Doctrine Migration.
+
+
 1.1.0	|	Release date: **10.02.2024**
 ============================================
 * New Features and Improvemets:
