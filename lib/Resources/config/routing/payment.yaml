@@ -47,30 +47,30 @@ vs_payment_handle_payment_methods_form:
 ###############################################################################################
 vs_payment_pricing_plans:
     path: /pricing-plans-checkout
-    controller: Vankosoft\CatalogBundle\Controller\PricingPlans\PricingPlanCheckoutController::showPricingPlans
+    controller: Vankosoft\CatalogBundle\Controller\PricingPlanCheckoutController::showPricingPlans
     options:
         expose: true
         
 vs_payment_select_pricing_plan_form:
     path: /pricing-plans-checkout/{pricingPlanId}
-    controller: Vankosoft\CatalogBundle\Controller\PricingPlans\PricingPlanCheckoutController::showSelectPricingPlanForm
+    controller: Vankosoft\CatalogBundle\Controller\PricingPlanCheckoutController::showSelectPricingPlanForm
     options:
         expose: true
 
 vs_payment_handle_pricing_plan_form:
     path: /handle-pricing-plan
-    controller: Vankosoft\CatalogBundle\Controller\PricingPlans\PricingPlanCheckoutController::handlePricingPlanFormAction
+    controller: Vankosoft\CatalogBundle\Controller\PricingPlanCheckoutController::handlePricingPlanFormAction
     options:
         expose: true
         
 vs_payment_select_payment_method_form:
     path: /select-payment-method/{pricingPlanId}
-    controller: Vankosoft\CatalogBundle\Controller\PricingPlans\PricingPlanCheckoutController::showPaymentMethodForm
+    controller: Vankosoft\CatalogBundle\Controller\PricingPlanCheckoutController::showPaymentMethodForm
     options:
         expose: true
 
 vs_payment_handle_payment_method_form:
     path: /handle-payment-method
-    controller: Vankosoft\CatalogBundle\Controller\PricingPlans\PricingPlanCheckoutController::handlePaymentMetodFormAction
+    controller: Vankosoft\CatalogBundle\Controller\PricingPlanCheckoutController::handlePaymentMetodFormAction
     options:
         expose: true
