@@ -9,10 +9,12 @@ use Vankosoft\PaymentBundle\Model\Interfaces\OrderItemInterface;
 use Vankosoft\CatalogBundle\Model\Interfaces\GatewayConfigInterface;
 use Vankosoft\UsersSubscriptionsBundle\Model\Interfaces\SubscribedUserInterface;
 use Vankosoft\UsersSubscriptionsBundle\Component\PayedService\SubscriptionPeriod;
+use Vankosoft\PaymentBundle\Model\Traits\PayableObjectTrait;
 
 class PricingPlanSubscription implements PricingPlanSubscriptionInterface
 {
     use TimestampableTrait;
+    use PayableObjectTrait;
     
     /** @var integer */
     protected $id;

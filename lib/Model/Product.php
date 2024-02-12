@@ -2,13 +2,8 @@
 
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
-use Vankosoft\ApplicationBundle\Model\Traits\TaxonLeafTrait;
-use Vankosoft\PaymentBundle\Model\Interfaces\CurrencyInterface;
 use Vankosoft\CatalogBundle\Model\Interfaces\ProductInterface;
 
-/**
- * Product Traits
- */
 use Vankosoft\CatalogBundle\Model\Traits\Product\CategoriesAwareTrait;
 use Vankosoft\CatalogBundle\Model\Traits\Product\PicturesAwareTrait;
 use Vankosoft\CatalogBundle\Model\Traits\Product\FilesAwareTrait;
@@ -16,8 +11,8 @@ use Vankosoft\CatalogBundle\Model\Traits\AssociationAwareTrait;
 use Vankosoft\CatalogBundle\Model\Traits\ReviewableTrait;
 use Vankosoft\CatalogBundle\Model\Traits\CommentableTrait;
 use Vankosoft\CatalogBundle\Model\Interfaces\AssociationAwareInterface;
-
 use Vankosoft\PaymentBundle\Model\Traits\PayableObjectTrait;
+use Vankosoft\ApplicationBundle\Model\Traits\TaxonLeafTrait;
 
 /**
  * This is a Final Product Implementation
