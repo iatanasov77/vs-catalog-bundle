@@ -2,7 +2,6 @@
 
 use Sylius\Component\Resource\Model\TimestampableTrait;
 use Doctrine\Common\Collections\ArrayCollection;
-use Doctrine\Common\Collections\Collection;
 use Vankosoft\CatalogBundle\Model\Interfaces\PricingPlanSubscriptionInterface;
 use Vankosoft\CatalogBundle\Model\Interfaces\PricingPlanInterface;
 use Vankosoft\PaymentBundle\Model\Interfaces\OrderItemInterface;
@@ -55,6 +54,7 @@ class PricingPlanSubscription implements PricingPlanSubscriptionInterface
     
     public function __construct()
     {
+        $this->orderItems           = new ArrayCollection();
         $this->gatewayAttributes    = [];
     }
     
