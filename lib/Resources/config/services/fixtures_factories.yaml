@@ -47,19 +47,10 @@ services:
             - '@file_locator'
             - '@vs_application.app_pictures_uploader'
             
-    vs_catalog.fixture.example_factory.paid_service_categories:
-        class: Vankosoft\CatalogBundle\DataFixtures\Factory\PaidServiceCategoriesExampleFactory
-        arguments:
-            - '@vs_users_subscriptions.factory.payed_service_category'
-            - '@vs_application.repository.taxonomy'
-            - '@vs_application.factory.taxon'
-            - '@vs_application.slug_generator'
-            
     vs_catalog.fixture.example_factory.paid_services:
         class: Vankosoft\CatalogBundle\DataFixtures\Factory\PaidServicesExampleFactory
         arguments:
             - '@vs_users_subscriptions.factory.payed_service'
-            - '@vs_users_subscriptions.repository.payed_service_category'
             - '@vs_users_subscriptions.factory.payed_service_subscription_period'
         
     vs_catalog.fixture.example_factory.pricing_plan_categories:

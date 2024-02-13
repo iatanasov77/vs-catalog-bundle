@@ -6,24 +6,12 @@ sylius_fixtures:
                 logger: ~
             
             fixtures:
-                paid_service_categories:
-                    name: paid_service_categories
-                    options:
-                        custom:
-                            - title: 'Subscription Plans'
-                              description: 'Subscription Plans'
-                              parent: null
-                              taxonomy_code: 'paid-service-categories'
-                              taxon_code: 'subscription-plans'
-                              locale:  '%locale%'
-                
                 paid_services:
                     name: paid_services
                     options:
                         custom:
                             - title: 'Test Recurring Payments'
                               description: 'Test Recurring Payments'
-                              category_code: 'subscription-plans'
                               locale:  '%locale%'
                               active: true
                               subscription_code: recurring-plan
@@ -34,7 +22,6 @@ sylius_fixtures:
                                     paidServicePeriodCode: 'recurring-plans-day'
                             - title: 'Test Paid Services'
                               description: 'Test Paid Services'
-                              category_code: 'subscription-plans'
                               locale:  '%locale%'
                               active: true
                               subscription_code: paid-service-plan
