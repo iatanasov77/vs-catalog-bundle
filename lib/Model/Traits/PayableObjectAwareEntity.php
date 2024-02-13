@@ -55,7 +55,7 @@ trait PayableObjectAwareEntity
     public function getObject(): PayableObjectInterface
     {
         switch ( $this->getPayableObjectType() ) {
-            case 'App\Entity\Catalog\PricingPlan':
+            case 'App\Entity\Catalog\PricingPlanSubscription':
                 return $this->getSubscription();
                 break;
             case 'App\Entity\Catalog\Product':

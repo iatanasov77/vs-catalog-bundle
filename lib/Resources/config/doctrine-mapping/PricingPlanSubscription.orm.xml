@@ -27,16 +27,7 @@
         <field name="price" column="price" type="decimal" scale="2" precision="8" />
         <many-to-one field="currency" target-entity="Vankosoft\PaymentBundle\Model\Interfaces\CurrencyInterface" />
         
-        <one-to-many field="orderItems" target-entity="Vankosoft\PaymentBundle\Model\Interfaces\OrderItemInterface" mapped-by="product" />
-        
-        <!--  mapped-by="subscription" 
-            This Field May be Not Needed
-        -->
-        <one-to-one field="orderItem" target-entity="Vankosoft\PaymentBundle\Model\Interfaces\OrderItemInterface">
-            <cascade>
-                <cascade-all/>
-            </cascade>
-        </one-to-one>
+        <one-to-many field="orderItems" target-entity="Vankosoft\PaymentBundle\Model\Interfaces\OrderItemInterface" mapped-by="subscription" />
         
         <field name="createdAt" column="created_at" type="datetime">
             <gedmo:timestampable on="create"/>
