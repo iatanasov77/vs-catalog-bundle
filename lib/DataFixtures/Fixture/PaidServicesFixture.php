@@ -16,7 +16,6 @@ final class PaidServicesFixture extends AbstractResourceFixture
             ->children()
                 ->scalarNode( 'title' )->end()
                 ->scalarNode( 'description' )->end()
-                ->scalarNode( 'category_code' )->end()
                 ->scalarNode( 'locale' )->end()
                 ->booleanNode( 'active' )->defaultTrue()->end()
                 ->scalarNode( 'subscription_code' )->end()

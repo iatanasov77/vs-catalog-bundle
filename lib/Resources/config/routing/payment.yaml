@@ -2,13 +2,13 @@
 # Shopping Cart Routes
 ###############################################################################################
 vs_payment_shopping_cart_index:
-    path: /vs_payment/shopping-cart
+    path: /shopping-cart
     controller: Vankosoft\PaymentBundle\Controller\ShoppingCart\ShoppingCartController::index
     options:
         expose: true
 
 vs_payment_add_to_card:
-    path: /vs_payment/add-to-card/{payableObjectId}/{qty}
+    path: /add-to-card/{payableObjectId}/{qty}
     controller: Vankosoft\PaymentBundle\Controller\ShoppingCart\ShoppingCartController::addToCartAction
     defaults:
         qty: 1
@@ -16,13 +16,13 @@ vs_payment_add_to_card:
         expose: true
 
 vs_payment_remove_from_card:
-    path: /vs_payment/remove-from-card/{itemId}
+    path: /remove-from-card/{itemId}
     controller: Vankosoft\PaymentBundle\Controller\ShoppingCart\ShoppingCartController::removeFromCartAction
     options:
         expose: true
         
 vs_payment_update_card:
-    path: /vs_payment/update-card
+    path: /update-card
     controller: Vankosoft\PaymentBundle\Controller\ShoppingCart\ShoppingCartController::updateCartAction
     options:
         expose: true
@@ -31,13 +31,13 @@ vs_payment_update_card:
 # Shopping Cart Checkout Routes
 ###############################################################################################
 vs_payment_show_payment_methods_form:
-    path: /vs_payment/payment-methods
+    path: /payment-methods
     controller: Vankosoft\PaymentBundle\Controller\ShoppingCart\ShoppingCartCheckoutController::showPaymentMethodsFormAction
     options:
         expose: true
 
 vs_payment_handle_payment_methods_form:
-    path: /vs_payment/handle-payment-methods
+    path: /handle-payment-methods
     controller: Vankosoft\PaymentBundle\Controller\ShoppingCart\ShoppingCartCheckoutController::handlePaymentMethodsFormAction
     options:
         expose: true
@@ -46,31 +46,31 @@ vs_payment_handle_payment_methods_form:
 # Pricing Plan Checkout Routes
 ###############################################################################################
 vs_payment_pricing_plans:
-    path: /vs_payment/pricing-plans-checkout
-    controller: Vankosoft\PaymentBundle\Controller\PricingPlans\PricingPlanCheckoutController::showPricingPlans
+    path: /pricing-plans-checkout
+    controller: Vankosoft\CatalogBundle\Controller\PricingPlanCheckoutController::showPricingPlans
     options:
         expose: true
         
 vs_payment_select_pricing_plan_form:
-    path: /vs_payment/pricing-plans-checkout/{pricingPlanId}
-    controller: Vankosoft\PaymentBundle\Controller\PricingPlans\PricingPlanCheckoutController::showSelectPricingPlanForm
+    path: /pricing-plans-checkout/{pricingPlanId}
+    controller: Vankosoft\CatalogBundle\Controller\PricingPlanCheckoutController::showSelectPricingPlanForm
     options:
         expose: true
 
 vs_payment_handle_pricing_plan_form:
-    path: /vs_payment/handle-pricing-plan
-    controller: Vankosoft\PaymentBundle\Controller\PricingPlans\PricingPlanCheckoutController::handlePricingPlanFormAction
+    path: /handle-pricing-plan
+    controller: Vankosoft\CatalogBundle\Controller\PricingPlanCheckoutController::handlePricingPlanFormAction
     options:
         expose: true
         
 vs_payment_select_payment_method_form:
-    path: /vs_payment/select-payment-method/{pricingPlanId}
-    controller: Vankosoft\PaymentBundle\Controller\PricingPlans\PricingPlanCheckoutController::showPaymentMethodForm
+    path: /select-payment-method/{pricingPlanId}
+    controller: Vankosoft\CatalogBundle\Controller\PricingPlanCheckoutController::showPaymentMethodForm
     options:
         expose: true
 
 vs_payment_handle_payment_method_form:
-    path: /vs_payment/handle-payment-method
-    controller: Vankosoft\PaymentBundle\Controller\PricingPlans\PricingPlanCheckoutController::handlePaymentMetodFormAction
+    path: /handle-payment-method
+    controller: Vankosoft\CatalogBundle\Controller\PricingPlanCheckoutController::handlePaymentMetodFormAction
     options:
         expose: true

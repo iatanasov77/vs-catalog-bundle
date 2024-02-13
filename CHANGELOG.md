@@ -1,3 +1,11 @@
+1.1.2	|	Release date: **13.02.2024**
+============================================
+* Bug-Fixes and Improvements:
+  - Fix Payment Routes.
+  - Remove PaidServiceCategory Resource From Fixtures.
+  - Add a Doctrine Migrations.
+
+
 1.1.1	|	Release date: **12.02.2024**
 ============================================
 * New Features , Fixes and Improvements:

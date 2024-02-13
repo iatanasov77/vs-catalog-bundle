@@ -16,15 +16,11 @@ final class PaidServicesExampleFactory extends AbstractExampleFactory implements
     /** @var OptionsResolver */
     private $optionsResolver;
     
-    /** @var RepositoryInterface */
-    private $categoriesRepository;
-    
     /** @var FactoryInterface */
     private $paidServicesSubscriptionPeriodFactory;
     
     public function __construct(
         FactoryInterface $paidServicesFactory,
-        RepositoryInterface $categoriesRepository,
         FactoryInterface $paidServicesSubscriptionPeriodFactory
     ) {
         $this->paidServicesFactory                      = $paidServicesFactory;
@@ -32,7 +28,6 @@ final class PaidServicesExampleFactory extends AbstractExampleFactory implements
         $this->optionsResolver                          = new OptionsResolver();
         $this->configureOptions( $this->optionsResolver );
         
-        $this->categoriesRepository                     = $categoriesRepository;
         $this->paidServicesSubscriptionPeriodFactory    = $paidServicesSubscriptionPeriodFactory;
     }
     
@@ -41,9 +36,7 @@ final class PaidServicesExampleFactory extends AbstractExampleFactory implements
         $options    = $this->optionsResolver->resolve( $options );
         
         $entity     = $this->paidServicesFactory->createNew();
-        $category   = $this->categoriesRepository->findByTaxonCode( $options['category_code'] );
         
-        $entity->setCategory( $category );
         $entity->setTranslatableLocale( $options['locale'] );
         $entity->setTitle( $options['title'] );
         $entity->setDescription( $options['description'] );
@@ -66,9 +59,6 @@ final class PaidServicesExampleFactory extends AbstractExampleFactory implements
             
             ->setDefault( 'description', null )
             ->setAllowedTypes( 'description', ['string'] )
-            
-            ->setDefault( 'category_code', null )
-            ->setAllowedTypes( 'category_code', ['string'] )
             
             ->setDefault( 'locale', null )
             ->setAllowedTypes( 'locale', ['string'] )

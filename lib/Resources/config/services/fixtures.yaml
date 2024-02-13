@@ -51,14 +51,6 @@ services:
             - '@vs_catalog.fixture.example_factory.products'
         tags:
             - 'sylius_fixtures.fixture'
-    
-    vs_catalog.fixture.paid_service_categories:
-        class: Vankosoft\CatalogBundle\DataFixtures\Fixture\PaidServiceCategoriesFixture
-        arguments:
-            - '@doctrine.orm.default_entity_manager'
-            - '@vs_catalog.fixture.example_factory.paid_service_categories'
-        tags:
-            - 'sylius_fixtures.fixture'
             
     vs_catalog.fixture.paid_services:
         class: Vankosoft\CatalogBundle\DataFixtures\Fixture\PaidServicesFixture
