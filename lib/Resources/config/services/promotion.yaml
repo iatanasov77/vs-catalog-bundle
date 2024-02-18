@@ -6,7 +6,7 @@ services:
     # Promotion Applicators
     ##############################################################################
     Vankosoft\CatalogBundle\Component\Distributor\MinimumPriceDistributorInterface:
-        class: Vankosoft\CatalogBundle\Component\Distributor\\MinimumPriceDistributor
+        class: Vankosoft\CatalogBundle\Component\Distributor\MinimumPriceDistributor
         arguments:
             - '@vs_payment.proportional_integer_distributor'
     
