@@ -83,5 +83,13 @@ services:
             - '@vs_catalog.fixture.example_factory.association_types'
         tags:
             - 'sylius_fixtures.fixture'
+            
+    vs_catalog.fixture.customer_groups:
+        class: Vankosoft\CatalogBundle\DataFixtures\Fixture\CustomerGroupsFixture
+        arguments:
+            - '@doctrine.orm.default_entity_manager'
+            - '@vs_catalog.fixture.example_factory.customer_groups'
+        tags:
+            - 'sylius_fixtures.fixture'
 
 
