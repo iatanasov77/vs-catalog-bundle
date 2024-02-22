@@ -23,7 +23,7 @@
         "php": "^8.1",
        	
        	"vankosoft/users-subscriptions-bundle": "^2.6",
-        "vankosoft/payment-bundle": "dev-develop",
+        "vankosoft/payment-bundle": "^3.2",
 		"sylius/review": "^1.12"
     },
     "conflict": {
