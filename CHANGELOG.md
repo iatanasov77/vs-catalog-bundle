@@ -1,3 +1,20 @@
+1.2.0	|	Release date: **22.02.2024**
+============================================
+* New Features:
+  - Add PaymentBundle in Develop Mode.
+  - Remove Relation Between PricingPlan and Coupon .
+  - Add Promotions For Catalog.
+  - Update PatbleObjectAwareTrait .
+  - Add Some Doctrine Migrations.
+  - Add Fixtures for Customer Groups
+  - Add a Promotion Rule Checker.
+* Bug-Fixes:
+  - Fix PricingPlanSubscriptionsSubscriber .
+  - Fix PricingPlanSubscription Model and Mapping.
+  - Fix as Service Definition.
+  - Fix Displaying Form Errors.
+
+
 1.1.2	|	Release date: **13.02.2024**
 ============================================
 * Bug-Fixes and Improvements:
