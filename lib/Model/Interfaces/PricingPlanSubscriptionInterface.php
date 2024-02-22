@@ -8,7 +8,6 @@ use Vankosoft\PaymentBundle\Model\Interfaces\OrderItemInterface;
 interface PricingPlanSubscriptionInterface extends ResourceInterface, SubscriptionInterface, PayableObjectInterface
 {
     public function getPricingPlan(): PricingPlanInterface;
-    public function getOrderItem(): OrderItemInterface;
     public function isPaid(): bool;
     public function isActive(): bool;
     public function getGatewayAttributes(): array;

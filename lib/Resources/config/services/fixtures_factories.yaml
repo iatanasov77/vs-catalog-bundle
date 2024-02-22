@@ -73,5 +73,13 @@ services:
         class: Vankosoft\CatalogBundle\DataFixtures\Factory\AssociationTypesExampleFactory
         arguments:
             - '@vs_catalog.factory.association_type'
+            
+    vs_catalog.fixture.example_factory.customer_groups:
+        class: Vankosoft\CatalogBundle\DataFixtures\Factory\CustomerGroupsExampleFactory
+        arguments:
+            - '@vs_payment.factory.customer_group'
+            - '@vs_application.repository.taxonomy'
+            - '@vs_application.factory.taxon'
+            - '@vs_application.slug_generator'
 
 

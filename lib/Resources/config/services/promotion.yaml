@@ -1,0 +1,51 @@
+services:
+    _defaults:
+        public: true
+        
+    ##############################################################################
+    # Promotion Applicators
+    ##############################################################################
+    Vankosoft\CatalogBundle\Component\Distributor\MinimumPriceDistributorInterface:
+        class: Vankosoft\CatalogBundle\Component\Distributor\MinimumPriceDistributor
+        arguments:
+            - '@vs_payment.proportional_integer_distributor'
+    
+    ##############################################################################
+    # Promotion Rule Form Types
+    ##############################################################################
+    vs_catalog.form.type.promotion_rule.contains_product_configuration:
+        class: Vankosoft\CatalogBundle\Form\Type\Rule\ContainsProductConfigurationType
+        arguments:
+            - '@vs_catalog.repository.product'
+        tags:
+            - { name: form.type }
+            
+    vs_catalog.form.type.promotion_rule.has_taxon_configuration:
+        class: Vankosoft\CatalogBundle\Form\Type\Rule\HasTaxonConfigurationType
+        arguments:
+            - '@vs_application.form.data_transformer.taxons_to_codes'
+        tags:
+            - { name: form.type }
+    
+    ##############################################################################
+    # Promotion Rules
+    ##############################################################################
+    vs_catalog.promotion_rule_checker.contains_product:
+        class: Vankosoft\CatalogBundle\Component\Promotion\RuleChecker\ContainsProductRuleChecker
+        tags:
+            vs_payment.promotion_rule_checker:
+                name: 'vs_payment.promotion_rule_checker'
+                type: 'contains_product'
+                label: 'vs_payment.form.promotion_rule.contains_product'
+                form_type: 'Vankosoft\CatalogBundle\Form\Type\Rule\ContainsProductConfigurationType'
+                
+    vs_catalog.promotion_rule_checker.has_taxon:
+        class: Vankosoft\CatalogBundle\Component\Promotion\RuleChecker\HasTaxonRuleChecker
+        tags:
+            vs_payment.promotion_rule_checker:
+                name: 'vs_payment.promotion_rule_checker'
+                type: 'has_taxon'
+                label: 'vs_payment.form.promotion_rule.has_at_least_one_from_taxons'
+                form_type: 'Vankosoft\CatalogBundle\Form\Type\Rule\HasTaxonConfigurationType'
+
+

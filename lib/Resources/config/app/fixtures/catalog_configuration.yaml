@@ -25,6 +25,13 @@ sylius_fixtures:
                               target_currency: 'BGN'
                               ratio: 1.82
                               
-                
+                customer_groups:
+                    name: customer_groups
+                    options:
+                        custom:
+                            - title: 'General Customers'
+                              taxonomy_code: 'customer-groups'
+                              taxon_code: 'general-customers'
+                              locale:  '%locale%'
 
 

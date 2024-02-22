@@ -26,6 +26,13 @@ trait PayableObjectAwareEntity
      */
     protected $product;
     
+    /**
+     * @var string | null
+     *
+     * @ORM\Column(name="product_name", type="text", nullable=true)
+     */
+    protected $productName;
+    
     public function getSubscription(): ?PricingPlanSubscriptionInterface
     {
         return $this->subscription;
@@ -52,10 +59,20 @@ trait PayableObjectAwareEntity
         return $this;
     }
     
+    public function getProductName(): ?string
+    {
+        return $this->productName ?: $this->product->getName();
+    }
+    
+    public function setProductName(?string $productName): void
+    {
+        $this->productName = $productName;
+    }
+    
     public function getObject(): PayableObjectInterface
     {
         switch ( $this->getPayableObjectType() ) {
-            case 'App\Entity\Catalog\PricingPlan':
+            case 'App\Entity\Catalog\PricingPlanSubscription':
                 return $this->getSubscription();
                 break;
             case 'App\Entity\Catalog\Product':

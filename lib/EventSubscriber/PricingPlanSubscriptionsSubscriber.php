@@ -88,6 +88,9 @@ final class PricingPlanSubscriptionsSubscriber implements EventSubscriberInterfa
         $expiresDate    = $startDate->add( $pricingPlan->getSubscriptionPeriod() );
         $subscription->setExpiresAt( $expiresDate );
         
+        $subscription->setPrice( $pricingPlan->getPrice() );
+        $subscription->setCurrency( $pricingPlan->getCurrency() );
+        
         $em             = $this->doctrine->getManager();
         $em->persist( $subscription );
         $em->flush();
@@ -104,6 +107,9 @@ final class PricingPlanSubscriptionsSubscriber implements EventSubscriberInterfa
         $startDate      = new \DateTime();
         $expiresDate    = $startDate->add( $pricingPlan->getSubscriptionPeriod() );
         $subscription->setExpiresAt( $expiresDate );
+        
+        $subscription->setPrice( $pricingPlan->getPrice() );
+        $subscription->setCurrency( $pricingPlan->getCurrency() );
         
         $em             = $this->doctrine->getManager();
         $em->persist( $subscription );

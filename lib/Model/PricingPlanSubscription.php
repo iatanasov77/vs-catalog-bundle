@@ -2,13 +2,10 @@
 
 use Sylius\Component\Resource\Model\TimestampableTrait;
 use Doctrine\Common\Collections\ArrayCollection;
-use Doctrine\Common\Collections\Collection;
 use Vankosoft\CatalogBundle\Model\Interfaces\PricingPlanSubscriptionInterface;
 use Vankosoft\CatalogBundle\Model\Interfaces\PricingPlanInterface;
-use Vankosoft\PaymentBundle\Model\Interfaces\OrderItemInterface;
-use Vankosoft\CatalogBundle\Model\Interfaces\GatewayConfigInterface;
+use Vankosoft\PaymentBundle\Model\Interfaces\GatewayConfigInterface;
 use Vankosoft\UsersSubscriptionsBundle\Model\Interfaces\SubscribedUserInterface;
-use Vankosoft\UsersSubscriptionsBundle\Component\PayedService\SubscriptionPeriod;
 use Vankosoft\PaymentBundle\Model\Traits\PayableObjectTrait;
 
 class PricingPlanSubscription implements PricingPlanSubscriptionInterface
@@ -36,9 +33,6 @@ class PricingPlanSubscription implements PricingPlanSubscriptionInterface
     /** @var bool */
     protected $recurringPayment = false;
     
-    /** @var OrderItemInterface */
-    protected $orderItem;
-    
     /** @var \DateTimeInterface */
     protected $expiresAt;
     
@@ -55,6 +49,7 @@ class PricingPlanSubscription implements PricingPlanSubscriptionInterface
     
     public function __construct()
     {
+        $this->orderItems           = new ArrayCollection();
         $this->gatewayAttributes    = [];
     }
     
@@ -108,18 +103,6 @@ class PricingPlanSubscription implements PricingPlanSubscriptionInterface
     public function setRecurringPayment( ?bool $recurringPayment )
     {
         $this->recurringPayment = (bool) $recurringPayment;
-        
-        return $this;
-    }
-    
-    public function getOrderItem(): OrderItemInterface
-    {
-        return $this->orderItem;
-    }
-    
-    public function setOrderItem(OrderItemInterface $orderItem)
-    {
-        $this->orderItem    = $orderItem;
         
         return $this;
     }
@@ -203,13 +186,23 @@ class PricingPlanSubscription implements PricingPlanSubscriptionInterface
         return $this->getPrice();
     }
     
-    public function getGateway(): GatewayConfigInterface
+    public function getGateway(): ?GatewayConfigInterface
     {
-        return $this->orderItem->getOrder()->getPaymentMethod()->getGateway();
+        $gatewayConfig  = null;
+        if ( $this->orderItems->count() ) {
+            $gatewayConfig  = $this->orderItems->last()->getOrder()->getPaymentMethod()->getGateway();
+        }
+        
+        return $gatewayConfig;
     }
     
-    public function getGatewayFactory(): string
+    public function getGatewayFactory(): ?string
     {
-        return $this->orderItem->getOrder()->getPaymentMethod()->getGateway()->getFactoryName();
+        $gatewayFactory = null;
+        if ( $this->orderItems->count() ) {
+            $gatewayFactory = $this->orderItems->last()->getOrder()->getPaymentMethod()->getGateway()->getFactoryName();
+        }
+        
+        return $gatewayFactory;
     }
 }
