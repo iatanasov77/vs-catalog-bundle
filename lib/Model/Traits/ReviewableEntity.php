@@ -5,7 +5,7 @@ use Doctrine\Common\Collections\Collection;
 //use Vankosoft\CatalogBundle\Model\Interfaces\ReviewInterface;
 use Sylius\Component\Review\Model\ReviewInterface;
 
-trait ReviewableTrait
+trait ReviewableEntity
 {
     /**
      * Add Orm Mapping for this field where is used this trait
@@ -19,6 +19,7 @@ trait ReviewableTrait
      *
      * @ORM\Column(name="average_rating", type="float", options={"default":"0"})
      */
+    #[ORM\Column(name: "average_rating", type: "float", options: ["default" => 0])]
     protected $averageRating = 0.0;
     
     /**

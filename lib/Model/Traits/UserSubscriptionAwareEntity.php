@@ -7,13 +7,14 @@ use Vankosoft\UsersSubscriptionsBundle\Model\Interfaces\SubscriptionInterface;
 use Vankosoft\UsersSubscriptionsBundle\Model\Interfaces\PayedServiceInterface;
 use Vankosoft\CatalogBundle\Model\Interfaces\PricingPlanInterface;
 
-trait UserSubscriptionAwareTrait
+trait UserSubscriptionAwareEntity
 {
     /**
      * @var Collection
      *
      * @ORM\OneToMany(targetEntity="Vankosoft\CatalogBundle\Model\Interfaces\PricingPlanSubscriptionInterface", mappedBy="user", cascade={"persist", "remove"})
      */
+    #[ORM\OneToMany(targetEntity: "Vankosoft\CatalogBundle\Model\Interfaces\PricingPlanSubscriptionInterface", mappedBy: "user", cascade: ["persist", "remove"], orphanRemoval: true)]
     protected $pricingPlanSubscriptions;
     
     /**
