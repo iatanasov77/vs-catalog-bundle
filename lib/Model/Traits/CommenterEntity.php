@@ -4,13 +4,14 @@ use Doctrine\ORM\Mapping as ORM;
 use Doctrine\Common\Collections\Collection;
 use Vankosoft\CatalogBundle\Model\Interfaces\CatalogCommentInterface;
 
-trait CommenterTrait
+trait CommenterEntity
 {
     /**
      * @var Collection
      * 
      * @ORM\OneToMany(targetEntity="Vankosoft\CatalogBundle\Model\Interfaces\CatalogCommentInterface", mappedBy="author", cascade={"persist", "remove"})
      */
+    #[ORM\OneToMany(targetEntity: "Vankosoft\CatalogBundle\Model\Interfaces\CatalogCommentInterface", mappedBy: "author", cascade: ["persist", "remove"], orphanRemoval: true)]
     protected $comments;
     
     /**
