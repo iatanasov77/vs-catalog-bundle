@@ -6,6 +6,7 @@ use Doctrine\Common\Collections\Collection;
 use Vankosoft\UsersSubscriptionsBundle\Model\Interfaces\SubscriptionInterface;
 use Vankosoft\UsersSubscriptionsBundle\Model\Interfaces\PayedServiceInterface;
 use Vankosoft\CatalogBundle\Model\Interfaces\PricingPlanInterface;
+use Vankosoft\CatalogBundle\Model\Interfaces\PricingPlanSubscriptionInterface;
 
 trait UserSubscriptionAwareEntity
 {
@@ -14,7 +15,7 @@ trait UserSubscriptionAwareEntity
      *
      * @ORM\OneToMany(targetEntity="Vankosoft\CatalogBundle\Model\Interfaces\PricingPlanSubscriptionInterface", mappedBy="user", cascade={"persist", "remove"})
      */
-    #[ORM\OneToMany(targetEntity: "Vankosoft\CatalogBundle\Model\Interfaces\PricingPlanSubscriptionInterface", mappedBy: "user", cascade: ["persist", "remove"], orphanRemoval: true)]
+    #[ORM\OneToMany(targetEntity: PricingPlanSubscriptionInterface::class, mappedBy: "user", cascade: ["persist", "remove"], orphanRemoval: true)]
     protected $pricingPlanSubscriptions;
     
     /**
