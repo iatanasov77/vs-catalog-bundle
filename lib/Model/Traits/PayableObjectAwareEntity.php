@@ -16,6 +16,8 @@ trait PayableObjectAwareEntity
      * @ORM\ManyToOne(targetEntity="Vankosoft\CatalogBundle\Model\Interfaces\PricingPlanSubscriptionInterface", inversedBy="orderItem", cascade={"all"})
      * @ORM\JoinColumn(name="subscription_id", referencedColumnName="id", nullable=true)
      */
+    #[ORM\ManyToOne(targetEntity: PricingPlanSubscriptionInterface::class, inversedBy: "orderItem", cascade={"all"})]
+    #[ORM\JoinColumn(name: "subscription_id", referencedColumnName: "id", nullable: true)]
     protected $subscription;
  
     /**
@@ -24,6 +26,8 @@ trait PayableObjectAwareEntity
      * @ORM\ManyToOne(targetEntity="Vankosoft\CatalogBundle\Model\Interfaces\ProductInterface", inversedBy="orderItems", cascade={"all"})
      * @ORM\JoinColumn(name="product_id", referencedColumnName="id", nullable=true)
      */
+    #[ORM\ManyToOne(targetEntity: ProductInterface::class, inversedBy: "orderItems", cascade={"all"})]
+    #[ORM\JoinColumn(name: "product_id", referencedColumnName: "id", nullable: true)]
     protected $product;
     
     /**
@@ -31,6 +35,7 @@ trait PayableObjectAwareEntity
      *
      * @ORM\Column(name="product_name", type="text", nullable=true)
      */
+    #[ORM\Column(name: "product_name", type: "text", nullable: true)]
     protected $productName;
     
     public function getSubscription(): ?PricingPlanSubscriptionInterface

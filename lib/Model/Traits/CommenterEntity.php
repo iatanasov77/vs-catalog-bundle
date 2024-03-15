@@ -11,7 +11,7 @@ trait CommenterEntity
      * 
      * @ORM\OneToMany(targetEntity="Vankosoft\CatalogBundle\Model\Interfaces\CatalogCommentInterface", mappedBy="author", cascade={"persist", "remove"})
      */
-    #[ORM\OneToMany(targetEntity: "Vankosoft\CatalogBundle\Model\Interfaces\CatalogCommentInterface", mappedBy: "author", cascade: ["persist", "remove"], orphanRemoval: true)]
+    #[ORM\OneToMany(targetEntity: CatalogCommentInterface::class, mappedBy: "author", cascade: ["persist", "remove"], orphanRemoval: true)]
     protected $comments;
     
     /**

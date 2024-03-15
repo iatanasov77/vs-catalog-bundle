@@ -1,3 +1,9 @@
+1.2.2	|	Release date: **15.03.2024**
+============================================
+* New Features:
+  - Improve Model Traiits Attribute ORM Mappings.
+
+
 1.2.1	|	Release date: **08.03.2024**
 ============================================
 * New Features and Improvements:
