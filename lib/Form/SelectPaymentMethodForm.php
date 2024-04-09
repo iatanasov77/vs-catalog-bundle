@@ -18,7 +18,7 @@ class SelectPaymentMethodForm extends AbstractType
         $this->paymentMethodClass   = $paymentMethodClass;
     }
     
-    public function buildForm( FormBuilderInterface $builder, array $options )
+    public function buildForm( FormBuilderInterface $builder, array $options ): void
     {
         $builder
             ->add( 'pricingPlan', HiddenType::class )
