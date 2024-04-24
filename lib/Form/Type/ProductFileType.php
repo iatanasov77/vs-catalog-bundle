@@ -21,7 +21,7 @@ class ProductFileType extends AbstractType
         $this->dataClass    = $dataClass;
     }
     
-    public function buildForm( FormBuilderInterface $builder, array $options )
+    public function buildForm( FormBuilderInterface $builder, array $options ): void
     {
         $builder
         
@@ -55,7 +55,7 @@ class ProductFileType extends AbstractType
         ;
     }
     
-    public function configureOptions( OptionsResolver $resolver )
+    public function configureOptions( OptionsResolver $resolver ): void
     {
         $resolver->setDefaults(array(
             'data_class' => $this->dataClass

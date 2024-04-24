@@ -32,7 +32,7 @@ class SelectPricingPlanForm extends AbstractType
         $this->pricingPlanRepository    = $pricingPlanRepository;
     }
     
-    public function buildForm( FormBuilderInterface $builder, array $options )
+    public function buildForm( FormBuilderInterface $builder, array $options ): void
     {
         $builder
             ->add( 'name', TextType::class, [
