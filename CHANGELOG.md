@@ -1,3 +1,11 @@
+1.2.3	|	Release date: **24.04.2024**
+============================================
+* Bug-Fixes and Improvements:
+  - Update All Forms about New Symfony Interfaces.
+  - Create Model ReviewableTrait .
+  - Fix PayableObjectAwareEntity .
+
+
 1.2.2	|	Release date: **15.03.2024**
 ============================================
 * New Features:
