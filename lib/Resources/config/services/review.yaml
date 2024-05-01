@@ -1,0 +1,23 @@
+services:
+    _defaults:
+        public: true
+        
+    vs_catalog.average_rating_calculator:
+        class: Sylius\Component\Review\Calculator\AverageRatingCalculator
+        
+    vs_catalog.review.average_rating_updater:
+        class: Vankosoft\CatalogBundle\Component\Review\AverageRatingUpdater
+        arguments:
+            - '@vs_catalog.average_rating_calculator'
+            - '@doctrine.orm.default_entity_manager'
+            
+    vs_catalog.listener.review_change:
+        class: Vankosoft\CatalogBundle\EventListener\ReviewChangeListener
+        tags:
+            - { name: doctrine.event_listener, event: postPersist, lazy: true }
+            - { name: doctrine.event_listener, event: postUpdate, lazy: true }
+            - { name: doctrine.event_listener, event: postRemove, lazy: true }
+        arguments:
+            - '@vs_catalog.review.average_rating_updater'
+
+
