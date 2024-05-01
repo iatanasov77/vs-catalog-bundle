@@ -1,3 +1,9 @@
+1.2.4	|	Release date: **01.05.2024**
+============================================
+* New Features:
+  - Add Reaviewable Subjects Average Rating Updater.
+
+
 1.2.3	|	Release date: **24.04.2024**
 ============================================
 * Bug-Fixes and Improvements:
