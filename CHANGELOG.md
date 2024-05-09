@@ -1,3 +1,12 @@
+1.2.5	|	Release date: **09.05.2024**
+============================================
+* New Features and Improvements:
+  - Create Product Review Repository.
+  - Add Some Traits for Discover Models.
+  - Create 'Select Payment Method Template' for Non Ajax Requests.
+  - Improve Pricing Plan Checkout.
+
+
 1.2.4	|	Release date: **01.05.2024**
 ============================================
 * New Features:
