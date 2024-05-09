@@ -99,5 +99,11 @@ services:
             - '@vs_catalog.form.type.data_transformer.products_to_product_associations'
             - '@vs_catalog.repository.product_category'
             - '%vs_catalog.model.product.class%'
+            
+    Vankosoft\CatalogBundle\Form\SelectPaymentMethodForm:
+        tags:
+            - { name: form.type }
+        arguments:
+            - '%vs_payment.model.payment_method.class%'
 
 
