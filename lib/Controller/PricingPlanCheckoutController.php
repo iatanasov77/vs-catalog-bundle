@@ -188,13 +188,17 @@ class PricingPlanCheckoutController extends AbstractController
                 false
             );
             
-            return new JsonResponse([
-                'status'    => Status::STATUS_OK,
-                'data'      => [
-                    'paymentPrepareUrl' => $paymentPrepareUrl,
-                    'gatewayFactory'    => $paymentMethod->getGateway()->getFactoryName(),
-                ]
-            ]);
+            if ( $request->isXmlHttpRequest() ) {
+                return new JsonResponse([
+                    'status'    => Status::STATUS_OK,
+                    'data'      => [
+                        'paymentPrepareUrl' => $paymentPrepareUrl,
+                        'gatewayFactory'    => $paymentMethod->getGateway()->getFactoryName(),
+                    ]
+                ]);
+            }
+            
+            return $this->redirectToRoute( $paymentPrepareUrl );
         }
     }
     
