@@ -153,7 +153,12 @@ class PricingPlanCheckoutController extends AbstractController
         $form                   = $this->createForm( SelectPaymentMethodForm::class, null, ['method' => 'POST'] );
         $bankTransferGateway    = $this->gatewaysRepository->findOneBy( ['factoryName' => 'offline_bank_transfer'] );
         
-        return $this->render( '@VSPayment/Pages/PricingPlansCheckout/Partial/select-payment-method-form.html.twig', [
+        $template               = '@VSCatalog/Pages/PricingPlansCheckout/select-payment-method.html.twig';
+        if ( $request->isXmlHttpRequest() ) {
+            $template   = '@VSCatalog/Pages/PricingPlansCheckout/Partial/select-payment-method-form.html.twig';
+        }
+        
+        return $this->render( $template, [
             'form'              => $form->createView(),
             'pricingPlanId'     => $pricingPlanId,
             'bankTransferInfo'  => $bankTransferGateway ? $bankTransferGateway->getConfig() : null,
@@ -183,13 +188,17 @@ class PricingPlanCheckoutController extends AbstractController
                 false
             );
             
-            return new JsonResponse([
-                'status'    => Status::STATUS_OK,
-                'data'      => [
-                    'paymentPrepareUrl' => $paymentPrepareUrl,
-                    'gatewayFactory'    => $paymentMethod->getGateway()->getFactoryName(),
-                ]
-            ]);
+            if ( $request->isXmlHttpRequest() ) {
+                return new JsonResponse([
+                    'status'    => Status::STATUS_OK,
+                    'data'      => [
+                        'paymentPrepareUrl' => $paymentPrepareUrl,
+                        'gatewayFactory'    => $paymentMethod->getGateway()->getFactoryName(),
+                    ]
+                ]);
+            }
+            
+            return $this->redirectToRoute( $paymentPrepareUrl );
         }
     }
     
