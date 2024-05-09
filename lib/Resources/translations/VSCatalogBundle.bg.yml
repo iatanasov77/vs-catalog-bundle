@@ -38,6 +38,8 @@ vs_catalog:
         featured_products: Featured Products
         view: View
         
+        select_payment_method_title: Select Payment Method
+        
     association_type:
         associated: Associated Products Strategy
         random: Random Products Strategy
