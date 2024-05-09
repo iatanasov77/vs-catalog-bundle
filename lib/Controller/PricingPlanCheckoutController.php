@@ -153,9 +153,9 @@ class PricingPlanCheckoutController extends AbstractController
         $form                   = $this->createForm( SelectPaymentMethodForm::class, null, ['method' => 'POST'] );
         $bankTransferGateway    = $this->gatewaysRepository->findOneBy( ['factoryName' => 'offline_bank_transfer'] );
         
-        $template               = '@VSPayment/Pages/PricingPlansCheckout/select-payment-method.html.twig';
+        $template               = '@VSCatalog/Pages/PricingPlansCheckout/select-payment-method.html.twig';
         if ( $request->isXmlHttpRequest() ) {
-            $template   = '@VSPayment/Pages/PricingPlansCheckout/Partial/select-payment-method-form.html.twig';
+            $template   = '@VSCatalog/Pages/PricingPlansCheckout/Partial/select-payment-method-form.html.twig';
         }
         
         return $this->render( $template, [
