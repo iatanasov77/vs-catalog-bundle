@@ -18,6 +18,7 @@ vs_application:
         pricing_plans_listing: Pricing Plans
         create_pricing_plan: Create a Pricing Plan
         edit_pricing_plan: Edit Pricing Plan
+        associations: Associations
         association_types: Association Types
         association_types_listing: Association Types Listing
         create_association_type: Create Association Type
