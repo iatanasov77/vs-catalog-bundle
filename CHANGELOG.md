@@ -1,3 +1,9 @@
+1.2.7	|	Release date: **10.05.2024**
+============================================
+* New Features:
+  - Add Some Translations.
+
+
 1.2.6	|	Release date: **10.05.2024**
 ============================================
 * Bug-Fixes and Improvements:
