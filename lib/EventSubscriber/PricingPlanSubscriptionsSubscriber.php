@@ -123,10 +123,13 @@ final class PricingPlanSubscriptionsSubscriber implements EventSubscriberInterfa
         }
         
         $startDate      = $subscription->isPaid() ? $subscription->getExpiresAt() : new \DateTime();
-        $expiresDate    = $startDate->add( $pricingPlan->getSubscriptionPeriod() );
+        $expiresDate    = \DateTimeImmutable::createFromMutable( $startDate );
+        //$expiresDate    = $startDate->add( $pricingPlan->getSubscriptionPeriod() );
+        $expiresDate    = $expiresDate->add( $pricingPlan->getSubscriptionPeriod() );
         
-        //$subscription->setExpiresAt( $expiresDate );
-        $subscription->getExpiresAt()->add( $pricingPlan->getSubscriptionPeriod() );
+        $subscription->setExpiresAt( $expiresDate );
+        // @NOTE: https://www.doctrine-project.org/projects/doctrine-orm/en/3.1/cookbook/working-with-datetime.html#datetime-changes-are-detected-by-reference
+        //$subscription->getExpiresAt()->add( $pricingPlan->getSubscriptionPeriod() );
         
         $subscription->setPrice( $pricingPlan->getPrice() );
         $subscription->setCurrency( $pricingPlan->getCurrency() );
