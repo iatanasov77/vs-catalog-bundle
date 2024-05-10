@@ -131,7 +131,7 @@ final class PricingPlanSubscriptionsSubscriber implements EventSubscriberInterfa
         
         $this->debugLog( 'subscription-start-date', $startDate->format( 'Y-m-d H:i:s' ) );
         $this->debugLog( 'subscription-expires-date', $expiresDate->format( 'Y-m-d H:i:s' ) );
-        $this->debugLog( 'subscription-period', $pricingPlan->getSubscriptionPeriod() );
+        $this->debugLog( 'subscription-period', $pricingPlan->getSubscriptionPeriod()->format( '%a total days' ) );
         
         $em             = $this->doctrine->getManager();
         $em->persist( $subscription );
