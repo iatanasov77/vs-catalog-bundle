@@ -123,13 +123,15 @@ final class PricingPlanSubscriptionsSubscriber implements EventSubscriberInterfa
         }
         
         $startDate      = $subscription->isPaid() ? $subscription->getExpiresAt() : new \DateTime();
-        $this->debugLog( 'subscription-start-date', $startDate->format( 'Y-m-d H:i:s' ) );
-        
         $expiresDate    = $startDate->add( $pricingPlan->getSubscriptionPeriod() );
         $subscription->setExpiresAt( $expiresDate );
         
         $subscription->setPrice( $pricingPlan->getPrice() );
         $subscription->setCurrency( $pricingPlan->getCurrency() );
+        
+        $this->debugLog( 'subscription-start-date', $startDate->format( 'Y-m-d H:i:s' ) );
+        $this->debugLog( 'subscription-expires-date', $expiresDate->format( 'Y-m-d H:i:s' ) );
+        $this->debugLog( 'subscription-period', $pricingPlan->getSubscriptionPeriod() );
         
         $em             = $this->doctrine->getManager();
         $em->persist( $subscription );
