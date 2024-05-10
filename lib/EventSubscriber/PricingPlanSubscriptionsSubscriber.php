@@ -113,7 +113,7 @@ final class PricingPlanSubscriptionsSubscriber implements EventSubscriberInterfa
         );
         
         if ( ! $subscription )  {
-            $this->debugLog( 'subscription-found', ' NOT FOUND' );
+//             $this->debugLog( 'subscription-found', ' NOT FOUND' );
             
             $subscription   = $this->pricingPlanSubscriptionFactory->createNew();
             
@@ -124,19 +124,15 @@ final class PricingPlanSubscriptionsSubscriber implements EventSubscriberInterfa
         
         $startDate      = $subscription->isPaid() ? $subscription->getExpiresAt() : new \DateTime();
         $expiresDate    = \DateTimeImmutable::createFromMutable( $startDate );
-        //$expiresDate    = $startDate->add( $pricingPlan->getSubscriptionPeriod() );
         $expiresDate    = $expiresDate->add( $pricingPlan->getSubscriptionPeriod() );
-        
         $subscription->setExpiresAt( $expiresDate );
-        // @NOTE: https://www.doctrine-project.org/projects/doctrine-orm/en/3.1/cookbook/working-with-datetime.html#datetime-changes-are-detected-by-reference
-        //$subscription->getExpiresAt()->add( $pricingPlan->getSubscriptionPeriod() );
         
         $subscription->setPrice( $pricingPlan->getPrice() );
         $subscription->setCurrency( $pricingPlan->getCurrency() );
         
-        $this->debugLog( 'subscription-start-date', $startDate->format( 'Y-m-d H:i:s' ) );
-        $this->debugLog( 'subscription-expires-date', $expiresDate->format( 'Y-m-d H:i:s' ) );
-        $this->debugLog( 'subscription-period', $pricingPlan->getSubscriptionPeriod()->format( '%a total days' ) );
+//         $this->debugLog( 'subscription-start-date', $startDate->format( 'Y-m-d H:i:s' ) );
+//         $this->debugLog( 'subscription-expires-date', $expiresDate->format( 'Y-m-d H:i:s' ) );
+//         $this->debugLog( 'subscription-period', $pricingPlan->getSubscriptionPeriod()->format( '%a total days' ) );
         
         $em             = $this->doctrine->getManager();
         $em->persist( $subscription );
