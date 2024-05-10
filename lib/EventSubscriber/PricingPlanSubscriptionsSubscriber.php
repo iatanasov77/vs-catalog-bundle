@@ -5,6 +5,7 @@ use Symfony\Component\Security\Core\Authentication\Token\Storage\TokenStorageInt
 use Sylius\Component\Resource\Repository\RepositoryInterface;
 use Sylius\Component\Resource\Factory\Factory;
 use Doctrine\Persistence\ManagerRegistry;
+use Psr\Cache\CacheItemPoolInterface;
 use Vankosoft\UsersBundle\Security\SecurityBridge;
 use Vankosoft\PaymentBundle\Component\OrderFactory;
 use Vankosoft\PaymentBundle\Component\Payum\Stripe\Api as StripeApi;
@@ -22,6 +23,9 @@ final class PricingPlanSubscriptionsSubscriber implements EventSubscriberInterfa
 {
     /** @var ManagerRegistry */
     private $doctrine;
+    
+    /** @var CacheItemPoolInterface */
+    private $cache;
     
     /** @var SecurityBridge */
     private $securityBridge;
@@ -43,6 +47,7 @@ final class PricingPlanSubscriptionsSubscriber implements EventSubscriberInterfa
     
     public function __construct(
         ManagerRegistry $doctrine,
+        CacheItemPoolInterface $cache,
         SecurityBridge $securityBridge,
         OrderFactory $orderFactory,
         StripeApi $stripeApi,
@@ -51,6 +56,7 @@ final class PricingPlanSubscriptionsSubscriber implements EventSubscriberInterfa
         Factory $pricingPlanSubscriptionFactory,
     ) {
         $this->doctrine                             = $doctrine;
+        $this->cache                                = $cache;
         $this->securityBridge                       = $securityBridge;
         $this->pricingPlanSubscriptionRepository    = $pricingPlanSubscriptionRepository;
         $this->pricingPlanSubscriptionFactory       = $pricingPlanSubscriptionFactory;
@@ -107,6 +113,8 @@ final class PricingPlanSubscriptionsSubscriber implements EventSubscriberInterfa
         );
         
         if ( ! $subscription )  {
+            $this->debugLog( 'subscription-found', ' NOT FOUND' );
+            
             $subscription   = $this->pricingPlanSubscriptionFactory->createNew();
             
             $subscription->setUser( $user );
@@ -115,6 +123,8 @@ final class PricingPlanSubscriptionsSubscriber implements EventSubscriberInterfa
         }
         
         $startDate      = $subscription->isPaid() ? $subscription->getExpiresAt() : new \DateTime();
+        $this->debugLog( 'subscription-start-date', $startDate->format( 'Y-m-d H:i:s' ) );
+        
         $expiresDate    = $startDate->add( $pricingPlan->getSubscriptionPeriod() );
         $subscription->setExpiresAt( $expiresDate );
         
@@ -203,5 +213,13 @@ final class PricingPlanSubscriptionsSubscriber implements EventSubscriberInterfa
         }
             
         $subscription->setGatewayAttributes( $gtAttributes );
+    }
+    
+    private function debugLog( $cacheKey, $cacheData ): void
+    {
+        $cache      = $this->cache->getItem( $cacheKey );
+        $cache->set( $cacheData );
+        
+        $this->cache->save( $cache );
     }
 }

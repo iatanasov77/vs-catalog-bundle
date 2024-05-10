@@ -7,6 +7,7 @@ services:
         class: Vankosoft\CatalogBundle\EventSubscriber\PricingPlanSubscriptionsSubscriber
         arguments:
             - '@doctrine'
+            - '@vs_application.doctrine_dbal_cache'
             - '@vs_users.security_bridge'
             - '@vs_payment.order_factory'
             - '@vs_payment.stripe_api'
