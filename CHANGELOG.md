@@ -1,3 +1,13 @@
+1.2.6	|	Release date: **10.05.2024**
+============================================
+* Bug-Fixes and Improvements:
+  - Fix Cascade Operations of PayableObjectAwareEntity .
+  - Update PaymentBundle Required Version.
+  - Prevent Creation of Many Subscription For a Service By an User.
+  - Add Debugging Feature in PricingPlanSubscriptionsSubscriber .
+  - Fix Changing Subscription Expires Date on New Payment Created.
+
+
 1.2.5	|	Release date: **09.05.2024**
 ============================================
 * New Features and Improvements:
