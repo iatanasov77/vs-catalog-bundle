@@ -13,10 +13,10 @@ trait PayableObjectAwareEntity
      * 
      * @var PricingPlanSubscriptionInterface
      * 
-     * @ORM\ManyToOne(targetEntity="Vankosoft\CatalogBundle\Model\Interfaces\PricingPlanSubscriptionInterface", inversedBy="orderItem", cascade={"persist"})
+     * @ORM\ManyToOne(targetEntity="Vankosoft\CatalogBundle\Model\Interfaces\PricingPlanSubscriptionInterface", inversedBy="orderItem", cascade={"all"})
      * @ORM\JoinColumn(name="subscription_id", referencedColumnName="id", nullable=true)
      */
-    #[ORM\ManyToOne(targetEntity: PricingPlanSubscriptionInterface::class, inversedBy: "orderItem", cascade:["persist"])]
+    #[ORM\ManyToOne(targetEntity: PricingPlanSubscriptionInterface::class, inversedBy: "orderItem", cascade:["all"])]
     #[ORM\JoinColumn(name: "subscription_id", referencedColumnName: "id", nullable: true)]
     protected $subscription;
  
