@@ -215,7 +215,9 @@ class PricingPlanCheckoutController extends AbstractController
         
         $orderItem      = $this->orderItemsFactory->createNew();
         
+        $subscription->addOrderItem( $orderItem );
         $orderItem->setSubscription( $subscription );
+        
         $orderItem->setPrice( $pricingPlan->getPrice() );
         $orderItem->setCurrencyCode( $pricingPlan->getCurrencyCode() );
         

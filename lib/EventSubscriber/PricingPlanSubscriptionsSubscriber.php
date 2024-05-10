@@ -5,6 +5,7 @@ use Symfony\Component\Security\Core\Authentication\Token\Storage\TokenStorageInt
 use Sylius\Component\Resource\Repository\RepositoryInterface;
 use Sylius\Component\Resource\Factory\Factory;
 use Doctrine\Persistence\ManagerRegistry;
+use Psr\Cache\CacheItemPoolInterface;
 use Vankosoft\UsersBundle\Security\SecurityBridge;
 use Vankosoft\PaymentBundle\Component\OrderFactory;
 use Vankosoft\PaymentBundle\Component\Payum\Stripe\Api as StripeApi;
@@ -22,6 +23,9 @@ final class PricingPlanSubscriptionsSubscriber implements EventSubscriberInterfa
 {
     /** @var ManagerRegistry */
     private $doctrine;
+    
+    /** @var CacheItemPoolInterface */
+    private $cache;
     
     /** @var SecurityBridge */
     private $securityBridge;
@@ -43,6 +47,7 @@ final class PricingPlanSubscriptionsSubscriber implements EventSubscriberInterfa
     
     public function __construct(
         ManagerRegistry $doctrine,
+        CacheItemPoolInterface $cache,
         SecurityBridge $securityBridge,
         OrderFactory $orderFactory,
         StripeApi $stripeApi,
@@ -51,6 +56,7 @@ final class PricingPlanSubscriptionsSubscriber implements EventSubscriberInterfa
         Factory $pricingPlanSubscriptionFactory,
     ) {
         $this->doctrine                             = $doctrine;
+        $this->cache                                = $cache;
         $this->securityBridge                       = $securityBridge;
         $this->pricingPlanSubscriptionRepository    = $pricingPlanSubscriptionRepository;
         $this->pricingPlanSubscriptionFactory       = $pricingPlanSubscriptionFactory;
@@ -68,28 +74,65 @@ final class PricingPlanSubscriptionsSubscriber implements EventSubscriberInterfa
         ];
     }
 
+//     public function createSubscription( CreateSubscriptionEvent $event )
+//     {
+//         $pricingPlan            = $event->getPricingPlan();
+//         $user                   = $this->securityBridge->getUser();
+        
+//         $previousSubscription   = $user->getActivePricingPlanSubscriptionByService(
+//             $pricingPlan->getPaidService()->getPayedService()
+//         );
+        
+//         $subscription   = $this->pricingPlanSubscriptionFactory->createNew();
+        
+//         $subscription->setUser( $user );
+//         $subscription->setPricingPlan( $pricingPlan );
+//         $subscription->setRecurringPayment( $event->getSetRecurringPayments() );
+        
+//         $startDate      = $previousSubscription && $previousSubscription->isPaid() ?
+//                             $previousSubscription->getExpiresAt() :
+//                             new \DateTime();
+//         $expiresDate    = $startDate->add( $pricingPlan->getSubscriptionPeriod() );
+//         $subscription->setExpiresAt( $expiresDate );
+        
+//         $subscription->setPrice( $pricingPlan->getPrice() );
+//         $subscription->setCurrency( $pricingPlan->getCurrency() );
+        
+//         $em             = $this->doctrine->getManager();
+//         $em->persist( $subscription );
+//         $em->flush();
+//     }
+
     public function createSubscription( CreateSubscriptionEvent $event )
     {
-        $pricingPlan            = $event->getPricingPlan();
-        $user                   = $this->securityBridge->getUser();
-        $previousSubscription   = $user->getActivePricingPlanSubscriptionByService(
+        $pricingPlan    = $event->getPricingPlan();
+        $user           = $this->securityBridge->getUser();
+        
+        $subscription   = $user->getActivePricingPlanSubscriptionByService(
             $pricingPlan->getPaidService()->getPayedService()
         );
         
-        $subscription   = $this->pricingPlanSubscriptionFactory->createNew();
+        if ( ! $subscription )  {
+//             $this->debugLog( 'subscription-found', ' NOT FOUND' );
+            
+            $subscription   = $this->pricingPlanSubscriptionFactory->createNew();
+            
+            $subscription->setUser( $user );
+            $subscription->setPricingPlan( $pricingPlan );
+            $subscription->setRecurringPayment( $event->getSetRecurringPayments() );
+        }
         
-        $subscription->setUser( $user );
-        $subscription->setPricingPlan( $pricingPlan );
-        $subscription->setRecurringPayment( $event->getSetRecurringPayments() );
-        
-        $startDate      = $previousSubscription && $previousSubscription->isPaid() ?
-                            $previousSubscription->getExpiresAt() :
-                            new \DateTime();
-        $expiresDate    = $startDate->add( $pricingPlan->getSubscriptionPeriod() );
+        $startDate      = $subscription->isPaid() ? $subscription->getExpiresAt() : new \DateTime();
+        $expiresDate    = \DateTimeImmutable::createFromMutable( $startDate );
+        $expiresDate    = $expiresDate->add( $pricingPlan->getSubscriptionPeriod() );
         $subscription->setExpiresAt( $expiresDate );
         
         $subscription->setPrice( $pricingPlan->getPrice() );
         $subscription->setCurrency( $pricingPlan->getCurrency() );
+        
+//         $this->debugLog( 'subscription-start-date', $startDate->format( 'Y-m-d H:i:s' ) );
+//         $this->debugLog( 'subscription-expires-date', $expiresDate->format( 'Y-m-d H:i:s' ) );
+//         $this->debugLog( 'subscription-period', $pricingPlan->getSubscriptionPeriod()->format( '%a total days' ) );
         
         $em             = $this->doctrine->getManager();
         $em->persist( $subscription );
@@ -173,5 +216,13 @@ final class PricingPlanSubscriptionsSubscriber implements EventSubscriberInterfa
         }
             
         $subscription->setGatewayAttributes( $gtAttributes );
+    }
+    
+    private function debugLog( $cacheKey, $cacheData ): void
+    {
+        $cache      = $this->cache->getItem( $cacheKey );
+        $cache->set( $cacheData );
+        
+        $this->cache->save( $cache );
     }
 }
