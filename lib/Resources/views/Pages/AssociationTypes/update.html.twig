@@ -15,14 +15,6 @@
             <div class="card">
             	<h5 class="card-header">{{ 'vs_catalog.template.association_type_details' | trans( {},'VSCatalogBundle' ) }}</h5>
             	<div class="card-body">
-					{% if form_errors(form) is not empty %}
-		                <div class="alert alert-block alert-danger">
-		                    <button type="button" class="close close-sm" data-bs-dismiss="alert">
-		                        <i class="fa fa-times"></i>
-		                    </button>
-		                    <strong>{{ 'vs_application.form.errors_title' | trans( {},'VSApplicationBundle' ) }}</strong> {{ form_errors(form) }}
-		                </div>
-		            {% endif %}
 		            <div id="pageFormContainer" data-pageId="{{ item.id }}">
                         {% include '@VSCatalog/Pages/AssociationTypes/partial/association_type_form.html.twig' %}
                     </div>
