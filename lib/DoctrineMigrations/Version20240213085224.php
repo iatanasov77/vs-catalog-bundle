@@ -30,8 +30,6 @@ final class Version20240213085224 extends AbstractMigration
         $this->addSql('ALTER TABLE VSCAT_PricingPlanSubscriptions DROP order_item_id');
         $this->addSql('ALTER TABLE VSPAY_Coupons CHANGE type type ENUM(\'discount_coupon\', \'payment_coupon\')');
         $this->addSql('ALTER TABLE VSPAY_Order CHANGE status status ENUM(\'shopping_cart\', \'paid_order\', \'pending_order\', \'failed_order\')');
-        $this->addSql('CREATE INDEX IDX_1C9B655C9A1887DC ON VSPAY_OrderItem (subscription_id)');
-        $this->addSql('CREATE INDEX IDX_1C9B655C4584665A ON VSPAY_OrderItem (product_id)');
         $this->addSql('ALTER TABLE VSUM_UsersInfo CHANGE title title ENUM(\'mr\', \'mrs\', \'miss\')');
     }
 
@@ -52,7 +50,6 @@ final class Version20240213085224 extends AbstractMigration
         $this->addSql('ALTER TABLE VSPAY_OrderItem DROP FOREIGN KEY FK_1C9B655C4584665A');
         $this->addSql('DROP INDEX IDX_1C9B655C9A1887DC ON VSPAY_OrderItem');
         $this->addSql('DROP INDEX IDX_1C9B655C4584665A ON VSPAY_OrderItem');
-        $this->addSql('ALTER TABLE VSPAY_OrderItem DROP subscription_id, DROP product_id');
         $this->addSql('ALTER TABLE VSUM_UsersInfo CHANGE title title VARCHAR(255) DEFAULT NULL');
     }
 }
