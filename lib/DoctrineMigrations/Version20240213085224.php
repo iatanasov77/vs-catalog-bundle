@@ -30,9 +30,6 @@ final class Version20240213085224 extends AbstractMigration
         $this->addSql('ALTER TABLE VSCAT_PricingPlanSubscriptions DROP order_item_id');
         $this->addSql('ALTER TABLE VSPAY_Coupons CHANGE type type ENUM(\'discount_coupon\', \'payment_coupon\')');
         $this->addSql('ALTER TABLE VSPAY_Order CHANGE status status ENUM(\'shopping_cart\', \'paid_order\', \'pending_order\', \'failed_order\')');
-        $this->addSql('ALTER TABLE VSPAY_OrderItem ADD subscription_id INT DEFAULT NULL, ADD product_id INT DEFAULT NULL');
-        $this->addSql('ALTER TABLE VSPAY_OrderItem ADD CONSTRAINT FK_1C9B655C9A1887DC FOREIGN KEY (subscription_id) REFERENCES VSCAT_PricingPlanSubscriptions (id)');
-        $this->addSql('ALTER TABLE VSPAY_OrderItem ADD CONSTRAINT FK_1C9B655C4584665A FOREIGN KEY (product_id) REFERENCES VSCAT_Products (id)');
         $this->addSql('CREATE INDEX IDX_1C9B655C9A1887DC ON VSPAY_OrderItem (subscription_id)');
         $this->addSql('CREATE INDEX IDX_1C9B655C4584665A ON VSPAY_OrderItem (product_id)');
         $this->addSql('ALTER TABLE VSUM_UsersInfo CHANGE title title ENUM(\'mr\', \'mrs\', \'miss\')');
