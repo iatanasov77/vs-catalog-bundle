@@ -97,7 +97,7 @@ class PricingPlanCheckoutController extends AbstractController
         $activeSubscriptions    = $this->subscriptionsRepository
                                         ->getActiveSubscriptionsByUser( $this->securityBridge->getUser() );
         
-        return $this->render( '@VSPayment/Pages/PricingPlansCheckout/pricing_plans.html.twig', [
+        return $this->render( '@VSCatalog/Pages/PricingPlansCheckout/pricing_plans.html.twig', [
             'pricingPlanCategories' => $pricingPlanCategories,
             'subscriptions'         => $activeSubscriptions,
         ]);
@@ -108,7 +108,7 @@ class PricingPlanCheckoutController extends AbstractController
         $form                   = $this->createForm( SelectPricingPlanForm::class, null, ['method' => 'POST'] );
         $bankTransferGateway    = $this->gatewaysRepository->findOneBy( ['factoryName' => 'offline_bank_transfer'] );
         
-        return $this->render( '@VSPayment/Pages/PricingPlansCheckout/Partial/select-pricing-plan-form.html.twig', [
+        return $this->render( '@VSCatalog/Pages/PricingPlansCheckout/Partial/select-pricing-plan-form.html.twig', [
             'form'              => $form->createView(),
             'pricingPlanId'     => $pricingPlanId,
             'bankTransferInfo'  => $bankTransferGateway ? $bankTransferGateway->getConfig() : null,
