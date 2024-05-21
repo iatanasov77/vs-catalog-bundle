@@ -1,3 +1,9 @@
+1.3.2	|	Release date: **21.05.2024**
+============================================
+* New Features:
+  - Improve PricingPlansCheckoutController .
+
+
 1.3.1	|	Release date: **16.05.2024**
 ============================================
 * Bug-Fixes:
