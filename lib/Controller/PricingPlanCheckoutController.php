@@ -108,9 +108,12 @@ class PricingPlanCheckoutController extends AbstractController
         $form                   = $this->createForm( SelectPricingPlanForm::class, null, ['method' => 'POST'] );
         $bankTransferGateway    = $this->gatewaysRepository->findOneBy( ['factoryName' => 'offline_bank_transfer'] );
         
+        $pricingPlan            = $this->pricingPlansRepository->find( $pricingPlanId );
+        
         return $this->render( '@VSCatalog/Pages/PricingPlansCheckout/Partial/select-pricing-plan-form.html.twig', [
             'form'              => $form->createView(),
             'pricingPlanId'     => $pricingPlanId,
+            'pricingPlan'       => $pricingPlan,
             'bankTransferInfo'  => $bankTransferGateway ? $bankTransferGateway->getConfig() : null,
         ]);
     }
