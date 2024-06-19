@@ -60,11 +60,11 @@ sylius_fixtures:
                               factory_name: 'stripe_js'
                               use_sandbox: true
                               config:
-                                  "publishable_key": '%env(STRIPEJS_PUBLISHABLE_KEY)%'
-                                  "secret_key": '%env(STRIPEJS_SECRET_KEY)%'
+                                  "publishable_key": 'get this from gateway'
+                                  "secret_key": 'get this from gateway'
                               sandbox_config:
-                                  "publishable_key": '%env(STRIPEJS_PUBLISHABLE_KEY)%'
-                                  "secret_key": '%env(STRIPEJS_SECRET_KEY)%'
+                                  "publishable_key": 'get this from gateway'
+                                  "secret_key": 'get this from gateway'
                               currency: 'EUR'
                             - title: 'Paypal Express Checkout'
                               description: 'Paypal Express Checkout'
@@ -72,13 +72,13 @@ sylius_fixtures:
                               factory_name: 'paypal_express_checkout'
                               use_sandbox: true
                               config:
-                                  "username": '%env(PAYPAL_USERNAME)%'
-                                  "password": '%env(PAYPAL_PASSWORD)%'
-                                  "signature": '%env(PAYPAL_SIGNATURE)%'
+                                  "username": 'get this from gateway'
+                                  "password": 'get this from gateway'
+                                  "signature": 'get this from gateway'
                               sandbox_config:
-                                  "username": '%env(PAYPAL_USERNAME)%'
-                                  "password": '%env(PAYPAL_PASSWORD)%'
-                                  "signature": '%env(PAYPAL_SIGNATURE)%'
+                                  "username": 'get this from gateway'
+                                  "password": 'get this from gateway'
+                                  "signature": 'get this from gateway'
                               currency: 'USD'
                             - title: 'Paypal Pro Checkout'
                               description: 'Paypal Pro Checkout'
@@ -86,14 +86,14 @@ sylius_fixtures:
                               factory_name: 'paypal_pro_checkout'
                               use_sandbox: true
                               config:
-                                  "username": '%env(PAYPAL_USERNAME)%'
-                                  "password": '%env(PAYPAL_PASSWORD)%'
+                                  "username": 'get this from gateway'
+                                  "password": 'get this from gateway'
                                   "partner": "PAYPAL_PARTNER"
                                   "vendor": "PAYPAL_VENDOR"
                                   "tender": "PAYPAL_TENDER"
                               sandbox_config:
-                                  "username": '%env(PAYPAL_USERNAME)%'
-                                  "password": '%env(PAYPAL_PASSWORD)%'
+                                  "username": 'get this from gateway'
+                                  "password": 'get this from gateway'
                                   "partner": "PAYPAL_PARTNER"
                                   "vendor": "PAYPAL_VENDOR"
                                   "tender": "PAYPAL_TENDER"
@@ -104,11 +104,11 @@ sylius_fixtures:
                               factory_name: 'authorize_net_aim'
                               use_sandbox: true
                               config:
-                                  "login_id": '%env(AUTHORIZE_NET_LOGIN_ID)%'
-                                  "transaction_key": '%env(AUTHORIZE_NET_TRANSACTION_KEY)%'
+                                  "login_id": 'get this from gateway'
+                                  "transaction_key": 'get this from gateway'
                               sandbox_config:
-                                  "login_id": '%env(AUTHORIZE_NET_LOGIN_ID)%'
-                                  "transaction_key": '%env(AUTHORIZE_NET_TRANSACTION_KEY)%'
+                                  "login_id": 'get this from gateway'
+                                  "transaction_key": 'get this from gateway'
                               currency: 'EUR'
                             - title: 'Telephone Call'
                               description: 'Use Telephone Call Payment'
