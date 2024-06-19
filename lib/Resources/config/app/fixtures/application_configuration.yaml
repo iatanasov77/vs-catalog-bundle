@@ -67,6 +67,17 @@ sylius_fixtures:
                                   bg_BG:
                                       title: 'Каталог Уиджети'
                                       description: 'Уиджети за Каталог'
+                            - title: 'Application Layout'
+                              description: 'Widgets for Catalog Application Layout'
+                              taxonomy_code: 'widgets-groups'
+                              locale:  '%locale%'
+                              translations:
+                                  en_US:
+                                      title: 'Application Layout'
+                                      description: 'Widgets for Catalog Application Layout'
+                                  bg_BG:
+                                      title: 'Оформление на приложението'
+                                      description: 'Уиджети за Оформление на приложението'
                               
                 widgets:
                     name: widgets
@@ -76,6 +87,16 @@ sylius_fixtures:
                               locale:  '%locale%'
                               name: 'Sidebar Categories'
                               description: 'Sidebar Categories'
+                              active: true
+                              allowedRoles:
+                                - role: 'ROLE_ANONYMOUS_USER'
+                                - role: 'ROLE_SUPER_ADMIN'
+                                - role: 'ROLE_ADMIN'
+                                - role: 'ROLE_APPLICATION_ADMIN'
+                            - group_code: 'application-layout'
+                              locale:  '%locale%'
+                              name: 'Application Menu Locales'
+                              description: 'Application Menu Locales'
                               active: true
                               allowedRoles:
                                 - role: 'ROLE_ANONYMOUS_USER'
