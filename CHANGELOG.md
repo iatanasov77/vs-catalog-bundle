@@ -1,3 +1,9 @@
+1.3.4	|	Release date: **19.06.2024**
+============================================
+* Bug-Fixes:
+  - Remove Using ENV Variables in Sample Data Fixtures.
+
+
 1.3.3	|	Release date: **04.06.2024**
 ============================================
 * Bug-Fixes:
