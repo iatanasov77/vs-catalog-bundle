@@ -34,7 +34,7 @@
                         {% if not filterCategory or filterCategory in item.categories | keys  %}
                             <tr>
                                 <td>{{ loop.index }}</td>
-                                <td><img src="{{ item.photos.first().path | imagine_filter( 'index_page_thumbnail' ) }}" /></td>
+                                <td><img src="{{ item.pictures.first().path | imagine_filter( 'index_page_thumbnail' ) }}" /></td>
                                 <td>{{ item.name }}</td>
                                 <td>{{ item.slug }}</td>
                                 
