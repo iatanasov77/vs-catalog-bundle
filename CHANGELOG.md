@@ -1,3 +1,9 @@
+1.3.6	|	Release date: **23.06.2024**
+============================================
+* New Features:
+  - Improve Products Index Page.
+
+
 1.3.5	|	Release date: **23.06.2024**
 ============================================
 * New Features and Improvements:
