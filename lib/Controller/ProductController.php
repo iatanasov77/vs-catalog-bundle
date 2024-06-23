@@ -12,7 +12,6 @@ use Vankosoft\ApplicationBundle\Controller\Traits\FilterFormTrait;
 use Vankosoft\CatalogBundle\Model\Interfaces\ProductInterface;
 use Vankosoft\CatalogBundle\Model\Interfaces\ProductPictureInterface;
 use Vankosoft\CatalogBundle\Model\Interfaces\ProductFileInterface;
-use Vankosoft\CatalogBundle\Model\ProductCategory;
 use Vankosoft\CatalogBundle\Component\Product;
 
 class ProductController extends AbstractCrudController
@@ -39,8 +38,9 @@ class ProductController extends AbstractCrudController
         
         $tagsContext    = $this->get( 'vs_application.repository.tags_whitelist_context' )->findByTaxonCode( 'catalog-products' );
         
+        $categoryClass  = $this->getParameter( 'vs_catalog.model.product_category.class' );
         $filterCategory = $request->attributes->get( 'filterCategory' );
-        $filterForm     = $this->getFilterForm( ProductCategory::class, $filterCategory, $request );
+        $filterForm     = $this->getFilterForm( $categoryClass, $filterCategory, $request );
         
         return [
             'items'             => $this->getRepository()->findAll(),
