@@ -1,3 +1,10 @@
+1.3.5	|	Release date: **23.06.2024**
+============================================
+* New Features and Improvements:
+  - Add Doctrine Fixture for Application Locale Widget.
+  - Improve Products Index Page.
+
+
 1.3.4	|	Release date: **19.06.2024**
 ============================================
 * Bug-Fixes:
