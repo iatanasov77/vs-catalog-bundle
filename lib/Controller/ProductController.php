@@ -8,13 +8,16 @@ use Symfony\Component\HttpFoundation\File\File;
 use Symfony\Component\HttpFoundation\File\UploadedFile;
 use Symfony\Component\HttpFoundation\File\Exception\FileException;
 
+use Vankosoft\ApplicationBundle\Controller\Traits\FilterFormTrait;
 use Vankosoft\CatalogBundle\Model\Interfaces\ProductInterface;
 use Vankosoft\CatalogBundle\Model\Interfaces\ProductPictureInterface;
 use Vankosoft\CatalogBundle\Model\Interfaces\ProductFileInterface;
+use Vankosoft\CatalogBundle\Model\ProductCategory;
 use Vankosoft\CatalogBundle\Component\Product;
 
 class ProductController extends AbstractCrudController
 {
+    use FilterFormTrait;
     use ProductAssociationsTrait;
     
     protected function customData( Request $request, $entity = null ): array
@@ -36,6 +39,9 @@ class ProductController extends AbstractCrudController
         
         $tagsContext    = $this->get( 'vs_application.repository.tags_whitelist_context' )->findByTaxonCode( 'catalog-products' );
         
+        $filterCategory = $request->attributes->get( 'filterCategory' );
+        $filterForm     = $this->getFilterForm( ProductCategory::class, $filterCategory, $request );
+        
         return [
             'items'             => $this->getRepository()->findAll(),
             'categories'        => $this->get( 'vs_catalog.repository.product_category' )->findAll(),
@@ -44,6 +50,8 @@ class ProductController extends AbstractCrudController
             'productTags'       => $tagsContext->getTagsArray(),
             'selectedTaxonIds'  => $selectedTaxonIds,
             'associationsForm'  => $associationsForm ? $associationsForm->createView() : null,
+            'filterForm'        => $filterForm->createView(),
+            'filterCategory'    => $filterCategory,
         ];
     }
     
@@ -106,6 +114,11 @@ class ProductController extends AbstractCrudController
                 $entity->removePicture( $pic );
             }
         }
+    }
+    
+    protected function getFilterRepository()
+    {
+        return $this->get( 'vs_catalog.repository.product_category' );
     }
     
     protected function getTranslations()
