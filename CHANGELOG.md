@@ -1,3 +1,9 @@
+1.3.8	|	Release date: **24.06.2024**
+============================================
+* Bug-Fixes and Improvements:
+  - Improve Some Form Types.
+
+
 1.3.7	|	Release date: **23.06.2024**
 ============================================
 * New Features and Improvements:

@@ -30,6 +30,7 @@ class ProductPictureType extends AbstractType
                 'placeholder'           => 'vs_catalog.form.product.picture_code_placeholder',
                 'translation_domain'    => 'VSCatalogBundle',
                 'choices'               => \array_flip( Product::PRODUCT_PICTURE_TYPES ),
+                'required'              => false,
             ])
             
             ->add( 'picture', FileType::class, [
