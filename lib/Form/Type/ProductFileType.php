@@ -30,6 +30,7 @@ class ProductFileType extends AbstractType
                 'placeholder'           => 'vs_catalog.form.product.file_code_placeholder',
                 'translation_domain'    => 'VSCatalogBundle',
                 'choices'               => \array_flip( Product::PRODUCT_FILE_TYPES ),
+                'required'              => false,
             ])
             
             ->add( 'file', FileType::class, [
