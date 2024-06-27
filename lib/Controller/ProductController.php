@@ -114,6 +114,11 @@ class ProductController extends AbstractCrudController
                 $entity->removePicture( $pic );
             }
         }
+        foreach ( $entity->getFiles() as $file ) {
+            if ( empty( $file->getPath() ) ) {
+                $entity->removeFile( $file );
+            }
+        }
     }
     
     protected function getFilterRepository()
