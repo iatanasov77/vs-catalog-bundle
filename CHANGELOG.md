@@ -1,3 +1,9 @@
+1.3.9	|	Release date: **27.06.2024**
+============================================
+* Bug-Fixes:
+  - Fix a Twig Template.
+
+
 1.3.8	|	Release date: **24.06.2024**
 ============================================
 * Bug-Fixes and Improvements:
