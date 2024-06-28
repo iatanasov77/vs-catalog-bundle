@@ -1,3 +1,9 @@
+1.3.11	|	Release date: **28.06.2024**
+============================================
+* New Features:
+  - Change ORM Type of ProductBase Resource.
+
+
 1.3.10	|	Release date: **28.06.2024**
 ============================================
 * New Features:
