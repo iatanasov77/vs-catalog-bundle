@@ -91,9 +91,11 @@ class ProductForm extends AbstractForm
                 'translation_domain'    => 'VSPaymentBundle',
             ])
             
-            ->add( 'description', TextType::class, [
+            ->add( 'description', CKEditorType::class, [
                 'label'                 => 'vs_payment.form.description',
                 'translation_domain'    => 'VSPaymentBundle',
+                'required'              => false,
+                'config'                => $this->ckEditorConfig( $options ),
             ])
             
             ->add( 'inStock', NumberType::class, [
@@ -155,19 +157,60 @@ class ProductForm extends AbstractForm
             ->setDefaults([
                 'csrf_protection'   => false,
                 'rounding_mode'     => \NumberFormatter::ROUND_HALFEVEN,
+                
+                // CKEditor Options
+                'ckeditor_uiColor'              => '#ffffff',
+                'ckeditor_toolbar'              => 'full',
+                'ckeditor_extraPlugins'         => '',
+                'ckeditor_removeButtons'        => '',
+                'ckeditor_allowedContent'       => false,
+                'ckeditor_extraAllowedContent'  => '*[*]{*}(*)',
             ])
             
             ->setDefined([
                 'product',
+                
+                // CKEditor Options
+                'ckeditor_uiColor',
+                'ckeditor_toolbar',
+                'ckeditor_extraPlugins',
+                'ckeditor_removeButtons',
+                'ckeditor_allowedContent',
+                'ckeditor_extraAllowedContent',
             ])
             
             ->setAllowedTypes( 'product', ProductInterface::class )
+            ->setAllowedTypes( 'ckeditor_uiColor', 'string' )
+            ->setAllowedTypes( 'ckeditor_toolbar', 'string' )
+            ->setAllowedTypes( 'ckeditor_extraPlugins', 'string' )
+            ->setAllowedTypes( 'ckeditor_removeButtons', 'string' )
+            ->setAllowedTypes( 'ckeditor_allowedContent', ['boolean', 'string'] )
+            ->setAllowedTypes( 'ckeditor_extraAllowedContent', 'string' )
         ;
     }
     
     public function getName()
     {
         return 'vs_catalog.product';
+    }
+    
+    protected function ckEditorConfig( array $options ): array
+    {
+        $ckEditorConfig = [
+            'uiColor'                           => $options['ckeditor_uiColor'],
+            'toolbar'                           => $options['ckeditor_toolbar'],
+            'extraPlugins'                      => array_map( 'trim', explode( ',', $options['ckeditor_extraPlugins'] ) ),
+            'removeButtons'                     => $options['ckeditor_removeButtons'],
+        ];
+        
+        $ckEditorAllowedContent = (bool)$options['ckeditor_allowedContent'];
+        if ( $ckEditorAllowedContent ) {
+            $ckEditorConfig['allowedContent']       = $ckEditorAllowedContent;
+        } else {
+            $ckEditorConfig['extraAllowedContent']  = $options['ckeditor_extraAllowedContent'];
+        }
+        
+        return $ckEditorConfig;
     }
 }
 
