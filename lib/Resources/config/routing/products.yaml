@@ -6,10 +6,11 @@ vs_catalog_product_category:
         form:
             options:
                 ckeditor_uiColor: '%vs_users_subscriptions.form.payed_service.ckeditor_uiColor%'
-                ckeditor_extraAllowedContent: '%vs_users_subscriptions.form.payed_service.ckeditor_extraAllowedContent%'
                 ckeditor_toolbar: '%vs_users_subscriptions.form.payed_service.ckeditor_toolbar%'
                 ckeditor_extraPlugins: '%vs_users_subscriptions.form.payed_service.ckeditor_extraPlugins%'
                 ckeditor_removeButtons: '%vs_users_subscriptions.form.payed_service.ckeditor_removeButtons%'
+                ckeditor_allowedContent: '%vs_users_subscriptions.form.payed_service.ckeditor_allowedContent%'
+                ckeditor_extraAllowedContent: '%vs_users_subscriptions.form.payed_service.ckeditor_extraAllowedContent%'
     type: sylius.resource
     
 vs_catalog_product:
@@ -17,6 +18,14 @@ vs_catalog_product:
         alias: vs_catalog.product
         path: /products
         templates: "@VSCatalog/Pages/Products"
+        form:
+            options:
+                ckeditor_uiColor: '%vs_users_subscriptions.form.payed_service.ckeditor_uiColor%'
+                ckeditor_toolbar: '%vs_users_subscriptions.form.payed_service.ckeditor_toolbar%'
+                ckeditor_extraPlugins: '%vs_users_subscriptions.form.payed_service.ckeditor_extraPlugins%'
+                ckeditor_removeButtons: '%vs_users_subscriptions.form.payed_service.ckeditor_removeButtons%'
+                ckeditor_allowedContent: '%vs_users_subscriptions.form.payed_service.ckeditor_allowedContent%'
+                ckeditor_extraAllowedContent: '%vs_users_subscriptions.form.payed_service.ckeditor_extraAllowedContent%'
     type: sylius.resource
     
 vs_catalog_json_product_categories:
