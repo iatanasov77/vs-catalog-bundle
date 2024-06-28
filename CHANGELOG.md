@@ -1,3 +1,9 @@
+1.3.12	|	Release date: **28.06.2024**
+============================================
+* New Features:
+  - Improve Product Resource Model and Repository.
+
+
 1.3.11	|	Release date: **28.06.2024**
 ============================================
 * New Features:
