@@ -4,10 +4,8 @@ use Sylius\Component\Resource\Model\ResourceInterface;
 use Doctrine\Common\Collections\Collection;
 use Vankosoft\ApplicationBundle\Model\Interfaces\TaxonInterface;
 
-interface PricingPlanCategoryInterface extends ResourceInterface
+interface PricingPlanCategoryInterface extends ResourceInterface, TaxonDescendentInterface
 {
-    /** @TODO Remove Theese When Extend VankosoftCategoryInterface */
-    public function getName(): string;
     public function getTaxon(): ?TaxonInterface;
     public function getParent();
     public function getChildren(): Collection;
