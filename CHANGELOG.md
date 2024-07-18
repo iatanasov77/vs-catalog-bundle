@@ -1,3 +1,9 @@
+1.3.13	|	Release date: **18.07.2024**
+============================================
+* Bug-Fixes:
+  - Fix PricingPlanCategoryInterface.
+
+
 1.3.12	|	Release date: **28.06.2024**
 ============================================
 * New Features:
