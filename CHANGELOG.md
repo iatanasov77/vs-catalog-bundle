@@ -1,3 +1,9 @@
+1.3.14	|	Release date: **22.07.2024**
+============================================
+* New Features and Improvements:
+  - Improve Widgets Fixtures Configs.
+
+
 1.3.13	|	Release date: **18.07.2024**
 ============================================
 * Bug-Fixes:
