@@ -88,6 +88,7 @@ sylius_fixtures:
                               name: 'Sidebar Categories'
                               description: 'Sidebar Categories'
                               active: true
+                              allowAnonymous: true
                               allowedRoles:
                                 - role: 'ROLE_ANONYMOUS_USER'
                                 - role: 'ROLE_SUPER_ADMIN'
@@ -98,6 +99,7 @@ sylius_fixtures:
                               name: 'Application Menu Locales'
                               description: 'Application Menu Locales'
                               active: true
+                              allowAnonymous: true
                               allowedRoles:
                                 - role: 'ROLE_ANONYMOUS_USER'
                                 - role: 'ROLE_SUPER_ADMIN'
