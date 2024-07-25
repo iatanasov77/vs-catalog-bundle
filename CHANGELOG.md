@@ -1,3 +1,9 @@
+1.3.15	|	Release date: **25.07.2024**
+============================================
+* Bug-Fixes:
+  - Fix Fixtures ProductsExampleFactory .
+
+
 1.3.14	|	Release date: **22.07.2024**
 ============================================
 * New Features and Improvements:

@@ -137,7 +137,10 @@ final class ProductsExampleFactory extends AbstractExampleFactory implements Exa
             $picture->setFile( null );
             
             if ( $op['code'] == Product::PRODUCT_PICTURE_TYPE_OTHER ) {
-                $picture->setCode( $op['code'] . '-' . \microtime() );
+                $uniqueKey  = \microtime( true );
+                str_replace( ".", "-", $uniqueKey );
+                
+                $picture->setCode( $op['code'] . '-' . $uniqueKey );
             } else {
                 $picture->setCode( $op['code'] );
             }
@@ -164,7 +167,10 @@ final class ProductsExampleFactory extends AbstractExampleFactory implements Exa
             $file->setFile( null );
             
             if ( $op['code'] == Product::PRODUCT_FILE_TYPE_OTHER ) {
-                $file->setCode( $op['code'] . '-' . \microtime() );
+                $uniqueKey  = \microtime( true );
+                str_replace( ".", "-", $uniqueKey );
+                
+                $file->setCode( $op['code'] . '-' . $uniqueKey );
             } else {
                 $file->setCode( $op['code'] );
             }
