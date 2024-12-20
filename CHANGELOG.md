@@ -1,3 +1,10 @@
+1.4.0	|	Release date: **21.12.2024**
+============================================
+* New Features:
+  - Set Payment Bundlein Develepement.
+  - Update Vankosoft Payment Bundle Requirement Version.
+
+
 1.3.15	|	Release date: **25.07.2024**
 ============================================
 * Bug-Fixes:
