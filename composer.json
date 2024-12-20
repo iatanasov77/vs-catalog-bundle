@@ -25,7 +25,7 @@
         "php": "^8.1",
        	
        	"vankosoft/users-subscriptions-bundle": "^3.0",
-        "vankosoft/payment-bundle": "^3.3",
+        "vankosoft/payment-bundle": "^3.4",
 		"sylius/review": "^1.12"
     },
     "conflict": {
