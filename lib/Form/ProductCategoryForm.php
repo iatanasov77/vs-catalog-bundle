@@ -36,12 +36,16 @@ class ProductCategoryForm extends AbstractForm
      */
     protected $useCkEditor;
     
+    /** @var string */
+    protected $ckeditor5Editor;
+    
     public function __construct(
         string $dataClass,
         RequestStack $requestStack,
         RepositoryInterface $localesRepository,
         RepositoryInterface $repository,
-        string $useCkEditor
+        string $useCkEditor,
+        string $ckeditor5Editor
     ) {
         parent::__construct( $dataClass );
         
@@ -52,6 +56,7 @@ class ProductCategoryForm extends AbstractForm
         $this->repository           = $repository;
         
         $this->useCkEditor          = $useCkEditor;
+        $this->ckeditor5Editor      = $ckeditor5Editor;
         
     }
     
@@ -106,7 +111,7 @@ class ProductCategoryForm extends AbstractForm
                 'mapped'                => false,
                 
                 'attr' => [
-                    'data-ckeditor5-config' => 'devpage'
+                    'data-ckeditor5-config' => $this->ckeditor5Editor
                 ],
             ]);
         } else {
