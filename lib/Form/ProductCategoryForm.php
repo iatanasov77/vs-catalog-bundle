@@ -108,7 +108,7 @@ class ProductCategoryForm extends AbstractForm
                 'attr' => [
                     'data-ckeditor5-config' => 'devpage'
                 ],
-            ])
+            ]);
         } else {
             $builder->add( 'description', CKEditorType::class, [
                 'label'                 => 'vs_payment.form.description',
@@ -116,7 +116,7 @@ class ProductCategoryForm extends AbstractForm
                 'required'              => false,
                 'mapped'                => false,
                 'config'                => $this->ckEditorConfig( $options ),
-            ])
+            ]);
         }
     }
     
