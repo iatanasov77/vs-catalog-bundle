@@ -12,9 +12,12 @@ use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use FOS\CKEditorBundle\Form\Type\CKEditorType;
 
 use Vankosoft\CatalogBundle\Model\Interfaces\PricingPlanCategoryInterface;
+use Vankosoft\CmsBundle\Form\Traits\FosCKEditor4Config;
 
 class PricingPlanCategoryForm extends AbstractForm
 {
+    use FosCKEditor4Config;
+    
     /** @var string */
     protected $categoryClass;
     
@@ -64,14 +67,7 @@ class PricingPlanCategoryForm extends AbstractForm
                 'translation_domain'    => 'VSPaymentBundle',
                 'required'              => false,
                 'mapped'                => false,
-                'config'                => [
-                    'uiColor'               => $options['ckeditor_uiColor'],
-                    'extraAllowedContent'   => $options['ckeditor_extraAllowedContent'],
-                    
-                    'toolbar'               => $options['ckeditor_toolbar'],
-                    'extraPlugins'          => array_map( 'trim', explode( ',', $options['ckeditor_extraPlugins'] ) ),
-                    'removeButtons'         => $options['ckeditor_removeButtons'],
-                ],
+                'config'                => $this->ckEditorConfig( $options ),
             ])
             
             ->add( 'parent', EntityType::class, [
@@ -102,36 +98,16 @@ class PricingPlanCategoryForm extends AbstractForm
         $resolver
             ->setDefaults([
                 'csrf_protection'   => false,
-                
-                // CKEditor Options
-                'ckeditor_uiColor'              => '#ffffff',
-                'ckeditor_extraAllowedContent'  => '*[*]{*}(*)',
-                
-                'ckeditor_toolbar'              => 'full',
-                'ckeditor_extraPlugins'         => '',
-                'ckeditor_removeButtons'        => '',
             ])
             
             ->setDefined([
                 'pricing_plan_category',
-                
-                // CKEditor Options
-                'ckeditor_uiColor',
-                'ckeditor_extraAllowedContent',
-                'ckeditor_toolbar',
-                'ckeditor_extraPlugins',
-                'ckeditor_removeButtons',
             ])
             
             ->setAllowedTypes( 'pricing_plan_category', PricingPlanCategoryInterface::class )
-            
-            // CKEditor Options
-            ->setAllowedTypes( 'ckeditor_uiColor', 'string' )
-            ->setAllowedTypes( 'ckeditor_extraAllowedContent', 'string' )
-            ->setAllowedTypes( 'ckeditor_toolbar', 'string' )
-            ->setAllowedTypes( 'ckeditor_extraPlugins', 'string' )
-            ->setAllowedTypes( 'ckeditor_removeButtons', 'string' )
         ;
+            
+        $this->onfigureCkEditorOptions( $resolver );
     }
     
     public function getName()
