@@ -99,7 +99,7 @@ class ProductCategoryForm extends AbstractForm
         ;
             
         if ( $this->useCkEditor == '5' ) {
-            $builder->add( 'text', Ckeditor5TextareaType::class, [
+            $builder->add( 'description', Ckeditor5TextareaType::class, [
                 'label'                 => 'vs_payment.form.description',
                 'translation_domain'    => 'VSPaymentBundle',
                 'required'              => false,
