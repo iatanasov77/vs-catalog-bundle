@@ -57,7 +57,6 @@ class ProductCategoryForm extends AbstractForm
         
         $this->useCkEditor          = $useCkEditor;
         $this->ckeditor5Editor      = $ckeditor5Editor;
-        
     }
     
     public function buildForm( FormBuilderInterface $builder, array $options ): void
