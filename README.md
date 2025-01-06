@@ -1,1 +1,1 @@
-# vs-catalog-bundle
+# VankoSoft Symfony Application Extension - Catalog Bundle
