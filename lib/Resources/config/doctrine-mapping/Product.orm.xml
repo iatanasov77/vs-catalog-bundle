@@ -49,6 +49,12 @@
             </order-by>
         </one-to-many>
         
+        <field name="averageRating" column="average_rating" type="float">
+            <options>
+                <option name="default">0</option>
+            </options>
+        </field>
+        
         <!--
             Used locale to override Translation listener`s locale
             this is not a mapped field of entity metadata, just a simple property

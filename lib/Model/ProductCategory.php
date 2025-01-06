@@ -82,4 +82,14 @@ class ProductCategory implements ProductCategoryInterface
         
         return $this;
     }
+    
+    public function getProductsCount(): int
+    {
+        $count  = $this->products->count();
+        foreach ( $this->children as $child ) {
+            $count += $child->getProductsCount();
+        }
+        
+        return $count;
+    }
 }

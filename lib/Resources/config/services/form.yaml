@@ -9,6 +9,8 @@ services:
             - '@request_stack'
             - '@vs_application.repository.locale'
             - '@vs_catalog.repository.product_category'
+            - '%vs_cms.form.use_ckeditor%'
+            - '%vs_cms.form.decription_field.ckeditor5_editor%'
             
     vs_catalog.resources.product.form:
         class: Vankosoft\CatalogBundle\Form\ProductForm

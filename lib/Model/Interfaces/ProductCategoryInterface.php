@@ -14,4 +14,6 @@ interface ProductCategoryInterface extends ResourceInterface
     
     public function getTaxon(): ?TaxonInterface;
     public function setTaxon( ?TaxonInterface $taxon ): void;
+    
+    public function getProductsCount(): int;
 }

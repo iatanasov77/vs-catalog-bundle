@@ -9,23 +9,43 @@ use Sylius\Component\Resource\Repository\RepositoryInterface;
 use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
+
 use FOS\CKEditorBundle\Form\Type\CKEditorType;
+use daddl3\SymfonyCKEditor5WebpackViteBundle\Form\Ckeditor5TextareaType;
 
 use Vankosoft\CatalogBundle\Model\Interfaces\ProductCategoryInterface;
+use Vankosoft\CmsBundle\Form\Traits\FosCKEditor4Config;
 
 class ProductCategoryForm extends AbstractForm
 {
+    use FosCKEditor4Config;
+    
     /** @var string */
     protected $categoryClass;
     
     /** @var RepositoryInterface */
     protected $repository;
     
+    /**
+     * Which CkEditor Version to Use
+     * ------------------------
+     * CkEditor 4 provided by FOSCKEditorBundle OR
+     * CkEditor 5 provided by 
+     * 
+     * @var string
+     */
+    protected $useCkEditor;
+    
+    /** @var string */
+    protected $ckeditor5Editor;
+    
     public function __construct(
         string $dataClass,
         RequestStack $requestStack,
         RepositoryInterface $localesRepository,
-        RepositoryInterface $repository
+        RepositoryInterface $repository,
+        string $useCkEditor,
+        string $ckeditor5Editor
     ) {
         parent::__construct( $dataClass );
         
@@ -35,6 +55,8 @@ class ProductCategoryForm extends AbstractForm
         $this->categoryClass        = $dataClass;
         $this->repository           = $repository;
         
+        $this->useCkEditor          = $useCkEditor;
+        $this->ckeditor5Editor      = $ckeditor5Editor;
     }
     
     public function buildForm( FormBuilderInterface $builder, array $options ): void
@@ -60,21 +82,6 @@ class ProductCategoryForm extends AbstractForm
                 'mapped'                => false,
             ])
             
-            ->add( 'description', CKEditorType::class, [
-                'label'                 => 'vs_payment.form.description',
-                'translation_domain'    => 'VSPaymentBundle',
-                'required'              => false,
-                'mapped'                => false,
-                'config'                => [
-                    'uiColor'               => $options['ckeditor_uiColor'],
-                    'extraAllowedContent'   => $options['ckeditor_extraAllowedContent'],
-                    
-                    'toolbar'               => $options['ckeditor_toolbar'],
-                    'extraPlugins'          => array_map( 'trim', explode( ',', $options['ckeditor_extraPlugins'] ) ),
-                    'removeButtons'         => $options['ckeditor_removeButtons'],
-                ],
-            ])
-            
             ->add( 'parent', EntityType::class, [
                 'label'                 => 'vs_payment.form.parent_category',
                 'placeholder'           => 'vs_payment.form.parent_category_placeholder',
@@ -94,6 +101,27 @@ class ProductCategoryForm extends AbstractForm
                 'mapped'        => false,
             ])
         ;
+            
+        if ( $this->useCkEditor == '5' ) {
+            $builder->add( 'description', Ckeditor5TextareaType::class, [
+                'label'                 => 'vs_payment.form.description',
+                'translation_domain'    => 'VSPaymentBundle',
+                'required'              => false,
+                'mapped'                => false,
+                
+                'attr' => [
+                    'data-ckeditor5-config' => $this->ckeditor5Editor
+                ],
+            ]);
+        } else {
+            $builder->add( 'description', CKEditorType::class, [
+                'label'                 => 'vs_payment.form.description',
+                'translation_domain'    => 'VSPaymentBundle',
+                'required'              => false,
+                'mapped'                => false,
+                'config'                => $this->ckEditorConfig( $options ),
+            ]);
+        }
     }
     
     public function configureOptions( OptionsResolver $resolver ): void
@@ -104,36 +132,16 @@ class ProductCategoryForm extends AbstractForm
             ->setDefaults([
                 'csrf_protection'   => false,
                 'validation_groups' => false,
-                
-                // CKEditor Options
-                'ckeditor_uiColor'              => '#ffffff',
-                'ckeditor_extraAllowedContent'  => '*[*]{*}(*)',
-                
-                'ckeditor_toolbar'              => 'full',
-                'ckeditor_extraPlugins'         => '',
-                'ckeditor_removeButtons'        => '',
             ])
             
             ->setDefined([
                 'product_category',
-                
-                // CKEditor Options
-                'ckeditor_uiColor',
-                'ckeditor_extraAllowedContent',
-                'ckeditor_toolbar',
-                'ckeditor_extraPlugins',
-                'ckeditor_removeButtons',
             ])
             
             ->setAllowedTypes( 'product_category', ProductCategoryInterface::class )
-            
-            // CKEditor Options
-            ->setAllowedTypes( 'ckeditor_uiColor', 'string' )
-            ->setAllowedTypes( 'ckeditor_extraAllowedContent', 'string' )
-            ->setAllowedTypes( 'ckeditor_toolbar', 'string' )
-            ->setAllowedTypes( 'ckeditor_extraPlugins', 'string' )
-            ->setAllowedTypes( 'ckeditor_removeButtons', 'string' )
         ;
+            
+        $this->onfigureCkEditorOptions( $resolver );
     }
     
     public function getName()
