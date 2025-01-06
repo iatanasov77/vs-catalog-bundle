@@ -1,3 +1,14 @@
+2.0.0	|	Release date: **06.01.2025**
+============================================
+* New Features and Improvements:
+  - Improve Using FOS CkEditor.
+  - Add Conditional CkEditor Version to Use in Forms.
+  - Improve ProductCategory Model.
+  - Combine Doctrine Migrations.
+* Bug-Fixes:
+  - Fix a Product Model Doctrine Mapping.
+
+
 1.4.0	|	Release date: **21.12.2024**
 ============================================
 * New Features:
