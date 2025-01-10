@@ -27,7 +27,39 @@ vs_catalog_product:
                 ckeditor_allowedContent: '%vs_users_subscriptions.form.payed_service.ckeditor_allowedContent%'
                 ckeditor_extraAllowedContent: '%vs_users_subscriptions.form.payed_service.ckeditor_extraAllowedContent%'
     type: sylius.resource
-    
+
+vs_catalog_product_index:
+    path: /products/
+    methods: [GET]
+    defaults:
+        _controller: vs_catalog.controller.product::indexAction
+        _sylius:
+            paginate: 10
+            sortable: true
+            sorting:
+                updatedAt: desc
+            filterable: true
+            template: "@VSCatalog/Pages/Products/index.html.twig"
+    options:
+        expose: true
+        
+vs_catalog_product_index_filtered:
+    path: /products/{filterCategory}/
+    methods: [GET]
+    defaults:
+        _controller: vs_catalog.controller.product::indexAction
+        _sylius:
+            paginate: 10
+            sortable: true
+            sorting:
+                updatedAt: desc
+            filterable: true
+            criteria:
+                category: $filterCategory
+            template: "@VSCatalog/Pages/Products/index.html.twig"
+    options:
+        expose: true
+
 vs_catalog_json_product_categories:
     path: /json/product-categories/{id}/easyui-combotree-with-leafs
     controller: Vankosoft\CatalogBundle\Controller\ProductExtController::getCategories
