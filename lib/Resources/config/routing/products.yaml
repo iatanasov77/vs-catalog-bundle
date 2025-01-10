@@ -44,7 +44,7 @@ vs_catalog_product_index:
         expose: true
         
 vs_catalog_product_index_filtered:
-    path: /products/{filterCategory}/
+    path: /products/category/{filterCategory}/
     methods: [GET]
     defaults:
         _controller: vs_catalog.controller.product::indexAction
