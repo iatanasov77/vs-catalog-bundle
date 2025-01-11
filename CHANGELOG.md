@@ -1,3 +1,10 @@
+2.0.1	|	Release date: **11.01.2025**
+============================================
+* New Features and Improvements:
+  - Update Package Title and Description.
+  - Create Product Filter By Category to Work.
+
+
 2.0.0	|	Release date: **06.01.2025**
 ============================================
 * New Features and Improvements:
