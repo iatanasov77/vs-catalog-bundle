@@ -10,7 +10,7 @@ use Doctrine\Persistence\ManagerRegistry;
 use Sylius\Resource\Doctrine\Persistence\RepositoryInterface;
 use Vankosoft\CatalogBundle\Form\ProductForm;
 
-class ProductExtController extends AbstractController
+class ProductExtController // extends AbstractController
 {
     use ProductAssociationsTrait;
     
