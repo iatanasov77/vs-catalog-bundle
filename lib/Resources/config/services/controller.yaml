@@ -4,13 +4,13 @@ services:
         autoconfigure: false
         public: true
     
-#     Vankosoft\CatalogBundle\Controller\PricingPlanExtController:
-#         tags: ['controller.service_arguments']
-#         arguments:
-#             - '@vs_catalog.repository.pricing_plan'
-#             - '@vs_users_subscriptions.repository.payed_service'
-#         calls:
-#             - [ setContainer, [ '@service_container' ] ]
+    Vankosoft\CatalogBundle\Controller\PricingPlanExtController:
+        tags: ['controller.service_arguments']
+        arguments:
+            - '@vs_catalog.repository.pricing_plan'
+            - '@vs_users_subscriptions.repository.payed_service'
+        calls:
+            - [ setContainer, [ '@service_container' ] ]
             
     Vankosoft\CatalogBundle\Controller\ProductExtController:
         tags: ['controller.service_arguments']
@@ -20,7 +20,7 @@ services:
             - '@vs_catalog.repository.product'
             - '@vs_catalog.repository.product_category'
             - '@vs_application.repository.taxonomy'
-            - '@vs_application.repository.tags_whitelist_context'
+            #- '@vs_application.repository.tags_whitelist_context'
             - '@vs_catalog.resources.product.form'
             
     Vankosoft\CatalogBundle\Controller\CatalogController:
