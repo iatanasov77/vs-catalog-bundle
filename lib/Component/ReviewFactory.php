@@ -1,6 +1,6 @@
 <?php namespace Vankosoft\CatalogBundle\Component;
 
-use Sylius\Component\Resource\Repository\RepositoryInterface;
+use Sylius\Resource\Doctrine\Persistence\RepositoryInterface;
 use Sylius\Component\Resource\Factory\Factory;
 use Sylius\Component\Review\Model\ReviewableInterface;
 use Vankosoft\UsersBundle\Security\SecurityBridge;

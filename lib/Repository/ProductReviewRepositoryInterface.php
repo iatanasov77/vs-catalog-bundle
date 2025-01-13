@@ -1,7 +1,7 @@
 <?php namespace Vankosoft\CatalogBundle\Repository;
 
 use Doctrine\ORM\QueryBuilder;
-use Sylius\Component\Resource\Repository\RepositoryInterface;
+use Sylius\Resource\Doctrine\Persistence\RepositoryInterface;
 use Sylius\Component\Review\Model\ReviewInterface;
 use Vankosoft\ApplicationBundle\Model\Interfaces\ApplicationInterface;
 
