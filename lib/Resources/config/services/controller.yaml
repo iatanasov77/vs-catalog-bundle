@@ -2,7 +2,6 @@ services:
     _defaults:
         autowire: true
         autoconfigure: true
-        #public: true
     
     Vankosoft\CatalogBundle\Controller\PricingPlanExtController:
         tags: ['controller.service_arguments']
@@ -10,8 +9,6 @@ services:
         arguments:
             - '@vs_catalog.repository.pricing_plan'
             - '@vs_users_subscriptions.repository.payed_service'
-#         calls:
-#             - [ setContainer, [ '@service_container' ] ]
             
 #     Vankosoft\CatalogBundle\Controller\ProductExtController:
 #         tags: ['controller.service_arguments']
