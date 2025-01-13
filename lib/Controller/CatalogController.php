@@ -5,7 +5,7 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Sylius\Resource\Doctrine\Persistence\RepositoryInterface;
 
-class CatalogController // extends AbstractController
+class CatalogController extends AbstractController
 {
     /** @var RepositoryInterface */
     protected $productCategoryRepository;

@@ -21,12 +21,12 @@ services:
 #             #- '@vs_application.repository.tags_whitelist_context'
 #             #- '@vs_catalog.resources.product.form'
             
-#     Vankosoft\CatalogBundle\Controller\CatalogController:
-#         tags: ['controller.service_arguments']
-#         autowire: true
-#         arguments:
-#             - '@vs_catalog.repository.product_category'
-#             - '@vs_catalog.repository.product'
-#             - '%vs_catalog.latest_products_limit%'
+    Vankosoft\CatalogBundle\Controller\CatalogController:
+        tags: ['controller.service_arguments']
+        autowire: true
+        arguments:
+            - '@vs_catalog.repository.product_category'
+            - '@vs_catalog.repository.product'
+            - '%vs_catalog.latest_products_limit%'
 #         calls:
 #             - [ setContainer, [ '@service_container' ] ]
