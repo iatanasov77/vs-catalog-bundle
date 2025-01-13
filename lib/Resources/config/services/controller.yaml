@@ -1,7 +1,7 @@
 services:
     Vankosoft\CatalogBundle\Controller\PricingPlanExtController:
         tags: ['controller.service_arguments']
-        autowire: false
+        autowire: true
         arguments:
             - '@vs_catalog.repository.pricing_plan'
             - '@vs_users_subscriptions.repository.payed_service'
