@@ -6,7 +6,7 @@ use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpFoundation\JsonResponse;
 use Sylius\Resource\Doctrine\Persistence\RepositoryInterface;
 
-class PricingPlanExtController // extends AbstractController
+class PricingPlanExtController extends AbstractController
 {
     /** @var RepositoryInterface */
     protected $pricingPlansRepository;
