@@ -41,14 +41,14 @@ class ProductExtController extends AbstractController
         RepositoryInterface $productCategoryRepository,
         RepositoryInterface $taxonomyRepository,
         // RepositoryInterface $vsTagsWhitelistContextRepository,
-        FormTypeInterface $productForm
+        //FormTypeInterface $productForm
     ) {
         $this->doctrine                         = $doctrine;
         $this->productRepository                = $productRepository;
         $this->productCategoryRepository        = $productCategoryRepository;
         $this->taxonomyRepository               = $taxonomyRepository;
         // $this->vsTagsWhitelistContextRepository = $vsTagsWhitelistContextRepository;
-        $this->productForm                      = $productForm;
+        //$this->productForm                      = $productForm;
     }
     
     public function getForm( $itemId, $locale, Request $request ): Response
@@ -69,8 +69,8 @@ class ProductExtController extends AbstractController
         
         return $this->render( '@VSCatalog/Pages/Products/partial/product_form.html.twig', [
             'item'          => $item,
-            //'form'          => $this->createForm( ProductForm::class, $item )->createView(),
-            'form'          => $this->productForm->createView(),
+            'form'          => $this->createForm( ProductForm::class, $item )->createView(),
+            //'form'          => $this->productForm->createView(),
             'taxonomyId'    => $taxonomy->getId(),
             'productTags'   => [], // $tagsContext->getTagsArray(),
         ]);
