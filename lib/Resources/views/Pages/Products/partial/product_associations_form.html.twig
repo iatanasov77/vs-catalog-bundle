@@ -16,7 +16,7 @@
                     {{ form_widget(associationsForm.associations, {'attr': {'class': 'form-control'}}) }}
                 </div>
                 
-                {{ vs_form.buttons( associationsForm ) }}
+                {{ vs_form.buttons( associationsForm, metadata is defined ? metadata : null ) }}
             {{ form_end(associationsForm, {'render_rest': false}) }}
         </div>
     </div>
