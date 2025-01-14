@@ -10,10 +10,9 @@
         {% set photoWidgetClass = 'form-control fieldPhoto' %}
     {% endif %}
     
-    <div class="col-lg-3 form-field-file  mb-3">
-        {{ form_widget(form.code, {'attr': {
-                'class': 'form-control',
-            }
+    <div class="col-lg-3 mb-3">
+        {{ form_widget(form.code, {
+            'attr': { 'class': 'form-control', }
         }) }}
     </div>
     
