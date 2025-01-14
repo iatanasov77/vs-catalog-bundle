@@ -4,16 +4,15 @@ services:
         autoconfigure: true
     
     Vankosoft\CatalogBundle\Controller\PricingPlanExtController:
+        tags: ['controller.service_arguments']
         autowire: true
-        tags:
-            - { name: 'controller.service_arguments', priority: -20 }
         arguments:
             - '@vs_catalog.repository.pricing_plan'
             - '@vs_users_subscriptions.repository.payed_service'
             
     Vankosoft\CatalogBundle\Controller\ProductExtController:
         tags: ['controller.service_arguments']
-        autowire: false
+        autowire: true
         arguments:
             - '@doctrine'
             - '@vs_catalog.repository.product'
