@@ -11,16 +11,16 @@ services:
             - '@vs_catalog.repository.pricing_plan'
             - '@vs_users_subscriptions.repository.payed_service'
             
-#     Vankosoft\CatalogBundle\Controller\ProductExtController:
-#         tags: ['controller.service_arguments']
-#         autowire: true
-#         arguments:
-#             - '@doctrine'
-#             - '@vs_catalog.repository.product'
-#             - '@vs_catalog.repository.product_category'
-#             - '@vs_application.repository.taxonomy'
-#             #- '@vs_application.repository.tags_whitelist_context'
-#             #- '@vs_catalog.resources.product.form'
+    Vankosoft\CatalogBundle\Controller\ProductExtController:
+        tags: ['controller.service_arguments']
+        autowire: true
+        arguments:
+            - '@doctrine'
+            - '@vs_catalog.repository.product'
+            - '@vs_catalog.repository.product_category'
+            - '@vs_application.repository.taxonomy'
+            #- '@vs_application.repository.tags_whitelist_context'
+            #- '@vs_catalog.resources.product.form'
             
     Vankosoft\CatalogBundle\Controller\CatalogController:
         tags: ['controller.service_arguments']
