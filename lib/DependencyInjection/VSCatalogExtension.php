@@ -47,8 +47,7 @@ class VSCatalogExtension extends AbstractResourceExtension implements PrependExt
         $debugArray = $container->getExtensionConfig( $extension );
         
         $fileLocator = new FileLocator( $container->getParameter( 'kernel.project_dir' ) );
-        //$debugArray['MigrationsPath'] = $fileLocator->locate("@VSApplicationBundle/DoctrineMigrations");
-        $debugArray['MigrationsPath'] = $fileLocator->locate("@VSCatalogBundle/DoctrineMigrations");
+        $debugArray['MigrationsPath'] = $fileLocator->locate( "@VSCatalogBundle/DoctrineMigrations" );
         
         return $debugArray;
     }

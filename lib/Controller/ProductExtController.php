@@ -4,8 +4,10 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpFoundation\JsonResponse;
+use Symfony\Component\Form\FormTypeInterface;
 use Doctrine\Persistence\ManagerRegistry;
 use Sylius\Component\Resource\Repository\RepositoryInterface;
+use Vankosoft\CatalogBundle\Form\ProductForm;
 
 class ProductExtController extends AbstractController
 {
@@ -20,14 +22,54 @@ class ProductExtController extends AbstractController
     /** @var RepositoryInterface */
     protected $productCategoryRepository;
     
+    /** @var RepositoryInterface */
+    protected $taxonomyRepository;
+    
+    /** @var RepositoryInterface */
+    protected $tagsWhitelistContextRepository;
+    
+    /** @var FormTypeInterface */
+    protected $productForm;
+    
     public function __construct(
         ManagerRegistry $doctrine,
         RepositoryInterface $productRepository,
-        RepositoryInterface $productCategoryRepository
+        RepositoryInterface $productCategoryRepository,
+        RepositoryInterface $taxonomyRepository,
+        RepositoryInterface $tagsWhitelistContextRepository,
+        //FormTypeInterface $productForm
     ) {
-        $this->doctrine                     = $doctrine;
-        $this->productRepository            = $productRepository;
-        $this->productCategoryRepository    = $productCategoryRepository;
+        $this->doctrine                         = $doctrine;
+        $this->productRepository                = $productRepository;
+        $this->productCategoryRepository        = $productCategoryRepository;
+        $this->taxonomyRepository               = $taxonomyRepository;
+        $this->tagsWhitelistContextRepository   = $tagsWhitelistContextRepository;
+        //$this->productForm                      = $productForm;
+    }
+    
+    public function getForm( $itemId, $locale, Request $request ): Response
+    {
+        $em     = $this->doctrine->getManager();
+        $item   = $this->productRepository->find( $itemId );
+        
+        if ( $locale != $request->getLocale() ) {
+            $item->setTranslatableLocale( $locale );
+            $em->refresh( $item );
+        }
+        
+        $taxonomy   = $this->taxonomyRepository->findByCode(
+            $this->getParameter( 'vs_catalog.product_category.taxonomy_code' )
+        );
+        
+        $tagsContext    = $this->tagsWhitelistContextRepository->findByTaxonCode( 'catalog-products' );
+        
+        return $this->render( '@VSCatalog/Pages/Products/partial/product_form.html.twig', [
+            'item'          => $item,
+            'form'          => $this->createForm( ProductForm::class, $item )->createView(),
+            //'form'          => $this->productForm->createView(),
+            'taxonomyId'    => $taxonomy->getId(),
+            'productTags'   => [], // $tagsContext->getTagsArray(),
+        ]);
     }
     
     public function handleAssociationsForm( $productId, Request $request ): Response

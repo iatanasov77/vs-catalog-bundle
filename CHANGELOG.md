@@ -1,3 +1,10 @@
+2.0.2	|	Release date: **14.01.2025**
+============================================
+* New Features:
+  - Separate Product Filter Form View in a Different File.
+  - Create Custom Route to Get Product Form on Loacale DropDown Change.
+
+
 2.0.1	|	Release date: **11.01.2025**
 ============================================
 * New Features and Improvements:

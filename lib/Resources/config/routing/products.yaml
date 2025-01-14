@@ -113,4 +113,8 @@ vs_catalog_handle_associations:
     path: /handle-associations/{productId}
     controller: Vankosoft\CatalogBundle\Controller\ProductExtController::handleAssociationsForm
 
-
+vs_catalog_products_form_in_locale:
+    path: /products/get-form/{locale}/{itemId}
+    controller: Vankosoft\CatalogBundle\Controller\ProductExtController::getForm
+    options:
+        expose: true

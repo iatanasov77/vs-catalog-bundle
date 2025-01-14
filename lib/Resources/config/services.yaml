@@ -1,6 +1,6 @@
 imports:
-    - { resource: services/associations.yaml }
     - { resource: services/controller.yaml }
+    - { resource: services/associations.yaml }
     - { resource: services/form.yaml }
     - { resource: services/menu.yaml }
     - { resource: services/fixtures_factories.yaml }

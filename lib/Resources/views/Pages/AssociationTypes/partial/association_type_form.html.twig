@@ -45,5 +45,5 @@
 
     <div class="row">&nbsp;</div>
     
-    {{ vs_form.buttons( form ) }}
+    {{ vs_form.buttons( form, metadata is defined ? metadata : null ) }}
 {{ form_end(form, {'render_rest': false}) }}

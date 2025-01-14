@@ -1,7 +1,7 @@
 {
 	"name": "vankosoft/catalog-bundle",
     "type": "symfony-bundle",
-    "description": "VankoSoft Symfony Application Extension - Catalog Bundle",
+    "description": "VankoSoft Symfony Application Extension - Catalog",
     "keywords": [
         "symfony",
         "vankosoft",
