@@ -1,7 +1,6 @@
 <?php namespace Vankosoft\CatalogBundle\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
-use Symfony\Component\DependencyInjection\Attribute\Autowire;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpFoundation\JsonResponse;
@@ -27,7 +26,6 @@ class ProductExtController extends AbstractController
     protected $taxonomyRepository;
     
     /** @var RepositoryInterface */
-    #[Autowire(service: 'vs_application.repository.tags_whitelist_context')]
     protected $vsTagsWhitelistContextRepository;
     
     /** @var FormTypeInterface */

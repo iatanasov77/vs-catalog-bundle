@@ -13,7 +13,7 @@ services:
             
     Vankosoft\CatalogBundle\Controller\ProductExtController:
         tags: ['controller.service_arguments']
-        autowire: true
+        autowire: false
         arguments:
             - '@doctrine'
             - '@vs_catalog.repository.product'
