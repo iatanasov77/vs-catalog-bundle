@@ -27,10 +27,8 @@ class ProductExtController extends AbstractController
     protected $taxonomyRepository;
     
     /** @var RepositoryInterface */
-    /*
     #[Autowire(service: 'vs_application.repository.tags_whitelist_context')]
     protected $vsTagsWhitelistContextRepository;
-    */
     
     /** @var FormTypeInterface */
     protected $productForm;
@@ -40,15 +38,15 @@ class ProductExtController extends AbstractController
         RepositoryInterface $productRepository,
         RepositoryInterface $productCategoryRepository,
         RepositoryInterface $taxonomyRepository,
-        // RepositoryInterface $vsTagsWhitelistContextRepository,
-        //FormTypeInterface $productForm
+        RepositoryInterface $vsTagsWhitelistContextRepository,
+        FormTypeInterface $productForm
     ) {
         $this->doctrine                         = $doctrine;
         $this->productRepository                = $productRepository;
         $this->productCategoryRepository        = $productCategoryRepository;
         $this->taxonomyRepository               = $taxonomyRepository;
-        // $this->vsTagsWhitelistContextRepository = $vsTagsWhitelistContextRepository;
-        //$this->productForm                      = $productForm;
+        $this->vsTagsWhitelistContextRepository = $vsTagsWhitelistContextRepository;
+        $this->productForm                      = $productForm;
     }
     
     public function getForm( $itemId, $locale, Request $request ): Response
@@ -65,12 +63,12 @@ class ProductExtController extends AbstractController
             $this->getParameter( 'vs_catalog.product_category.taxonomy_code' )
         );
         
-        // $tagsContext    = $this->vsTagsWhitelistContextRepository->findByTaxonCode( 'catalog-products' );
+        $tagsContext    = $this->vsTagsWhitelistContextRepository->findByTaxonCode( 'catalog-products' );
         
         return $this->render( '@VSCatalog/Pages/Products/partial/product_form.html.twig', [
             'item'          => $item,
-            'form'          => $this->createForm( ProductForm::class, $item )->createView(),
-            //'form'          => $this->productForm->createView(),
+            //'form'          => $this->createForm( ProductForm::class, $item )->createView(),
+            'form'          => $this->productForm->createView(),
             'taxonomyId'    => $taxonomy->getId(),
             'productTags'   => [], // $tagsContext->getTagsArray(),
         ]);
