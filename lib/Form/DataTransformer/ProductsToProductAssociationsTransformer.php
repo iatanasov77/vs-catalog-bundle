@@ -5,7 +5,7 @@ use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Webmozart\Assert\Assert;
 use Sylius\Component\Resource\Factory\FactoryInterface;
-use Sylius\Resource\Doctrine\Persistence\RepositoryInterface;
+use Sylius\Component\Resource\Repository\RepositoryInterface;
 
 use Vankosoft\CatalogBundle\Model\Interfaces\ProductAssociationInterface;
 use Vankosoft\CatalogBundle\Model\Interfaces\AssociationTypeInterface;

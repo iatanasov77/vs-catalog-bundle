@@ -7,7 +7,7 @@ use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\Form\FormTypeInterface;
 use Doctrine\Persistence\ManagerRegistry;
-use Sylius\Resource\Doctrine\Persistence\RepositoryInterface;
+use Sylius\Component\Resource\Repository\RepositoryInterface;
 use Vankosoft\CatalogBundle\Form\ProductForm;
 
 class ProductExtController // extends AbstractController
