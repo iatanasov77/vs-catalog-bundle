@@ -38,7 +38,7 @@ class ProductExtController extends AbstractController
         RepositoryInterface $productCategoryRepository,
         RepositoryInterface $taxonomyRepository,
         RepositoryInterface $tagsWhitelistContextRepository,
-        FormType $productForm
+        $productForm
     ) {
         $this->doctrine                         = $doctrine;
         $this->productRepository                = $productRepository;
