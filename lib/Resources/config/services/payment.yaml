@@ -1,7 +1,7 @@
 services:
     _defaults:
-        autowire: false
-        autoconfigure: false
+        autowire: true
+        autoconfigure: true
 
     vs_catalog.pricing_plan_subscriptions_subscriber:
         class: Vankosoft\CatalogBundle\EventSubscriber\PricingPlanSubscriptionsSubscriber
