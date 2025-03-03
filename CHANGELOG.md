@@ -1,3 +1,9 @@
+2.0.3	|	Release date: **03.03.2025**
+============================================
+* Bug-Fixes:
+  - Fix an Updated Service ID in Vankosoft Application Core.
+
+
 2.0.2	|	Release date: **14.01.2025**
 ============================================
 * New Features:

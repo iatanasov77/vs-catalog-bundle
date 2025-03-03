@@ -45,7 +45,7 @@ services:
             - '@vs_payment.repository.currency'
             - '@vs_catalog.repository.product_category'
             - '@file_locator'
-            - '@vs_application.app_pictures_uploader'
+            - '@vs_cms.app_pictures_uploader'
             
     vs_catalog.fixture.example_factory.paid_services:
         class: Vankosoft\CatalogBundle\DataFixtures\Factory\PaidServicesExampleFactory

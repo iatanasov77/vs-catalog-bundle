@@ -145,7 +145,7 @@ class ProductController extends AbstractCrudController
         $uploadedFile   = new UploadedFile( $file->getRealPath(), $file->getBasename() );
         $productPicture->setFile( $uploadedFile );
         
-        $this->get( 'vs_application.app_pictures_uploader' )->upload( $productPicture );
+        $this->get( 'vs_cms.app_pictures_uploader' )->upload( $productPicture );
         $productPicture->setFile( null ); // reset File Because: Serialization of 'Symfony\Component\HttpFoundation\File\UploadedFile' is not allowed
         
         if ( $code == Product::PRODUCT_PICTURE_TYPE_OTHER ) {
@@ -165,7 +165,7 @@ class ProductController extends AbstractCrudController
         $uploadedFile   = new UploadedFile( $file->getRealPath(), $file->getBasename() );
         $productFile->setFile( $uploadedFile );
         
-        $this->get( 'vs_application.app_pictures_uploader' )->upload( $productFile );
+        $this->get( 'vs_cms.app_pictures_uploader' )->upload( $productFile );
         $productFile->setFile( null ); // reset File Because: Serialization of 'Symfony\Component\HttpFoundation\File\UploadedFile' is not allowed
         
         if ( $code == Product::PRODUCT_FILE_TYPE_OTHER ) {
