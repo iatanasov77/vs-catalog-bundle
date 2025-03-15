@@ -13,6 +13,7 @@ use Symfony\Component\Form\Extension\Core\Type\NumberType;
 use Symfony\Component\Form\Extension\Core\Type\CollectionType;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use FOS\CKEditorBundle\Form\Type\CKEditorType;
+use daddl3\SymfonyCKEditor5WebpackViteBundle\Form\Ckeditor5TextareaType;
 
 use Vankosoft\UsersSubscriptionsBundle\Model\PayedServiceSubscriptionPeriod;
 use Vankosoft\PaymentBundle\Form\Type\CurrencyChoiceType;
@@ -30,12 +31,28 @@ class PricingPlanForm extends AbstractForm
     /** @var string */
     protected  $paidServicePeriodClass;
     
+    /**
+     * Which CkEditor Version to Use
+     * ------------------------
+     * CkEditor 4 provided by FOSCKEditorBundle OR
+     * CkEditor 5 provided by
+     *
+     * @var string
+     */
+    protected $useCkEditor;
+    
+    /** @var string */
+    protected $ckeditor5Editor;
+    
     public function __construct(
         string $dataClass,
         RequestStack $requestStack,
         RepositoryInterface $localesRepository,
         string $categoryClass,
-        string $paidServicePeriodClass
+        string $paidServicePeriodClass,
+        
+        string $useCkEditor,
+        string $ckeditor5Editor
     ) {
         parent::__construct( $dataClass );
         
@@ -44,6 +61,9 @@ class PricingPlanForm extends AbstractForm
         
         $this->categoryClass            = $categoryClass;
         $this->paidServicePeriodClass   = $paidServicePeriodClass;
+        
+        $this->useCkEditor              = $useCkEditor;
+        $this->ckeditor5Editor          = $ckeditor5Editor;
     }
     
     public function buildForm( FormBuilderInterface $builder, array $options ): void
@@ -91,13 +111,6 @@ class PricingPlanForm extends AbstractForm
                 'required'              => false,
             ])
             
-            ->add( 'description', CKEditorType::class, [
-                'label'                 => 'vs_payment.form.description',
-                'translation_domain'    => 'VSPaymentBundle',
-                'required'              => false,
-                'config'                => $this->ckEditorConfig( $options ),
-            ])
-            
             ->add( 'premium', CheckboxType::class, [
                 'label'                 => 'vs_payment.form.pricing_plan.premium',
                 'translation_domain'    => 'VSPaymentBundle',
@@ -141,6 +154,25 @@ class PricingPlanForm extends AbstractForm
                 'mapped'                => true,
             ])
         ;
+            
+            if ( $this->useCkEditor == '5' ) {
+                $builder->add( 'description', Ckeditor5TextareaType::class, [
+                    'label'                 => 'vs_payment.form.description',
+                    'translation_domain'    => 'VSPaymentBundle',
+                    'required'              => false,
+                    
+                    'attr' => [
+                        'data-ckeditor5-config' => $this->ckeditor5Editor
+                    ],
+                ]);
+            } else {
+                $builder->add( 'description', CKEditorType::class, [
+                    'label'                 => 'vs_payment.form.description',
+                    'translation_domain'    => 'VSPaymentBundle',
+                    'required'              => false,
+                    'config'                => $this->ckEditorConfig( $options ),
+                ]);
+            }
     }
     
     public function configureOptions( OptionsResolver $resolver ): void
@@ -160,7 +192,7 @@ class PricingPlanForm extends AbstractForm
             ->setAllowedTypes( 'pricing_plan', PricingPlanInterface::class )
         ;
             
-        $this->onfigureCkEditorOptions( $resolver );
+        $this->configureCkEditorOptions( $resolver );
     }
     
     public function getName()
