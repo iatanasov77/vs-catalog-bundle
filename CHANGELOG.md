@@ -1,3 +1,12 @@
+2.1.0	|	Release date: **15.03.2025**
+============================================
+* New Features , Fixes and Updates:
+  - Update Composer Requirements.
+  - Fix Doctrine Mapping.
+  - Load CkEditor 5 in Pages that use wysywyg editors.
+  - Update Payment Bundle Version Constraint.
+
+
 2.0.3	|	Release date: **03.03.2025**
 ============================================
 * Bug-Fixes:
