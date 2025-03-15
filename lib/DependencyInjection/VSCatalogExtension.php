@@ -18,7 +18,7 @@ class VSCatalogExtension extends AbstractResourceExtension implements PrependExt
     /**
      * {@inheritDoc}
      */
-    public function load( array $configs, ContainerBuilder $container )
+    public function load( array $configs, ContainerBuilder $container ): void
     {
         $config = $this->processConfiguration( $this->getConfiguration( [], $container ), $configs );
         
@@ -40,15 +40,5 @@ class VSCatalogExtension extends AbstractResourceExtension implements PrependExt
         $config = $this->processConfiguration( $this->getConfiguration( [], $container ), $config );
         
         $this->prependDoctrineMigrations( $container );
-    }
-    
-    private function debugExtensionConfig( ContainerBuilder $container, string $extension )
-    {
-        $debugArray = $container->getExtensionConfig( $extension );
-        
-        $fileLocator = new FileLocator( $container->getParameter( 'kernel.project_dir' ) );
-        $debugArray['MigrationsPath'] = $fileLocator->locate( "@VSCatalogBundle/DoctrineMigrations" );
-        
-        return $debugArray;
     }
 }
