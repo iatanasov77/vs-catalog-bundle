@@ -22,6 +22,8 @@ services:
             - '@vs_application.repository.locale'
             - '%vs_catalog.model.product_category.class%'
             - '%vs_payment.model.currency.class%'
+            - '%vs_cms.form.use_ckeditor%'
+            - '%vs_cms.form.decription_field.ckeditor5_editor%'
     
     Vankosoft\CatalogBundle\Form\Type\ProductPictureType:
         tags:
@@ -44,6 +46,8 @@ services:
             - '@request_stack'
             - '@vs_application.repository.locale'
             - '@vs_catalog.repository.pricing_plan_category'
+            - '%vs_cms.form.use_ckeditor%'
+            - '%vs_cms.form.decription_field.ckeditor5_editor%'
             
     vs_catalog.resources.pricing_plan.form:
         class: Vankosoft\CatalogBundle\Form\PricingPlanForm
@@ -55,6 +59,8 @@ services:
             - '@vs_application.repository.locale'
             - '%vs_catalog.model.pricing_plan_category.class%'
             - '%vs_users_subscriptions.model.payed_service_subscription_period.class%'
+            - '%vs_cms.form.use_ckeditor%'
+            - '%vs_cms.form.decription_field.ckeditor5_editor%'
             
     Vankosoft\CatalogBundle\Form\SelectPricingPlanForm:
         tags:

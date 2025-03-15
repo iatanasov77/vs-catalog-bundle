@@ -141,7 +141,7 @@ class ProductCategoryForm extends AbstractForm
             ->setAllowedTypes( 'product_category', ProductCategoryInterface::class )
         ;
             
-        $this->onfigureCkEditorOptions( $resolver );
+        $this->configureCkEditorOptions( $resolver );
     }
     
     public function getName()

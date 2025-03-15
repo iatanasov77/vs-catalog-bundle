@@ -10,6 +10,7 @@ use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use FOS\CKEditorBundle\Form\Type\CKEditorType;
+use daddl3\SymfonyCKEditor5WebpackViteBundle\Form\Ckeditor5TextareaType;
 
 use Vankosoft\CatalogBundle\Model\Interfaces\PricingPlanCategoryInterface;
 use Vankosoft\CmsBundle\Form\Traits\FosCKEditor4Config;
@@ -24,11 +25,27 @@ class PricingPlanCategoryForm extends AbstractForm
     /** @var RepositoryInterface */
     protected $repository;
     
+    /**
+     * Which CkEditor Version to Use
+     * ------------------------
+     * CkEditor 4 provided by FOSCKEditorBundle OR
+     * CkEditor 5 provided by
+     *
+     * @var string
+     */
+    protected $useCkEditor;
+    
+    /** @var string */
+    protected $ckeditor5Editor;
+    
     public function __construct(
         string $dataClass,
         RequestStack $requestStack,
         RepositoryInterface $localesRepository,
-        RepositoryInterface $repository
+        RepositoryInterface $repository,
+        
+        string $useCkEditor,
+        string $ckeditor5Editor
     ) {
         parent::__construct( $dataClass );
         
@@ -37,6 +54,9 @@ class PricingPlanCategoryForm extends AbstractForm
         
         $this->categoryClass        = $dataClass;
         $this->repository           = $repository;
+        
+        $this->useCkEditor          = $useCkEditor;
+        $this->ckeditor5Editor      = $ckeditor5Editor;
     }
     
     public function buildForm( FormBuilderInterface $builder, array $options ): void
@@ -62,14 +82,6 @@ class PricingPlanCategoryForm extends AbstractForm
                 'mapped'                => false,
             ])
             
-            ->add( 'description', CKEditorType::class, [
-                'label'                 => 'vs_payment.form.description',
-                'translation_domain'    => 'VSPaymentBundle',
-                'required'              => false,
-                'mapped'                => false,
-                'config'                => $this->ckEditorConfig( $options ),
-            ])
-            
             ->add( 'parent', EntityType::class, [
                 'label'                 => 'vs_payment.form.parent_category',
                 'translation_domain'    => 'VSPaymentBundle',
@@ -89,6 +101,27 @@ class PricingPlanCategoryForm extends AbstractForm
                 'placeholder'   => 'vs_payment.form.parent_category_placeholder',
             ])
         ;
+            
+        if ( $this->useCkEditor == '5' ) {
+            $builder->add( 'description', Ckeditor5TextareaType::class, [
+                'label'                 => 'vs_payment.form.description',
+                'translation_domain'    => 'VSPaymentBundle',
+                'required'              => false,
+                'mapped'                => false,
+                
+                'attr' => [
+                    'data-ckeditor5-config' => $this->ckeditor5Editor
+                ],
+            ]);
+        } else {
+            $builder->add( 'description', CKEditorType::class, [
+                'label'                 => 'vs_payment.form.description',
+                'translation_domain'    => 'VSPaymentBundle',
+                'required'              => false,
+                'mapped'                => false,
+                'config'                => $this->ckEditorConfig( $options ),
+            ]);
+        }
     }
     
     public function configureOptions( OptionsResolver $resolver ): void
@@ -107,7 +140,7 @@ class PricingPlanCategoryForm extends AbstractForm
             ->setAllowedTypes( 'pricing_plan_category', PricingPlanCategoryInterface::class )
         ;
             
-        $this->onfigureCkEditorOptions( $resolver );
+        $this->configureCkEditorOptions( $resolver );
     }
     
     public function getName()
