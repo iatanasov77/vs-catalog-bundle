@@ -1,3 +1,9 @@
+2.1.1	|	Release date: **15.03.2025**
+============================================
+* Bug-Fixes:
+  - Fix Some Deprecation.
+
+
 2.1.0	|	Release date: **15.03.2025**
 ============================================
 * New Features , Fixes and Updates:
