@@ -31,6 +31,7 @@
                     <tr>
                         <th width="50">N</th>
                         <th>{{ 'vs_application.template.items_index_row_title' | trans( {},'VSApplicationBundle' ) }}</th>
+                        <th>{{ 'vs_payment.form.payment_description' | trans( {},'VSPaymentBundle' ) }}</th>
                         <th>{{ 'vs_payment.form.price' | trans( {},'VSPaymentBundle' ) }}</th>
                         <th>{{ 'vs_payment.template.subscriptions' | trans( {},'VSPaymentBundle' ) }}</th>
                         <th>{{ 'vs_application.template.items_index_row_enabled' | trans( {},'VSApplicationBundle' ) }}</th>
@@ -44,6 +45,7 @@
                     <tr>
                         <td>{{ loop.index }}</td>
                         <td>{{ item.title }}</td>
+                        <td>{{ item.paymentDescription }}</td>
                         <td>{{ item.totalAmount }} {{ item.currencyCode | vs_currency_symbol }}</td>
                         <td>{{ item.subscriptions | length }}</td>
                         
