@@ -67,6 +67,10 @@ class PricingPlan implements PricingPlanInterface, Comparable
      */
     protected $gatewayAttributes;
     
+    
+    /** @var string */
+    protected $paymentDescription;
+    
     public function __construct()
     {
         $this->subscriptions        = new ArrayCollection();
@@ -264,6 +268,18 @@ class PricingPlan implements PricingPlanInterface, Comparable
     public function setGatewayAttributes( array $gatewayAttributes ): self
     {
         $this->gatewayAttributes    = $gatewayAttributes;
+        
+        return $this;
+    }
+    
+    public function getPaymentDescription()
+    {
+        return $this->paymentDescription;
+    }
+    
+    public function setPaymentDescription( $paymentDescription ): PricingPlanInterface
+    {
+        $this->paymentDescription = $paymentDescription;
         
         return $this;
     }

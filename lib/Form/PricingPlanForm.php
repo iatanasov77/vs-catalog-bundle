@@ -153,6 +153,12 @@ class PricingPlanForm extends AbstractForm
                 'required'              => true,
                 'mapped'                => true,
             ])
+            
+            ->add( 'paymentDescription', TextType::class, [
+                'label'                 => 'vs_payment.form.payment_description',
+                'translation_domain'    => 'VSPaymentBundle',
+                'required'              => false,
+            ])
         ;
             
             if ( $this->useCkEditor == '5' ) {
