@@ -58,7 +58,7 @@ trait UserSubscriptionAwareEntity
      */
     public function getActivePricingPlanSubscriptions(): Collection
     {
-        $this->pricingPlanSubscriptions->filter( function ( SubscriptionInterface $subscription ) {
+        return $this->pricingPlanSubscriptions->filter( function ( SubscriptionInterface $subscription ) {
             return $subscription->isActive();
         });
     }
