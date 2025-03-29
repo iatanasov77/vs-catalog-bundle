@@ -15,7 +15,7 @@ trait UserSubscriptionAwareEntity
      *
      * @ORM\OneToMany(targetEntity="Vankosoft\CatalogBundle\Model\Interfaces\PricingPlanSubscriptionInterface", mappedBy="user", cascade={"persist", "remove"})
      */
-    #[ORM\OneToMany(targetEntity: PricingPlanSubscriptionInterface::class, mappedBy: "user", cascade: ["persist", "remove"], orphanRemoval: true)]
+    #[ORM\OneToMany(targetEntity: PricingPlanSubscriptionInterface::class, mappedBy: "user", indexBy: "pricing_plan_id", cascade: ["persist", "remove"], orphanRemoval: true)]
     protected $pricingPlanSubscriptions;
     
     /**
