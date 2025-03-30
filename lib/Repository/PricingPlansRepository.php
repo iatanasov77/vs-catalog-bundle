@@ -8,6 +8,7 @@ class PricingPlansRepository extends EntityRepository
     public function findAllForForm(): array
     {
         $results = $this->createQueryBuilder( 'pp' )
+            ->where( 'pp.enabled = 1' )
             ->orderBy( 'pp.id', 'ASC' )
             ->getQuery()
             ->getResult()

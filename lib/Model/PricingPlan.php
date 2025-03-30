@@ -133,7 +133,7 @@ class PricingPlan implements PricingPlanInterface, Comparable
     }
     
     /**
-     * @param bool $enabled
+     * @param bool $premium
      */
     public function setPremium( ?bool $premium ): PricingPlanInterface
     {
