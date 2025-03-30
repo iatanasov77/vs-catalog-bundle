@@ -52,45 +52,4 @@ trait UserSubscriptionAwareEntity
         
         return $this;
     }
-    
-    /**
-     * @return Collection|SubscriptionInterface[]
-     */
-    public function getActivePricingPlanSubscriptions(): Collection
-    {
-        return $this->pricingPlanSubscriptions->filter( function ( SubscriptionInterface $subscription ) {
-            return $subscription->isActive();
-        });
-    }
-    
-    /**
-     * @return SubscriptionInterface|null
-     */
-    public function getActivePricingPlanSubscriptionByPlan( PricingPlanInterface $pricingPlan ): ?SubscriptionInterface
-    {
-        foreach ( $this->pricingPlanSubscriptions as $subscription ) {
-            if ( $subscription->isActive() && $subscription->getPricingPlan() == $pricingPlan ) {
-                return $subscription;
-            }
-        }
-        
-        return null;
-    }
-    
-    /**
-     * @return SubscriptionInterface|null
-     * 
-     * @deprecated 3.0.0 No longer used by internal code and not recommended.
-     */
-    public function getActivePricingPlanSubscriptionByService( PayedServiceInterface $paidService ): ?SubscriptionInterface
-    {
-        foreach ( $this->pricingPlanSubscriptions as $subscription ) {
-            $thisPaidService    = $subscription->getPricingPlan()->getPaidService()->getPayedService();
-            if ( $subscription->isActive() && $thisPaidService == $paidService ) {
-                return $subscription;
-            }
-        }
-        
-        return null;
-    }
 }

@@ -144,17 +144,6 @@ final class PricingPlanSubscriptionsSubscriber implements EventSubscriberInterfa
     {
         $user                   = $this->securityBridge->getUser();
         
-        
-//         /** @deprecated 3.0.0 No longer used by internal code and not recommended. */
-//         $previousSubscription   = $user->getActivePricingPlanSubscriptionByService(
-//             $subscription->getPricingPlan()->getPaidService()->getPayedService()
-//         );
-//         if ( $previousSubscription ) {
-//             $previousSubscription->setActive( false );
-//             $this->doctrine->getManager()->persist( $previousSubscription );
-//         }
-        
-//         $subscription->setActive( true );
         $gateway    = $payment->getOrder()->getPaymentMethod()->getGateway();
         
         if ( $this->vsPayment->isGatewaySupportRecurring( $gateway ) ) {
