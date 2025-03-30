@@ -88,6 +88,14 @@ class PricingPlanCategory implements PricingPlanCategoryInterface
         return $this;
     }
     
+    public function getEnabledPlans(): Collection
+    {
+        return $this->getPlans()->filter( function( PricingPlanInterface $plan )
+        {
+            return $plan->isEnabled();
+        });
+    }
+    
     public function __toString()
     {
         return $this->taxon ? $this->taxon->getName() : '';

@@ -47,12 +47,5 @@
         
         <field name="gatewayAttributes" column="gateway_attributes" type="json" nullable="true" />
         
-        <field name="active" type="boolean">
-            <options>
-                <option name="default">0</option>
-                <option name="comment">One Active Subscription for an User and for PaidService. Wnen the Payment succeed set active true and set active false for previous active for this paid service.</option>
-            </options>
-        </field>
-        
     </mapped-superclass>
 </doctrine-mapping>

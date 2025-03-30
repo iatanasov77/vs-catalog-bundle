@@ -40,9 +40,10 @@ vs_catalog:
         
         select_payment_method_title: Select Payment Method
         
+        alerts:
+            missing_active_subscription: You has not an active Pricing Plan Subscription.
+    
     association_type:
         associated: Associated Products Strategy
         random: Random Products Strategy
         similar: Similar Products Strategy
-
-

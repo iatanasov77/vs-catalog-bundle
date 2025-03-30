@@ -44,9 +44,6 @@ class PricingPlanSubscription implements PricingPlanSubscriptionInterface
      */
     protected $gatewayAttributes;
     
-    /** @var bool */
-    protected $active = false;
-    
     public function __construct()
     {
         $this->orderItems           = new ArrayCollection();
@@ -129,26 +126,6 @@ class PricingPlanSubscription implements PricingPlanSubscriptionInterface
         $this->gatewayAttributes    = $gatewayAttributes;
         
         return $this;
-    }
-    
-    public function getActive(): bool
-    {
-        return $this->active;
-    }
-    
-    /**
-     * @param bool
-     */
-    public function setActive( ?bool $active )
-    {
-        $this->active = (bool) $active;
-        
-        return $this;
-    }
-    
-    public function isActive(): bool
-    {
-        return $this->active;
     }
     
     public function isPaid(): bool

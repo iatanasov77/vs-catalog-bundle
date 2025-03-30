@@ -67,6 +67,10 @@ class PricingPlan implements PricingPlanInterface, Comparable
      */
     protected $gatewayAttributes;
     
+    
+    /** @var string */
+    protected $paymentDescription;
+    
     public function __construct()
     {
         $this->subscriptions        = new ArrayCollection();
@@ -129,7 +133,7 @@ class PricingPlan implements PricingPlanInterface, Comparable
     }
     
     /**
-     * @param bool $enabled
+     * @param bool $premium
      */
     public function setPremium( ?bool $premium ): PricingPlanInterface
     {
@@ -268,6 +272,18 @@ class PricingPlan implements PricingPlanInterface, Comparable
         return $this;
     }
     
+    public function getPaymentDescription()
+    {
+        return $this->paymentDescription;
+    }
+    
+    public function setPaymentDescription( $paymentDescription ): PricingPlanInterface
+    {
+        $this->paymentDescription = $paymentDescription;
+        
+        return $this;
+    }
+    
     public function getServiceCode(): ?string
     {
         return $this->paidService->getPayedService()->getSubscriptionCode();
@@ -352,7 +368,7 @@ class PricingPlan implements PricingPlanInterface, Comparable
     public function hasActiveSubscription( $userSubscriptions ): bool
     {
         foreach ( $userSubscriptions as $subscription ) {
-            if ( $subscription->getPricingPlan() == $this && $subscription->isActive() ) {
+            if ( $subscription->getPricingPlan() == $this && $subscription->getExpiresAt() > new \DateTime() ) {
                 return true;
             }
         }

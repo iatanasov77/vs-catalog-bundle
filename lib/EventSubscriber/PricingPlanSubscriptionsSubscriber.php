@@ -74,44 +74,12 @@ final class PricingPlanSubscriptionsSubscriber implements EventSubscriberInterfa
         ];
     }
 
-//     public function createSubscription( CreateSubscriptionEvent $event )
-//     {
-//         $pricingPlan            = $event->getPricingPlan();
-//         $user                   = $this->securityBridge->getUser();
-        
-//         $previousSubscription   = $user->getActivePricingPlanSubscriptionByService(
-//             $pricingPlan->getPaidService()->getPayedService()
-//         );
-        
-//         $subscription   = $this->pricingPlanSubscriptionFactory->createNew();
-        
-//         $subscription->setUser( $user );
-//         $subscription->setPricingPlan( $pricingPlan );
-//         $subscription->setRecurringPayment( $event->getSetRecurringPayments() );
-        
-//         $startDate      = $previousSubscription && $previousSubscription->isPaid() ?
-//                             $previousSubscription->getExpiresAt() :
-//                             new \DateTime();
-//         $expiresDate    = $startDate->add( $pricingPlan->getSubscriptionPeriod() );
-//         $subscription->setExpiresAt( $expiresDate );
-        
-//         $subscription->setPrice( $pricingPlan->getPrice() );
-//         $subscription->setCurrency( $pricingPlan->getCurrency() );
-        
-//         $em             = $this->doctrine->getManager();
-//         $em->persist( $subscription );
-//         $em->flush();
-//     }
-
     public function createSubscription( CreateSubscriptionEvent $event )
     {
         $pricingPlan    = $event->getPricingPlan();
         $user           = $this->securityBridge->getUser();
         
-        $subscription   = $user->getActivePricingPlanSubscriptionByService(
-            $pricingPlan->getPaidService()->getPayedService()
-        );
-        
+        $subscription   = $user->getPricingPlanSubscriptions()->get( $pricingPlan->getId() );
         if ( ! $subscription )  {
 //             $this->debugLog( 'subscription-found', ' NOT FOUND' );
             
@@ -122,9 +90,11 @@ final class PricingPlanSubscriptionsSubscriber implements EventSubscriberInterfa
             $subscription->setRecurringPayment( $event->getSetRecurringPayments() );
         }
         
-        $startDate      = $subscription->isPaid() ? $subscription->getExpiresAt() : new \DateTime();
-        $expiresDate    = \DateTimeImmutable::createFromMutable( $startDate );
-        $expiresDate    = $expiresDate->add( $pricingPlan->getSubscriptionPeriod() );
+        $now            = new \DateTime();
+        $startDate      = $subscription->isPaid() && $subscription->getExpiresAt() > $now ?
+                            $subscription->getExpiresAt() :
+                            $now;
+        $expiresDate    = \DateTimeImmutable::createFromMutable( $startDate )->add( $pricingPlan->getSubscriptionPeriod() );
         $subscription->setExpiresAt( $expiresDate );
         
         $subscription->setPrice( $pricingPlan->getPrice() );
@@ -173,15 +143,7 @@ final class PricingPlanSubscriptionsSubscriber implements EventSubscriberInterfa
     private function setSubscriptionPaid( PricingPlanSubscriptionInterface $subscription, $payment )
     {
         $user                   = $this->securityBridge->getUser();
-        $previousSubscription   = $user->getActivePricingPlanSubscriptionByService(
-            $subscription->getPricingPlan()->getPaidService()->getPayedService()
-        );
-        if ( $previousSubscription ) {
-            $previousSubscription->setActive( false );
-            $this->doctrine->getManager()->persist( $previousSubscription );
-        }
         
-        $subscription->setActive( true );
         $gateway    = $payment->getOrder()->getPaymentMethod()->getGateway();
         
         if ( $this->vsPayment->isGatewaySupportRecurring( $gateway ) ) {

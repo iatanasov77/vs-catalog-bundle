@@ -15,7 +15,7 @@ trait UserSubscriptionAwareEntity
      *
      * @ORM\OneToMany(targetEntity="Vankosoft\CatalogBundle\Model\Interfaces\PricingPlanSubscriptionInterface", mappedBy="user", cascade={"persist", "remove"})
      */
-    #[ORM\OneToMany(targetEntity: PricingPlanSubscriptionInterface::class, mappedBy: "user", cascade: ["persist", "remove"], orphanRemoval: true)]
+    #[ORM\OneToMany(targetEntity: PricingPlanSubscriptionInterface::class, mappedBy: "user", indexBy: "pricing_plan_id", cascade: ["persist", "remove"], orphanRemoval: true)]
     protected $pricingPlanSubscriptions;
     
     /**
@@ -51,34 +51,5 @@ trait UserSubscriptionAwareEntity
         }
         
         return $this;
-    }
-    
-    /**
-     * @return SubscriptionInterface|null
-     */
-    public function getActivePricingPlanSubscriptionByPlan( PricingPlanInterface $pricingPlan ): ?SubscriptionInterface
-    {
-        foreach ( $this->pricingPlanSubscriptions as $subscription ) {
-            if ( $subscription->isActive() && $subscription->getPricingPlan() == $pricingPlan ) {
-                return $subscription;
-            }
-        }
-        
-        return null;
-    }
-    
-    /**
-     * @return SubscriptionInterface|null
-     */
-    public function getActivePricingPlanSubscriptionByService( PayedServiceInterface $paidService ): ?SubscriptionInterface
-    {
-        foreach ( $this->pricingPlanSubscriptions as $subscription ) {
-            $thisPaidService    = $subscription->getPricingPlan()->getPaidService()->getPayedService();
-            if ( $subscription->isActive() && $thisPaidService == $paidService ) {
-                return $subscription;
-            }
-        }
-        
-        return null;
     }
 }
