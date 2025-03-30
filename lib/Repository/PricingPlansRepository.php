@@ -5,7 +5,7 @@ use Sylius\Bundle\ResourceBundle\Doctrine\ORM\EntityRepository;
 
 class PricingPlansRepository extends EntityRepository
 {
-    public function findAllForForm(): array
+    public function findAllForForm( array $excludeCaegories = [] ): array
     {
         $results = $this->createQueryBuilder( 'pp' )
             ->where( 'pp.enabled = 1' )
@@ -15,7 +15,11 @@ class PricingPlansRepository extends EntityRepository
         ;
             
         $formChoices = [];
-        foreach( $results as $pricingPlan ){
+        foreach( $results as $pricingPlan ) {
+            if ( \in_array( $pricingPlan->getCategory()->getCode(), $excludeCaegories ) ) {
+                continue;
+            }
+            
             $categoryName   = $pricingPlan->getCategory()->getName();
             if ( ! isset( $formChoices[$categoryName] ) ) {
                 $formChoices[$categoryName] = [];
