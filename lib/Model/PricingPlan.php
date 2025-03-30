@@ -368,7 +368,7 @@ class PricingPlan implements PricingPlanInterface, Comparable
     public function hasActiveSubscription( $userSubscriptions ): bool
     {
         foreach ( $userSubscriptions as $subscription ) {
-            if ( $subscription->getPricingPlan() == $this && $subscription->isActive() ) {
+            if ( $subscription->getPricingPlan() == $this && $subscription->getExpiresAt() > new \DateTime() ) {
                 return true;
             }
         }
