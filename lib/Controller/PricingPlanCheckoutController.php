@@ -95,7 +95,7 @@ class PricingPlanCheckoutController extends AbstractController
     {
         $pricingPlanCategories  = $this->pricingPlanCategoryRepository->findAll();
         $activeSubscriptions    = $this->subscriptionsRepository
-                                        ->getActiveSubscriptionsByUser( $this->securityBridge->getUser() );
+                                    ->getSubscriptionsByUser( $this->securityBridge->getUser() );
         
         return $this->render( '@VSCatalog/Pages/PricingPlansCheckout/pricing_plans.html.twig', [
             'pricingPlanCategories' => $pricingPlanCategories,
