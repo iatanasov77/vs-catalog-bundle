@@ -79,6 +79,8 @@ trait UserSubscriptionAwareEntity
     
     /**
      * @return SubscriptionInterface|null
+     * 
+     * @deprecated 3.0.0 No longer used by internal code and not recommended.
      */
     public function getActivePricingPlanSubscriptionByService( PayedServiceInterface $paidService ): ?SubscriptionInterface
     {
