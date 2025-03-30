@@ -1,3 +1,16 @@
+2.2.0	|	Release date: **30.03.2025**
+============================================
+* New Features and Improvements:
+  - Add a Doctrine Migration.
+  - Add A Field into PricingPlan Model, that to be pass to Payment Gateways as Description.
+  - Improve Some Doctrine Mappings.
+  - Add a Method in PricingPlanCategory Model to Get Only Enabled Plans.
+  - Improve a PricingPlan Repository Method.
+  - Create Just One Pricing Plan Subscriptions for User for a Pricing Plan.
+  - Remove Active Flag on PricingPlanSubscription Model.
+  - Add Some Translations.
+
+
 2.1.1	|	Release date: **15.03.2025**
 ============================================
 * Bug-Fixes:
