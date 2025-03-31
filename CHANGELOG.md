@@ -1,3 +1,9 @@
+2.2.1	|	Release date: **31.03.2025**
+============================================
+* New Features:
+  - Improve CreateNewUserSubscriptionEvent and Subscriber that subscribed to this event.
+
+
 2.2.0	|	Release date: **30.03.2025**
 ============================================
 * New Features and Improvements:
