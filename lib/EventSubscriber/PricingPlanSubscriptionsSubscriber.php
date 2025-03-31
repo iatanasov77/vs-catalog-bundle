@@ -117,9 +117,11 @@ final class PricingPlanSubscriptionsSubscriber implements EventSubscriberInterfa
         $subscription->setUser( $event->getUser() );
         $subscription->setPricingPlan( $pricingPlan );
         
-        $startDate      = new \DateTime();
-        $expiresDate    = $startDate->add( $pricingPlan->getSubscriptionPeriod() );
-        $subscription->setExpiresAt( $expiresDate );
+        if ( $event->getSetPaid() ) {
+            $startDate      = new \DateTime();
+            $expiresDate    = $startDate->add( $pricingPlan->getSubscriptionPeriod() );
+            $subscription->setExpiresAt( $expiresDate );
+        }
         
         $subscription->setPrice( $pricingPlan->getPrice() );
         $subscription->setCurrency( $pricingPlan->getCurrency() );
