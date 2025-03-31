@@ -1,3 +1,9 @@
+2.2.2	|	Release date: **31.03.2025**
+============================================
+* Bug-Fixes:
+  - Fix PricingPlanSubscriptionsSubscriber to NOT SET Subscription Expires Date Before The Payment Finished Successfull.
+
+
 2.2.1	|	Release date: **31.03.2025**
 ============================================
 * New Features:
