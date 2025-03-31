@@ -127,8 +127,6 @@ final class PricingPlanSubscriptionsSubscriber implements EventSubscriberInterfa
     
     private function setSubscriptionPaid( PricingPlanSubscriptionInterface $subscription, $payment )
     {
-        $user                   = $this->securityBridge->getUser();
-        
         $gateway    = $payment->getOrder()->getPaymentMethod()->getGateway();
         
         if ( $this->vsPayment->isGatewaySupportRecurring( $gateway ) ) {
@@ -146,7 +144,9 @@ final class PricingPlanSubscriptionsSubscriber implements EventSubscriberInterfa
         $startDate      = $subscription->isPaid() && $subscription->getExpiresAt() > $now ?
                             $subscription->getExpiresAt() :
                             $now;
-        $expiresDate    = \DateTimeImmutable::createFromMutable( $startDate )->add( $pricingPlan->getSubscriptionPeriod() );
+        $expiresDate    = \DateTimeImmutable::createFromMutable( $startDate )->add(
+            $subscription->getPricingPlan()->getSubscriptionPeriod()
+        );
         $subscription->setExpiresAt( $expiresDate );
         
 //         $this->debugLog( 'subscription-start-date', $startDate->format( 'Y-m-d H:i:s' ) );
