@@ -90,21 +90,10 @@ final class PricingPlanSubscriptionsSubscriber implements EventSubscriberInterfa
             $subscription->setRecurringPayment( $event->getSetRecurringPayments() );
         }
         
-        $now            = new \DateTime();
-        $startDate      = $subscription->isPaid() && $subscription->getExpiresAt() > $now ?
-                            $subscription->getExpiresAt() :
-                            $now;
-        $expiresDate    = \DateTimeImmutable::createFromMutable( $startDate )->add( $pricingPlan->getSubscriptionPeriod() );
-        $subscription->setExpiresAt( $expiresDate );
-        
         $subscription->setPrice( $pricingPlan->getPrice() );
         $subscription->setCurrency( $pricingPlan->getCurrency() );
         
-//         $this->debugLog( 'subscription-start-date', $startDate->format( 'Y-m-d H:i:s' ) );
-//         $this->debugLog( 'subscription-expires-date', $expiresDate->format( 'Y-m-d H:i:s' ) );
-//         $this->debugLog( 'subscription-period', $pricingPlan->getSubscriptionPeriod()->format( '%a total days' ) );
-        
-        $em             = $this->doctrine->getManager();
+        $em = $this->doctrine->getManager();
         $em->persist( $subscription );
         $em->flush();
     }
@@ -116,12 +105,6 @@ final class PricingPlanSubscriptionsSubscriber implements EventSubscriberInterfa
         
         $subscription->setUser( $event->getUser() );
         $subscription->setPricingPlan( $pricingPlan );
-        
-        if ( $event->getSetPaid() ) {
-            $startDate      = new \DateTime();
-            $expiresDate    = $startDate->add( $pricingPlan->getSubscriptionPeriod() );
-            $subscription->setExpiresAt( $expiresDate );
-        }
         
         $subscription->setPrice( $pricingPlan->getPrice() );
         $subscription->setCurrency( $pricingPlan->getCurrency() );
@@ -158,6 +141,17 @@ final class PricingPlanSubscriptionsSubscriber implements EventSubscriberInterfa
                 $this->setStripePaymentAttributes( $subscription, $paymentData );
             }
         }
+        
+        $now            = new \DateTime();
+        $startDate      = $subscription->isPaid() && $subscription->getExpiresAt() > $now ?
+                            $subscription->getExpiresAt() :
+                            $now;
+        $expiresDate    = \DateTimeImmutable::createFromMutable( $startDate )->add( $pricingPlan->getSubscriptionPeriod() );
+        $subscription->setExpiresAt( $expiresDate );
+        
+//         $this->debugLog( 'subscription-start-date', $startDate->format( 'Y-m-d H:i:s' ) );
+//         $this->debugLog( 'subscription-expires-date', $expiresDate->format( 'Y-m-d H:i:s' ) );
+//         $this->debugLog( 'subscription-period', $pricingPlan->getSubscriptionPeriod()->format( '%a total days' ) );
         
         $this->doctrine->getManager()->persist( $subscription );
     }

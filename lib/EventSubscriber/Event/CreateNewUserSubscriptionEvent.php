@@ -16,17 +16,12 @@ final class CreateNewUserSubscriptionEvent
     /** @var PricingPlanInterface */
     private $pricingPlan;
     
-    /** @var bool */
-    private $setPaid;
-    
     public function __construct(
         UserSubscriptionAwareInterface $user,
-        PricingPlanInterface $pricingPlan,
-        bool $setPaid = false
+        PricingPlanInterface $pricingPlan
     ) {
         $this->user         = $user;
         $this->pricingPlan  = $pricingPlan;
-        $this->setPaid      = $setPaid;
     }
     
     public function getUser()
@@ -37,10 +32,5 @@ final class CreateNewUserSubscriptionEvent
     public function getPricingPlan()
     {
         return $this->pricingPlan;
-    }
-    
-    public function getSetPaid()
-    {
-        return $this->setPaid;
     }
 }
