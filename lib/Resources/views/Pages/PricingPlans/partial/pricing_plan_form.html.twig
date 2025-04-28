@@ -118,9 +118,9 @@
     
     <fieldset class="border border-dark rounded p-3">
         <legend class="w-auto float-none ps-2 pe-2">{{ 'vankosoft_org.form.project.project_attributes'  | trans( {},'VankoSoftOrg' ) }}</legend>
-        <div class="attributesContainer" data-prototype="{% apply escape %}{% include '@VSCatalog/Pages/PricingPlans/add-attribute-prototype.html.twig' with {'form': form.attributes.vars.prototype} %}{% endapply %}"> 
+        <div class="attributesContainer" data-prototype="{% apply escape %}{% include '@VSCatalog/Pages/PricingPlans/partial/add-attribute-prototype.html.twig' with {'form': form.attributes.vars.prototype} %}{% endapply %}"> 
             {% for attr in form.attributes %}
-                {% include '@VSCatalog/Pages/PricingPlans/add-attribute-prototype.html.twig' with {'form': attr} %}
+                {% include '@VSCatalog/Pages/PricingPlans/partial/add-attribute-prototype.html.twig' with {'form': attr} %}
             {% endfor %}
         </div>
     </fieldset>
