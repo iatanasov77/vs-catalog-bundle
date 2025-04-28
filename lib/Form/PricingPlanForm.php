@@ -14,7 +14,7 @@ use Symfony\Component\Form\Extension\Core\Type\CollectionType;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use FOS\CKEditorBundle\Form\Type\CKEditorType;
 use daddl3\SymfonyCKEditor5WebpackViteBundle\Form\Ckeditor5TextareaType;
-use App\Form\Type\GatewayAttributeType;
+use Vankosoft\CatalogBundle\Form\Type\GatewayAttributeType;
 
 use Vankosoft\UsersSubscriptionsBundle\Model\PayedServiceSubscriptionPeriod;
 use Vankosoft\PaymentBundle\Form\Type\CurrencyChoiceType;

@@ -1,4 +1,4 @@
-<?php namespace App\Form\Type;
+<?php namespace Vankosoft\CatalogBundle\Form\Type;
 
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
