@@ -4,6 +4,7 @@ use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
+use Vankosoft\CatalogBundle\Component\Product;
 
 class GatewayAttributeType extends AbstractType
 {
@@ -12,9 +13,7 @@ class GatewayAttributeType extends AbstractType
         $builder
             ->add( 'name', ChoiceType::class, [
                 'required'              => false,
-                'choices'               => [
-                    'Icon' => ProjectAttribute::ATTRIBUTE_ICON,
-                ],
+                'choices'               => \array_flip( Product::PRICING_PLAN_ATTRIBUTE_KEYS ),
                 'placeholder'           => 'vankosoft_org.form.project.attribute_placeholder',
                 'translation_domain'    => 'VankoSoftOrg',
             ])
