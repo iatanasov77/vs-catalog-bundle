@@ -14,10 +14,10 @@ use Symfony\Component\Form\Extension\Core\Type\CollectionType;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use FOS\CKEditorBundle\Form\Type\CKEditorType;
 use daddl3\SymfonyCKEditor5WebpackViteBundle\Form\Ckeditor5TextareaType;
+use App\Form\Type\GatewayAttributeType;
 
 use Vankosoft\UsersSubscriptionsBundle\Model\PayedServiceSubscriptionPeriod;
 use Vankosoft\PaymentBundle\Form\Type\CurrencyChoiceType;
-use Vankosoft\CatalogBundle\Form\Type\PricingPlanPaidServiceType;
 use Vankosoft\CatalogBundle\Model\Interfaces\PricingPlanInterface;
 use Vankosoft\CmsBundle\Form\Traits\FosCKEditor4Config;
 
@@ -159,26 +159,34 @@ class PricingPlanForm extends AbstractForm
                 'translation_domain'    => 'VSPaymentBundle',
                 'required'              => false,
             ])
+            
+            ->add( 'gatewayAttributes', CollectionType::class, [
+                'entry_type'   => GatewayAttributeType::class,
+                'allow_add'    => true,
+                'allow_delete' => true,
+                'prototype'    => true,
+                'by_reference' => false
+            ])
         ;
             
-            if ( $this->useCkEditor == '5' ) {
-                $builder->add( 'description', Ckeditor5TextareaType::class, [
-                    'label'                 => 'vs_payment.form.description',
-                    'translation_domain'    => 'VSPaymentBundle',
-                    'required'              => false,
-                    
-                    'attr' => [
-                        'data-ckeditor5-config' => $this->ckeditor5Editor
-                    ],
-                ]);
-            } else {
-                $builder->add( 'description', CKEditorType::class, [
-                    'label'                 => 'vs_payment.form.description',
-                    'translation_domain'    => 'VSPaymentBundle',
-                    'required'              => false,
-                    'config'                => $this->ckEditorConfig( $options ),
-                ]);
-            }
+        if ( $this->useCkEditor == '5' ) {
+            $builder->add( 'description', Ckeditor5TextareaType::class, [
+                'label'                 => 'vs_payment.form.description',
+                'translation_domain'    => 'VSPaymentBundle',
+                'required'              => false,
+                
+                'attr' => [
+                    'data-ckeditor5-config' => $this->ckeditor5Editor
+                ],
+            ]);
+        } else {
+            $builder->add( 'description', CKEditorType::class, [
+                'label'                 => 'vs_payment.form.description',
+                'translation_domain'    => 'VSPaymentBundle',
+                'required'              => false,
+                'config'                => $this->ckEditorConfig( $options ),
+            ]);
+        }
     }
     
     public function configureOptions( OptionsResolver $resolver ): void
