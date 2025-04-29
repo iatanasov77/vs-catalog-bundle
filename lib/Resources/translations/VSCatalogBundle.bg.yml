@@ -22,6 +22,11 @@ vs_catalog:
             product_name: Product name
             product_stoke: Product Stoke
             price_Lowest_first: Price Lowest first
+        
+        pricing_plan:
+            gateway_attributes: Gateway Attributes
+            gateway_attribute_key_placeholder: '-- Choose an Attribute Key --'
+            gateway_attribute_value_placeholder: Attribute Value
 
     template:
         details: Details
