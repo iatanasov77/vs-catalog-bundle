@@ -15,8 +15,8 @@ class PricingPlanController extends AbstractCrudController
         $translations   = $this->classInfo['action'] == 'indexAction' ? $this->getTranslations() : [];
         
         $taxonomy   = $this->get( 'vs_application.repository.taxonomy' )->findByCode(
-                                    $this->getParameter( 'vs_catalog.pricing_plan_category.taxonomy_code' )
-                                );
+            $this->getParameter( 'vs_catalog.pricing_plan_category.taxonomy_code' )
+        );
         
         $selectedTaxonIds   = [];
         if ( $this->classInfo['action'] == 'updateAction' ) {
