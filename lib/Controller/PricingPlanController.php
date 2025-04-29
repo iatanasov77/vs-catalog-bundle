@@ -63,6 +63,15 @@ class PricingPlanController extends AbstractCrudController
                 }
             }
         }
+        
+        $gatewayAttributes  = [];
+        foreach ( $formPost['gatewayAttributes'] as $gatewayAttribute ) {
+            if ( ! empty( $gatewayAttribute['jsonKey'] ) && ! empty( $gatewayAttribute['jsonValue'] ) ) {
+                $gatewayAttributes[$gatewayAttribute['jsonKey']] = $gatewayAttribute['jsonValue'];
+            }
+        }
+        
+        $entity->setGatewayAttributes( $gatewayAttributes );
     }
     
     private function getTranslations()
