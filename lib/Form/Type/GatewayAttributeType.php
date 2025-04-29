@@ -11,13 +11,13 @@ class GatewayAttributeType extends AbstractType
     public function buildForm( FormBuilderInterface $builder, array $options ): void
     {
         $builder
-            ->add( 'key', ChoiceType::class, [
+            ->add( 'jsonKey', ChoiceType::class, [
                 'required'              => false,
                 'choices'               => \array_flip( Product::PRICING_PLAN_ATTRIBUTE_KEYS ),
                 'placeholder'           => 'vs_catalog.form.pricing_plan.gateway_attribute_key_placeholder',
                 'translation_domain'    => 'VSCatalogBundle',
             ])
-            ->add( 'value', TextType::class, [
+            ->add( 'jsonValue', TextType::class, [
                 'attr' => [
                     'placeholder' => 'vs_catalog.form.pricing_plan.gateway_attribute_value_placeholder'
                 ],

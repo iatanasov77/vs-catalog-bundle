@@ -122,10 +122,10 @@
         </legend>
         
         <div class="attributesContainer" id="attributesContainer"
-            data-prototype="{% apply escape %}{% include '@VSCatalog/Pages/PricingPlans/partial/add-attribute-prototype.html.twig' with {'form': form.gatewayAttributes.vars.prototype} %}{% endapply %}"
+            data-prototype="{% apply escape %}{% include '@VSApplication/Partial/json-key-value-prototype.html.twig' with {'form': form.gatewayAttributes.vars.prototype} %}{% endapply %}"
         >
             {% for attr in form.gatewayAttributes %}
-                {% include '@VSCatalog/Pages/PricingPlans/partial/add-attribute-prototype.html.twig' with {'form': attr} %}
+                {% include '@VSApplication/Partial/json-key-value-prototype.html.twig' with {'form': attr} %}
             {% endfor %}
         </div>
     </fieldset>
