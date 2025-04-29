@@ -11,7 +11,7 @@ class GatewayAttributeType extends AbstractType
     public function buildForm( FormBuilderInterface $builder, array $options ): void
     {
         $builder
-            ->add( 'name', ChoiceType::class, [
+            ->add( 'key', ChoiceType::class, [
                 'required'              => false,
                 'choices'               => \array_flip( Product::PRICING_PLAN_ATTRIBUTE_KEYS ),
                 'placeholder'           => 'vs_catalog.form.pricing_plan.gateway_attribute_key_placeholder',

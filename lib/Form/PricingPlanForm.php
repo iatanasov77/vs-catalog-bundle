@@ -20,6 +20,7 @@ use Vankosoft\UsersSubscriptionsBundle\Model\PayedServiceSubscriptionPeriod;
 use Vankosoft\PaymentBundle\Form\Type\CurrencyChoiceType;
 use Vankosoft\CatalogBundle\Model\Interfaces\PricingPlanInterface;
 use Vankosoft\CmsBundle\Form\Traits\FosCKEditor4Config;
+use Vankosoft\ApplicationBundle\Form\DataTransformer\JsonKeyValueTransformer;
 
 class PricingPlanForm extends AbstractForm
 {
@@ -187,6 +188,8 @@ class PricingPlanForm extends AbstractForm
                 'config'                => $this->ckEditorConfig( $options ),
             ]);
         }
+        
+        $builder->get( 'gatewayAttributes' )->addModelTransformer( new JsonKeyValueTransformer() );
     }
     
     public function configureOptions( OptionsResolver $resolver ): void
