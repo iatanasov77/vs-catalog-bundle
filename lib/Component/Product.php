@@ -1,5 +1,7 @@
 <?php namespace Vankosoft\CatalogBundle\Component;
 
+use Vankosoft\PaymentBundle\Component\Payum\Stripe\Api as StripeApi;
+
 class Product
 {
     /** Product Picture Types */
@@ -20,5 +22,9 @@ class Product
     const PRODUCT_FILE_TYPES = [
         self::PRODUCT_FILE_TYPE_CONTENT => 'Product Content',
         self::PRODUCT_FILE_TYPE_OTHER   => 'Other Files',
+    ];
+    
+    const PRICING_PLAN_ATTRIBUTE_KEYS   = [
+        StripeApi::PRICING_PLAN_ATTRIBUTE_KEY   => 'Stripe Plan ID',
     ];
 }

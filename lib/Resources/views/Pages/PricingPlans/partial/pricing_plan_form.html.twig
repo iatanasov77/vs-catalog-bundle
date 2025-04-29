@@ -90,9 +90,9 @@
     </div>
     
     <fieldset class="border border-dark rounded p-3">
-        <legend class="w-auto float-none ps-2 pe-2">{{ 'vs_payment.form.pricing_plan.set_as_premium' | trans( {},'VSPaymentBundle' ) }}</legend>
+        <legend class="w-auto float-none ps-2 pe-2">{{ 'vs_catalog.form.pricing_plan.set_as_premium' | trans( {},'VSCatalogBundle' ) }}</legend>
         
-        <div class="premiumContainer"
+        <div class="premiumContainer">
             <div class="form-group">
                 <label class="custom-control custom-checkbox">  
                     <input type="checkbox" id="pricing_plan_form_premium"
@@ -101,7 +101,7 @@
                         value="{{ item.premium }}"
                         {% if item.premium %}checked="checked"{% endif %}
                     />
-                    <span class="custom-control-label">{{ 'vs_payment.form.pricing_plan.premium' | trans( {},'VSPaymentBundle' ) }}</span>
+                    <span class="custom-control-label">{{ 'vs_catalog.form.pricing_plan.premium' | trans( {},'VSCatalogBundle' ) }}</span>
                 </label>
             </div>
             
@@ -113,6 +113,20 @@
                 
                 {{ form_widget(form.discount, {'attr': {'class': 'form-control'}}) }}
             </div>
+        </div>
+    </fieldset>
+    
+    <fieldset class="border border-dark rounded p-3 mt-3">
+        <legend class="w-auto float-none ps-2 pe-2">
+            {{ 'vs_catalog.form.pricing_plan.gateway_attributes'  | trans( {},'VSCatalogBundle' ) }}
+        </legend>
+        
+        <div class="attributesContainer" id="attributesContainer"
+            data-prototype="{% apply escape %}{% include '@VSApplication/Partial/json-key-value-prototype.html.twig' with {'form': form.gatewayAttributes.vars.prototype} %}{% endapply %}"
+        >
+            {% for attr in form.gatewayAttributes %}
+                {% include '@VSApplication/Partial/json-key-value-prototype.html.twig' with {'jsonIndex': loop.index0, 'form': attr} %}
+            {% endfor %}
         </div>
     </fieldset>
 

@@ -24,8 +24,8 @@ final class PricingPlanPaidServiceType extends AbstractType
     {
         $builder
             ->add( 'paidServicePeriod', EntityType::class, [
-                'label'                 => 'vs_payment.form.pricing_plan.paid_service_period',
-                'translation_domain'    => 'VSPaymentBundle',
+                'label'                 => 'vs_catalog.form.pricing_plan.paid_service_period',
+                'translation_domain'    => 'VSCatalogBundle',
                 'class'                 => $this->paidServicePeriodClass,
                 'choice_label'          => 'title',
                 'group_by'              => function ( PayedServiceSubscriptionPeriod $paidServicePeriod ): string {

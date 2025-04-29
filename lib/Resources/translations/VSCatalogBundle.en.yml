@@ -22,6 +22,24 @@ vs_catalog:
             product_name: Product name
             product_stoke: Product Stoke
             price_Lowest_first: Price Lowest first
+        
+        pricing_plan:
+            paid_service_period: Paid Service Subscription
+            set_as_premium: Set as Premium
+            premium: Premium
+            discount: Discount
+            price: Price
+            currency: Currency
+            currency_placeholder: '-- Select Currency --'
+            paid_services: Paid Services
+            paid_services_placeholder: '-- Select Paid Services --'
+            paid_service: Paid Service
+            paid_service_placeholder: '-- Select Paid Service --'
+            recurring_payment: Recurring Payment
+            gateway_attributes: Gateway Attributes
+            gateway_attribute_key_placeholder: '-- Choose an Attribute Key --'
+            gateway_attribute_value_placeholder: Attribute Value
+            
 
     template:
         details: Details

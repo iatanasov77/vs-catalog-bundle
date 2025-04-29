@@ -14,12 +14,13 @@ use Symfony\Component\Form\Extension\Core\Type\CollectionType;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use FOS\CKEditorBundle\Form\Type\CKEditorType;
 use daddl3\SymfonyCKEditor5WebpackViteBundle\Form\Ckeditor5TextareaType;
+use Vankosoft\CatalogBundle\Form\Type\GatewayAttributeType;
 
 use Vankosoft\UsersSubscriptionsBundle\Model\PayedServiceSubscriptionPeriod;
 use Vankosoft\PaymentBundle\Form\Type\CurrencyChoiceType;
-use Vankosoft\CatalogBundle\Form\Type\PricingPlanPaidServiceType;
 use Vankosoft\CatalogBundle\Model\Interfaces\PricingPlanInterface;
 use Vankosoft\CmsBundle\Form\Traits\FosCKEditor4Config;
+use Vankosoft\ApplicationBundle\Form\DataTransformer\JsonKeyValueTransformer;
 
 class PricingPlanForm extends AbstractForm
 {
@@ -112,31 +113,31 @@ class PricingPlanForm extends AbstractForm
             ])
             
             ->add( 'premium', CheckboxType::class, [
-                'label'                 => 'vs_payment.form.pricing_plan.premium',
-                'translation_domain'    => 'VSPaymentBundle',
+                'label'                 => 'vs_catalog.form.pricing_plan.premium',
+                'translation_domain'    => 'VSCatalogBundle',
                 'required'              => false,
             ])
             
             ->add( 'discount', NumberType::class, [
-                'label'                 => 'vs_payment.form.pricing_plan.discount',
-                'translation_domain'    => 'VSPaymentBundle',
+                'label'                 => 'vs_catalog.form.pricing_plan.discount',
+                'translation_domain'    => 'VSCatalogBundle',
                 'scale'                 => 2,
                 'rounding_mode'         => $options['rounding_mode'],
                 'required'              => false,
             ])
             
             ->add( 'price', NumberType::class, [
-                'label'                 => 'vs_payment.form.pricing_plan.price',
-                'translation_domain'    => 'VSPaymentBundle',
+                'label'                 => 'vs_catalog.form.pricing_plan.price',
+                'translation_domain'    => 'VSCatalogBundle',
                 'scale'                 => 2,
                 'rounding_mode'         => $options['rounding_mode'],
                 'required'              => true,
             ])
             
             ->add( 'currency', CurrencyChoiceType::class, [
-                'label'                 => 'vs_payment.form.pricing_plan.currency',
-                'placeholder'           => 'vs_payment.form.pricing_plan.currency_placeholder',
-                'translation_domain'    => 'VSPaymentBundle',
+                'label'                 => 'vs_catalog.form.pricing_plan.currency',
+                'placeholder'           => 'vs_catalog.form.pricing_plan.currency_placeholder',
+                'translation_domain'    => 'VSCatalogBundle',
                 'required'              => true,
             ])
             
@@ -146,9 +147,9 @@ class PricingPlanForm extends AbstractForm
                 'group_by'              => function ( PayedServiceSubscriptionPeriod $paidServicePeriod ): string {
                     return $paidServicePeriod ? $paidServicePeriod->getPayedService()->getTitle() : 'Undefined Group';
                 },
-                'label'                 => 'vs_payment.form.pricing_plan.paid_service',
-                'placeholder'           => 'vs_payment.form.pricing_plan.paid_service_placeholder',
-                'translation_domain'    => 'VSPaymentBundle',
+                'label'                 => 'vs_catalog.form.pricing_plan.paid_service',
+                'placeholder'           => 'vs_catalog.form.pricing_plan.paid_service_placeholder',
+                'translation_domain'    => 'VSCatalogBundle',
                 'multiple'              => false,
                 'required'              => true,
                 'mapped'                => true,
@@ -159,26 +160,40 @@ class PricingPlanForm extends AbstractForm
                 'translation_domain'    => 'VSPaymentBundle',
                 'required'              => false,
             ])
+            
+            ->add( 'gatewayAttributes', CollectionType::class, [
+                'entry_type'   => GatewayAttributeType::class,
+                'allow_add'    => true,
+                'allow_delete' => true,
+                'prototype'    => true,
+                'by_reference' => false,
+                
+                'entry_options' => [
+                    'data' => $entity->getGatewayAttributes()
+                ],
+            ])
         ;
             
-            if ( $this->useCkEditor == '5' ) {
-                $builder->add( 'description', Ckeditor5TextareaType::class, [
-                    'label'                 => 'vs_payment.form.description',
-                    'translation_domain'    => 'VSPaymentBundle',
-                    'required'              => false,
-                    
-                    'attr' => [
-                        'data-ckeditor5-config' => $this->ckeditor5Editor
-                    ],
-                ]);
-            } else {
-                $builder->add( 'description', CKEditorType::class, [
-                    'label'                 => 'vs_payment.form.description',
-                    'translation_domain'    => 'VSPaymentBundle',
-                    'required'              => false,
-                    'config'                => $this->ckEditorConfig( $options ),
-                ]);
-            }
+        if ( $this->useCkEditor == '5' ) {
+            $builder->add( 'description', Ckeditor5TextareaType::class, [
+                'label'                 => 'vs_payment.form.description',
+                'translation_domain'    => 'VSPaymentBundle',
+                'required'              => false,
+                
+                'attr' => [
+                    'data-ckeditor5-config' => $this->ckeditor5Editor
+                ],
+            ]);
+        } else {
+            $builder->add( 'description', CKEditorType::class, [
+                'label'                 => 'vs_payment.form.description',
+                'translation_domain'    => 'VSPaymentBundle',
+                'required'              => false,
+                'config'                => $this->ckEditorConfig( $options ),
+            ]);
+        }
+        
+        $builder->get( 'gatewayAttributes' )->addModelTransformer( new JsonKeyValueTransformer() );
     }
     
     public function configureOptions( OptionsResolver $resolver ): void
