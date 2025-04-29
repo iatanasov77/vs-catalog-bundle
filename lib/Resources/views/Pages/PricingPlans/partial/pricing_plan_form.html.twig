@@ -125,7 +125,7 @@
             data-prototype="{% apply escape %}{% include '@VSApplication/Partial/json-key-value-prototype.html.twig' with {'form': form.gatewayAttributes.vars.prototype} %}{% endapply %}"
         >
             {% for attr in form.gatewayAttributes %}
-                {% include '@VSApplication/Partial/json-key-value-prototype.html.twig' with {'form': attr} %}
+                {% include '@VSApplication/Partial/json-key-value-prototype.html.twig' with {'jsonIndex': loop.index0, 'form': attr} %}
             {% endfor %}
         </div>
     </fieldset>
