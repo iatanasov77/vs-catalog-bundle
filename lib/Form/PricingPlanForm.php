@@ -113,31 +113,31 @@ class PricingPlanForm extends AbstractForm
             ])
             
             ->add( 'premium', CheckboxType::class, [
-                'label'                 => 'vs_payment.form.pricing_plan.premium',
-                'translation_domain'    => 'VSPaymentBundle',
+                'label'                 => 'vs_catalog.form.pricing_plan.premium',
+                'translation_domain'    => 'VSCatalogBundle',
                 'required'              => false,
             ])
             
             ->add( 'discount', NumberType::class, [
-                'label'                 => 'vs_payment.form.pricing_plan.discount',
-                'translation_domain'    => 'VSPaymentBundle',
+                'label'                 => 'vs_catalog.form.pricing_plan.discount',
+                'translation_domain'    => 'VSCatalogBundle',
                 'scale'                 => 2,
                 'rounding_mode'         => $options['rounding_mode'],
                 'required'              => false,
             ])
             
             ->add( 'price', NumberType::class, [
-                'label'                 => 'vs_payment.form.pricing_plan.price',
-                'translation_domain'    => 'VSPaymentBundle',
+                'label'                 => 'vs_catalog.form.pricing_plan.price',
+                'translation_domain'    => 'VSCatalogBundle',
                 'scale'                 => 2,
                 'rounding_mode'         => $options['rounding_mode'],
                 'required'              => true,
             ])
             
             ->add( 'currency', CurrencyChoiceType::class, [
-                'label'                 => 'vs_payment.form.pricing_plan.currency',
-                'placeholder'           => 'vs_payment.form.pricing_plan.currency_placeholder',
-                'translation_domain'    => 'VSPaymentBundle',
+                'label'                 => 'vs_catalog.form.pricing_plan.currency',
+                'placeholder'           => 'vs_catalog.form.pricing_plan.currency_placeholder',
+                'translation_domain'    => 'VSCatalogBundle',
                 'required'              => true,
             ])
             
@@ -147,9 +147,9 @@ class PricingPlanForm extends AbstractForm
                 'group_by'              => function ( PayedServiceSubscriptionPeriod $paidServicePeriod ): string {
                     return $paidServicePeriod ? $paidServicePeriod->getPayedService()->getTitle() : 'Undefined Group';
                 },
-                'label'                 => 'vs_payment.form.pricing_plan.paid_service',
-                'placeholder'           => 'vs_payment.form.pricing_plan.paid_service_placeholder',
-                'translation_domain'    => 'VSPaymentBundle',
+                'label'                 => 'vs_catalog.form.pricing_plan.paid_service',
+                'placeholder'           => 'vs_catalog.form.pricing_plan.paid_service_placeholder',
+                'translation_domain'    => 'VSCatalogBundle',
                 'multiple'              => false,
                 'required'              => true,
                 'mapped'                => true,
