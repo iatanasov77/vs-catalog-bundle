@@ -166,7 +166,11 @@ class PricingPlanForm extends AbstractForm
                 'allow_add'    => true,
                 'allow_delete' => true,
                 'prototype'    => true,
-                'by_reference' => false
+                'by_reference' => false,
+                
+                'entry_options' => [
+                    'data' => $entity->getGatewayAttributes()
+                ],
             ])
         ;
             
