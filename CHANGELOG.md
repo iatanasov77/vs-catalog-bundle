@@ -1,3 +1,9 @@
+2.3.1	|	Release date: **30.04.2025**
+============================================
+* New Features and Improvements:
+  - Remove '/payment' Prefix from All Routes.
+
+
 2.3.0	|	Release date: **29.04.2025**
 ============================================
 * New Features:
