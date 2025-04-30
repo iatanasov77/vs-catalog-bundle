@@ -1,5 +1,5 @@
 vs_catalog_pricing_plan_subscriptions_index:
-    path: /payment/pricing-plan-subscriptions/
+    path: /pricing-plan-subscriptions/
     methods: [GET]
     defaults:
         _controller: vs_catalog.controller.pricing_plan_subscription::indexAction
@@ -17,7 +17,7 @@ vs_catalog_pricing_plan_subscriptions:
     resource: |
         alias: vs_catalog.pricing_plan_subscription
         except: ['create', 'update']
-        path: /payment/pricing-plan-subscriptions
+        path: /pricing-plan-subscriptions
         templates: "@VSCatalog/Pages/PricingPlanSubscriptions"
     type: sylius.resource
     options:
