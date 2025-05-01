@@ -46,13 +46,13 @@ vs_payment_handle_payment_methods_form:
 # Pricing Plan Checkout Routes
 ###############################################################################################
 vs_payment_pricing_plans:
-    path: /pricing-plans-checkout
+    path: /pricing-plans
     controller: Vankosoft\CatalogBundle\Controller\PricingPlanCheckoutController::showPricingPlans
     options:
         expose: true
         
 vs_payment_select_pricing_plan_form:
-    path: /pricing-plans-checkout/{pricingPlanId}
+    path: /pricing-plans/{pricingPlanId}
     controller: Vankosoft\CatalogBundle\Controller\PricingPlanCheckoutController::showSelectPricingPlanForm
     options:
         expose: true
