@@ -1,3 +1,9 @@
+2.3.2	|	Release date: **01.05.2025**
+============================================
+* New Features and Improvements:
+  - Improve Pricing Plans Routes.
+
+
 2.3.1	|	Release date: **30.04.2025**
 ============================================
 * New Features and Improvements:
