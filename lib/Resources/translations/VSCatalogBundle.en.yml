@@ -39,7 +39,6 @@ vs_catalog:
             gateway_attributes: Gateway Attributes
             gateway_attribute_key_placeholder: '-- Choose an Attribute Key --'
             gateway_attribute_value_placeholder: Attribute Value
-            
 
     template:
         details: Details

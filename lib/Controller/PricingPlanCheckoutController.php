@@ -136,9 +136,7 @@ class PricingPlanCheckoutController extends AbstractController
             $pricingPlan    = $this->prepareCart( $formData, $cart, $paymentMethod );
             
             $paymentPrepareUrl  = $this->vsPayment->getPaymentPrepareRoute(
-                $paymentMethod->getGateway(),
-                //$pricingPlan->isRecurringPayment()
-                false
+                $paymentMethod->getGateway()
             );
             
             return new JsonResponse([
@@ -186,9 +184,7 @@ class PricingPlanCheckoutController extends AbstractController
             $pricingPlan    = $this->prepareCart( $formData, $cart, $paymentMethod );
             
             $paymentPrepareUrl  = $this->vsPayment->getPaymentPrepareRoute(
-                $paymentMethod->getGateway(),
-                //$pricingPlan->isRecurringPayment()
-                false
+                $paymentMethod->getGateway()
             );
             
             if ( $request->isXmlHttpRequest() ) {
@@ -223,10 +219,14 @@ class PricingPlanCheckoutController extends AbstractController
         
         $orderItem->setPrice( $pricingPlan->getPrice() );
         $orderItem->setCurrencyCode( $pricingPlan->getCurrencyCode() );
+        $orderItem->setTotal( $pricingPlan->getPrice() );
         
         $cart->addItem( $orderItem );
         
-        //$cart->setRecurringPayment( $pricingPlan->isRecurringPayment() );
+        if ( isset( $formData['paymentMethod']['setRecurringPayments'] ) ) {
+            $cart->setRecurringPayment( $formData['paymentMethod']['setRecurringPayments'] );
+        }
+        
         $cart->setPaymentMethod( $paymentMethod );
         $cart->setDescription( $pricingPlan->getPaymentDescription() );
         

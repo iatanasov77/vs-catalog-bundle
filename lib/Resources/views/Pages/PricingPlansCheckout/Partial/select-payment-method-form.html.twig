@@ -5,7 +5,7 @@
 
     {{ form_widget( form.pricingPlan, {'value': pricingPlanId} ) }}
     
-    {% include '@VSCatalog/Pages/PaymentMethod/select-payment-method-field.html.twig' %}
+    {% include '@VSCatalog/Pages/PaymentMethod/select-payment-method-field.html.twig' with { 'formName': 'select_payment_method_form' } %}
     
     <div class="control-group">&nbsp;</div>
 

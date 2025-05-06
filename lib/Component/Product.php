@@ -25,6 +25,7 @@ class Product
     ];
     
     const PRICING_PLAN_ATTRIBUTE_KEYS   = [
+        StripeApi::PRODUCT_ATTRIBUTE_KEY        => 'Stripe Product ID',
         StripeApi::PRICING_PLAN_ATTRIBUTE_KEY   => 'Stripe Plan ID',
     ];
 }
