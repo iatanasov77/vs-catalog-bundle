@@ -1,31 +1,31 @@
 ###############################################################################################
 # Pricing Plan Checkout Routes
 ###############################################################################################
-vs_payment_pricing_plans:
+vs_catalog_pricing_plans:
     path: /pricing-plans
     controller: Vankosoft\CatalogBundle\Controller\PricingPlanCheckoutController::showPricingPlans
     options:
         expose: true
         
-vs_payment_select_pricing_plan_form:
+vs_catalog_select_pricing_plan_form:
     path: /pricing-plans/{pricingPlanId}
     controller: Vankosoft\CatalogBundle\Controller\PricingPlanCheckoutController::showSelectPricingPlanForm
     options:
         expose: true
 
-vs_payment_handle_pricing_plan_form:
+vs_catalog_handle_pricing_plan_form:
     path: /handle-pricing-plan
     controller: Vankosoft\CatalogBundle\Controller\PricingPlanCheckoutController::handlePricingPlanFormAction
     options:
         expose: true
         
-vs_payment_select_payment_method_form:
+vs_catalog_select_payment_method_form:
     path: /select-payment-method/{pricingPlanId}
     controller: Vankosoft\CatalogBundle\Controller\PricingPlanCheckoutController::showPaymentMethodForm
     options:
         expose: true
 
-vs_payment_handle_payment_method_form:
+vs_catalog_handle_payment_method_form:
     path: /handle-payment-method
     controller: Vankosoft\CatalogBundle\Controller\PricingPlanCheckoutController::handlePaymentMetodFormAction
     options:

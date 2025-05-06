@@ -9,6 +9,8 @@
         "extension",
         "catalog",
         "products",
+        "associations",
+        "reviews",
         "services",
         "pricing-plans",
         "shopping-cart"
