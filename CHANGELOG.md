@@ -1,3 +1,15 @@
+2.3.3	|	Release date: **06.05.2025**
+============================================
+* Bug-Fixes and Improvements:
+  - Set Developement Mode for Payment Bundle.
+  - Add a Doctrine Migration.
+  - Move Shopping Cart Routes into Payment Bundle.
+  - Fix PricingPlanCheckoutController to Set Recurring Payments when Recurring Payment is Checked.
+  - Fix PricingPlan Checkout.
+  - Add Another Option for Gateway Attributes for Pricing Plan Form.
+  - Update Some Routes IDs.
+
+
 2.3.2	|	Release date: **01.05.2025**
 ============================================
 * New Features and Improvements:
