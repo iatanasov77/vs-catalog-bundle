@@ -226,7 +226,10 @@ class PricingPlanCheckoutController extends AbstractController
         
         $cart->addItem( $orderItem );
         
-        //$cart->setRecurringPayment( $pricingPlan->isRecurringPayment() );
+        if ( isset( $formData['paymentMethod']['setRecurringPayments'] ) ) {
+            $cart->setRecurringPayment( $formData['paymentMethod']['setRecurringPayments'] );
+        }
+        
         $cart->setPaymentMethod( $paymentMethod );
         $cart->setDescription( $pricingPlan->getPaymentDescription() );
         

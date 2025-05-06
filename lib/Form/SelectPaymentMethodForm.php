@@ -25,7 +25,7 @@ class SelectPaymentMethodForm extends AbstractType
             
             ->add( 'paymentMethod', PaymentMethodType::class, [
                 'paymentMethodClass'    => $this->paymentMethodClass
-            ] )
+            ])
             
             ->add( 'btnSubmit', SubmitType::class, [
                 'label'                 => 'vs_payment.form.select_pricing_plan.submit',
