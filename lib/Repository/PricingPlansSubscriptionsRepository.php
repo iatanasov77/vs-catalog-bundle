@@ -54,7 +54,7 @@ class PricingPlansSubscriptionsRepository extends EntityRepository
         return $subscriptions;
     }
     
-    public function findOneByGatewayAttribute( string $search )
+    public function findByGatewayAttribute( string $search )
     {
         $result = $this->createQueryBuilder( 'pps' )
                         ->where( 'pps.gatewayAttributes LIKE :search' )
