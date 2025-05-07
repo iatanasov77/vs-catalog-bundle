@@ -1,3 +1,9 @@
+2.3.4	|	Release date: **07.05.2025**
+============================================
+* New Features:
+  - Add a Flag if Recurring Payment is Cancelled into PricingPlanSubscription Model.
+
+
 2.3.3	|	Release date: **06.05.2025**
 ============================================
 * Bug-Fixes and Improvements:
