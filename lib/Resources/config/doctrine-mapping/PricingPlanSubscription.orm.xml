@@ -26,6 +26,12 @@
             </options>
         </field>
         
+        <field name="recurringPaymentCancelled" column="recurring_payment_cancelled" type="boolean">
+            <options>
+                <option name="default">0</option>
+            </options>
+        </field>
+        
         <field name="price" column="price" type="decimal" scale="2" precision="8" />
         <many-to-one field="currency" target-entity="Vankosoft\PaymentBundle\Model\Interfaces\CurrencyInterface" />
         

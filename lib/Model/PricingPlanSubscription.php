@@ -33,6 +33,9 @@ class PricingPlanSubscription implements PricingPlanSubscriptionInterface
     /** @var bool */
     protected $recurringPayment = false;
     
+    /** @var bool */
+    protected $recurringPaymentCancelled = false;
+    
     /** @var \DateTimeInterface */
     protected $expiresAt;
     
@@ -100,6 +103,26 @@ class PricingPlanSubscription implements PricingPlanSubscriptionInterface
     public function setRecurringPayment( ?bool $recurringPayment )
     {
         $this->recurringPayment = (bool) $recurringPayment;
+        
+        return $this;
+    }
+    
+    public function isRecurringPaymentCancelled(): bool
+    {
+        return $this->recurringPaymentCancelled;
+    }
+    
+    public function getRecurringPaymentCancelled(): bool
+    {
+        return $this->recurringPaymentCancelled;
+    }
+    
+    /**
+     * @param bool
+     */
+    public function setRecurringPaymentCancelled( ?bool $recurringPaymentCancelled )
+    {
+        $this->recurringPaymentCancelled = (bool) $recurringPaymentCancelled;
         
         return $this;
     }
