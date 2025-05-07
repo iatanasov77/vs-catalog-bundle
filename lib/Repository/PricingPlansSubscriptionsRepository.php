@@ -58,7 +58,7 @@ class PricingPlansSubscriptionsRepository extends EntityRepository
     {
         $result = $this->createQueryBuilder( 'pps' )
                         ->where( 'pps.gatewayAttributes LIKE :search' )
-                        ->setParameter( 'search', $search )
+                        ->setParameter( 'search', \sprintf( '%%%s%%', $search ) )
                         ->getQuery()
                         ->getResult();
         
