@@ -1,3 +1,9 @@
+2.3.5	|	Release date: **07.05.2025**
+============================================
+* New Features:
+  - Add a Repository Method to Find PricingPlanSubscriptions for Gateway Attribute.
+
+
 2.3.4	|	Release date: **07.05.2025**
 ============================================
 * New Features:
