@@ -27,7 +27,7 @@
         "php": "^8.2",
        	
        	"vankosoft/users-subscriptions-bundle": "^3.0",
-        "vankosoft/payment-bundle": "dev-develop",
+        "vankosoft/payment-bundle": "^4.2",
 		"sylius/review": "^2.0"
     },
     "autoload": {
