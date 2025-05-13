@@ -1,3 +1,10 @@
+2.3.6	|	Release date: **13.05.2025**
+============================================
+* New Features:
+  - Set in Developement Mode.
+  - Return Payment Bundle to Production Mode.
+
+
 2.3.5	|	Release date: **07.05.2025**
 ============================================
 * New Features:
