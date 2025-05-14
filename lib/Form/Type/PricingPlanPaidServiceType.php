@@ -20,7 +20,7 @@ final class PricingPlanPaidServiceType extends AbstractType
     }
     
     
-    public function buildForm( FormBuilderInterface $builder, array $options )
+    public function buildForm( FormBuilderInterface $builder, array $options ): void
     {
         $builder
             ->add( 'paidServicePeriod', EntityType::class, [
