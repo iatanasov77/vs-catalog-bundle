@@ -10,11 +10,7 @@ use Vankosoft\CatalogBundle\Model\Interfaces\PricingPlanSubscriptionInterface;
 
 trait UserSubscriptionAwareEntity
 {
-    /**
-     * @var Collection
-     *
-     * @ORM\OneToMany(targetEntity="Vankosoft\CatalogBundle\Model\Interfaces\PricingPlanSubscriptionInterface", mappedBy="user", cascade={"persist", "remove"})
-     */
+    /** @var Collection | PricingPlanSubscription[] */
     #[ORM\OneToMany(targetEntity: PricingPlanSubscriptionInterface::class, mappedBy: "user", indexBy: "pricing_plan_id", cascade: ["persist", "remove"], orphanRemoval: true)]
     protected $pricingPlanSubscriptions;
     

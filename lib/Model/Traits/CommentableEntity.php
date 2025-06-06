@@ -6,11 +6,7 @@ use Vankosoft\CatalogBundle\Model\Interfaces\CatalogCommentInterface;
 
 trait CommentableEntity
 {
-    /** 
-     * @var Collection|CatalogCommentInterface[]
-     * 
-     * @ORM\OneToMany(targetEntity="Vankosoft\CatalogBundle\Model\Interfaces\CatalogCommentInterface", mappedBy="commentSubject", cascade={"all"})
-     */
+    /** @var Collection|CatalogCommentInterface[] */
     #[ORM\OneToMany(targetEntity: CatalogCommentInterface::class, mappedBy: "commentSubject", indexBy: "id", cascade: ["all"], orphanRemoval: true)]
     protected $comments;
     

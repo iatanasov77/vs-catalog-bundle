@@ -5,12 +5,7 @@ use Vankosoft\CatalogBundle\Model\Interfaces\PricingPlanInterface;
 
 trait PricingPlanAwareEntity
 {
-    /**
-     * @var PricingPlanInterface | null
-     * 
-     * @ORM\ManyToOne(targetEntity="Vankosoft\CatalogBundle\Model\Interfaces\PricingPlanInterface")
-     * @ORM\JoinColumn(name="pricing_plan_id", referencedColumnName="id", nullable=true)
-     */
+    /** @var PricingPlanInterface | null */
     #[ORM\ManyToOne(targetEntity: PricingPlanInterface::class)]
     #[ORM\JoinColumn(name: "pricing_plan_id", referencedColumnName: "id", nullable: true)]
     protected $pricingPlan;
