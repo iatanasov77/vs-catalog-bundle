@@ -14,11 +14,7 @@ trait ReviewableEntity
      */
     protected $reviews;
     
-    /**
-     * @var float
-     *
-     * @ORM\Column(name="average_rating", type="float", options={"default":"0"})
-     */
+    /** @var float */
     #[ORM\Column(name: "average_rating", type: "float", options: ["default" => 0])]
     protected $averageRating = 0.0;
     
