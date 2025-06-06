@@ -27,7 +27,6 @@
         <many-to-many field="categories" target-entity="Vankosoft\CatalogBundle\Model\Interfaces\ProductCategoryInterface" inversed-by="products"  index-by="id">
             <cascade>
                 <cascade-persist/>
-                <cascade-merge/>
                 <cascade-detach/>
             </cascade>
             <join-table name="VSCAT_Product_Categories">
