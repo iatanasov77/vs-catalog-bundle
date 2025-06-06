@@ -1,3 +1,12 @@
+2.4.0	|	Release date: **06.06.2025**
+============================================
+* New Features:
+  - Fix some Deprecations.
+  - Remove 'cascade-merge' option Doctrine Mapping Files.
+  - Remove Annotations from All Model Traits.
+  - Update Payment Bundle Version Constraint.
+
+
 2.3.6	|	Release date: **13.05.2025**
 ============================================
 * New Features:
