@@ -1,3 +1,10 @@
+2.4.1	|	Release date: **07.06.2025**
+============================================
+* New Features:
+  - Remove All Doctrine Migrations.
+  - Summerize All Old Doctrine Migrations.
+
+
 2.4.0	|	Release date: **06.06.2025**
 ============================================
 * New Features:
