@@ -16,7 +16,7 @@ final class Version20250607041207 extends AbstractMigration
     {
         return '';
     }
-
+    
     public function up(Schema $schema): void
     {
         // this up() migration is auto-generated, please modify it to your needs
@@ -119,18 +119,11 @@ final class Version20250607041207 extends AbstractMigration
         $this->addSql(<<<'SQL'
             CREATE TABLE VSUS_PayedServicesAttributes (id INT AUTO_INCREMENT NOT NULL, payed_service_id INT NOT NULL, name VARCHAR(64) NOT NULL, value VARCHAR(64) NOT NULL, INDEX IDX_685989135139FC0A (payed_service_id), PRIMARY KEY(id)) DEFAULT CHARACTER SET utf8 COLLATE `utf8_unicode_ci` ENGINE = InnoDB
         SQL);
-        $this->addSql(<<<'SQL'
-            ALTER TABLE VSCAT_PricingPlanCategories ADD CONSTRAINT FK_10C2B955727ACA70 FOREIGN KEY (parent_id) REFERENCES VSCAT_PricingPlanCategories (id) ON DELETE CASCADE
-        SQL);
-        $this->addSql(<<<'SQL'
-            ALTER TABLE VSCAT_PricingPlanCategories ADD CONSTRAINT FK_10C2B955DE13F470 FOREIGN KEY (taxon_id) REFERENCES VSAPP_Taxons (id)
-        SQL);
+        
         $this->addSql(<<<'SQL'
             ALTER TABLE VSCAT_PricingPlanSubscriptions ADD CONSTRAINT FK_EA3E01A029628C71 FOREIGN KEY (pricing_plan_id) REFERENCES VSCAT_PricingPlans (id)
         SQL);
-        $this->addSql(<<<'SQL'
-            ALTER TABLE VSCAT_PricingPlanSubscriptions ADD CONSTRAINT FK_EA3E01A0A76ED395 FOREIGN KEY (user_id) REFERENCES VSUM_Users (id)
-        SQL);
+        
         $this->addSql(<<<'SQL'
             ALTER TABLE VSCAT_PricingPlanSubscriptions ADD CONSTRAINT FK_EA3E01A038248176 FOREIGN KEY (currency_id) REFERENCES VSPAY_Currency (id)
         SQL);
@@ -159,9 +152,6 @@ final class Version20250607041207 extends AbstractMigration
             ALTER TABLE VSCAT_ProductCategories ADD CONSTRAINT FK_7ADE9A79727ACA70 FOREIGN KEY (parent_id) REFERENCES VSCAT_ProductCategories (id) ON DELETE CASCADE
         SQL);
         $this->addSql(<<<'SQL'
-            ALTER TABLE VSCAT_ProductCategories ADD CONSTRAINT FK_7ADE9A79DE13F470 FOREIGN KEY (taxon_id) REFERENCES VSAPP_Taxons (id)
-        SQL);
-        $this->addSql(<<<'SQL'
             ALTER TABLE VSCAT_ProductFiles ADD CONSTRAINT FK_F4F29C927E3C61F9 FOREIGN KEY (owner_id) REFERENCES VSCAT_Products (id)
         SQL);
         $this->addSql(<<<'SQL'
@@ -183,9 +173,6 @@ final class Version20250607041207 extends AbstractMigration
             ALTER TABLE VSPAY_Adjustments ADD CONSTRAINT FK_55CA71E2E415FB15 FOREIGN KEY (order_item_id) REFERENCES VSPAY_OrderItem (id) ON DELETE CASCADE
         SQL);
         $this->addSql(<<<'SQL'
-            ALTER TABLE VSPAY_CustomerGroups ADD CONSTRAINT FK_8D3A9BC4DE13F470 FOREIGN KEY (taxon_id) REFERENCES VSAPP_Taxons (id)
-        SQL);
-        $this->addSql(<<<'SQL'
             ALTER TABLE VSPAY_ExchangeRate ADD CONSTRAINT FK_1401B6152A76BEED FOREIGN KEY (source_currency) REFERENCES VSPAY_Currency (id) ON DELETE CASCADE
         SQL);
         $this->addSql(<<<'SQL'
@@ -193,9 +180,6 @@ final class Version20250607041207 extends AbstractMigration
         SQL);
         $this->addSql(<<<'SQL'
             ALTER TABLE VSPAY_GatewayConfig ADD CONSTRAINT FK_BDE8BA6938248176 FOREIGN KEY (currency_id) REFERENCES VSPAY_Currency (id)
-        SQL);
-        $this->addSql(<<<'SQL'
-            ALTER TABLE VSPAY_Order ADD CONSTRAINT FK_87954502A76ED395 FOREIGN KEY (user_id) REFERENCES VSUM_Users (id)
         SQL);
         $this->addSql(<<<'SQL'
             ALTER TABLE VSPAY_Order ADD CONSTRAINT FK_879545025AA1164F FOREIGN KEY (payment_method_id) REFERENCES VSPAY_PaymentMethod (id)
@@ -237,12 +221,6 @@ final class Version20250607041207 extends AbstractMigration
             ALTER TABLE VSPAY_Promotion_Applications ADD CONSTRAINT FK_1D3F36D5139DF194 FOREIGN KEY (promotion_id) REFERENCES VSPAY_Promotions (id) ON DELETE CASCADE
         SQL);
         $this->addSql(<<<'SQL'
-            ALTER TABLE VSPAY_Promotion_Applications ADD CONSTRAINT FK_1D3F36D53E030ACD FOREIGN KEY (application_id) REFERENCES VSAPP_Applications (id) ON DELETE CASCADE
-        SQL);
-        $this->addSql(<<<'SQL'
-            ALTER TABLE VSUS_NewsletterSubscriptions ADD CONSTRAINT FK_E521F0DCA76ED395 FOREIGN KEY (user_id) REFERENCES VSUM_Users (id)
-        SQL);
-        $this->addSql(<<<'SQL'
             ALTER TABLE VSUS_NewsletterSubscriptions ADD CONSTRAINT FK_E521F0DCF03423AE FOREIGN KEY (mailchimp_audience_id) REFERENCES VSUS_MailchimpAudiences (id)
         SQL);
         $this->addSql(<<<'SQL'
@@ -252,19 +230,10 @@ final class Version20250607041207 extends AbstractMigration
             ALTER TABLE VSUS_PayedServicesAttributes ADD CONSTRAINT FK_685989135139FC0A FOREIGN KEY (payed_service_id) REFERENCES VSUS_PayedServices (id)
         SQL);
         $this->addSql(<<<'SQL'
-            ALTER TABLE VSAPP_Settings DROP FOREIGN KEY FK_4A491FD507FAB6A
-        SQL);
-        $this->addSql(<<<'SQL'
-            DROP INDEX IDX_4A491FD507FAB6A ON VSAPP_Settings
-        SQL);
-        $this->addSql(<<<'SQL'
             ALTER TABLE VSAPP_Settings CHANGE maintenance_page_id maintenance_page_id  INT DEFAULT NULL
         SQL);
         $this->addSql(<<<'SQL'
             ALTER TABLE VSAPP_Settings ADD CONSTRAINT FK_4A491FD507FAB6A FOREIGN KEY (maintenance_page_id ) REFERENCES VSCMS_Pages (id) ON DELETE CASCADE
-        SQL);
-        $this->addSql(<<<'SQL'
-            CREATE INDEX IDX_4A491FD507FAB6A ON VSAPP_Settings (maintenance_page_id )
         SQL);
         $this->addSql(<<<'SQL'
             ALTER TABLE VSUM_Users ADD customer_group_id INT DEFAULT NULL, ADD payment_details JSON DEFAULT NULL
@@ -279,7 +248,7 @@ final class Version20250607041207 extends AbstractMigration
             ALTER TABLE VSUM_UsersInfo CHANGE title title ENUM('mr', 'mrs', 'miss')
         SQL);
     }
-
+    
     public function down(Schema $schema): void
     {
         // this down() migration is auto-generated, please modify it to your needs
