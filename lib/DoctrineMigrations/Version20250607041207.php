@@ -230,12 +230,6 @@ final class Version20250607041207 extends AbstractMigration
             ALTER TABLE VSUS_PayedServicesAttributes ADD CONSTRAINT FK_685989135139FC0A FOREIGN KEY (payed_service_id) REFERENCES VSUS_PayedServices (id)
         SQL);
         $this->addSql(<<<'SQL'
-            ALTER TABLE VSAPP_Settings CHANGE maintenance_page_id maintenance_page_id  INT DEFAULT NULL
-        SQL);
-        $this->addSql(<<<'SQL'
-            ALTER TABLE VSAPP_Settings ADD CONSTRAINT FK_4A491FD507FAB6A FOREIGN KEY (maintenance_page_id ) REFERENCES VSCMS_Pages (id) ON DELETE CASCADE
-        SQL);
-        $this->addSql(<<<'SQL'
             ALTER TABLE VSUM_Users ADD customer_group_id INT DEFAULT NULL, ADD payment_details JSON DEFAULT NULL
         SQL);
         $this->addSql(<<<'SQL'
@@ -485,21 +479,6 @@ final class Version20250607041207 extends AbstractMigration
         SQL);
         $this->addSql(<<<'SQL'
             DROP TABLE VSUS_PayedServicesAttributes
-        SQL);
-        $this->addSql(<<<'SQL'
-            ALTER TABLE VSAPP_Settings DROP FOREIGN KEY FK_4A491FD507FAB6A
-        SQL);
-        $this->addSql(<<<'SQL'
-            DROP INDEX IDX_4A491FD507FAB6A ON VSAPP_Settings
-        SQL);
-        $this->addSql(<<<'SQL'
-            ALTER TABLE VSAPP_Settings CHANGE maintenance_page_id  maintenance_page_id INT DEFAULT NULL
-        SQL);
-        $this->addSql(<<<'SQL'
-            ALTER TABLE VSAPP_Settings ADD CONSTRAINT FK_4A491FD507FAB6A FOREIGN KEY (maintenance_page_id) REFERENCES VSCMS_Pages (id) ON UPDATE NO ACTION ON DELETE CASCADE
-        SQL);
-        $this->addSql(<<<'SQL'
-            CREATE INDEX IDX_4A491FD507FAB6A ON VSAPP_Settings (maintenance_page_id)
         SQL);
         $this->addSql(<<<'SQL'
             DROP INDEX IDX_CAFDCD03D2919A68 ON VSUM_Users
