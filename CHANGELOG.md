@@ -1,3 +1,9 @@
+2.4.4	|	Release date: **12.06.2025**
+============================================
+* Bug-Fixes:
+  - Fix Some Entity Repositories About Doctrine ORM 3.0
+
+
 2.4.3	|	Release date: **10.06.2025**
 ============================================
 * Bug-Fixes:
