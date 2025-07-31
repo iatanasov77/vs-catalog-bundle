@@ -1,3 +1,9 @@
+2.5.1	|	Release date: **31.07.2025**
+============================================
+* Bug-Fixes:
+  - Fix Assets References Paths.
+
+
 2.5.0	|	Release date: **31.07.2025**
 ============================================
 * New Features and Improvements:
