@@ -1,3 +1,10 @@
+2.5.0	|	Release date: **31.07.2025**
+============================================
+* New Features and Improvements:
+  - Add a Pricing Plan Handle JS Scripts.
+  - Refactoring of JS References.
+
+
 2.4.4	|	Release date: **12.06.2025**
 ============================================
 * Bug-Fixes:
