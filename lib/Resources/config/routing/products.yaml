@@ -105,7 +105,7 @@ vs_catalog_pricing_plan_index:
             paginate: 10
             sortable: true
             sorting:
-                updatedAt: desc
+                position: asc
             filterable: true
             template: "@VSCatalog/Pages/PricingPlans/index.html.twig"
     options:
@@ -120,7 +120,7 @@ vs_catalog_pricing_plan_index_filtered:
             paginate: 10
             sortable: true
             sorting:
-                updatedAt: desc
+                position: asc
             filterable: true
             criteria:
                 category: $filterCategory
