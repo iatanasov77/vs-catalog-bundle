@@ -8,8 +8,12 @@ use Symfony\Component\HttpFoundation\File\File;
 use Symfony\Component\HttpFoundation\File\UploadedFile;
 use Symfony\Component\HttpFoundation\File\Exception\FileException;
 
+use Vankosoft\ApplicationBundle\Controller\Traits\FilterFormTrait;
+
 class PricingPlanController extends AbstractCrudController
 {
+    use FilterFormTrait;
+    
     protected function customData( Request $request, $entity = null ): array
     {
         $translations   = $this->classInfo['action'] == 'indexAction' ? $this->getTranslations() : [];
@@ -23,11 +27,17 @@ class PricingPlanController extends AbstractCrudController
             $selectedTaxonIds[] = $entity->getCategory()->getTaxon()->getId();
         }
         
+        $categoryClass  = $this->getParameter( 'vs_catalog.model.pricing_plan_category.class' );
+        $filterCategory = $request->attributes->get( 'filterCategory' );
+        $filterForm     = $this->getFilterForm( $categoryClass, $filterCategory, $request );
+        
         return [
             'categories'        => $this->get( 'vs_catalog.repository.pricing_plan_category' )->findAll(),
             'taxonomyId'        => $taxonomy ? $taxonomy->getId() : 0,
             'translations'      => $translations,
             'selectedTaxonIds'  => $selectedTaxonIds,
+            'filterForm'        => $filterForm->createView(),
+            'filterCategory'    => $filterCategory,
         ];
     }
     
@@ -74,7 +84,12 @@ class PricingPlanController extends AbstractCrudController
         $entity->setGatewayAttributes( $gatewayAttributes );
     }
     
-    private function getTranslations()
+    protected function getFilterRepository()
+    {
+        return $this->get( 'vs_catalog.repository.pricing_plan_category' );
+    }
+    
+    protected function getTranslations()
     {
         $translations   = [];
         $transRepo      = $this->get( 'vs_application.repository.translation' );

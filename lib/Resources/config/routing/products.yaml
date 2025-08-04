@@ -95,6 +95,38 @@ vs_catalog_pricing_plan:
                 ckeditor_extraPlugins: '%vs_users_subscriptions.form.payed_service.ckeditor_extraPlugins%'
                 ckeditor_removeButtons: '%vs_users_subscriptions.form.payed_service.ckeditor_removeButtons%'
     type: sylius.resource
+
+vs_catalog_pricing_plan_index:
+    path: /pricing-plans/
+    methods: [GET]
+    defaults:
+        _controller: vs_catalog.controller.pricing_plan::indexAction
+        _sylius:
+            paginate: 10
+            sortable: true
+            sorting:
+                updatedAt: desc
+            filterable: true
+            template: "@VSCatalog/Pages/PricingPlans/index.html.twig"
+    options:
+        expose: true
+        
+vs_catalog_pricing_plan_index_filtered:
+    path: /pricing-plans/category/{filterCategory}/
+    methods: [GET]
+    defaults:
+        _controller: vs_catalog.controller.pricing_plan::indexAction
+        _sylius:
+            paginate: 10
+            sortable: true
+            sorting:
+                updatedAt: desc
+            filterable: true
+            criteria:
+                category: $filterCategory
+            template: "@VSCatalog/Pages/PricingPlans/index.html.twig"
+    options:
+        expose: true
     
 vs_catalog_pricing_plan_paid_services:
     path: /json/pricing-plans/{id}/easyui-combotree-with-leafs
