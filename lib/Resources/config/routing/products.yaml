@@ -127,6 +127,12 @@ vs_catalog_pricing_plan_index_filtered:
             template: "@VSCatalog/Pages/PricingPlans/index.html.twig"
     options:
         expose: true
+
+vs_catalog_pricing_plans_sort:
+    path: /json/pricing-plans/sort/{id}/{position}
+    controller: Vankosoft\CatalogBundle\Controller\PricingPlanExtController::sortAction
+    options:
+        expose: true
     
 vs_catalog_pricing_plan_paid_services:
     path: /json/pricing-plans/{id}/easyui-combotree-with-leafs

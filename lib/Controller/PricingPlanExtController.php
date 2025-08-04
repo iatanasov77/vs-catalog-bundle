@@ -4,10 +4,14 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpFoundation\JsonResponse;
+use Doctrine\Persistence\ManagerRegistry;
 use Sylius\Component\Resource\Repository\RepositoryInterface;
 
 class PricingPlanExtController extends AbstractController
 {
+    /** @var ManagerRegistry */
+    protected $doctrine;
+    
     /** @var RepositoryInterface */
     protected $pricingPlansRepository;
     
@@ -15,9 +19,11 @@ class PricingPlanExtController extends AbstractController
     protected $paidServicesRepository;
     
     public function __construct(
+        ManagerRegistry $doctrine,
         RepositoryInterface $pricingPlanRepository,
         RepositoryInterface $payedServiceRepository
     ) {
+        $this->doctrine                 = $doctrine;
         $this->pricingPlansRepository   = $pricingPlanRepository;
         $this->paidServicesRepository   = $payedServiceRepository;
     }
@@ -36,6 +42,20 @@ class PricingPlanExtController extends AbstractController
         );
         
         return new JsonResponse( $data );
+    }
+    
+    public function sortAction( $id, $position, Request $request ): Response
+    {
+        $em             = $this->doctrine->getManager();
+        $pricingPlan    = $this->pricingPlansRepository->find( $id );
+        
+        $pricingPlan->setPosition( $position );
+        $em->persist( $pricingPlan );
+        $em->flush();
+        
+        return new JsonResponse([
+            'status'   => Status::STATUS_OK
+        ]);
     }
     
     protected function buildEasyuiCombotreeData( $tree, &$data, array $selectedValues, array $leafs, $notLeafs )
