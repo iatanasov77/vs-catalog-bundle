@@ -112,7 +112,7 @@ vs_catalog_pricing_plan_index:
         expose: true
         
 vs_catalog_pricing_plan_index_filtered:
-    path: /pricing-plans/category/{filterCategory}/
+    path: /pricing-plans/{filterCategory}/
     methods: [GET]
     defaults:
         _controller: vs_catalog.controller.pricing_plan::indexAction
