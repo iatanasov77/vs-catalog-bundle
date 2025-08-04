@@ -36,6 +36,7 @@
             <cascade>
                 <cascade-persist/>
             </cascade>
+            <gedmo:sortable-group />
         </many-to-one>
         
         <many-to-one field="paidService" target-entity="Vankosoft\UsersSubscriptionsBundle\Model\Interfaces\PayedServiceSubscriptionPeriodInterface">
@@ -63,6 +64,13 @@
         
         <field name="paymentDescription" column="payment_description" type="text" nullable="true">
             <gedmo:translatable />
+        </field>
+        
+        <field name="position" type="integer" nullable="true">
+            <gedmo:sortable-position />
+            <options>
+                <option name="default">0</option>
+            </options>
         </field>
         
         <!--

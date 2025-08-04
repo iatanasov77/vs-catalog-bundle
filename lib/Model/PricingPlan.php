@@ -71,6 +71,9 @@ class PricingPlan implements PricingPlanInterface, Comparable
     /** @var string */
     protected $paymentDescription;
     
+    /** @var int */
+    protected $position = 0;
+    
     public function __construct()
     {
         $this->subscriptions        = new ArrayCollection();
@@ -280,6 +283,18 @@ class PricingPlan implements PricingPlanInterface, Comparable
     public function setPaymentDescription( $paymentDescription ): PricingPlanInterface
     {
         $this->paymentDescription = $paymentDescription;
+        
+        return $this;
+    }
+    
+    public function getPosition()
+    {
+        return $this->position;
+    }
+    
+    public function setPosition( $position ): self
+    {
+        $this->position = $position;
         
         return $this;
     }
