@@ -1,3 +1,9 @@
+2.5.3	|	Release date: **05.08.2025**
+============================================
+* New Features:
+  - Using a New Period in Pricing Plan Subscription Periods.
+
+
 2.5.2	|	Release date: **04.08.2025**
 ============================================
 * New Features:
