@@ -350,6 +350,9 @@ class PricingPlan implements PricingPlanInterface, Comparable
             case SubscriptionPeriod::SUBSCRIPTION_PERIOD_WEEK:
                 $period = new \DateInterval( 'P1W' );
                 break;
+            case SubscriptionPeriod::SUBSCRIPTION_PERIOD_WEEKEND:
+                $period = new \DateInterval( 'P2D' );
+                break;
             case SubscriptionPeriod::SUBSCRIPTION_PERIOD_DAY:
                 $period = new \DateInterval( 'P1D' );
                 break;
