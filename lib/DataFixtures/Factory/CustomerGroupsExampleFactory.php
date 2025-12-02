@@ -51,13 +51,13 @@ final class CustomerGroupsExampleFactory extends AbstractExampleFactory implemen
         $entity                     = $this->customerGroupsFactory->createNew();
         
         $taxonEntity                = $this->taxonFactory->createNew();
-        
-        //$slug                       = $this->slugGenerator->generate( $options['title'] );
-        $slug                       = $options['taxon_code'];
+        $slug                       = $this->slugGenerator->generate( $options['title'] );
         
         $taxonEntity->setCurrentLocale( $options['locale'] );
+        $taxonEntity->setFallbackLocale( 'en_US' );
         $taxonEntity->setCode( $slug );
         $taxonEntity->getTranslation()->setName( $options['title'] );
+        $taxonEntity->getTranslation()->setDescription( $options['description'] );
         $taxonEntity->getTranslation()->setSlug( $slug );
         $taxonEntity->getTranslation()->setTranslatable( $taxonEntity );
         
@@ -73,14 +73,17 @@ final class CustomerGroupsExampleFactory extends AbstractExampleFactory implemen
             ->setDefault( 'title', null )
             ->setAllowedTypes( 'title', ['string'] )
             
+            ->setDefault( 'description', null )
+            ->setAllowedTypes( 'description', ['string'] )
+            
             ->setDefault( 'locale', 'en_US' )
             ->setAllowedTypes( 'locale', ['string'] )
             
             ->setDefault( 'taxonomy_code', null )
             ->setAllowedTypes( 'taxonomy_code', ['string'] )
             
-            ->setDefault( 'taxon_code', null )
-            ->setAllowedTypes( 'taxon_code', ['string'] )
+            ->setDefault( 'translations', [] )
+            ->setAllowedTypes( 'translations', ['array'] )
         ;
     }
 }

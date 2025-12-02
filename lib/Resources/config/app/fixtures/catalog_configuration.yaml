@@ -12,26 +12,31 @@ sylius_fixtures:
                         custom:
                             - code: 'EUR'
                             - code: 'USD'
-                            - code: 'BGN'
                 
                 exchange_rates:
                     name: exchange_rates
                     options:
                         custom:
                             - source_currency: 'EUR'
-                              target_currency: 'BGN'
-                              ratio: 1.95
-                            - source_currency: 'USD'
-                              target_currency: 'BGN'
-                              ratio: 1.82
-                              
-                customer_groups:
-                    name: customer_groups
-                    options:
-                        custom:
-                            - title: 'General Customers'
-                              taxonomy_code: 'customer-groups'
-                              taxon_code: 'general-customers'
-                              locale:  '%locale%'
-
-
+                              target_currency: 'USD'
+                              ratio: 1.16
+                
+                #######################################################################################
+                # Customer Groups Fixture Throws MappingException:
+                # 'Class 'Vankosoft\PaymentBundle\Model\Interfaces\CustomerInterface' does not exist'
+                #######################################################################################
+#                 customer_groups:
+#                     name: customer_groups
+#                     options:
+#                         custom:
+#                             - title: 'General Customers'
+#                               description: 'Groups for General Customers'
+#                               taxonomy_code: 'customer-groups'
+#                               locale:  '%locale%'
+#                               translations:
+#                                   en_US:
+#                                       title: 'General Customers'
+#                                       description: 'Groups for General Customers'
+#                                   bg_BG:
+#                                       title: 'Общи Клиенти'
+#                                       description: 'Групи за общи клиенти'

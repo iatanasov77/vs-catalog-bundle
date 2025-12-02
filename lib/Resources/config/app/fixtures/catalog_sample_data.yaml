@@ -208,7 +208,7 @@ sylius_fixtures:
                               locale:  '%locale%'
                               published: true
                               price: 21.45
-                              currency: 'BGN'
+                              currency: 'EUR'
                               pictures:
                                   - code: 'product_thumbnail'
                                     file: 'product_3100.jpg'
@@ -218,7 +218,7 @@ sylius_fixtures:
                               locale:  '%locale%'
                               published: true
                               price: 5.00
-                              currency: 'BGN'
+                              currency: 'EUR'
                               pictures:
                                   - code: 'product_thumbnail'
                                     file: 'shogun.jpg'
@@ -231,7 +231,7 @@ sylius_fixtures:
                               locale:  '%locale%'
                               published: true
                               price: 5.00
-                              currency: 'BGN'
+                              currency: 'EUR'
                               pictures:
                                   - code: 'product_thumbnail'
                                     file: '9781490960388-us.jpg'

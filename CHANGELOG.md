@@ -1,3 +1,12 @@
+2.5.5	|	Release date: **02.12.2025**
+============================================
+* Bug-Fixes and Improvements:
+  - Fix Customer Groups Data Fixtures.
+  - Remove Customer Groups Data Fixture Because throw an Exception..
+  - Remove BGN Currency From Sample Data Fixtures.
+  - Set Fallback Locale for Taxon Entities in Data Fixtures Factories.
+
+
 2.5.4	|	Release date: **20.08.2025**
 ============================================
 * New Features:
