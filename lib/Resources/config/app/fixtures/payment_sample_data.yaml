@@ -25,7 +25,7 @@ sylius_fixtures:
                                   "bank_name": "path/to/private.key"
                                   "reciever_name": "path/to/public.cer"
                                   "reason": "9426871 - ХОСТИНГ УСЛУГИ"
-                              currency: 'BGN'
+                              currency: 'EUR'
                             - title: 'Borica'
                               description: 'Borica'
                               gateway_name: 'borica'
@@ -39,7 +39,7 @@ sylius_fixtures:
                                   "terminal_id": "TEST"
                                   "private_key": "path/to/private.key"
                                   "public_cert": "path/to/public.cer"
-                              currency: 'BGN'
+                              currency: 'EUR'
                             - title: 'Paysera Gateway'
                               description: 'Paysera Gateway'
                               gateway_name: 'paysera'
@@ -53,7 +53,7 @@ sylius_fixtures:
                                   "test": "true"
                                   "projectid": "PROJECT_ID"
                                   "sign_password": "SIGN_PASSWORD"
-                              currency: 'BGN'
+                              currency: 'EUR'
                             - title: 'Stripe Js'
                               description: 'Stripe Js'
                               gateway_name: 'stripe_js'
