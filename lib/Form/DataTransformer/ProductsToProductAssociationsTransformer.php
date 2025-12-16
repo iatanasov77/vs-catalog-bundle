@@ -36,7 +36,7 @@ final class ProductsToProductAssociationsTransformer implements DataTransformerI
         $this->productAssociationTypeRepository = $productAssociationTypeRepository;
     }
     
-    public function transform( $value )
+    public function transform( $value ): mixed
     {
         $this->setProductAssociations( $value );
         
