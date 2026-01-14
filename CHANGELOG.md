@@ -1,3 +1,9 @@
+2.5.6	|	Release date: **14.01.2026**
+============================================
+* Bug-Fixes:
+  - Fix Some Deprecations.
+
+
 2.5.5	|	Release date: **02.12.2025**
 ============================================
 * Bug-Fixes and Improvements:
