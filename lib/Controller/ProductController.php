@@ -7,6 +7,7 @@ use Vankosoft\ApplicationBundle\Controller\AbstractCrudController;
 use Symfony\Component\HttpFoundation\File\File;
 use Symfony\Component\HttpFoundation\File\UploadedFile;
 use Symfony\Component\HttpFoundation\File\Exception\FileException;
+use Sylius\Component\Resource\Repository\RepositoryInterface;
 
 use Vankosoft\ApplicationBundle\Controller\Traits\FilterFormTrait;
 use Vankosoft\CatalogBundle\Model\Interfaces\ProductInterface;
@@ -55,7 +56,7 @@ class ProductController extends AbstractCrudController
         ];
     }
     
-    protected function prepareEntity( &$entity, &$form, Request $request )
+    protected function prepareEntity( &$entity, &$form, Request $request ): void
     {
         $categories = new ArrayCollection();
         $pcr        = $this->get( 'vs_catalog.repository.product_category' );
@@ -121,21 +122,9 @@ class ProductController extends AbstractCrudController
         }
     }
     
-    protected function getFilterRepository()
+    protected function getFilterRepository(): ?RepositoryInterface
     {
         return $this->get( 'vs_catalog.repository.product_category' );
-    }
-    
-    protected function getTranslations()
-    {
-        $translations   = [];
-        $transRepo      = $this->get( 'vs_application.repository.translation' );
-        
-        foreach ( $this->getRepository()->findAll() as $product ) {
-            $translations[$product->getId()] = array_keys( $transRepo->findTranslations( $product ) );
-        }
-        
-        return $translations;
     }
     
     protected function addProductPicture( ProductInterface &$entity, ProductPictureInterface &$productPicture, File $file, string $code ): void
