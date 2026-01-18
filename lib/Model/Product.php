@@ -4,6 +4,7 @@ use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Vankosoft\CatalogBundle\Model\Interfaces\ProductInterface;
 use Vankosoft\CatalogBundle\Model\Interfaces\ProductPictureInterface;
+use Vankosoft\CatalogBundle\Model\Interfaces\ProductFileInterface;
 
 use Vankosoft\CatalogBundle\Model\Traits\Product\CategoriesAwareTrait;
 use Vankosoft\CatalogBundle\Model\Traits\Product\PicturesAwareTrait;
@@ -44,13 +45,22 @@ class Product extends ProductBase implements ProductInterface, AssociationAwareI
         $this->orderItems   = new ArrayCollection();
     }
     
-    public function getPicture( $pictureId ):? ProductPictureInterface
+    public function getPicture( $pictureId ): ?ProductPictureInterface
     {
         if ( ! isset( $this->pictures[$pictureId] ) ) {
             return null;
         }
         
         return $this->pictures[$pictureId];
+    }
+    
+    public function getFile( $fileId ): ?ProductFileInterface
+    {
+        if ( ! isset( $this->files[$fileId] ) ) {
+            return null;
+        }
+        
+        return $this->files[$fileId];
     }
     
     public function getSubscriptionCode(): ?string
