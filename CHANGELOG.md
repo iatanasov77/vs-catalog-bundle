@@ -1,3 +1,10 @@
+2.5.7	|	Release date: **18.01.2026**
+============================================
+* New Features:
+  - Add a Helper Method in Product Model to Get a File with specific code.
+  - Add New Changes of AbstractCrudController in all Controllers that Extend it.
+
+
 2.5.6	|	Release date: **14.01.2026**
 ============================================
 * Bug-Fixes:
