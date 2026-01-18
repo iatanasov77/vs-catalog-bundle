@@ -7,6 +7,7 @@ use Vankosoft\ApplicationBundle\Controller\AbstractCrudController;
 use Symfony\Component\HttpFoundation\File\File;
 use Symfony\Component\HttpFoundation\File\UploadedFile;
 use Symfony\Component\HttpFoundation\File\Exception\FileException;
+use Sylius\Component\Resource\Repository\RepositoryInterface;
 
 use Vankosoft\ApplicationBundle\Controller\Traits\FilterFormTrait;
 
@@ -41,7 +42,7 @@ class PricingPlanController extends AbstractCrudController
         ];
     }
     
-    protected function prepareEntity( &$entity, &$form, Request $request )
+    protected function prepareEntity( &$entity, &$form, Request $request ): void
     {
         $categories = new ArrayCollection();
         $pcr        = $this->get( 'vs_catalog.repository.pricing_plan_category' );
@@ -84,20 +85,8 @@ class PricingPlanController extends AbstractCrudController
         $entity->setGatewayAttributes( $gatewayAttributes );
     }
     
-    protected function getFilterRepository()
+    protected function getFilterRepository(): ?RepositoryInterface
     {
         return $this->get( 'vs_catalog.repository.pricing_plan_category' );
-    }
-    
-    protected function getTranslations()
-    {
-        $translations   = [];
-        $transRepo      = $this->get( 'vs_application.repository.translation' );
-        
-        foreach ( $this->getRepository()->findAll() as $pricingPlan ) {
-            $translations[$pricingPlan->getId()] = array_keys( $transRepo->findTranslations( $pricingPlan ) );
-        }
-        
-        return $translations;
     }
 }
