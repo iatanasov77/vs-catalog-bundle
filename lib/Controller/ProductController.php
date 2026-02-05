@@ -2,6 +2,7 @@
 
 use Symfony\Component\HttpFoundation\Request;
 use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Persistence\ObjectRepository;
 use Vankosoft\ApplicationBundle\Controller\AbstractCrudController;
 
 use Symfony\Component\HttpFoundation\File\File;
@@ -122,7 +123,7 @@ class ProductController extends AbstractCrudController
         }
     }
     
-    protected function getFilterRepository(): ?RepositoryInterface
+    protected function getFilterRepository(): ObjectRepository
     {
         return $this->get( 'vs_catalog.repository.product_category' );
     }
