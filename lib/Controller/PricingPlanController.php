@@ -2,6 +2,7 @@
 
 use Symfony\Component\HttpFoundation\Request;
 use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Persistence\ObjectRepository;
 use Vankosoft\ApplicationBundle\Controller\AbstractCrudController;
 
 use Symfony\Component\HttpFoundation\File\File;
@@ -85,7 +86,7 @@ class PricingPlanController extends AbstractCrudController
         $entity->setGatewayAttributes( $gatewayAttributes );
     }
     
-    protected function getFilterRepository(): ?RepositoryInterface
+    protected function getFilterRepository(): ObjectRepository
     {
         return $this->get( 'vs_catalog.repository.pricing_plan_category' );
     }

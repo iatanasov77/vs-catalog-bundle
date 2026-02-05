@@ -1,3 +1,9 @@
+2.6.0	|	Release date: **05.02.2026**
+============================================
+* Bug-Fixes:
+  - Fix Some Overrided Methods in Controllers.
+
+
 2.5.7	|	Release date: **18.01.2026**
 ============================================
 * New Features:
