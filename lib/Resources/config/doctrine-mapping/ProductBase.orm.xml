@@ -16,7 +16,7 @@
             <gedmo:slug unique="true" style="lower" updatable="true" separator="-" fields="name" />
         </field>
         
-        <field name="name" type="string" length="64" nullable="false" >
+        <field name="name" type="string" length="255" nullable="false" >
             <gedmo:translatable />
         </field>
         

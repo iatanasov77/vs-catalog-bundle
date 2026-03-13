@@ -1,3 +1,9 @@
+2.6.2	|	Release date: **13.03.2026**
+============================================
+* New Features:
+  - Chanege Some Doctrine Mappings
+
+
 2.6.1	|	Release date: **21.02.2026**
 ============================================
 * Bug-Fixes:

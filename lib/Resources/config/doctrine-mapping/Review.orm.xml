@@ -10,7 +10,7 @@
             <generator strategy="AUTO" />
         </id>
 
-        <field name="title" type="string" nullable="true" />
+        <field name="title" type="string" length="255" nullable="true" />
         <field name="comment" type="text" nullable="true" />
         <field name="rating" type="integer" nullable="true" />
         
