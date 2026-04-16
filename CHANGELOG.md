@@ -1,3 +1,11 @@
+2.6.3	|	Release date: **16.04.2026**
+============================================
+* Bug-Fixes and Improvements:
+  - Fix AbstractCommentForm .
+  - Some Improvements.
+  - Remove Tree Mappings of CatalogComment Model.
+
+
 2.6.2	|	Release date: **13.03.2026**
 ============================================
 * New Features:

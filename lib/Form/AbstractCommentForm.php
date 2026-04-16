@@ -13,7 +13,7 @@ abstract class AbstractCommentForm extends AbstractResourceType
     public function buildForm( FormBuilderInterface $builder, array $options ): void
     {
         $builder
-            ->add( 'video', HiddenType::class, ['mapped' => false, 'data' => $options['video']] )
+            ->add( 'subject', HiddenType::class, ['mapped' => false, 'data' => $options['subject']] )
             ->add( 'parent', HiddenType::class, ['mapped' => false, 'data' => $options['parent_comment']] )
         
             ->add( 'comment', TextareaType::class, [
@@ -36,7 +36,7 @@ abstract class AbstractCommentForm extends AbstractResourceType
         $resolver->setDefaults([
             'translation_domain'    => 'VSPaymentBundle',
             
-            'video'                 => 0,
+            'subject'               => 0,
             'parent_comment'        => 0,
         ]);
     }
