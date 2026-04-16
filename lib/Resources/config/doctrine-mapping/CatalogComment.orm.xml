@@ -22,6 +22,8 @@
             <gedmo:tree-right />
         </field>
         
+        <!--  Add Mapping of this Fields in Child Classes
+        
         <many-to-one field="root" target-entity="Vankosoft\CatalogBundle\Model\Interfaces\CatalogCommentInterface">
             <join-column name="tree_root" referenced-column-name="id" nullable="true" on-delete="CASCADE" />
             <gedmo:tree-root />
@@ -46,6 +48,7 @@
                 <order-by-field name="left" direction="ASC" />
             </order-by>
         </one-to-many>
+        -->
         
         <field name="comment" type="text" />
         
