@@ -15,6 +15,7 @@
                     <tr>
                         <th width="50">N</th>
                         <th>{{ 'vs_application.template.items_index_row_title' | trans( {},'VSApplicationBundle' ) }}</th>
+                        <th>{{ 'vs_catalog.form.association_strategy' | trans( {},'VSCatalogBundle' ) }}</th>
                         <th>{{ 'vs_application.template.items_index_row_code' | trans( {},'VSApplicationBundle' ) }}</th>
                         <th>{{ 'vs_application.template.items_index_row_translations' | trans( {},'VSApplicationBundle' ) }}</th>
                         <th width="150">{{ 'vs_application.template.items_index_row_action' | trans( {},'VSApplicationBundle' ) }}</th>
@@ -25,6 +26,7 @@
                     <tr>
                         <td>{{ loop.index }}</td>
                         <td>{{ item.name }}</td>
+                        <td>{{ associationStrategies[item.associationStrategy] }}</td>
                         <td>{{ item.code }}</td>
                         
                         <td>
