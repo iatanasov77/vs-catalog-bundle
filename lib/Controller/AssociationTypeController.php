@@ -10,7 +10,8 @@ class AssociationTypeController extends AbstractCrudController
         $translations   = $this->classInfo['action'] == 'indexAction' ? $this->getTranslations() : [];
         
         return [
-            'translations'  => $translations,
+            'translations'          => $translations,
+            'associationStrategies' => $this->get( 'vs_catalog.association_strategy' )->getStrategies(),
         ];
     }
     
