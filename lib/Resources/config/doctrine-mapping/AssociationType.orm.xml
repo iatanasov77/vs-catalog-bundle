@@ -8,13 +8,13 @@
             <generator strategy="AUTO" />
         </id>
 
-        <field name="associationStrategy" column="association_strategy" type="string" >
+        <field name="associationStrategy" column="association_strategy" type="string" length="255" >
             <options>
                 <option name="default">strategy_associated</option>
             </options>
         </field>
         
-        <field name="code" column="code" type="string" unique="true" />
+        <field name="code" column="code" type="string" length="255" unique="true" />
         <field name="name" type="string" length="64" nullable="false" >
             <gedmo:translatable />
         </field>
