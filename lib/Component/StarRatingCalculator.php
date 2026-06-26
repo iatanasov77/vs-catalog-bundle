@@ -25,10 +25,20 @@ class StarRatingCalculator
         $repository    = $this->doctrine->getRepository( \get_class( $entity ) );
         $totalAverages = $repository->getAverageRatingByLikes();
         
-        $starCount = $this->calculateStarCount( $entity );
-        if ( $totalAverages['totalLikes'] == 0 || $starCount == 0 ) return 0;
+        return $this->calculateRating( $entity, $totalAverages );
+    }
+    
+    public function calculateAllRatingByLikes( string $entityClass )
+    {
+        $repository    = $this->doctrine->getRepository( $entityClass );
+        $totalAverages = $repository->getAverageRatingByLikes();
         
-        return $starCount - ( $totalAverages['totalDislikes'] / ( $totalAverages['totalLikes'] / $starCount ) );
+        $allRatings = [];
+        foreach ( $repository->findAll() as $item ) {
+            $allRatings[$item->getId()] = $this->calculateRating( $item, $totalAverages );
+        }
+        
+        return $allRatings;
     }
     
     protected function calculateStarCount( $entity ): int
@@ -40,5 +50,13 @@ class StarRatingCalculator
         $percent = $entity->getLikes() / $devision;
         
         return $percent;
+    }
+    
+    protected function calculateRating( $entity, $totalAverages )
+    {
+        $starCount = $this->calculateStarCount( $entity );
+        if ( $totalAverages['totalLikes'] == 0 || $starCount == 0 ) return 0;
+        
+        return $starCount - ( $totalAverages['totalDislikes'] / ( $totalAverages['totalLikes'] / $starCount ) );
     }
 }
