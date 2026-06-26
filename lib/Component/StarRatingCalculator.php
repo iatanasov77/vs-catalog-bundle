@@ -12,9 +12,8 @@ class StarRatingCalculator
     
     public function calculateRatingByLikes( $entity )
     {
-        $repository    = $entityManager->getRepository( \get_class( $entity ) );
+        $repository    = $this->doctrine->getRepository( \get_class( $entity );
         $totalAverages = $repository->getAverageRatingByLikes();
-        
         
         $starCount = $this->calculateStarCount( $entity );
         if ( $totalAverages['totalLikes'] == 0 || $starCount == 0 ) return 0;
