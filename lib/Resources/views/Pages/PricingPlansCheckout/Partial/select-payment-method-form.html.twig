@@ -3,7 +3,7 @@
     'attr': {'class': 'modal__form', 'id': 'PaymentMethodForm'}
 }) }}
 
-    {{ form_widget( form.pricingPlan, {'value': pricingPlanId} ) }}
+    {{ form_widget( form.pricingPlan, {'value': pricingPlan.id} ) }}
     
     {% include '@VSCatalog/Pages/PaymentMethod/select-payment-method-field.html.twig' with { 'formName': 'select_payment_method_form' } %}
     

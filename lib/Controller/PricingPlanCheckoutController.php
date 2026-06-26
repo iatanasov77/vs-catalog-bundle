@@ -152,6 +152,7 @@ class PricingPlanCheckoutController extends AbstractController
     public function showPaymentMethodForm( $pricingPlanId, Request $request ): Response
     {
         $form                   = $this->createForm( SelectPaymentMethodForm::class, null, ['method' => 'POST'] );
+        $pricingPlan            = $this->pricingPlansRepository->find( $pricingPlanId );
         $bankTransferGateway    = $this->gatewaysRepository->findOneBy( ['factoryName' => 'offline_bank_transfer'] );
         
         $template               = '@VSCatalog/Pages/PricingPlansCheckout/select-payment-method.html.twig';
@@ -161,7 +162,7 @@ class PricingPlanCheckoutController extends AbstractController
         
         return $this->render( $template, [
             'form'              => $form->createView(),
-            'pricingPlanId'     => $pricingPlanId,
+            'pricingPlan'       => $pricingPlan,
             'bankTransferInfo'  => $bankTransferGateway ? $bankTransferGateway->getConfig() : null,
         ]);
     }
