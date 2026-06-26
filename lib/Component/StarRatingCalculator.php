@@ -1,9 +1,19 @@
 <?php namespace Vankosoft\CatalogBundle\Component;
 
+use Doctrine\Persistence\ManagerRegistry;
+
 class StarRatingCalculator
 {
+    /** @var ManagerRegistry */
+    protected $doctrine;
+    
     /** @var int */
     protected $ratingScale = 5;
+    
+    public function __construct( ManagerRegistry $doctrine )
+    {
+        $this->doctrine = $doctrine;
+    }
     
     public function setRatingScale( int $ratingScale ): void
     {
