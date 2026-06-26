@@ -12,7 +12,7 @@ class StarRatingCalculator
     
     public function calculateRatingByLikes( $entity )
     {
-        $repository    = $this->doctrine->getRepository( \get_class( $entity );
+        $repository    = $this->doctrine->getRepository( \get_class( $entity ) );
         $totalAverages = $repository->getAverageRatingByLikes();
         
         $starCount = $this->calculateStarCount( $entity );
