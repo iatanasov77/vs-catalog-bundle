@@ -20,4 +20,7 @@ services:
         arguments:
             - '@vs_catalog.review.average_rating_updater'
 
-
+    vs_catalog.star_rating_calculator:
+        class: Vankosoft\CatalogBundle\Component\StarRatingCalculator
+        arguments:
+            - '@doctrine'
