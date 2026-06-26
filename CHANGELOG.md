@@ -1,3 +1,10 @@
+2.6.6	|	Release date: **26.06.2026**
+============================================
+* New Features:
+  - Improve Pricing Plan Checkout.
+  - Create Likable Model Traits and Average Rating Calculator for.
+
+
 2.6.5	|	Release date: **22.04.2026**
 ============================================
 * Bug-Fixes:
