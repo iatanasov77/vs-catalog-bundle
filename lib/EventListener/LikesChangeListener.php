@@ -8,7 +8,7 @@ use Vankosoft\CatalogBundle\Component\Review\ReviewableRatingUpdaterInterface;
 class LikesChangeListener
 {
     /** @var ReviewableRatingUpdaterInterface */
-    private $averageRatingUpdater;
+    protected $averageRatingUpdater;
     
     public function __construct(
         ReviewableRatingUpdaterInterface $averageRatingUpdater

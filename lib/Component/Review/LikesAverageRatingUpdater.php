@@ -9,7 +9,7 @@ use Sylius\Component\Review\Model\ReviewInterface;
 class LikesAverageRatingUpdater implements ReviewableRatingUpdaterInterface
 {
     /** @var ObjectManager */
-    private $reviewSubjectManager;
+    protected $reviewSubjectManager;
     
     public function __construct(
         ObjectManager $reviewSubjectManager
