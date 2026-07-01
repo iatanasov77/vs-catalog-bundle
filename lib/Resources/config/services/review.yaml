@@ -24,3 +24,17 @@ services:
         class: Vankosoft\CatalogBundle\Component\StarRatingCalculator
         arguments:
             - '@doctrine'
+    
+    vs_catalog.likes.average_rating_updater:
+        class: Vankosoft\CatalogBundle\Component\Review\LikesAverageRatingUpdater
+        arguments:
+            - '@doctrine.orm.default_entity_manager'
+    
+    vs_catalog.listener.likes_change:
+        class: Vankosoft\CatalogBundle\EventListener\LikesChangeListener
+        tags:
+            - { name: doctrine.event_listener, event: postPersist, lazy: true }
+            - { name: doctrine.event_listener, event: postUpdate, lazy: true }
+            - { name: doctrine.event_listener, event: postRemove, lazy: true }
+        arguments:
+            - '@vs_catalog.likes.average_rating_updater'
