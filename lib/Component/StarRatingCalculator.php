@@ -28,19 +28,6 @@ class StarRatingCalculator
         return $this->calculateRating( $entity, $totalAverages );
     }
     
-    public function calculateAllRatingByLikes( string $entityClass )
-    {
-        $repository    = $this->doctrine->getRepository( $entityClass );
-        $totalAverages = $repository->getAverageRatingByLikes();
-        
-        $allRatings = [];
-        foreach ( $repository->findAll() as $item ) {
-            $allRatings[$item->getId()] = $this->calculateRating( $item, $totalAverages );
-        }
-        
-        return $allRatings;
-    }
-    
     protected function calculateStarCount( $entity ): int
     {
         $devision = $entity->getLikes() + $entity->getDislikes();
