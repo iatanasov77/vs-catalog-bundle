@@ -1,3 +1,10 @@
+2.7.0	|	Release date: **01.07.2026**
+============================================
+* New Features:
+  - Improve Star Rating Calculator.
+  - Create Likes Change Listener and Updater for Average Rating.
+
+
 2.6.6	|	Release date: **26.06.2026**
 ============================================
 * New Features:
