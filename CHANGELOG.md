@@ -1,3 +1,10 @@
+2.7.1	|	Release date: **07.08.2026**
+============================================
+* New Features:
+  - Update Composer Requirements.
+  - Fix Doctrine Mappings of PaymentTokens Model About Doctrine DBAL 4.
+
+
 2.7.0	|	Release date: **01.07.2026**
 ============================================
 * New Features:
