@@ -238,9 +238,6 @@ final class Version20250607041207 extends AbstractMigration
         $this->addSql(<<<'SQL'
             CREATE INDEX IDX_CAFDCD03D2919A68 ON VSUM_Users (customer_group_id)
         SQL);
-        $this->addSql(<<<'SQL'
-            ALTER TABLE VSUM_UsersInfo CHANGE title title ENUM('mr', 'mrs', 'miss')
-        SQL);
     }
     
     public function down(Schema $schema): void
@@ -485,9 +482,6 @@ final class Version20250607041207 extends AbstractMigration
         SQL);
         $this->addSql(<<<'SQL'
             ALTER TABLE VSUM_Users DROP customer_group_id, DROP payment_details
-        SQL);
-        $this->addSql(<<<'SQL'
-            ALTER TABLE VSUM_UsersInfo CHANGE title title VARCHAR(255) DEFAULT NULL
         SQL);
     }
 }
