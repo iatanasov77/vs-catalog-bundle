@@ -24,7 +24,7 @@ class ProductRepository extends EntityRepository implements AssociationStrategyR
         // get random ID's using RAW SQL
         $sql    = \sprintf( "SELECT id from %s ORDER BY RAND() LIMIT %s", $this->getClassMetadata()->table['name'], 10 );
         $stmt   = $conn->prepare( $sql );
-        $result = $stmt->execute();
+        $result = $stmt->executeQuery();
         
         $randomIds = array();
         while ( $val = $result->fetch() ) {
