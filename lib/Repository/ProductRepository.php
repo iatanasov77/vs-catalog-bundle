@@ -27,7 +27,7 @@ class ProductRepository extends EntityRepository implements AssociationStrategyR
         $result = $stmt->executeQuery();
         
         $randomIds = array();
-        while ( $val = $result->fetch() ) {
+        while ( $val = $result->fetchAllAssociative() ) {
             $randomIds[]    = $val['id'];
         }
         
