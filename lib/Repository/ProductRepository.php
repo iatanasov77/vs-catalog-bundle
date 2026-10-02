@@ -26,9 +26,9 @@ class ProductRepository extends EntityRepository implements AssociationStrategyR
         $stmt   = $conn->prepare( $sql );
         $result = $stmt->executeQuery();
         
-        $randomIds = array();
-        while ( $val = $result->fetchAllAssociative() ) {
-            $randomIds[]    = $val['id'];
+        $randomIds = [];
+        foreach ( $result->fetchAllAssociative() as $product ) {
+            $randomIds[] = $product['id'];
         }
         
         // native SQL in doctrine to load associated objects
